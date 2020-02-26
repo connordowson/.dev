@@ -1,15 +1,17 @@
 import React from "react";
-import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/global";
+
+import theme from "./../styles/theme";
 
 import PropTypes from "prop-types";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       {children}
       <GlobalStyles />
-    </div>
+    </ThemeProvider>
   );
 };
 

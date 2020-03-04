@@ -17,10 +17,10 @@ const NavbarWrapper = styled.nav`
 `;
 
 const NavbarContents = styled.div`
-  width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Navbarlinks = styled(Spacer)`
@@ -30,12 +30,28 @@ const Navbarlinks = styled(Spacer)`
   }
 `;
 
+const MobileNav = styled.div``;
+
+const Hamburger = styled.div`
+  width: 3rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  span {
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    background: white;
+  }
+`;
+
 const Navbar = ({ isBlog }: Props) => {
   return (
     <NavbarWrapper>
       <NavbarContents>
         <p>Connor Dowson</p>
-        {isBlog ? (
+        {/* {isBlog ? (
           <a href="/">Home</a>
         ) : (
           <ul>
@@ -44,7 +60,13 @@ const Navbar = ({ isBlog }: Props) => {
               <a href="/blog"> Blog </a>
             </Navbarlinks>
           </ul>
-        )}
+        )} */}
+
+        <Hamburger>
+          <span></span>
+          <span></span>
+          <span></span>
+        </Hamburger>
       </NavbarContents>
     </NavbarWrapper>
   );

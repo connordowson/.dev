@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Spacer from "./Spacer";
 
-type Props = {
-  isBlog: boolean;
-};
-
 const NavbarWrapper = styled.nav`
   width: 100vw;
   font-family: "Segoe UI";
@@ -46,7 +42,7 @@ const Hamburger = styled.div`
   }
 `;
 
-const Navbar = ({ isBlog }: Props) => {
+const Navbar = ({ isBlog }) => {
   return (
     <NavbarWrapper>
       <NavbarContents>

@@ -1,13 +1,9 @@
 import React from "react";
 import PropTypes, { string } from "prop-types";
 
-import Spacer from "../components/Spacer";
+import Spacer from "./Spacer";
 
-interface Props {
-  project: any;
-}
-
-const Project = ({ project }: Props) => {
+const Project = ({ project }) => {
   const {
     title,
     description,
@@ -19,7 +15,7 @@ const Project = ({ project }: Props) => {
 
   return (
     <Spacer vertical="1rem">
-      <h2>{title}</h2>
+      <h3>{title}</h3>
       <div
         dangerouslySetInnerHTML={{
           __html: description.childMarkdownRemark.html

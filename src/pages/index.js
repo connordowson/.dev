@@ -11,14 +11,9 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Project from "../components/Project";
 
-interface Props {
-  title?: string;
-  data: {
-    allContentfulProject: any;
-  };
-}
+import Footer from "../components/Footer";
 
-const index = ({ data }: Props) => {
+const index = ({ data }) => {
   return (
     <Layout>
       <Navbar isBlog={false} />
@@ -26,11 +21,13 @@ const index = ({ data }: Props) => {
       <About />
       <Section>
         <Spacer vertical="2rem">
+          <h2>Projects</h2>
           {data.allContentfulProject.edges.map((project, index) => {
             return <Project project={project.node} />;
           })}
         </Spacer>
       </Section>
+      <Footer />
     </Layout>
   );
 };

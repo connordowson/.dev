@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Spacer from "../components/Spacer";
+import Spacer from "./Spacer";
 
 const HeroWrapper = styled.div`
   padding: 0 1.5rem;

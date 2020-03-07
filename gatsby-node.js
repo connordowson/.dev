@@ -26,7 +26,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/blogPost.tsx"),
+      component: require.resolve("./src/templates/blogPost.js"),
       context: { id: edge.node.id }
     });
   });

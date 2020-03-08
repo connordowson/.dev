@@ -22,11 +22,12 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "dev": "gatsby develop",
+    "dev": "netlify dev",
     "cleandev": "gatsby clean && gatsby develop"
   },
   "devDependencies": {
     "netlify-cli": "^2.37.0",
+    "node-fetch": "^2.6.0",
     "prettier": "^1.19.1"
   }
 }

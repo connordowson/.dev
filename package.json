@@ -26,8 +26,9 @@
     "cleandev": "gatsby clean && gatsby develop"
   },
   "devDependencies": {
+    "axios": "^0.19.2",
+    "btoa": "^1.2.1",
     "netlify-cli": "^2.37.0",
-    "node-fetch": "^2.6.0",
     "prettier": "^1.19.1"
   }
 }

@@ -1,22 +1,41 @@
-import fetch from "node-fetch";
-require("dotenv").config({
-  path: `.env`
-});
+const axios = require("axios");
+const btoa = require("btoa");
 
-const API_ENDPOINT = "";
+const {
+  CONTENTFUL_ACCESS_TOKEN,
+  CONTENTFUL_SPACE_ID,
+  SPOTIFY_CLIENT_ID,
+  SPOTIFY_CLIENT_SECRET
+} = process.env;
 
-exports.handler = async (event, context) => {
-  return fetch(API_ENDPOINT, {
+const API_ENDPOINT = "https://accounts.spotify.com/api/token";
+
+const tokens = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
+
+// exports.handler = function(event, context, callback) {
+//   callback(null, {
+//     statusCode: 200,
+//     body: tokens
+//   });
+// };
+
+const body = { grant_type: "client_credentials" };
+
+exports.handler = async (event, context, callback) => {
+  await axios({
+    method: "post",
+    url: API_ENDPOINT,
+    data: JSON.stringify(body),
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.CONTENTFUL_SPACE_ID}`
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${tokens}`
     }
   })
-    .then(response => response.json())
-    .then(data => ({
-      statusCode: 200,
-      body: data.joke
-    }))
+    .then(res => {
+      callback(null, {
+        statusCode: 200,
+        body: res.data.access_token
+      });
+    })
     .catch(error => ({ statusCode: 422, body: String(error) }));
 };

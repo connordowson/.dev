@@ -42,6 +42,23 @@ exports.handler = async (event, context, callback) => {
     body: params
   })
     .then(res => res.json())
+    .then(res => {
+      let { access_token } = res;
+      fetch(
+        "https://api.spotify.com/v1/me/top/top_tracks?time_range=short_term",
+        {
+          method: "GET",
+          headers: {
+            "Accept-Type": "application/json",
+            Authorization: `Bearer ${access_token}`
+          }
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        });
+    })
     .then(data => {
       callback(null, {
         statusCode: 200,

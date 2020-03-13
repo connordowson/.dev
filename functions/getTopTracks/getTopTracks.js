@@ -1,76 +1,64 @@
 const fetch = require("node-fetch");
 const btoa = require("btoa");
+const { URLSearchParams } = require("url");
 
 const {
-  CONTENTFUL_ACCESS_TOKEN,
-  CONTENTFUL_SPACE_ID,
   SPOTIFY_CLIENT_ID,
-  SPOTIFY_CLIENT_SECRET
+  SPOTIFY_CLIENT_SECRET,
+  SPOTIFY_REFRESH_TOKEN
 } = process.env;
 
 const API_ENDPOINT = "https://accounts.spotify.com/api/token";
 
-const tokens = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
-
-const { URLSearchParams } = require("url");
+const spotify_secrets = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
 
 const params = new URLSearchParams();
-params.append("grant_type", "client_credentials");
+params.append("grant_type", "refresh_token");
+params.append("refresh_token", SPOTIFY_REFRESH_TOKEN);
 params.append("scope", "user-top-read");
 
-// const body = { grant_type: "client_credentials", scope: "user-top-read" };
-
-fetch(API_ENDPOINT, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
-    Authorization: `Basic ${tokens}`
-  },
-  body: params
-})
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
-
-exports.handler = async (event, context, callback) => {
-  await fetch(API_ENDPOINT, {
+const getTopTracks = async () => {
+  return await fetch(API_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Basic ${tokens}`
+      Authorization: `Basic ${spotify_secrets}`
     },
     body: params
   })
     .then(res => res.json())
-    .then(res => {
-      let { access_token } = res;
+    .then(data => {
       fetch(
-        "https://api.spotify.com/v1/me/top/top_tracks?time_range=short_term",
+        "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=6",
         {
           method: "GET",
           headers: {
-            "Accept-Type": "application/json",
-            Authorization: `Bearer ${access_token}`
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${data.access_token}`
           }
         }
       )
         .then(res => res.json())
         .then(data => {
-          console.log(data);
+          console.log(JSON.stringify(data.items[0].name));
+          return JSON.stringify(data.items);
         });
-    })
-    .then(data => {
-      callback(null, {
-        statusCode: 200,
-        body: data.access_token
-      });
-    })
-    .catch(error => ({ statusCode: 422, body: String(error) }));
+    });
 };
 
-// exports.handler = function(event, context, callback) {
-//   callback(null, {
-//     statusCode: 200,
-//     body: tokens
-//   });
-// };
+exports.handler = async () => {
+  try {
+    const topTracks = await getTopTracks();
+
+    return {
+      statusCode: 200,
+      body: topTracks
+    };
+  } catch (error) {
+    return {
+      statusCode: 422,
+      body: JSON.stringify(error.message)
+    };
+  }
+};

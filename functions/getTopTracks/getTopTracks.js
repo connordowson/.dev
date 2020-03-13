@@ -28,7 +28,8 @@ const getTopTracks = async () => {
   })
     .then(res => res.json())
     .then(data => {
-      fetch(
+      console.log(data);
+      return fetch(
         "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=6",
         {
           method: "GET",
@@ -38,12 +39,11 @@ const getTopTracks = async () => {
             Authorization: `Bearer ${data.access_token}`
           }
         }
-      )
-        .then(res => res.json())
-        .then(data => {
-          console.log(JSON.stringify(data.items[0].name));
-          return JSON.stringify(data.items);
-        });
+      );
+    })
+    .then(res => res.json())
+    .then(data => {
+      return JSON.stringify(data.items);
     });
 };
 

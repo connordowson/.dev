@@ -4,7 +4,7 @@ import Spacer from "./Spacer";
 
 import Section from "./Section";
 
-const About = props => {
+const About = () => {
   return (
     <Section>
       <Spacer vertical="2em">

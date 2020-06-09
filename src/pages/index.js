@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 
@@ -9,24 +10,23 @@ import Section from "../components/Section";
 
 import Hero from "../components/Hero";
 import About from "../components/About";
-import Project from "../components/Project";
+import Projects from "../components/Projects";
+import TopTracks from "../components/TopTracks";
 
 import Footer from "../components/Footer";
 
 const index = ({ data }) => {
   return (
     <Layout>
+      <Helmet>
+        <title>Connor Dowson | Portfolio</title>
+      </Helmet>
+
       <Navbar isBlog={false} />
       <Hero />
       <About />
-      <Section>
-        <Spacer vertical="2rem">
-          <h2>Projects</h2>
-          {data.allContentfulProject.edges.map((project, index) => {
-            return <Project project={project.node} />;
-          })}
-        </Spacer>
-      </Section>
+      <Projects projects={data.allContentfulProject.edges} />
+      <TopTracks />
       <Footer />
     </Layout>
   );

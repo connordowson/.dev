@@ -28,7 +28,6 @@ const getTopTracks = async () => {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       return fetch(
         "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=6",
         {

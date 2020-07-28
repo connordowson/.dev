@@ -1,21 +1,38 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
+import styled from "styled-components";
+
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 
 import Spacer from "../components/Spacer";
 import Section from "../components/Section";
+import Panel from "../components/Panel";
 
 import Hero from "../components/Hero";
 import About from "../components/About";
+import Map from "../components/Map";
 import Projects from "../components/Projects";
 import TopTracks from "../components/TopTracks";
 
 import Footer from "../components/Footer";
 
+const MapContainer = styled.div`
+  width: 140px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  z-index: -1;
+`;
+
+const AccentHeading = styled.h2`
+  color: ${(props) => props.theme.colors[props.theme.accent][4]};
+`;
+
 const index = ({ data }) => {
+  const projects = data.allContentfulProject.edges;
   return (
     <Layout>
       <Helmet>
@@ -24,8 +41,39 @@ const index = ({ data }) => {
 
       <Navbar isBlog={false} />
       <Hero />
-      <About />
-      <Projects projects={data.allContentfulProject.edges} />
+      <Section id="about-me">
+        <Spacer
+          vertical="1em"
+          style={{
+            position: "relative",
+          }}
+        >
+          <AccentHeading>About me</AccentHeading>
+          <p>
+            I'm a front end web developer currently working and living in
+            Bristol. I graduated from the University of Gloucestershire in 2019
+            with a degree in Computing.
+          </p>
+          <p>
+            I enjoy creating websites as a way to combine techincal and creative
+            skills; any projects shown here are either university work, or have
+            been completed in my free time.
+          </p>
+          <p>
+            In my free time I enjoy listening to music, watching football, and
+            drinking cider.
+          </p>
+          <MapContainer>
+            <Map />
+          </MapContainer>
+        </Spacer>
+      </Section>
+      <Section id="projects">
+        <Spacer vertical="2em">
+          <AccentHeading>Projects</AccentHeading>
+          <Projects projects={projects} />
+        </Spacer>
+      </Section>
       <TopTracks />
       <Footer />
     </Layout>
@@ -46,7 +94,7 @@ export const query = graphql`
             }
           }
           image {
-            fluid(quality: 90, maxWidth: 800) {
+            fluid(quality: 90, maxWidth: 360) {
               ...GatsbyContentfulFluid
             }
           }

@@ -1,20 +1,28 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Spacer from "./Spacer";
+
+import styled from "styled-components";
+
 import Project from "./Project";
 
-import Section from "./Section";
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  align-items: start;
+
+  @media ${(props) => props.theme.breakpoints[2]} {
+    grid-template-columns: 5fr 3fr;
+    /* grid-template-columns: 1fr 1fr; */
+  }
+`;
 
 const Projects = ({ projects }) => {
   return (
-    <Section>
-      <Spacer vertical="2rem">
-        <h2>Projects</h2>
-        {projects.map((project, index) => {
-          return <Project project={project.node} />;
-        })}
-      </Spacer>
-    </Section>
+    <ProjectsGrid>
+      {projects.map((project, index) => {
+        return <Project key={index} project={project.node} />;
+      })}
+    </ProjectsGrid>
   );
 };
 

@@ -10,6 +10,7 @@ const Panel = styled.div`
     `border-top: 0.5rem solid
     ${props.theme.colors[props.theme.accent][4]}`};
   overflow: hidden;
+  ${(props) => props.theme.shadows[3]}
 `;
 
 Panel.propTypes = {

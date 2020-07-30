@@ -3,20 +3,22 @@ import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
-import Layout from "../components/Layout";
+import Layout from "../templates/Layout";
 import Navbar from "../components/Navbar";
 
 import Spacer from "../components/Spacer";
 import Section from "../components/Section";
-import Panel from "../components/Panel";
 
 import Hero from "../components/Hero";
-import About from "../components/About";
 import Map from "../components/Map";
 import Projects from "../components/Projects";
 import TopTracks from "../components/TopTracks";
 
 import Footer from "../components/Footer";
+
+const AboutMe = styled(Section)`
+  margin-top: 3em;
+`;
 
 const MapContainer = styled.div`
   width: 140px;
@@ -41,7 +43,7 @@ const index = ({ data }) => {
 
       <Navbar isBlog={false} />
       <Hero />
-      <Section id="about-me">
+      <AboutMe id="about-me">
         <Spacer
           vertical="1em"
           style={{
@@ -67,14 +69,23 @@ const index = ({ data }) => {
             <Map />
           </MapContainer>
         </Spacer>
-      </Section>
+      </AboutMe>
       <Section id="projects">
         <Spacer vertical="2em">
           <AccentHeading>Projects</AccentHeading>
           <Projects projects={projects} />
         </Spacer>
       </Section>
-      <TopTracks />
+      <Section>
+        <Spacer vertical="2em">
+          <AccentHeading>What I've been listening to</AccentHeading>
+          <p>
+            My top played songs from the Spotify API (so I can't hide any
+            embarassing ones).
+          </p>
+          <TopTracks />
+        </Spacer>
+      </Section>
       <Footer />
     </Layout>
   );
@@ -94,8 +105,8 @@ export const query = graphql`
             }
           }
           image {
-            fluid(quality: 90, maxWidth: 360) {
-              ...GatsbyContentfulFluid
+            fixed(quality: 90, width: 330) {
+              ...GatsbyContentfulFixed
             }
           }
           technologies

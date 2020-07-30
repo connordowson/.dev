@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useTransition, animated, config } from "react-spring";
+import { useTransition, animated } from "react-spring";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 import Spacer from "./Spacer";
@@ -131,6 +131,13 @@ const Burger = () => {
     leave: { opacity: 0 },
   });
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      window.scrollTo(0, 0);
+      setIsOpen(false);
+    }
+  };
+
   useEffect(() => {
     isOpen
       ? (document.body.style.overflow = "hidden")
@@ -167,15 +174,21 @@ const Burger = () => {
               <MobileNavContent key={key} style={props}>
                 <header>
                   <h2>Menu</h2>
-                  <AiFillCloseCircle onClick={() => setIsOpen(false)} />
+                  <AiFillCloseCircle
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  />
                 </header>
                 <Spacer vertical="2em">
                   <li>
                     <NavLinkButton
+                      tabIndex="0"
                       onClick={() => {
                         setIsOpen(false);
                         window.scrollTo(0, 0);
                       }}
+                      onKeyDown={handleKeyDown}
                     >
                       Home
                     </NavLinkButton>

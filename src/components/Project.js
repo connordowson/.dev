@@ -10,48 +10,54 @@ import { LinkButton } from "./Button";
 const StyledPanel = styled(Panel)``;
 
 const StyledSpacer = styled(Spacer)`
-  padding: 1em;
+  padding: 1.5em;
 `;
 
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: -0.5rem;
+  margin-bottom: -0.5em;
 
   > * {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
   }
 
   > :not(:last-child) {
-    margin-right: 0.5rem;
+    margin-right: 1em;
   }
 `;
 const ButtonsContainer = styled(Spacer)`
   background: ${(props) => props.theme.colors.grey[6]};
-  padding: 1em;
+  padding: 1.5em;
 
   a {
-    width: calc(50% - 0.5em);
+    width: calc(50% - 0.75em);
     text-align: center;
   }
 `;
 
 const ImageWrapper = styled.div`
-  width: 100%;
+  width: 330px;
   height: 100%;
   display: inline-block;
   border-radius: 0.5em;
   overflow: hidden;
+  div {
+    height: 100% !important;
+  }
 `;
 
-const ProjectImage = styled(Img)`
+const ProjectImage = styled.img`
   display: none;
+
   @media ${(props) => props.theme.breakpoints[2]} {
     height: 100%;
     width: 100%;
-    box-sizing: border-box;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    position: absolute;
+    /* position: absolute; */
+    ${(props) => props.theme.shadows[3]}
   }
 `;
 
@@ -68,7 +74,7 @@ const Project = ({ project }) => {
   return (
     <>
       <StyledPanel padding="0" topBorder>
-        <StyledSpacer vertical="1em">
+        <StyledSpacer vertical="1.5em">
           <header>
             <h3>{title}</h3>
           </header>
@@ -84,21 +90,21 @@ const Project = ({ project }) => {
               ))}
           </TagsContainer>
         </StyledSpacer>
-        <ButtonsContainer horizontal="1em">
+        <ButtonsContainer horizontal="1.5em">
           {demoLink && <LinkButton href={demoLink}>View demo</LinkButton>}
           {gitHubLink && <LinkButton href={gitHubLink}>View code</LinkButton>}
         </ButtonsContainer>
       </StyledPanel>
-      <ImageWrapper>
+      {/* <ImageWrapper>
         <ProjectImage
-          fluid={image.fluid}
+          fixed={image.fixed}
           imgStyle={{
-            objectFit: "contain",
+            objectFit: "cover",
             objectPosition: "top",
           }}
           alt={title}
         />
-      </ImageWrapper>
+      </ImageWrapper> */}
     </>
   );
 };

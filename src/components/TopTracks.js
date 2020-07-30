@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import Panel from "./Panel";
-import Section from "./Section";
-import Spacer from "./Spacer";
 import Loader from "./Loader";
 
 const SongGrid = styled.div`
@@ -15,28 +11,46 @@ const SongGrid = styled.div`
   @media ${(props) => props.theme.breakpoints[1]} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  @media ${(props) => props.theme.breakpoints[2]} {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 `;
 
 const SongCard = styled.div`
-  padding: 0.5rem;
+  padding: 0.5em;
   color: ${(props) => props.theme.colors.grey[0]};
   background: ${(props) => props.theme.colors.grey[6]};
-  border-radius: 0.5rem;
+  border-radius: 0.5em;
   display: flex;
+  width: 100%;
   align-items: center;
+  ${(props) => props.theme.shadows[2]}
 
   img {
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
     flex-shrink: 0;
+    align-self: flex-start;
   }
+
+  div {
+    margin-left: 0.25em;
+    width: calc(100% - 4.5em);
+  }
+
   div span {
     display: block;
     margin-left: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 
     &:nth-child(1) {
-      text-overflow: ellipsis;
       font-weight: 700;
       font-family: ${(props) => props.theme.typography.headings};
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     &:nth-child(2) {
@@ -78,39 +92,32 @@ const TopTracks = () => {
     getTopTracks().then((data) => setTopTracks(data));
   }, []);
   return (
-    <Section>
-      <Spacer vertical="2rem">
-        <h2>What I've been listening to</h2>
-        <p>
-          My top played songs from the Spotify API (so I can't hide any
-          embarassing ones).
-        </p>
-
-        {topTracks ? (
-          <SongGrid>
-            {topTracks.map((song, index) => {
-              return (
-                <SongCard key={index}>
-                  <img src={song.artwork} />
-                  <div>
-                    <span>{song.name}</span>
-                    <span>{song.artist}</span>
-                  </div>
-                </SongCard>
-              );
-            })}
-          </SongGrid>
-        ) : (
-          <LoaderContainer>
-            <Loader height="70" width="70" radius="30" />
-            <p>Loading...</p>
-          </LoaderContainer>
-        )}
-      </Spacer>
-    </Section>
+    <>
+      {topTracks ? (
+        <SongGrid>
+          {topTracks.map((song, index) => {
+            return (
+              <SongCard key={index}>
+                <img
+                  src={song.artwork}
+                  alt={`Album artwork for ${song.name}.`}
+                />
+                <div>
+                  <span>{song.name}</span>
+                  <span>{song.artist}</span>
+                </div>
+              </SongCard>
+            );
+          })}
+        </SongGrid>
+      ) : (
+        <LoaderContainer>
+          <Loader height="70" width="70" radius="30" />
+          <p>Loading...</p>
+        </LoaderContainer>
+      )}
+    </>
   );
 };
-
-// TopTracks.propTypes = {};
 
 export default TopTracks;

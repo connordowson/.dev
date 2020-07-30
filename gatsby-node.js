@@ -1,3 +1,4 @@
+/*
 const fs = require("fs");
 const path = require("path");
 
@@ -6,6 +7,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   // Graphql query to get blog post data
+
+  
   const blogPostResult = await graphql(`
     query {
       allContentfulBlogPost {
@@ -31,3 +34,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 };
+
+
+*/

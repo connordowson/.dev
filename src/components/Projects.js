@@ -11,8 +11,7 @@ const ProjectsGrid = styled.div`
   align-items: start;
 
   @media ${(props) => props.theme.breakpoints[2]} {
-    grid-template-columns: 5fr 3fr;
-    /* grid-template-columns: 1fr 1fr; */
+    /* grid-template-columns: 5fr 3fr; */
   }
 `;
 

@@ -15,10 +15,7 @@ const ButtonStyles = css`
   font-weight: 600;
   transition: background 100ms ease-in-out;
   cursor: pointer;
-
-  @media ${(props) => props.theme.breakpoints[1]} {
-    /* background: yellow; */
-  }
+  ${(props) => props.theme.shadows[2]}
 
   &:focus {
     outline: 2px solid ${(props) => props.theme.colors.grey[1]};

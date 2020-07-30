@@ -4,10 +4,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Connor Dowson | Portfolio",
-    author: "Connor Dowson",
-    description:
+    defaultTitle: "Connor Dowson | Portfolio",
+    defaultAuthor: "Connor Dowson",
+    defaultDescription:
       "Portfolio site for Bristol based front end web developer, Connor Dowson.",
+    defaultImage: "/meta_image.png",
     siteURL: "https://connordowson.dev",
   },
   plugins: [
@@ -25,7 +26,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Poppins\:300,400,400i,700`, `Inter\:300,400,400i,700`],
+        fonts: [`Poppins\:300,400,400i,700`, `Inter\:300,400,500,600,400i,700`],
         display: "swap",
       },
     },

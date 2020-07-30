@@ -14,9 +14,9 @@ const Tag = styled.span`
   border-radius: 0.25rem;
   display: inline-flex;
   text-decoration: none;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 0.025rem;
-  font-weight: 600;
+  /* font-weight: 600; */
 `;
 
 export default Tag;

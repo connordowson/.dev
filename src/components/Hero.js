@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import Spacer from "./Spacer";
-
 const HeroContainer = styled.div`
   background: ${(props) => props.theme.colors.grey[7]};
   padding: 3em 1.5em 3em;
@@ -13,22 +11,24 @@ const HeroContainer = styled.div`
   }
 `;
 
-const HeroContent = styled(Spacer)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+const HeroContent = styled.div`
+  display: grid;
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0 auto;
+  align-items: center;
 
   @media ${(props) => props.theme.breakpoints[1]} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    width: 40em;
+    padding: 4em 1.5em;
   }
 
   @media ${(props) => props.theme.breakpoints[2]} {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3em 1.5em 3em;
-    width: 64em;
-    margin: 0 auto;
+    grid-template-columns: 3fr 2fr;
+    width: 60em;
   }
 `;
 
@@ -38,9 +38,12 @@ const HeroText = styled.p`
   font-weight: 700;
   font-family: ${(props) => props.theme.typography.headings};
 
+  @media ${(props) => props.theme.breakpoints[1]} {
+    font-size: 2em;
+  }
+
   @media ${(props) => props.theme.breakpoints[2]} {
-    width: 50%;
-    font-size: 3em;
+    font-size: 2.5em;
   }
 
   span {
@@ -50,24 +53,38 @@ const HeroText = styled.p`
   }
 `;
 
-const HeroImage = styled.img`
-  object-fit: cover;
-  object-position: center -40px;
+const HeroImage = styled.div`
+  position: relative;
   width: 100%;
-  height: 24em;
-  vertical-align: middle;
-  border-radius: 0.25em;
+  max-width: 28em;
+  align-self: center;
+  margin: 0 auto;
 
-  @media ${(props) => props.theme.breakpoints[1]} {
-    height: 28em;
+  img {
+    height: 22em;
+    width: 100%;
+    max-width: 28em;
+    object-fit: cover;
     object-position: center;
+    vertical-align: middle;
+    border-radius: 0.25em;
+    ${(props) => props.theme.shadows[3]}
+
+    @media ${(props) => props.theme.breakpoints[1]} {
+      object-position: center;
+      /* height: 28em; */
+    }
+
+    @media ${(props) => props.theme.breakpoints[2]} {
+      height: 28em;
+    }
   }
 `;
 
 const DotGrid = styled.div`
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: -1em;
+  right: -1em;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -86,13 +103,13 @@ const DotGrid = styled.div`
 const Hero = () => {
   return (
     <HeroContainer>
-      <HeroContent vertical="2em">
+      <HeroContent>
         <HeroText>
           Hi! I'm <span>Connor Dowson</span>, a front end web developer based in
           Bristol.
         </HeroText>
-        <div>
-          <HeroImage src="/me.jpeg" alt="Connor Dowson" />
+        <HeroImage>
+          <img src="/me.jpeg" alt="Connor Dowson" />
           <DotGrid>
             <div />
             <div />
@@ -120,7 +137,7 @@ const Hero = () => {
             <div />
             <div />
           </DotGrid>
-        </div>
+        </HeroImage>
       </HeroContent>
     </HeroContainer>
   );

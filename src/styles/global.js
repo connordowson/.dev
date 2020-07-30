@@ -7,15 +7,14 @@ const GlobalStyles = createGlobalStyle`
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   &::selection, ::-moz-selection {
-  color: ${(props) => props.theme.colors.grey[0]};;
+  color: ${(props) => props.theme.colors.grey[0]};
   background: ${(props) => props.theme.colors[props.theme.accent][4]};
   }
 }

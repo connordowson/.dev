@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import Burger from "./Burger";
 
+import { Link } from "gatsby";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { ButtonStyles, LinkButton } from "./Button";
 
 const MobileNav = styled.div`
@@ -11,7 +13,11 @@ const MobileNav = styled.div`
   }
 `;
 
-const DesktopHomeButton = styled.a`
+const DesktopHomeButton = styled(Link)`
+  ${ButtonStyles}
+`;
+
+const DesktopNavButton = styled(AnchorLink)`
   ${ButtonStyles}
 `;
 
@@ -61,38 +67,22 @@ const DesktopNav = styled.nav`
 `;
 
 const Navbar = ({ isBlog }) => {
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      window.scrollTo(0, 0);
-    }
-  };
-
   return (
     <>
       <DesktopNav>
         <div>
           <ul>
             <li>
-              {isBlog ? (
-                <LinkButton href="/">Home</LinkButton>
-              ) : (
-                <DesktopHomeButton
-                  tabIndex="0"
-                  onClick={() => window.scrollTo(0, 0)}
-                  onKeyDown={handleKeyDown}
-                >
-                  Home
-                </DesktopHomeButton>
-              )}
+              <DesktopHomeButton to="/">Home</DesktopHomeButton>
             </li>
             <li>
-              <LinkButton href="#about-me">About me</LinkButton>
+              <DesktopNavButton to="/#about-me">About me</DesktopNavButton>
             </li>
             <li>
-              <LinkButton href="#projects">Projects</LinkButton>
+              <DesktopNavButton to="/#projects">Projects</DesktopNavButton>
             </li>
             <li>
-              <LinkButton href="#contact-me">Contact me</LinkButton>
+              <DesktopNavButton to="/#contact-me">Contact me</DesktopNavButton>
             </li>
           </ul>
         </div>

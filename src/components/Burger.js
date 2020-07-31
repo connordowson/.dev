@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useTransition, animated } from "react-spring";
 import { AiFillCloseCircle } from "react-icons/ai";
 
+import { Link } from "gatsby";
+
 import Spacer from "./Spacer";
 import { ButtonStyles } from "./Button";
 
@@ -54,6 +56,11 @@ const MobileNav = styled.nav`
 `;
 
 const NavLinkButton = styled.a`
+  ${ButtonStyles}
+  width: 100%;
+`;
+
+const NavHomeLinkButton = styled(Link)`
   ${ButtonStyles}
   width: 100%;
 `;
@@ -138,6 +145,11 @@ const Burger = () => {
     }
   };
 
+  const handleClick = (elementID) => {
+    setIsOpen(false);
+    document.getElementById(elementID).scrollIntoView();
+  };
+
   useEffect(() => {
     isOpen
       ? (document.body.style.overflow = "hidden")
@@ -182,38 +194,22 @@ const Burger = () => {
                 </header>
                 <Spacer vertical="2em">
                   <li>
-                    <NavLinkButton
-                      tabIndex="0"
-                      onClick={() => {
-                        setIsOpen(false);
-                        window.scrollTo(0, 0);
-                      }}
-                      onKeyDown={handleKeyDown}
-                    >
+                    <NavHomeLinkButton to="/" onClick={() => setIsOpen(false)}>
                       Home
-                    </NavLinkButton>
+                    </NavHomeLinkButton>
                   </li>
                   <li>
-                    <NavLinkButton
-                      href="#about-me"
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <NavLinkButton onClick={() => handleClick("about-me")}>
                       About me
                     </NavLinkButton>
                   </li>
                   <li>
-                    <NavLinkButton
-                      href="#projects"
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <NavLinkButton onClick={() => handleClick("projects")}>
                       Projects
                     </NavLinkButton>
                   </li>
                   <li>
-                    <NavLinkButton
-                      href="#contact-me"
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <NavLinkButton onClick={() => handleClick("contact-me")}>
                       Contact me
                     </NavLinkButton>
                   </li>

@@ -38,6 +38,8 @@ const SEO = ({ title, description, keywords, url, image, author, article }) => {
       {seo.image && <meta name="twitter:image" content={seo.image} />}
 
       {keywords && <meta name="keywords" content={keywords} />}
+
+      <meta name="theme-color" content="#1A202C" />
     </Helmet>
   );
 };

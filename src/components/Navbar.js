@@ -66,23 +66,32 @@ const DesktopNav = styled.nav`
   }
 `;
 
-const Navbar = ({ isBlog }) => {
+const Navbar = () => {
   return (
     <>
       <DesktopNav>
         <div>
           <ul>
             <li>
-              <DesktopHomeButton to="/">Home</DesktopHomeButton>
+              <DesktopHomeButton
+                to="/"
+                onClick={() =>
+                  document.getElementById("contact-me").scrollIntoView()
+                }
+              >
+                Home
+              </DesktopHomeButton>
             </li>
             <li>
-              <DesktopNavButton to="/#about-me">About me</DesktopNavButton>
+              <DesktopHomeButton to="/#about-me">About me</DesktopHomeButton>
             </li>
             <li>
-              <DesktopNavButton to="/#projects">Projects</DesktopNavButton>
+              <DesktopHomeButton to="/#projects">Projects</DesktopHomeButton>
             </li>
             <li>
-              <DesktopNavButton to="/#contact-me">Contact me</DesktopNavButton>
+              <DesktopHomeButton to="/#contact-me">
+                Contact me
+              </DesktopHomeButton>
             </li>
           </ul>
         </div>

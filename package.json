@@ -9,7 +9,6 @@
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "gatsby": "^2.19.5",
     "gatsby-image": "^2.4.13",
-    "gatsby-plugin-anchor-links": "^1.1.1",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-sharp": "^2.4.0",

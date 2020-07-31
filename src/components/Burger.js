@@ -55,12 +55,7 @@ const MobileNav = styled.nav`
   padding: 1em;
 `;
 
-const NavLinkButton = styled.a`
-  ${ButtonStyles}
-  width: 100%;
-`;
-
-const NavHomeLinkButton = styled(Link)`
+const NavLinkButton = styled(Link)`
   ${ButtonStyles}
   width: 100%;
 `;
@@ -194,22 +189,31 @@ const Burger = () => {
                 </header>
                 <Spacer vertical="2em">
                   <li>
-                    <NavHomeLinkButton to="/" onClick={() => setIsOpen(false)}>
+                    <NavLinkButton to="/" onClick={() => setIsOpen(false)}>
                       Home
-                    </NavHomeLinkButton>
+                    </NavLinkButton>
                   </li>
                   <li>
-                    <NavLinkButton onClick={() => handleClick("about-me")}>
+                    <NavLinkButton
+                      to="/#about-me"
+                      onClick={() => setIsOpen(false)}
+                    >
                       About me
                     </NavLinkButton>
                   </li>
                   <li>
-                    <NavLinkButton onClick={() => handleClick("projects")}>
+                    <NavLinkButton
+                      to="/#projects"
+                      onClick={() => setIsOpen(false)}
+                    >
                       Projects
                     </NavLinkButton>
                   </li>
                   <li>
-                    <NavLinkButton onClick={() => handleClick("contact-me")}>
+                    <NavLinkButton
+                      to="/#contact-me"
+                      onClick={() => setIsOpen(false)}
+                    >
                       Contact me
                     </NavLinkButton>
                   </li>

@@ -18,11 +18,16 @@ const ButtonStyles = css`
   ${(props) => props.theme.shadows[2]}
 
   &:focus {
-    outline: 2px solid ${(props) => props.theme.colors.grey[1]};
-    outline-offset: 2px;
-    -moz-outline-radius: 0.5rem;
     box-shadow: 0 0 0 2px ${(props) => props.theme.colors.grey[7]},
       0 0 0 4px ${(props) => props.theme.colors.grey[1]};
+  }
+
+  @-moz-document url-prefix() {
+    &:focus {
+      outline: 2px solid ${(props) => props.theme.colors.grey[1]};
+      outline-offset: 2px;
+      -moz-outline-radius: 0.5rem;
+    }
   }
 
   &:hover {

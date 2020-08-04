@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Burger from "./Burger";
 
 import { Link } from "gatsby";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { ButtonStyles, LinkButton } from "./Button";
 
 const MobileNav = styled.div`
@@ -14,10 +13,6 @@ const MobileNav = styled.div`
 `;
 
 const DesktopHomeButton = styled(Link)`
-  ${ButtonStyles}
-`;
-
-const DesktopNavButton = styled(AnchorLink)`
   ${ButtonStyles}
 `;
 

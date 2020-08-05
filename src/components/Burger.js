@@ -151,6 +151,7 @@ const Burger = () => {
           !item && (
             <BurgerStyles
               name="Mobile navigation menu"
+              aria-label="Mobile navigation menu button"
               style={props}
               onClick={() => {
                 setIsOpen(!isOpen);

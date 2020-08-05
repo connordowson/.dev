@@ -7,8 +7,6 @@ const GlobalStyles = createGlobalStyle`
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
 *{
   padding: 0;
   margin: 0;
@@ -31,9 +29,7 @@ h1,h2,h3,h4,h5,h6{
 body{
   background: ${(props) => props.theme.colors.grey[8]};
   color: ${(props) => props.theme.colors.grey[0]};
-  font-family: ${(props) => props.theme.typography.body};
-  
-  background-attachment: fixed;
+  font-family: ${(props) => props.theme.typography.body};  
 }`;
 
 export default GlobalStyles;

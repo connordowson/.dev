@@ -25,10 +25,18 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [`Poppins\:700`, `Inter\:,400,400i,600,600i`],
-        display: "swap",
+        fonts: [
+          {
+            family: `Poppins`,
+            subsets: [`700`],
+          },
+          {
+            family: `Inter`,
+            variants: [`400`, `400i`, `600`, `600i`],
+          },
+        ],
       },
     },
   ],

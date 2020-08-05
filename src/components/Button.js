@@ -26,7 +26,7 @@ const ButtonStyles = css`
     &:focus {
       outline: 2px solid ${(props) => props.theme.colors.grey[1]};
       outline-offset: 2px;
-      -moz-outline-radius: 0.5rem;
+      -moz-outline-radius: 0.5em;
     }
   }
 

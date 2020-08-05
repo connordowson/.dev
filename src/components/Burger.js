@@ -26,15 +26,20 @@ const BurgerStyles = styled(animated.button)`
   z-index: 11;
   opacity: 1;
   cursor: pointer;
-  box-shadow: 0 0.063em 0.313em 0 rgba(0,0,0,.07), 0 0.438em 1.063em 0 rgba(0,0,0,.1);
+  box-shadow: 0 0.063em 0.313em 0 rgba(0, 0, 0, 0.07),
+    0 0.438em 1.063em 0 rgba(0, 0, 0, 0.1);
 
   &:focus {
-    outline: 2px solid ${(props) => props.theme.colors.grey[1]};
-    outline-offset: 2px;
-    -moz-outline-radius: 100%;
-/* 
     box-shadow: 0 0 0 2px ${(props) => props.theme.colors.grey[7]},
-      0 0 0 4px ${(props) => props.theme.colors.grey[1]}; */
+      0 0 0 4px ${(props) => props.theme.colors.grey[1]};
+  }
+
+  @-moz-document url-prefix() {
+    &:focus {
+      outline: 2px solid ${(props) => props.theme.colors.grey[1]};
+      outline-offset: 2px;
+      -moz-outline-radius: 5em;
+    }
   }
 
   div {
@@ -133,18 +138,6 @@ const Burger = () => {
     leave: { opacity: 0 },
   });
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      window.scrollTo(0, 0);
-      setIsOpen(false);
-    }
-  };
-
-  const handleClick = (elementID) => {
-    setIsOpen(false);
-    document.getElementById(elementID).scrollIntoView();
-  };
-
   useEffect(() => {
     isOpen
       ? (document.body.style.overflow = "hidden")
@@ -157,6 +150,7 @@ const Burger = () => {
         ({ item, key, props }) =>
           !item && (
             <BurgerStyles
+              name="Mobile navigation menu"
               style={props}
               onClick={() => {
                 setIsOpen(!isOpen);

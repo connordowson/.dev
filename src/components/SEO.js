@@ -40,6 +40,7 @@ const SEO = ({ title, description, keywords, url, image, author, article }) => {
       {keywords && <meta name="keywords" content={keywords} />}
 
       <meta name="theme-color" content="#1A202C" />
+      <html lang="en" />
     </Helmet>
   );
 };

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Burger from "./Burger";
 
 import { Link } from "gatsby";
-import { ButtonStyles, LinkButton } from "./Button";
+import { ButtonStyles } from "./Button";
 
 const MobileNav = styled.div`
   @media ${(props) => props.theme.breakpoints[1]} {

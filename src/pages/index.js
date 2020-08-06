@@ -95,7 +95,7 @@ export default index;
 
 export const query = graphql`
   query HomePageQuery {
-    allContentfulProject(sort: { fields: updatedAt, order: ASC }) {
+    allContentfulProject(sort: { fields: order, order: ASC }) {
       edges {
         node {
           title
@@ -105,7 +105,7 @@ export const query = graphql`
             }
           }
           image {
-            fixed(quality: 90, width: 330) {
+            fixed(quality: 100, width: 330) {
               ...GatsbyContentfulFixed
             }
           }

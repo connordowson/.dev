@@ -36,9 +36,7 @@ const SEO = ({ title, description, keywords, url, image, author, article }) => {
         <meta name="twitter:description" content={seo.description} />
       )}
       {seo.image && <meta name="twitter:image" content={seo.image} />}
-
       {keywords && <meta name="keywords" content={keywords} />}
-
       <meta name="theme-color" content="#1A202C" />
       <html lang="en" />
     </Helmet>

@@ -153,9 +153,9 @@ const Burger = () => {
               name="Mobile navigation menu"
               aria-label="Mobile navigation menu button"
               style={props}
+              key={key}
               onClick={() => {
                 setIsOpen(!isOpen);
-                console.log(isOpen);
               }}
             >
               <div />
@@ -166,7 +166,8 @@ const Burger = () => {
       )}
 
       {fadeInTransitions.map(
-        ({ item, key, props }) => item && <BackgroundCover style={props} />
+        ({ item, key, props }) =>
+          item && <BackgroundCover key={key} style={props} />
       )}
 
       {slideTransitions.map(

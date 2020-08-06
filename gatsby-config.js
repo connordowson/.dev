@@ -39,5 +39,17 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `Connor Dowson | Portfolio`,
+    //     short_name: `Connor Dowson | Portfolio`,
+    //     start_url: `/`,
+    //     background_color: `#1A202C`,
+    //     theme_color: `#68D391`,
+    //     display: `standalone`,
+    //     icon: `favicon.svg`,
+    //   },
+    // },
   ],
 };

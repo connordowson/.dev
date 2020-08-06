@@ -36,27 +36,17 @@ const ButtonsContainer = styled(Spacer)`
   }
 `;
 
-const ImageWrapper = styled.div`
-  width: 330px;
-  height: 100%;
-  display: inline-block;
-  border-radius: 0.5em;
-  overflow: hidden;
-  div {
-    height: 100% !important;
-  }
-`;
-
-const ProjectImage = styled.img`
+const ProjectImageContainer = styled.div`
   display: none;
 
   @media ${(props) => props.theme.breakpoints[2]} {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
     display: block;
-    /* position: absolute; */
+    align-self: center;
+  }
+`;
+
+const ProjectImage = styled(Img)`
+  @media ${(props) => props.theme.breakpoints[2]} {
     ${(props) => props.theme.shadows[3]}
   }
 `;
@@ -95,16 +85,9 @@ const Project = ({ project }) => {
           {gitHubLink && <LinkButton href={gitHubLink}>View code</LinkButton>}
         </ButtonsContainer>
       </StyledPanel>
-      {/* <ImageWrapper>
-        <ProjectImage
-          fixed={image.fixed}
-          imgStyle={{
-            objectFit: "cover",
-            objectPosition: "top",
-          }}
-          alt={title}
-        />
-      </ImageWrapper> */}
+      <ProjectImageContainer>
+        <ProjectImage fixed={image.fixed} alt={title} />
+      </ProjectImageContainer>
     </>
   );
 };

@@ -13,7 +13,7 @@ export default function HTML(props) {
         />
         <link
           rel="preload"
-          href="/fonts/inter-var-latin.tff"
+          href="/fonts/inter-var-latin.woff2"
           as="font"
           crossOrigin="anonymous"
           type="font/woff2"

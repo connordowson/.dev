@@ -25,31 +25,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: "gatsby-plugin-netlify",
       options: {
-        fonts: [
-          {
-            family: `Poppins`,
-            variants: [`700`],
-          },
-          {
-            family: `Inter`,
-            variants: [`400`, `400i`, `600`, `600i`],
-          },
-        ],
+        headers: {
+          "/fonts/*": [
+            "Cache-Control: public",
+            "Cache-Control: max-age=365000000",
+            "Cache-Control: immutable",
+          ],
+        },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `Connor Dowson | Portfolio`,
-    //     short_name: `Connor Dowson | Portfolio`,
-    //     start_url: `/`,
-    //     background_color: `#1A202C`,
-    //     theme_color: `#68D391`,
-    //     display: `standalone`,
-    //     icon: `favicon.svg`,
-    //   },
-    // },
   ],
 };

@@ -1,4 +1,4 @@
 export default {
-  headings: "Poppins",
+  headings: `Poppins`,
   body: `Inter`,
 };

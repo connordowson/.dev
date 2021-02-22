@@ -4,10 +4,10 @@ import styled from "styled-components";
 const HeroContainer = styled.div`
   background: ${(props) => props.theme.colors.grey[7]};
   padding: 3em 1.5em 3em;
+  /* margin-bottom: 3em; */
 
   @media ${(props) => props.theme.breakpoints[2]} {
     padding: 6em;
-    margin-bottom: 6em;
   }
 `;
 

@@ -9,10 +9,10 @@ const Section = styled.section`
   z-index: -2;
 
   &:first-of-type {
-    margin-top: 3em;
+    padding-top: 4.5em;
 
     @media ${(props) => props.theme.breakpoints[1]} {
-      margin-top: 6em;
+      padding-top: 7.5em;
     }
   }
 `;

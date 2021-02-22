@@ -20,8 +20,9 @@ const DesktopNav = styled.nav`
   display: none;
 
   @media ${(props) => props.theme.breakpoints[1]} {
-    display: inline;
-    position: fixed;
+    display: inline-block;
+    position: sticky;
+    top: 0;
     z-index: 99;
     width: 100%;
     padding: 2em 1.5em;

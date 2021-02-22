@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 import Layout from "../templates/Layout";
-import Navbar from "../components/Navbar";
 
 import Spacer from "../components/Spacer";
 import Section from "../components/Section";
@@ -16,8 +15,6 @@ import Projects from "../components/Projects";
 import TopTracks from "../components/TopTracks";
 
 import Footer from "../components/Footer";
-
-const AboutMe = styled(Section)``;
 
 const MapContainer = styled.div`
   width: 140px;
@@ -46,9 +43,8 @@ const index = ({ data }) => {
         <title>Connor Dowson | Portfolio</title>
       </Helmet>
 
-      <Navbar isBlog={false} />
       <Hero />
-      <AboutMe id="about-me">
+      <Section id="about-me">
         <Row>
           <Spacer
             vertical="1em"
@@ -76,7 +72,7 @@ const index = ({ data }) => {
             </MapContainer>
           </Spacer>
         </Row>
-      </AboutMe>
+      </Section>
       <Section id="projects">
         <Row>
           <Spacer vertical="2em">

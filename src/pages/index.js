@@ -36,7 +36,7 @@ const AccentHeading = styled.h2`
 `;
 
 const index = ({ data }) => {
-  const projects = data.allContentfulProject.edges;
+  // const projects = data.allContentfulProject.edges;
   return (
     <Layout>
       <Helmet>
@@ -73,14 +73,14 @@ const index = ({ data }) => {
           </Spacer>
         </Row>
       </Section>
-      <Section id="projects">
+      {/* <Section id="projects">
         <Row>
           <Spacer vertical="2em">
             <AccentHeading>Projects</AccentHeading>
             <Projects projects={projects} />
           </Spacer>
         </Row>
-      </Section>
+      </Section> */}
       <Section>
         <Row>
           <Spacer vertical="2em">
@@ -100,27 +100,27 @@ const index = ({ data }) => {
 
 export default index;
 
-export const query = graphql`
-  query HomePageQuery {
-    allContentfulProject(sort: { fields: order, order: ASC }) {
-      edges {
-        node {
-          title
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
-          image {
-            fixed(quality: 100, width: 330) {
-              ...GatsbyContentfulFixed
-            }
-          }
-          technologies
-          gitHubLink
-          demoLink
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query HomePageQuery {
+//     allContentfulProject(sort: { fields: order, order: ASC }) {
+//       edges {
+//         node {
+//           title
+//           description {
+//             childMarkdownRemark {
+//               html
+//             }
+//           }
+//           image {
+//             fixed(quality: 100, width: 330) {
+//               ...GatsbyContentfulFixed
+//             }
+//           }
+//           technologies
+//           gitHubLink
+//           demoLink
+//         }
+//       }
+//     }
+//   }
+// `;

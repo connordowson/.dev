@@ -42,11 +42,21 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
+          `gatsby-remark-embedder`,
+          `gatsby-remark-copy-linked-files`,
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              theme: "Cobalt2",
-              extensions: [`theme-cobalt2`],
+              theme: "City Lights",
+              extensions: [`city-lights-theme`],
+            },
+          },
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1500,
+              linkImagesToOriginal: false,
+              withWebp: true,
             },
           },
         ],

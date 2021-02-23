@@ -41,9 +41,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `Mdx`) {
     // if my posts have a slug in the frontmatter, it means I've specified what I want it to be. Otherwise I want to create one automatically
 
-    // This is where we add our own custom fields to each node
     const generatedSlug = createFilePath({ node, getNode });
-
     createNodeField({
       name: `slug`,
       node,

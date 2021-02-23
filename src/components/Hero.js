@@ -6,7 +6,7 @@ const HeroContainer = styled.div`
   padding: 3em 1.5em 3em;
 
   @media ${(props) => props.theme.breakpoints[1]} {
-    margin-top: -100px;
+    margin-top: -107px;
   }
 
   @media ${(props) => props.theme.breakpoints[2]} {

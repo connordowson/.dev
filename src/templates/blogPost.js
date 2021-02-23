@@ -14,12 +14,11 @@ const PostStyles = styled.article`
   h4,
   h5,
   h6,
-  p {
-    margin-bottom: 16px;
-  }
+  p,
   pre,
   blockquote,
   table,
+  img,
   ul,
   ol,
   details,
@@ -56,6 +55,10 @@ const PostStyles = styled.article`
     height: 2px;
     border: 0;
     padding: 0;
+  }
+  img {
+    max-width: 100%;
+    vertical-align: middle;
   }
 
   blockquote {

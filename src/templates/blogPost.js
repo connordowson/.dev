@@ -91,7 +91,6 @@ const blogPost = ({ data: { mdx: post } }) => {
   return (
     <Layout>
       <Helmet>
-        {/* <title>{title} | Connor Dowson</title> */}
         <meta charSet="utf-8" />
       </Helmet>
 

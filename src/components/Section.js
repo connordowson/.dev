@@ -6,7 +6,7 @@ const Section = styled.section`
   color: ${(props) => props.theme.colors.grey[0]};
   background: ${(props) => props.theme.colors.grey[8]};
   position: relative;
-  z-index: -2;
+  z-index: 0;
 
   &:first-of-type {
     padding-top: 4.5em;

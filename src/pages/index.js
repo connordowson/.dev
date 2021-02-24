@@ -35,8 +35,11 @@ const AccentHeading = styled.h2`
   color: ${(props) => props.theme.colors[props.theme.accent][4]};
 `;
 
-const index = ({ data }) => {
-  const projects = data.allContentfulProject.edges;
+const index = ({
+  data: {
+    allMdx: { edges: projects },
+  },
+}) => {
   return (
     <Layout>
       <Helmet>
@@ -100,25 +103,30 @@ const index = ({ data }) => {
 
 export default index;
 
-export const query = graphql`
-  query HomePageQuery {
-    allContentfulProject(sort: { fields: order, order: ASC }) {
+export const projectQuery = graphql`
+  {
+    allMdx(
+      filter: { fields: { collection: { eq: "projects" } } }
+      sort: { fields: [frontmatter___order], order: ASC }
+    ) {
       edges {
         node {
-          title
-          description {
-            childMarkdownRemark {
-              html
+          body
+          frontmatter {
+            title
+            technologies
+            links {
+              code
+              demo
+            }
+            image {
+              childImageSharp {
+                fixed(quality: 100, width: 330) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
             }
           }
-          image {
-            fixed(quality: 100, width: 330) {
-              ...GatsbyContentfulFixed
-            }
-          }
-          technologies
-          gitHubLink
-          demoLink
         }
       }
     }

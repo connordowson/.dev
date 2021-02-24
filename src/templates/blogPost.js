@@ -1,90 +1,126 @@
-// import React from "react";
-// import { graphql } from "gatsby";
-// import { Helmet } from "react-helmet";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import React from "react";
+import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import styled from "styled-components";
+import Layout from "./Layout";
+import Section from "../components/Section";
+import Row from "../components/Row";
 
-// import Layout from "../components/Layout";
-// import Navbar from "../components/Navbar";
-// import Section from "../components/Section";
+const PostStyles = styled.article`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  pre,
+  blockquote,
+  table,
+  img,
+  ul,
+  ol,
+  details,
+  dl,
+  hr {
+    margin-bottom: 16px;
+  }
 
-// import options from "./../components/rich-text/render-node";
+  ul,
+  ol {
+    list-style-position: inside;
+    li {
+      margin: 0 1em;
+    }
+  }
+  pre code {
+    font-family: "Fira Code";
+  }
 
-// const blogPost = ({ data }) => {
-//   const {
-//     title,
-//     publishDate,
-//     author,
-//     tags,
-//     body,
-//     heroImage
-//   } = data.contentfulBlogPost;
+  a {
+    :link {
+      color: ${(props) => props.theme.colors[props.theme.accent][4]};
+    }
+    :hover {
+      color: ${(props) => props.theme.colors[props.theme.accent][6]};
+    }
+    :visited {
+      color: ${(props) => props.theme.colors[props.theme.accent][7]};
+    }
+  }
 
-//   const document = body.json;
-//   return (
-//     <Layout>
-//       <Helmet>
-//         <title>{title} | Connor Dowson</title>
-//         <meta charSet="utf-8" />
-//       </Helmet>
+  hr {
+    background-color: ${(props) => props.theme.colors.grey[7]};
+    height: 2px;
+    border: 0;
+    padding: 0;
+  }
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+  }
 
-//       <Navbar isBlog />
-//       <Section>
-//         <h1>{title}</h1>
-//       </Section>
+  blockquote {
+    padding: 0 1em;
+    border-left: 0.25em solid ${(props) => props.theme.colors.grey[6]};
+  }
 
-//       {/* <Container>
-//         <BlogPostContainer>
-//           <div>
-//             <Heading headingSize={1}>{title}</Heading>
-//           </div>
-//           <BlogPostHero heroImage={heroImage.fluid} />
-//           <BlogPostDetails datePublished={publishDate} tags={tags} />
-//           <BlogPostContents>
-//             {documentToReactComponents(document, options)}
-//           </BlogPostContents>
-//           <BlogPostAuthor
-//             authorPicture={author.image.fixed}
-//             authorName={author.name}
-//             shortBio={author.shortBio.shortBio}
-//             github={author.github}
-//             email={author.email}
-//           />
-//         </BlogPostContainer>
-//       </Container> */}
-//     </Layout>
-//   );
-// };
+  table {
+    display: block;
+    width: 100%;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
 
-// export default blogPost;
+    tr {
+      border-top: 1px solid ${(props) => props.theme.colors.grey[6]};
+      :nth-child(2n) {
+        background: ${(props) => props.theme.colors.grey[7]};
+      }
+    }
 
-// export const query = graphql`
-//   query blogPostQuery($id: String!) {
-//     contentfulBlogPost(id: { eq: $id }) {
-//       title
-//       body {
-//         json
-//       }
-//       heroImage {
-//         fluid(maxWidth: 800) {
-//           ...GatsbyContentfulFluid
-//         }
-//       }
-//       author {
-//         name
-//         title
-//         github
-//         email
-//         image {
-//           fixed(height: 80, width: 80, quality: 85) {
-//             ...GatsbyContentfulFixed
-//           }
-//         }
-//         shortBio {
-//           shortBio
-//         }
-//       }
-//       tags
-//       publishDate(formatString: "dddd DD MMMM YYYY")
-//     }
-//   }
-// `;
+    td,
+    th {
+      padding: 6px 13px;
+      border: 1px solid ${(props) => props.theme.colors.grey[6]};
+    }
+  }
+`;
+
+const blogPost = ({ data: { mdx: post } }) => {
+  return (
+    <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+      </Helmet>
+
+      <Section>
+        <Row>
+          <PostStyles>
+            <h1>{post.frontmatter.title}</h1>
+            <a href="/">click me</a>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </PostStyles>
+        </Row>
+      </Section>
+    </Layout>
+  );
+};
+
+export default blogPost;
+
+export const postQuery = graphql`
+  query($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      id
+      frontmatter {
+        title
+        slug
+      }
+      body
+    }
+  }
+`;

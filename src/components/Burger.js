@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useTransition, animated } from "react-spring";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 import { Link } from "gatsby";
@@ -8,7 +7,7 @@ import { Link } from "gatsby";
 import Spacer from "./Spacer";
 import { ButtonStyles } from "./Button";
 
-const BurgerStyles = styled(animated.button)`
+const BurgerStyles = styled.button`
   position: fixed;
   bottom: 2em;
   right: 2em;
@@ -19,12 +18,14 @@ const BurgerStyles = styled(animated.button)`
   width: 5em;
   height: 5em;
   display: flex;
+  opacity: ${(props) => (props.open ? "0" : "100%")};
+  pointer-events: ${(props) => (props.open ? "none" : "auto")};
+  transition: opacity 0.1s ease-in-out;
   flex-direction: column;
   justify-content: center;
   grid-gap: 0.5em;
   align-items: center;
   z-index: 11;
-  opacity: 1;
   cursor: pointer;
   box-shadow: 0 0.063em 0.313em 0 rgba(0, 0, 0, 0.07),
     0 0.438em 1.063em 0 rgba(0, 0, 0, 0.1);
@@ -55,6 +56,7 @@ const MobileNav = styled.nav`
   position: fixed;
   width: 100vw;
   height: 100vh;
+  bottom: 0;
   z-index: 10;
   scroll-behavior: none;
   padding: 1em;
@@ -65,7 +67,7 @@ const NavLinkButton = styled(Link)`
   width: 100%;
 `;
 
-const BackgroundCover = styled(animated.div)`
+const BackgroundCover = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -73,21 +75,32 @@ const BackgroundCover = styled(animated.div)`
   top: 0;
   left: 0;
   z-index: 9;
+  opacity: ${(props) => (props.open ? "0.7" : "0")};
+  pointer-events: ${(props) => (props.open ? "none" : "auto")};
+  transition: opacity 0.1s ease-in-out;
 `;
 
-const MobileNavContent = styled(animated.ul)`
+const MobileNavContent = styled.ul`
   position: absolute;
   width: calc(100% - 2em);
   border-top: 0.5em solid
     ${(props) => props.theme.colors[props.theme.accent][4]};
+  transform: translateY(0);
+  ${(props) => props.theme.colors[props.theme.accent][4]};
   border-radius: 0.25em;
   background: ${(props) => props.theme.colors.grey[6]};
   display: flex;
+  bottom: 1em;
   flex-direction: column;
   align-content: flex-end;
   justify-content: flex-end;
   list-style-type: none;
   z-index: 10;
+  transition: transform 0.2s ease-in-out;
+  ${(props) =>
+    props.open
+      ? "transform: translateY(0);"
+      : "transform: translateY(calc(100% + 2em));"}
 
   header {
     font-weight: 700;
@@ -116,28 +129,6 @@ const MobileNavContent = styled(animated.ul)`
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const animationConfig = { mass: 10, tension: 600, friction: 10, clamp: true };
-  const slideTransitions = useTransition(isOpen, null, {
-    config: animationConfig,
-    from: { bottom: "-50vh" },
-    enter: { bottom: "2em" },
-    leave: { bottom: "-50vh" },
-  });
-
-  const fadeInTransitions = useTransition(isOpen, null, {
-    config: animationConfig,
-    from: { opacity: 0 },
-    enter: { opacity: 0.9 },
-    leave: { opacity: 0 },
-  });
-
-  const burgerTransitions = useTransition(isOpen, null, {
-    config: animationConfig,
-    from: { opacity: 1 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  });
-
   useEffect(() => {
     isOpen
       ? (document.body.style.overflow = "hidden")
@@ -146,78 +137,53 @@ const Burger = () => {
 
   return (
     <>
-      {burgerTransitions.map(
-        ({ item, key, props }) =>
-          !item && (
-            <BurgerStyles
-              name="Mobile navigation menu"
-              aria-label="Mobile navigation menu button"
-              style={props}
-              key={key}
+      <BurgerStyles
+        name="Mobile navigation menu"
+        aria-label="Mobile navigation menu button"
+        open={isOpen}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
+      >
+        <div />
+        <div />
+        <div />
+      </BurgerStyles>
+      <BackgroundCover open={isOpen} />
+      <MobileNav>
+        <MobileNavContent open={isOpen}>
+          <header>
+            <h2>Menu</h2>
+            <AiFillCloseCircle
               onClick={() => {
-                setIsOpen(!isOpen);
+                setIsOpen(false);
               }}
-            >
-              <div />
-              <div />
-              <div />
-            </BurgerStyles>
-          )
-      )}
-
-      {fadeInTransitions.map(
-        ({ item, key, props }) =>
-          item && <BackgroundCover key={key} style={props} />
-      )}
-
-      {slideTransitions.map(
-        ({ item, key, props }) =>
-          item && (
-            <MobileNav>
-              <MobileNavContent key={key} style={props}>
-                <header>
-                  <h2>Menu</h2>
-                  <AiFillCloseCircle
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  />
-                </header>
-                <Spacer vertical="2em">
-                  <li>
-                    <NavLinkButton to="/" onClick={() => setIsOpen(false)}>
-                      Home
-                    </NavLinkButton>
-                  </li>
-                  <li>
-                    <NavLinkButton
-                      to="/#about-me"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      About me
-                    </NavLinkButton>
-                  </li>
-                  <li>
-                    <NavLinkButton
-                      to="/#projects"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Projects
-                    </NavLinkButton>
-                  </li>
-                  <li>
-                    <NavLinkButton
-                      to="/#contact-me"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Contact me
-                    </NavLinkButton>
-                  </li>
-                </Spacer>
-              </MobileNavContent>
-            </MobileNav>
-          )
-      )}
+            />
+          </header>
+          <Spacer vertical="2em">
+            <li>
+              <NavLinkButton to="/" onClick={() => setIsOpen(false)}>
+                Home
+              </NavLinkButton>
+            </li>
+            <li>
+              <NavLinkButton to="/#about-me" onClick={() => setIsOpen(false)}>
+                About me
+              </NavLinkButton>
+            </li>
+            <li>
+              <NavLinkButton to="/#projects" onClick={() => setIsOpen(false)}>
+                Projects
+              </NavLinkButton>
+            </li>
+            <li>
+              <NavLinkButton to="/#contact-me" onClick={() => setIsOpen(false)}>
+                Contact me
+              </NavLinkButton>
+            </li>
+          </Spacer>
+        </MobileNavContent>
+      </MobileNav>
     </>
   );
 };

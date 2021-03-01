@@ -12,7 +12,7 @@ const MobileNav = styled.div`
   }
 `;
 
-const DesktopHomeButton = styled(Link)`
+const DesktopNavButton = styled(Link)`
   ${ButtonStyles}
 `;
 
@@ -69,25 +69,16 @@ const Navbar = () => {
         <div>
           <ul>
             <li>
-              <DesktopHomeButton
-                to="/"
-                onClick={() =>
-                  document.getElementById("contact-me").scrollIntoView()
-                }
-              >
-                Home
-              </DesktopHomeButton>
+              <DesktopNavButton to="/">Home</DesktopNavButton>
             </li>
             <li>
-              <DesktopHomeButton to="/#about-me">About me</DesktopHomeButton>
+              <DesktopNavButton to="/#about-me">About me</DesktopNavButton>
             </li>
             <li>
-              <DesktopHomeButton to="/#projects">Projects</DesktopHomeButton>
+              <DesktopNavButton to="/#projects">Projects</DesktopNavButton>
             </li>
             <li>
-              <DesktopHomeButton to="/#contact-me">
-                Contact me
-              </DesktopHomeButton>
+              <DesktopNavButton to="/#contact-me">Contact me</DesktopNavButton>
             </li>
           </ul>
         </div>

@@ -104,6 +104,8 @@ const DotGrid = styled.div`
 `;
 
 const Hero = () => {
+  const noOfDots = Array.from({ length: 25 }, (_, i) => i + 1);
+
   return (
     <HeroContainer>
       <HeroContent>
@@ -114,31 +116,9 @@ const Hero = () => {
         <HeroImage>
           <img src="/me.jpeg" alt="Connor Dowson" />
           <DotGrid>
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
+            {noOfDots.map(() => {
+              return <div />;
+            })}
           </DotGrid>
         </HeroImage>
       </HeroContent>

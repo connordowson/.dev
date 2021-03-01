@@ -17,12 +17,7 @@ const ButtonStyles = css`
   cursor: pointer;
   ${(props) => props.theme.shadows[2]}
 
-  &:focus {
-    box-shadow: 0 0 0 2px ${(props) => props.theme.colors.grey[7]},
-      0 0 0 4px ${(props) => props.theme.colors.grey[1]};
-  }
-
-  @-moz-document url-prefix() {
+  @supports (-moz-outline-radius: 0.5em) {
     &:focus {
       outline: 2px solid ${(props) => props.theme.colors.grey[1]};
       outline-offset: 2px;
@@ -30,8 +25,19 @@ const ButtonStyles = css`
     }
   }
 
+  @supports not (-moz-outline-radius: 0.5em) {
+    &:focus {
+      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.grey[7]},
+        0 0 0 4px ${(props) => props.theme.colors.grey[1]};
+    }
+  }
+
   &:hover {
     background: ${(props) => props.theme.colors[props.theme.accent][1]};
+  }
+
+  svg {
+    color: ${(props) => props.theme.colors[props.theme.accent][6]};
   }
 `;
 

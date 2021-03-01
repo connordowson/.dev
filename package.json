@@ -39,6 +39,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
+    "serve": "gatsby serve",
     "dev": "netlify dev",
     "dev:gatsby": "gatsby develop",
     "cleandev": "gatsby clean && gatsby develop"

@@ -7,10 +7,30 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   // Graphql query to get blog post data
+  // Two queries, one to build draft posts in development
+  // and one to only build published posts in production
 
   const blogPostResult = await graphql(`
     query {
-      allMdx(filter: { fields: { collection: { eq: "posts" } } }) {
+      production: allMdx(
+        filter: {
+          fields: { collection: { eq: "posts" } }
+          frontmatter: { published: { eq: true } }
+        }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      development: allMdx(
+        filter: { fields: { collection: { eq: "posts" } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             fields {
@@ -22,7 +42,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `);
 
-  blogPostResult.data.allMdx.edges.forEach((edge) => {
+  // get the current environment
+  // will return 'development' in 'gatsby develop'
+  // and 'production' in 'gatsby build' or 'gatsby serve'
+  const environment = process.env.NODE_ENV;
+
+  blogPostResult.data[environment].edges.forEach((edge) => {
     const path = `/blog/${edge.node.fields.slug}`;
     console.log(path);
     console.log(edge.node.fields.slug);

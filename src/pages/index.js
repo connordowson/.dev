@@ -32,9 +32,6 @@ const MapContainer = styled.div`
 
 const AccentHeading = styled.h2`
   color: ${(props) => props.theme.colors[props.theme.accent][4]};
-  /* border-bottom: 1px solid ${(props) => props.theme.colors.grey[7]}; */
-  /* margin-bottom: 1em;
-  padding: 0.75em 0; */
 `;
 
 const index = ({

@@ -16,11 +16,11 @@ const AccentHeading = styled.h1`
 
 const Blog = ({ data }) => {
   const blogDescription =
-    "Random posts, mostly about web dev 👨‍💻, music 🎶 and anything else that I find interesting.";
+    "Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I find interesting.";
 
   return (
     <Layout>
-      <SEO description={blogDescription} />
+      <SEO title="Blog | Connor Dowson" description={blogDescription} />
       <Section>
         <Row>
           <Spacer vertical="1em">

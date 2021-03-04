@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    defaultTitle: "Connor Dowson | Portfolio",
+    defaultTitle: "Portfolio | Connor Dowson",
     defaultAuthor: "Connor Dowson",
     defaultDescription:
       "Portfolio site for Bristol based front end web developer, Connor Dowson.",

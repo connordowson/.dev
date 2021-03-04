@@ -39,13 +39,12 @@ const PostStyles = styled.article`
     margin-bottom: 1em;
     padding: 0.75em 0;
 
-
-    :hover > .hash-anchor{
+    :hover > .hash-anchor {
       opacity: 1;
     }
   }
 
-  header h1{
+  header h1 {
     padding-top: 0;
     color: ${(props) => props.theme.colors[props.theme.accent][4]};
   }
@@ -58,7 +57,7 @@ const PostStyles = styled.article`
     }
   }
 
-  .hash-anchor{
+  .hash-anchor {
     fill: ${(props) => props.theme.colors[props.theme.accent][2]};
     position: absolute;
     left: -28px;
@@ -165,9 +164,9 @@ const blogPost = ({ data: { mdx: post } }) => {
     <Layout>
       <SEO
         title={frontmatter.title}
-        description={
+        description={`${
           frontmatter.description ? frontmatter.description : excerpt
-        }
+        } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
       />
 

@@ -89,7 +89,8 @@ h1,h2,h3,h4,h5,h6{
 body{
   background: ${(props) => props.theme.colors.grey[8]};
   color: ${(props) => props.theme.colors.grey[0]};
-  font-family: ${(props) => props.theme.typography.body};  
+  font-family: ${(props) => props.theme.typography.body};
+  overflow: hidden;
 }
 
 pre code{

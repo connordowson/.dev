@@ -12,7 +12,9 @@ import {
 
 const FooterStyles = styled.footer`
   background: ${(props) => props.theme.colors.grey[7]};
-  padding: 1.5em 1.5em 8em;
+  padding: 1.5em 1.5em 10em;
+  // when more than one post change to this
+  /* padding: 1.5em 1.5em 8em; */
   margin-top: 5em;
   position: relative;
 

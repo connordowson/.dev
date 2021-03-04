@@ -62,7 +62,7 @@ const FooterStyles = styled.footer`
 const Footer = () => {
   return (
     <FooterStyles id="contact-me">
-      <img src="./me.jpeg" alt="Connor Dowson" />
+      <img src={"/me.jpeg"} alt="Connor Dowson" />
       <header>
         <h2>Contact me</h2>
       </header>

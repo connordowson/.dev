@@ -1,19 +1,21 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled from "styled-components";
 import Layout from "./Layout";
 import Section from "../components/Section";
+import SEO from "../components/SEO";
 import Row from "../components/Row";
+import BlogPostDate from "../components/BlogPostDate";
 
 const PostStyles = styled.article`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
+  @media ${(props) => props.theme.breakpoints[0]} {
+    margin: 0 auto;
+  }
+  @media ${(props) => props.theme.breakpoints[2]} {
+    width: 46em;
+  }
+
   p,
   pre,
   blockquote,
@@ -27,6 +29,27 @@ const PostStyles = styled.article`
     margin-bottom: 16px;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border-bottom: 1px solid ${(props) => props.theme.colors.grey[7]};
+    margin-bottom: 1em;
+    padding: 0.75em 0;
+
+
+    :hover > .hash-anchor{
+      opacity: 1;
+    }
+  }
+
+  header h1{
+    padding-top: 0;
+    color: ${(props) => props.theme.colors[props.theme.accent][4]};
+  }
+
   ul,
   ol {
     list-style-position: inside;
@@ -34,20 +57,65 @@ const PostStyles = styled.article`
       margin: 0 1em;
     }
   }
-  pre code {
+
+  .hash-anchor{
+    fill: ${(props) => props.theme.colors[props.theme.accent][2]};
+    position: absolute;
+    left: -28px;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+  }
+
+  pre {
+    border: 1px solid ${(props) => props.theme.colors.grey[7]};
+    border-radius: 0.5em;
+
+    :before {
+      content: attr(data-language);
+      font-family: inherit;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0.5em;
+      background: ${(props) => props.theme.colors[props.theme.accent][2]};
+      color: ${(props) => props.theme.colors[props.theme.accent][8]};
+      padding: 0.25em 0.5em;
+      border-radius: 0 0 0.5em 0.5em;
+      font-size: 0.9rem;
+    }
+  }
+
+  .gatsby-code-header {
+    display: inline-block;
+    background: ${(props) => props.theme.colors[props.theme.accent][2]};
+    color: ${(props) => props.theme.colors[props.theme.accent][8]};
+    padding: 0.5em 0.75em;
+    border-radius: 0.5em 0.5em 0 0;
+    h5 {
+      font-family: "Fira Code";
+      font-weight: 400;
+      margin: 0;
+      font-size: 0.9rem;
+      border-bottom: none;
+      padding: 0;
+    }
+
+    ~ pre {
+      border-radius: 0 0.5em 0.5em 0.5em;
+    }
+  }
+
+  pre,
+  code {
     font-family: "Fira Code";
   }
 
-  a {
-    :link {
-      color: ${(props) => props.theme.colors[props.theme.accent][4]};
-    }
-    :hover {
-      color: ${(props) => props.theme.colors[props.theme.accent][6]};
-    }
-    :visited {
-      color: ${(props) => props.theme.colors[props.theme.accent][7]};
-    }
+  code:not(pre code) {
+    padding: 0.2em;
+    border: 1px solid ${(props) => props.theme.colors.grey[7]};
+    border-radius: 0.5em;
+    font-size: 0.9em;
+    display: inline-block;
   }
 
   hr {
@@ -91,18 +159,26 @@ const PostStyles = styled.article`
 `;
 
 const blogPost = ({ data: { mdx: post } }) => {
+  const { frontmatter, body, excerpt, timeToRead } = post;
+
   return (
     <Layout>
-      <Helmet>
-        <meta charSet="utf-8" />
-      </Helmet>
+      <SEO
+        title={frontmatter.title}
+        description={
+          frontmatter.description ? frontmatter.description : excerpt
+        }
+        keywords={frontmatter.keywords && frontmatter.keywords}
+      />
 
       <Section>
         <Row>
           <PostStyles>
-            <h1>{post.frontmatter.title}</h1>
-            <a href="/">click me</a>
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <header>
+              <h1>{frontmatter.title}</h1>
+              <BlogPostDate date={frontmatter.date} timeToRead={timeToRead} />
+            </header>
+            <MDXRenderer>{body}</MDXRenderer>
           </PostStyles>
         </Row>
       </Section>
@@ -119,8 +195,13 @@ export const postQuery = graphql`
       frontmatter {
         title
         slug
+        description
+        date(formatString: "Do MMMM, YYYY", locale: "en-GB")
+        keywords
       }
       body
+      excerpt
+      timeToRead
     }
   }
 `;

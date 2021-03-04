@@ -18,6 +18,7 @@ const DesktopNavButton = styled(Link)`
 
 const DesktopNav = styled.nav`
   display: none;
+  pointer-events: none;
 
   @media ${(props) => props.theme.breakpoints[1]} {
     display: inline-block;
@@ -34,12 +35,22 @@ const DesktopNav = styled.nav`
       right: 0;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
 
       span {
+        display: flex;
         font-family: ${(props) => props.theme.typography.headings};
         font-weight: 700;
         font-size: 1.5em;
+        background: ${(props) => props.theme.colors[props.theme.accent][2]};
+        color: ${(props) => props.theme.colors[props.theme.accent][8]};
+        height: 2em;
+        width: 2em;
+        padding: 0.5em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1em;
+        ${(props) => props.theme.shadows[2]}
       }
 
       ul {
@@ -49,6 +60,7 @@ const DesktopNav = styled.nav`
 
           a {
             margin-left: 2em;
+            pointer-events: auto;
           }
         }
       }
@@ -62,30 +74,27 @@ const DesktopNav = styled.nav`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ links }) => {
   return (
     <>
       <DesktopNav>
         <div>
+          <span>CD</span>
+
           <ul>
-            <li>
-              <DesktopNavButton to="/">Home</DesktopNavButton>
-            </li>
-            <li>
-              <DesktopNavButton to="/#about-me">About me</DesktopNavButton>
-            </li>
-            <li>
-              <DesktopNavButton to="/#projects">Projects</DesktopNavButton>
-            </li>
-            <li>
-              <DesktopNavButton to="/#contact-me">Contact me</DesktopNavButton>
-            </li>
+            {links.map((link) => (
+              <li>
+                <DesktopNavButton to={link.link} data-button>
+                  {link.name}
+                </DesktopNavButton>
+              </li>
+            ))}
           </ul>
         </div>
       </DesktopNav>
 
       <MobileNav>
-        <Burger />
+        <Burger links={links} />
       </MobileNav>
     </>
   );

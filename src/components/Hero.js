@@ -6,7 +6,7 @@ const HeroContainer = styled.div`
   padding: 3em 1.5em 3em;
 
   @media ${(props) => props.theme.breakpoints[1]} {
-    margin-top: -107px;
+    margin-top: -112px;
   }
 
   @media ${(props) => props.theme.breakpoints[2]} {
@@ -26,7 +26,7 @@ const HeroContent = styled.div`
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     width: 40em;
-    padding: 4em 1.5em;
+    padding: 5em 1.5em 5em;
   }
 
   @media ${(props) => props.theme.breakpoints[2]} {

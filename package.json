@@ -19,6 +19,8 @@
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-sharp": "^2.14.1",
     "gatsby-plugin-styled-components": "^3.3.10",
+    "gatsby-remark-autolink-headers": "^3.0.0",
+    "gatsby-remark-code-headers": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.10.0",
     "gatsby-remark-embedder": "^4.1.0",
     "gatsby-remark-images": "^3.11.0",

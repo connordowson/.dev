@@ -60,6 +60,7 @@ const MobileNav = styled.nav`
   z-index: 10;
   scroll-behavior: none;
   padding: 1em;
+  pointer-events: none;
 `;
 
 const NavLinkButton = styled(Link)`
@@ -76,7 +77,7 @@ const BackgroundCover = styled.div`
   left: 0;
   z-index: 9;
   opacity: ${(props) => (props.open ? "0.7" : "0")};
-  pointer-events: ${(props) => (props.open ? "none" : "auto")};
+  pointer-events: none;
   transition: opacity 0.1s ease-in-out;
 `;
 
@@ -91,6 +92,7 @@ const MobileNavContent = styled.ul`
   background: ${(props) => props.theme.colors.grey[6]};
   display: flex;
   bottom: 1em;
+  pointer-events: ${(props) => (props.open ? "auto" : "none")};
   flex-direction: column;
   align-content: flex-end;
   justify-content: flex-end;
@@ -126,7 +128,7 @@ const MobileNavContent = styled.ul`
   }
 `;
 
-const Burger = () => {
+const Burger = ({ links }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -161,26 +163,17 @@ const Burger = () => {
             />
           </header>
           <Spacer vertical="2em">
-            <li>
-              <NavLinkButton to="/" onClick={() => setIsOpen(false)}>
-                Home
-              </NavLinkButton>
-            </li>
-            <li>
-              <NavLinkButton to="/#about-me" onClick={() => setIsOpen(false)}>
-                About me
-              </NavLinkButton>
-            </li>
-            <li>
-              <NavLinkButton to="/#projects" onClick={() => setIsOpen(false)}>
-                Projects
-              </NavLinkButton>
-            </li>
-            <li>
-              <NavLinkButton to="/#contact-me" onClick={() => setIsOpen(false)}>
-                Contact me
-              </NavLinkButton>
-            </li>
+            {links.map((link) => (
+              <li>
+                <NavLinkButton
+                  to={link.link}
+                  data-button
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </NavLinkButton>
+              </li>
+            ))}
           </Spacer>
         </MobileNavContent>
       </MobileNav>

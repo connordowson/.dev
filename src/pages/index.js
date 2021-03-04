@@ -13,8 +13,7 @@ import Hero from "../components/Hero";
 import Map from "../components/Map";
 import Projects from "../components/Projects";
 import TopTracks from "../components/TopTracks";
-
-import Footer from "../components/Footer";
+import BlogPostLinks from "../components/BlogPostLinks";
 
 const MapContainer = styled.div`
   width: 140px;
@@ -33,11 +32,15 @@ const MapContainer = styled.div`
 
 const AccentHeading = styled.h2`
   color: ${(props) => props.theme.colors[props.theme.accent][4]};
+  /* border-bottom: 1px solid ${(props) => props.theme.colors.grey[7]}; */
+  /* margin-bottom: 1em;
+  padding: 0.75em 0; */
 `;
 
 const index = ({
   data: {
-    allMdx: { edges: projects },
+    projects: { edges: projects },
+    blogPosts: { edges: blogPosts },
   },
 }) => {
   return (
@@ -47,7 +50,7 @@ const index = ({
       </Helmet>
 
       <Hero />
-      <Section id="about-me">
+      <Section>
         <Row>
           <Spacer
             vertical="1em"
@@ -76,11 +79,20 @@ const index = ({
           </Spacer>
         </Row>
       </Section>
-      <Section id="projects">
+
+      <Section>
         <Row>
           <Spacer vertical="2em">
             <AccentHeading>Projects</AccentHeading>
             <Projects projects={projects} />
+          </Spacer>
+        </Row>
+      </Section>
+      <Section>
+        <Row>
+          <Spacer vertical="2em">
+            <AccentHeading>Blog</AccentHeading>
+            <BlogPostLinks blogPosts={blogPosts} />
           </Spacer>
         </Row>
       </Section>
@@ -96,7 +108,6 @@ const index = ({
           </Spacer>
         </Row>
       </Section>
-      <Footer />
     </Layout>
   );
 };
@@ -104,8 +115,8 @@ const index = ({
 export default index;
 
 export const projectQuery = graphql`
-  {
-    allMdx(
+  query {
+    projects: allMdx(
       filter: { fields: { collection: { eq: "projects" } } }
       sort: { fields: [frontmatter___order], order: ASC }
     ) {
@@ -127,6 +138,27 @@ export const projectQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+
+    blogPosts: allMdx(
+      filter: { fields: { collection: { eq: "posts" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 3
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            date(formatString: "Do MMMM, YYYY", locale: "en-GB")
+          }
+          excerpt
+          timeToRead
         }
       }
     }

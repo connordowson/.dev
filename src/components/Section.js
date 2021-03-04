@@ -11,9 +11,9 @@ const Section = styled.section`
   &:first-of-type {
     padding-top: 4.5em;
 
-    @media ${(props) => props.theme.breakpoints[1]} {
+    /* @media ${(props) => props.theme.breakpoints[1]} {
       padding-top: 7.5em;
-    }
+    } */
   }
 `;
 

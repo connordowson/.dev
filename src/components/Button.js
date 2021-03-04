@@ -46,7 +46,9 @@ const ExternalLinkButton = styled.a`
 `;
 
 const LinkButton = ({ href, children }) => (
-  <ExternalLinkButton href={href}>{children}</ExternalLinkButton>
+  <ExternalLinkButton data-button href={href}>
+    {children}
+  </ExternalLinkButton>
 );
 
 export { ButtonStyles, LinkButton };

@@ -56,6 +56,32 @@ p, ul, ol{
   font-family: ${(props) => props.theme.typography.body};
 }
 
+
+h3 > a, h2 > a{
+    text-decoration: none;
+}
+
+a:not([data-button="true"]) {
+  transition: color 100ms ease-in-out; 
+
+  :link {
+    color: ${(props) => props.theme.colors[props.theme.accent][2]};
+  }
+
+  :hover {
+    color: ${(props) => props.theme.colors[props.theme.accent][4]};
+  }
+
+  :visited{
+    color: ${(props) => props.theme.colors[props.theme.accent][2]};
+    :hover{
+      color: ${(props) => props.theme.colors[props.theme.accent][4]};
+
+    }
+  }
+
+}
+
 h1,h2,h3,h4,h5,h6{
   font-family: ${(props) => props.theme.typography.headings};
 }

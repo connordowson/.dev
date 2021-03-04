@@ -12,7 +12,9 @@ import {
 
 const FooterStyles = styled.footer`
   background: ${(props) => props.theme.colors.grey[7]};
-  padding: 1.5em 1.5em 8em;
+  padding: 1.5em 1.5em 10em;
+  // when more than one post change to this
+  /* padding: 1.5em 1.5em 8em; */
   margin-top: 5em;
   position: relative;
 
@@ -62,7 +64,7 @@ const FooterStyles = styled.footer`
 const Footer = () => {
   return (
     <FooterStyles id="contact-me">
-      <img src="./me.jpeg" alt="Connor Dowson" />
+      <img src={"/me.jpeg"} alt="Connor Dowson" />
       <header>
         <h2>Contact me</h2>
       </header>

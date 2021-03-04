@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Img from "gatsby-image";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Panel from "./Panel";
 import Spacer from "./Spacer";
@@ -52,14 +53,7 @@ const ProjectImage = styled(Img)`
 `;
 
 const Project = ({ project }) => {
-  const {
-    title,
-    description,
-    image,
-    technologies,
-    demoLink,
-    gitHubLink,
-  } = project;
+  const { title, image, technologies, links } = project.frontmatter;
 
   return (
     <>
@@ -68,11 +62,9 @@ const Project = ({ project }) => {
           <header>
             <h3>{title}</h3>
           </header>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: description.childMarkdownRemark.html,
-            }}
-          />
+          <div>
+            <MDXRenderer>{project.body}</MDXRenderer>
+          </div>
           <TagsContainer>
             {technologies &&
               technologies.map((technology) => (
@@ -81,17 +73,15 @@ const Project = ({ project }) => {
           </TagsContainer>
         </StyledSpacer>
         <ButtonsContainer horizontal="1.5em">
-          {demoLink && <LinkButton href={demoLink}>View demo</LinkButton>}
-          {gitHubLink && <LinkButton href={gitHubLink}>View code</LinkButton>}
+          {links.demo && <LinkButton href={links.demo}>View demo</LinkButton>}
+          {links.code && <LinkButton href={links.code}>View code</LinkButton>}
         </ButtonsContainer>
       </StyledPanel>
       <ProjectImageContainer>
-        <ProjectImage fixed={image.fixed} alt={title} />
+        <ProjectImage fixed={image.childImageSharp.fixed} alt={title} />
       </ProjectImageContainer>
     </>
   );
 };
-
-Project.propTypes = {};
 
 export default Project;

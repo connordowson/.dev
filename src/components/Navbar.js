@@ -12,16 +12,18 @@ const MobileNav = styled.div`
   }
 `;
 
-const DesktopHomeButton = styled(Link)`
+const DesktopNavButton = styled(Link)`
   ${ButtonStyles}
 `;
 
 const DesktopNav = styled.nav`
   display: none;
+  pointer-events: none;
 
   @media ${(props) => props.theme.breakpoints[1]} {
-    display: inline;
-    position: fixed;
+    display: inline-block;
+    position: sticky;
+    top: 0;
     z-index: 99;
     width: 100%;
     padding: 2em 1.5em;
@@ -33,12 +35,22 @@ const DesktopNav = styled.nav`
       right: 0;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
 
       span {
+        display: flex;
         font-family: ${(props) => props.theme.typography.headings};
         font-weight: 700;
         font-size: 1.5em;
+        background: ${(props) => props.theme.colors[props.theme.accent][2]};
+        color: ${(props) => props.theme.colors[props.theme.accent][8]};
+        height: 2em;
+        width: 2em;
+        padding: 0.5em;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1em;
+        ${(props) => props.theme.shadows[2]}
       }
 
       ul {
@@ -48,6 +60,7 @@ const DesktopNav = styled.nav`
 
           a {
             margin-left: 2em;
+            pointer-events: auto;
           }
         }
       }
@@ -61,39 +74,27 @@ const DesktopNav = styled.nav`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ links }) => {
   return (
     <>
       <DesktopNav>
         <div>
+          <span>CD</span>
+
           <ul>
-            <li>
-              <DesktopHomeButton
-                to="/"
-                onClick={() =>
-                  document.getElementById("contact-me").scrollIntoView()
-                }
-              >
-                Home
-              </DesktopHomeButton>
-            </li>
-            <li>
-              <DesktopHomeButton to="/#about-me">About me</DesktopHomeButton>
-            </li>
-            <li>
-              <DesktopHomeButton to="/#projects">Projects</DesktopHomeButton>
-            </li>
-            <li>
-              <DesktopHomeButton to="/#contact-me">
-                Contact me
-              </DesktopHomeButton>
-            </li>
+            {links.map((link) => (
+              <li>
+                <DesktopNavButton to={link.link} data-button>
+                  {link.name}
+                </DesktopNavButton>
+              </li>
+            ))}
           </ul>
         </div>
       </DesktopNav>
 
       <MobileNav>
-        <Burger />
+        <Burger links={links} />
       </MobileNav>
     </>
   );

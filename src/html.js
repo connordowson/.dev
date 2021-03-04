@@ -25,6 +25,13 @@ export default function HTML(props) {
           crossOrigin="anonymous"
           type="font/woff2"
         />
+        <link
+          rel="preload"
+          href="/fonts/fira-code-var-latin.woff2"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+        />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

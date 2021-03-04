@@ -5,9 +5,12 @@ const HeroContainer = styled.div`
   background: ${(props) => props.theme.colors.grey[7]};
   padding: 3em 1.5em 3em;
 
+  @media ${(props) => props.theme.breakpoints[1]} {
+    margin-top: -112px;
+  }
+
   @media ${(props) => props.theme.breakpoints[2]} {
     padding: 6em;
-    margin-bottom: 6em;
   }
 `;
 
@@ -23,7 +26,7 @@ const HeroContent = styled.div`
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     width: 40em;
-    padding: 4em 1.5em;
+    padding: 5em 1.5em 5em;
   }
 
   @media ${(props) => props.theme.breakpoints[2]} {
@@ -101,6 +104,8 @@ const DotGrid = styled.div`
 `;
 
 const Hero = () => {
+  const noOfDots = Array.from({ length: 25 }, (_, i) => i + 1);
+
   return (
     <HeroContainer>
       <HeroContent>
@@ -111,31 +116,9 @@ const Hero = () => {
         <HeroImage>
           <img src="/me.jpeg" alt="Connor Dowson" />
           <DotGrid>
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
+            {noOfDots.map(() => {
+              return <div />;
+            })}
           </DotGrid>
         </HeroImage>
       </HeroContent>

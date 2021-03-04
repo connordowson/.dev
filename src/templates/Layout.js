@@ -4,15 +4,33 @@ import GlobalStyles from "../styles/global";
 
 import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import theme from "../styles/theme";
+import { StaticQuery } from "gatsby";
 
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
       <SEO />
+      <StaticQuery
+        query={graphql`
+          query siteNavLinksQuery {
+            site {
+              siteMetadata {
+                navLinks {
+                  link
+                  name
+                }
+              }
+            }
+          }
+        `}
+        render={(data) => <Navbar links={data.site.siteMetadata.navLinks} />}
+      />
       {children}
       <GlobalStyles />
+      <Footer />
     </ThemeProvider>
   );
 };

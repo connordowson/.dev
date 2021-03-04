@@ -4,7 +4,7 @@ import Loader from "./Loader";
 
 const SongGrid = styled.div`
   display: grid;
-
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   grid-column-gap: 1em;
   grid-row-gap: 1em;
 

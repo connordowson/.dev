@@ -12,12 +12,7 @@ import Hero from "../components/Hero";
 import Map from "../components/Map";
 import Projects from "../components/Projects";
 import TopTracks from "../components/TopTracks";
-
-import Footer from "../components/Footer";
-
-const AboutMe = styled(Section)`
-  margin-top: 3em;
-`;
+import BlogPostLinks from "../components/BlogPostLinks";
 
 const MapContainer = styled.div`
   width: 140px;
@@ -37,8 +32,12 @@ const AccentHeading = styled.h2`
   color: ${(props) => props.theme.colors[props.theme.accent][4]};
 `;
 
-const index = ({ data }) => {
-  const projects = data.allContentfulProject.edges;
+const index = ({
+  data: {
+    projects: { edges: projects },
+    blogPosts: { edges: blogPosts },
+  },
+}) => {
   return (
     <Layout>
       <Helmet>
@@ -46,7 +45,7 @@ const index = ({ data }) => {
       </Helmet>
 
       <Hero />
-      <AboutMe id="about-me">
+      <Section>
         <Row>
           <Spacer
             vertical="1em"
@@ -74,12 +73,21 @@ const index = ({ data }) => {
             </MapContainer>
           </Spacer>
         </Row>
-      </AboutMe>
-      <Section id="projects">
+      </Section>
+
+      <Section>
         <Row>
           <Spacer vertical="2em">
             <AccentHeading>Projects</AccentHeading>
             <Projects projects={projects} />
+          </Spacer>
+        </Row>
+      </Section>
+      <Section>
+        <Row>
+          <Spacer vertical="2em">
+            <AccentHeading>Blog</AccentHeading>
+            <BlogPostLinks blogPosts={blogPosts} />
           </Spacer>
         </Row>
       </Section>
@@ -95,32 +103,57 @@ const index = ({ data }) => {
           </Spacer>
         </Row>
       </Section>
-      <Footer />
     </Layout>
   );
 };
 
 export default index;
 
-export const query = graphql`
-  query HomePageQuery {
-    allContentfulProject(sort: { fields: order, order: ASC }) {
+export const projectQuery = graphql`
+  query {
+    projects: allMdx(
+      filter: { fields: { collection: { eq: "projects" } } }
+      sort: { fields: [frontmatter___order], order: ASC }
+    ) {
       edges {
         node {
-          title
-          description {
-            childMarkdownRemark {
-              html
+          body
+          frontmatter {
+            title
+            technologies
+            links {
+              code
+              demo
+            }
+            image {
+              childImageSharp {
+                fixed(quality: 100, width: 330) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
             }
           }
-          image {
-            fixed(quality: 100, width: 330) {
-              ...GatsbyContentfulFixed
-            }
+        }
+      }
+    }
+
+    blogPosts: allMdx(
+      filter: { fields: { collection: { eq: "posts" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 3
+    ) {
+      edges {
+        node {
+          fields {
+            slug
           }
-          technologies
-          gitHubLink
-          demoLink
+          frontmatter {
+            title
+            description
+            date(formatString: "Do MMMM, YYYY", locale: "en-GB")
+          }
+          excerpt
+          timeToRead
         }
       }
     }

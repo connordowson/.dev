@@ -8012,6 +8012,11 @@ gatsby-plugin-page-creator@^2.10.1:
     globby "^11.0.2"
     lodash "^4.17.20"
 
+gatsby-plugin-panelbear@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-panelbear/-/gatsby-plugin-panelbear-1.1.0.tgz#ee53a8358b64dabaea17c9688a85990c46ee56a3"
+  integrity sha512-OfRyvqyqPvxjLe1g2MDzATLAUHLR2iiJLCAfJm7Sx95Ps4Cjuy+mKmVm68KbcQZYUrw+ybmDq8KSw84rbsebhg==
+
 gatsby-plugin-prefetch-google-fonts@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-prefetch-google-fonts/-/gatsby-plugin-prefetch-google-fonts-1.4.3.tgz#0557879c7ba0085e4d53107699a8c1073bd52d0e"

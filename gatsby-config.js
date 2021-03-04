@@ -91,5 +91,11 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-panelbear`,
+      options: {
+        siteID: "JdXgyMSn7Mo",
+      },
+    },
   ],
 };

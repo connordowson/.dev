@@ -99,7 +99,7 @@ const index = ({
             <AccentHeading>What I've been listening to</AccentHeading>
             <p>
               My top played songs from the Spotify API (so I can't hide any
-              embarassing ones).
+              embarrassing ones).
             </p>
             <TopTracks />
           </Spacer>

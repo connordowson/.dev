@@ -35,6 +35,7 @@ const PostStyles = styled.article`
   h4,
   h5,
   h6 {
+    color: ${(props) => props.theme.colors.grey[0]};
     border-bottom: 1px solid ${(props) => props.theme.colors.grey[7]};
     margin-bottom: 1em;
     padding: 0.75em 0;
@@ -87,11 +88,11 @@ const PostStyles = styled.article`
   .gatsby-code-header {
     display: inline-block;
     background: ${(props) => props.theme.colors[props.theme.accent][2]};
-    color: ${(props) => props.theme.colors[props.theme.accent][8]};
     padding: 0.5em 0.75em;
     border-radius: 0.5em 0.5em 0 0;
     h5 {
       font-family: "Fira Code";
+      color: ${(props) => props.theme.colors[props.theme.accent][8]};
       font-weight: 400;
       margin: 0;
       font-size: 0.9rem;

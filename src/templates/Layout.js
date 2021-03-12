@@ -6,12 +6,11 @@ import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import theme from "../styles/theme";
-import { StaticQuery } from "gatsby";
+import { graphql, StaticQuery } from "gatsby";
 
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
       <SEO />
       <StaticQuery
         query={graphql`

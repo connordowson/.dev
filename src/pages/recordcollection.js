@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 import Layout from "../templates/Layout";
-import Navbar from "../components/Navbar";
 
 import Spacer from "../components/Spacer";
 import Section from "../components/Section";
@@ -66,11 +65,10 @@ const RecordCollection = () => {
       <Helmet>
         <title>Connor Dowson | Record collection</title>
       </Helmet>
-      <Navbar isBlog={false} />
       <Section>
         <Row>
           <Spacer vertical="1em">
-            <h2>My record collection</h2>
+            <h1>My record collection</h1>
             <p>My record collection, collected from the Discogs API.</p>
             <CollectionGrid>
               {!collection ? (
@@ -93,7 +91,6 @@ const RecordCollection = () => {
           </Spacer>
         </Row>
       </Section>
-      <Section></Section>
     </Layout>
   );
 };

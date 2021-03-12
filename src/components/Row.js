@@ -11,6 +11,11 @@ const Row = styled.div`
   @media ${(props) => props.theme.breakpoints[2]} {
     width: 60em;
   }
+
+  h1,
+  h2 {
+    color: ${(props) => props.theme.colors[props.theme.accent][4]};
+  }
 `;
 
 export default Row;

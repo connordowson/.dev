@@ -2,7 +2,16 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ title, description, keywords, url, image, author, article }) => {
+const SEO = ({
+  title,
+  description,
+  keywords,
+  url,
+  image,
+  author,
+  article,
+  location,
+}) => {
   const { site } = useStaticQuery(metaQuery);
 
   const {
@@ -20,6 +29,8 @@ const SEO = ({ title, description, keywords, url, image, author, article }) => {
     url: url || siteURL,
     author: author || defaultAuthor,
   };
+
+  console.log(location);
 
   return (
     <Helmet title={seo.title}>

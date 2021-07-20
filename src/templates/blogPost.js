@@ -181,6 +181,9 @@ const BlogPost = ({ data: { mdx: post } }) => {
       <Section>
         <Row>
           <PostStyles>
+            <img
+              src={`../.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+            />
             <header>
               <h1>{frontmatter.title}</h1>
               <BlogPostDate date={frontmatter.date} timeToRead={timeToRead} />

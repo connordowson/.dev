@@ -1,29 +1,11 @@
 const fetch = require("node-fetch");
 const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
+const helpers = require("../../src/helpers");
+const { slugify, objectToParams } = helpers;
 
 const local = process.env.NODE_ENV === "development";
 console.log(process.env.NODE_ENV);
-
-function objectToParams(object) {
-  const params = new URLSearchParams();
-  Object.entries(object).map((entry) => {
-    let [key, value] = entry;
-    params.set(key, value);
-  });
-  return params.toString();
-}
-
-function slugify(string) {
-  return string
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/[^\w-]+/g, "") // Remove all non-word chars
-    .replace(/--+/g, "-") // Replace multiple - with single -
-    .replace(/^-+/, "") // Trim - from start of text
-    .replace(/-+$/, ""); // Trim - from end of text
-}
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

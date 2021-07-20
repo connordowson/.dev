@@ -1,6 +1,7 @@
 // const fetch = require("node-fetch");
 const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
+const fetch = require("isomorphic-unfetch");
 
 const local = process.env.NODE_ENV === "development";
 

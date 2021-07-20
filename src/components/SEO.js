@@ -25,15 +25,14 @@ const SEO = ({
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteURL}{image || defaultImage}`,
+    image: `${siteURL}${image || defaultImage}`,
     url: url || siteURL,
     author: author || defaultAuthor,
   };
 
-  console.log(location);
-
   return (
     <Helmet title={seo.title}>
+      {console.log(location)}
       <meta name="description" content={seo.description} />
       {(article ? true : null) && <meta property="og:type" content="article" />}
       {seo.title && <meta property="og:title" content={seo.title} />}

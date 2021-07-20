@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled from "styled-components";
@@ -7,6 +7,8 @@ import Section from "../components/Section";
 import SEO from "../components/SEO";
 import Row from "../components/Row";
 import BlogPostDate from "../components/BlogPostDate";
+
+import { slugify } from "../helpers";
 
 const PostStyles = styled.article`
   @media ${(props) => props.theme.breakpoints[0]} {
@@ -157,7 +159,7 @@ const PostStyles = styled.article`
   }
 `;
 
-const blogPost = ({ data: { mdx: post } }) => {
+const BlogPost = ({ data: { mdx: post }, location }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
 
   return (
@@ -168,8 +170,8 @@ const blogPost = ({ data: { mdx: post } }) => {
           frontmatter.description ? frontmatter.description : excerpt
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
+        image={`/.netlify/functions/generateMetaImage?title=${frontmatter.title}`}
       />
-
       <Section>
         <Row>
           <PostStyles>
@@ -185,7 +187,7 @@ const blogPost = ({ data: { mdx: post } }) => {
   );
 };
 
-export default blogPost;
+export default BlogPost;
 
 export const postQuery = graphql`
   query($slug: String!) {

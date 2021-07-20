@@ -2,8 +2,7 @@ const fetch = require("node-fetch");
 const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
 
-const local = true;
-console.log(process.env.NODE_ENV);
+const local = process.env.NODE_ENV === "development";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

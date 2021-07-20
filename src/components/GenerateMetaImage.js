@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const MetaImageWrapper = styled.div`
@@ -11,23 +11,28 @@ const MetaImageWrapper = styled.div`
   flex-direction: column;
   padding: 3em;
   position: relative;
-
-  img {
-    height: 8em;
-    width: 8em;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-  }
 `;
 
 const TitleStyles = styled.div`
+  display: flex;
   flex: 1;
+  gap: 2em;
+
   h1 {
     color: ${({ theme }) => theme.colors.green[3]};
-    font-size: 5.2em;
+    font-size: 5em;
     line-height: 1.6;
     margin: 0;
+    flex: 0.6;
+  }
+
+  img {
+    flex: 0.4;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: center;
+    align-self: top;
   }
 `;
 
@@ -67,23 +72,46 @@ const DotGrid = styled.div`
   }
 `;
 
-const noOfDots = Array.from({ length: 25 }, (_, i) => i + 1);
+const noOfDots = new Array(25).fill("");
 
-const GenerateMetaImage = () => (
-  <MetaImageWrapper>
-    <TitleStyles>
-      <h1>View draft posts whilst running your Gatsby blog in development</h1>
-    </TitleStyles>
-    <NameStyles>
-      <img src="./me.jpeg" />
-      <p>connordowson.dev</p>
-    </NameStyles>
-    <DotGrid>
-      {noOfDots.map(() => {
-        return <div />;
-      })}
-    </DotGrid>
-  </MetaImageWrapper>
-);
+const GenerateMetaImage = () => {
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    params.get("title") && setTitle(params.get("title"));
+    params.get("image") && setImage(params.get("image"));
+  }, []);
+
+  const [title, setTitle] = useState();
+  const [image, setImage] = useState();
+
+  return (
+    <MetaImageWrapper>
+      <TitleStyles>
+        <h1>
+          {title ||
+            "View draft posts whilst running your Gatsby blog in development"}
+        </h1>
+        <img
+          id="meta-image"
+          src={
+            image ||
+            "https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg"
+          }
+          alt=""
+        />
+      </TitleStyles>
+      <NameStyles>
+        <img src="./me.jpeg" alt="" />
+        <p>connordowson.dev</p>
+      </NameStyles>
+      <DotGrid>
+        {noOfDots.map(() => {
+          return <div />;
+        })}
+      </DotGrid>
+    </MetaImageWrapper>
+  );
+};
 
 export default GenerateMetaImage;

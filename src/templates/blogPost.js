@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled from "styled-components";
@@ -157,8 +157,16 @@ const PostStyles = styled.article`
   }
 `;
 
-const blogPost = ({ data: { mdx: post } }) => {
+const BlogPost = ({ data: { mdx: post } }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
+
+  useEffect(() => {
+    fetch(
+      `../.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`
+    ).then((res) => {
+      console.log(res.url);
+    });
+  }, []);
 
   return (
     <Layout>
@@ -169,7 +177,9 @@ const blogPost = ({ data: { mdx: post } }) => {
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
       />
-
+      <img
+        src={`../.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+      />
       <Section>
         <Row>
           <PostStyles>
@@ -185,7 +195,7 @@ const blogPost = ({ data: { mdx: post } }) => {
   );
 };
 
-export default blogPost;
+export default BlogPost;
 
 export const postQuery = graphql`
   query($slug: String!) {

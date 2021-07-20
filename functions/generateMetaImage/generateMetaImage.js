@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
 

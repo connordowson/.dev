@@ -9,7 +9,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.11.1",
-    "chrome-aws-lambda": "^10.1.0",
+    "chrome-aws-lambda": "^5.3.1",
     "city-lights-theme": "Yummygum/city-lights-syntax-vsc",
     "cloudinary": "^1.26.2",
     "gatsby": "^2.19.5",

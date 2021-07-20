@@ -162,26 +162,6 @@ const PostStyles = styled.article`
 const BlogPost = ({ data: { mdx: post }, location }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
 
-  function getBaseURL() {
-    const url = process.env.GATSBY_URL;
-    if (!url || url === "undefined") {
-      // seriously
-      return `http://localhost:8888`;
-    }
-    return url;
-  }
-
-  useEffect(() => {
-    // const getMetaImage = async () => {
-    //   await fetch(
-    //     `../.netlify/functions/generateMetaImage?title=${frontmatter.title}`
-    //   ).then((res) => {
-    //     console.log(res.url);
-    //   });
-    // };
-    // getMetaImage();
-  }, []);
-
   return (
     <Layout>
       <SEO
@@ -190,9 +170,7 @@ const BlogPost = ({ data: { mdx: post }, location }) => {
           frontmatter.description ? frontmatter.description : excerpt
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
-        image={`${getBaseURL()}/.netlify/functions/generateMetaImage?title=${
-          frontmatter.title
-        }`}
+        image={`/.netlify/functions/generateMetaImage?title=${frontmatter.title}`}
       />
       <Section>
         <Row>

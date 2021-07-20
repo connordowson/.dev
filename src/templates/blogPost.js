@@ -8,6 +8,8 @@ import SEO from "../components/SEO";
 import Row from "../components/Row";
 import BlogPostDate from "../components/BlogPostDate";
 
+import { slugify } from "../helpers";
+
 const PostStyles = styled.article`
   @media ${(props) => props.theme.breakpoints[0]} {
     margin: 0 auto;
@@ -161,8 +163,11 @@ const BlogPost = ({ data: { mdx: post } }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
 
   useEffect(() => {
+    console.log(slugify(frontmatter.title));
     fetch(
-      `../.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`
+      `../.netlify/functions/generateMetaImage?title=${slugify(
+        frontmatter.title
+      )}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`
     ).then((res) => {
       console.log(res.url);
     });
@@ -176,7 +181,9 @@ const BlogPost = ({ data: { mdx: post } }) => {
           frontmatter.description ? frontmatter.description : excerpt
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
-        image={`./.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+        image={`./.netlify/functions/generateMetaImage?title=${slugify(
+          frontmatter.title
+        )}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
       />
       <Section>
         <Row>

@@ -1,10 +1,8 @@
 const fetch = require("node-fetch");
 const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
-const helpers = require("../../src/helpers");
-const { slugify, objectToParams } = helpers;
 
-const local = process.env.NODE_ENV === "development";
+const local = true;
 console.log(process.env.NODE_ENV);
 
 cloudinary.config({
@@ -14,6 +12,15 @@ cloudinary.config({
 });
 
 const cloudFolder = "connordowson-meta-images";
+
+const objectToParams = (object) => {
+  const params = new URLSearchParams();
+  Object.entries(object).map((entry) => {
+    let [key, value] = entry;
+    params.set(key, value);
+  });
+  return params.toString();
+};
 
 const getImage = async (imageName) => {
   const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/${cloudFolder}/${imageName}.png`;
@@ -73,7 +80,7 @@ exports.handler = async function(event) {
     return;
   }
 
-  const title = slugify(event.queryStringParameters.title);
+  const title = event.queryStringParameters.title;
   console.log(`processing ${title}...`);
 
   const existingImage = await getImage(title);

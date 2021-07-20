@@ -163,14 +163,14 @@ const BlogPost = ({ data: { mdx: post }, location }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
 
   useEffect(() => {
-    console.log(location.origin);
-    fetch(
-      `../.netlify/functions/generateMetaImage?title=${slugify(
-        frontmatter.title
-      )}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`
-    ).then((res) => {
-      console.log(res.url);
-    });
+    const getMetaImage = async () => {
+      await fetch(
+        `../.netlify/functions/generateMetaImage?title=${frontmatter.title}`
+      ).then((res) => {
+        console.log(res);
+      });
+    };
+    getMetaImage();
   }, []);
 
   return (
@@ -181,13 +181,17 @@ const BlogPost = ({ data: { mdx: post }, location }) => {
           frontmatter.description ? frontmatter.description : excerpt
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
-        image={`${location.origin}/.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+        image={`https://res.cloudinary.com/connordowson/image/upload/connordowson-meta-images/${slugify(
+          frontmatter.title
+        )}`}
       />
       <Section>
         <Row>
           <PostStyles>
             <img
-              src={`${location.origin}/.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+              src={`https://res.cloudinary.com/connordowson/image/upload/connordowson-meta-images/${slugify(
+                frontmatter.title
+              )}.png`}
             />
             <header>
               <h1>{frontmatter.title}</h1>

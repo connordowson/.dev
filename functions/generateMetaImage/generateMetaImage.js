@@ -3,7 +3,18 @@ const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
 const fetch = require("isomorphic-unfetch");
 
-const local = process.env.NODE_ENV === "development";
+const local = process.env.URL.includes("http://localhost");
+
+const slugify = (string) => {
+  return string
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w-]+/g, "") // Remove all non-word chars
+    .replace(/--+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+};
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -57,6 +68,7 @@ const uploadImage = async (title, image) => {
   const cloudinaryOptions = {
     public_id: `${cloudFolder}/${title}`,
     unique_filename: false,
+    overwrite: true,
   };
   console.log(`uploading ${title} to cloudinary`);
   return await cloudinary.uploader
@@ -80,15 +92,17 @@ exports.handler = async function(event) {
     return;
   }
 
-  const title = event.queryStringParameters.title;
+  console.log("hello-----------------------------");
+
+  const title = slugify(event.queryStringParameters.title);
   console.log(`processing ${title}...`);
 
   const existingImage = await getImage(title);
 
-  if (existingImage) {
-    console.log(`yay, ${title} already existed`);
-    return forwardResponse(existingImage);
-  }
+  // if (existingImage) {
+  //   console.log(`yay, ${title} already existed`);
+  //   return forwardResponse(existingImage);
+  // }
 
   console.log(`generating image for ${title}`);
   const url = local

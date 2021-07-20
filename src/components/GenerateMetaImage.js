@@ -88,18 +88,8 @@ const GenerateMetaImage = () => {
   return (
     <MetaImageWrapper>
       <TitleStyles>
-        <h1>
-          {title ||
-            "View draft posts whilst running your Gatsby blog in development"}
-        </h1>
-        <img
-          id="meta-image"
-          src={
-            image ||
-            "https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg"
-          }
-          alt=""
-        />
+        <h1>{title}</h1>
+        {image && <img id="meta-image" src={image} alt="" />}
       </TitleStyles>
       <NameStyles>
         <img src="./me.jpeg" alt="" />

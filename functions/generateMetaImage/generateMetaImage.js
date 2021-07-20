@@ -5,8 +5,7 @@ const cloudinary = require("cloudinary").v2;
 // const helpers = require("../../src/helpers");
 // const { slugify, objectToParams } = helpers;
 
-// const local = process.env.NODE_ENV === "development";
-const local = true;
+const local = process.env.NODE_ENV === "development";
 console.log(process.env.NODE_ENV);
 
 function objectToParams(object) {

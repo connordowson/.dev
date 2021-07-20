@@ -159,11 +159,11 @@ const PostStyles = styled.article`
   }
 `;
 
-const BlogPost = ({ data: { mdx: post } }) => {
+const BlogPost = ({ data: { mdx: post }, location }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
 
   useEffect(() => {
-    console.log(slugify(frontmatter.title));
+    console.log(location.origin);
     fetch(
       `../.netlify/functions/generateMetaImage?title=${slugify(
         frontmatter.title
@@ -181,15 +181,13 @@ const BlogPost = ({ data: { mdx: post } }) => {
           frontmatter.description ? frontmatter.description : excerpt
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
-        image={`../.netlify/functions/generateMetaImage?title=${slugify(
-          frontmatter.title
-        )}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+        image={`${location.origin}/.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
       />
       <Section>
         <Row>
           <PostStyles>
             <img
-              src={`../.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+              src={`${location.origin}/.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
             />
             <header>
               <h1>{frontmatter.title}</h1>

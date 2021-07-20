@@ -176,9 +176,7 @@ const BlogPost = ({ data: { mdx: post } }) => {
           frontmatter.description ? frontmatter.description : excerpt
         } | Blog | Connor Dowson`}
         keywords={frontmatter.keywords && frontmatter.keywords}
-      />
-      <img
-        src={`../.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
+        image={`./.netlify/functions/generateMetaImage?title=${frontmatter.title}&image=https://digital.ai/sites/default/files/pictures/styles/maxwidth_1920/public/blog-images//puppeteer.jpg`}
       />
       <Section>
         <Row>

@@ -175,11 +175,6 @@ const BlogPost = ({ data: { mdx: post }, location }) => {
       <Section>
         <Row>
           <PostStyles>
-            {/* <img
-              src={`${getBaseURL()}/.netlify/functions/generateMetaImage?title=${
-                frontmatter.title
-              }`}
-            /> */}
             <header>
               <h1>{frontmatter.title}</h1>
               <BlogPostDate date={frontmatter.date} timeToRead={timeToRead} />

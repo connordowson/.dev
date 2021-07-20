@@ -1,4 +1,3 @@
-// const fetch = require("node-fetch");
 const chromium = require("chrome-aws-lambda");
 const cloudinary = require("cloudinary").v2;
 const fetch = require("isomorphic-unfetch");
@@ -58,7 +57,7 @@ const takeScreenshot = async (url) => {
   const page = await browser.newPage();
   await page.setViewport({ height: 900, width: 1600 });
   await page.goto(url, { waitUntil: "load" });
-  await page.waitForSelector("#meta-image");
+  // await page.waitForSelector("#meta-image");
   const buffer = await page.screenshot();
   await browser.close();
   return `data:image/png;base64,${buffer.toString("base64")}`;
@@ -69,6 +68,7 @@ const uploadImage = async (title, image) => {
     public_id: `${cloudFolder}/${title}`,
     unique_filename: false,
     overwrite: true,
+    invalidate: true,
   };
   console.log(`uploading ${title} to cloudinary`);
   return await cloudinary.uploader
@@ -92,17 +92,15 @@ exports.handler = async function(event) {
     return;
   }
 
-  console.log("hello-----------------------------");
-
   const title = slugify(event.queryStringParameters.title);
   console.log(`processing ${title}...`);
 
   const existingImage = await getImage(title);
 
-  // if (existingImage) {
-  //   console.log(`yay, ${title} already existed`);
-  //   return forwardResponse(existingImage);
-  // }
+  if (existingImage) {
+    console.log(`yay, ${title} already existed`);
+    return forwardResponse(existingImage);
+  }
 
   console.log(`generating image for ${title}`);
   const url = local

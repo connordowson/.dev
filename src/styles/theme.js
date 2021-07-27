@@ -2,7 +2,7 @@ import colors from "./colors";
 import typography from "./typography";
 import sizes from "./sizes";
 
-export default {
+const theme = {
   colors: {
     ...colors,
   },
@@ -22,3 +22,5 @@ export default {
 
   breakpoints: sizes.map((size) => `(min-width: ${size})`),
 };
+
+export default theme;

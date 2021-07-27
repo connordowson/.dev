@@ -114,7 +114,7 @@ const Hero = () => {
           Bristol.
         </HeroText>
         <HeroImage>
-          <img src="/me.jpeg" alt="Connor Dowson" />
+          <img src="/me.webp" alt="Connor Dowson" />
           <DotGrid>
             {noOfDots.map(() => {
               return <div />;

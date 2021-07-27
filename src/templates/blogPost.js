@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled from "styled-components";
@@ -7,8 +7,6 @@ import Section from "../components/Section";
 import SEO from "../components/SEO";
 import Row from "../components/Row";
 import BlogPostDate from "../components/BlogPostDate";
-
-import { slugify } from "../helpers";
 
 const PostStyles = styled.article`
   @media ${(props) => props.theme.breakpoints[0]} {

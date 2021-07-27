@@ -51,6 +51,7 @@ const SongCard = styled.div`
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      padding-bottom: 0.1em;
     }
 
     &:nth-child(2) {

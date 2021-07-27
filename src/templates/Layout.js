@@ -6,15 +6,14 @@ import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import theme from "../styles/theme";
-import { StaticQuery } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <SEO />
       <StaticQuery
-        query=
-        {graphql`
+        query={graphql`
           query siteNavLinksQuery {
             site {
               siteMetadata {
@@ -26,10 +25,7 @@ const Layout = ({ children }) => {
             }
           }
         `}
-
-        render={data => (
-          <Navbar links={data.site.siteMetadata.navLinks} />
-        )}
+        render={(data) => <Navbar links={data.site.siteMetadata.navLinks} />}
       />
       {children}
       <GlobalStyles />

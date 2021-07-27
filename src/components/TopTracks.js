@@ -102,6 +102,7 @@ const TopTracks = () => {
                 <img
                   src={song.artwork}
                   alt={`Album artwork for ${song.name}.`}
+                  loading="lazy"
                 />
                 <div>
                   <span>{song.name}</span>

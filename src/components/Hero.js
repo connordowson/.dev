@@ -106,8 +106,6 @@ const DotGrid = styled.div`
 const Hero = ({ heroImage }) => {
   const noOfDots = Array.from({ length: 25 }, (_, i) => i + 1);
 
-  console.log(heroImage);
-
   return (
     <HeroContainer>
       <HeroContent>

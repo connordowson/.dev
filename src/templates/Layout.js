@@ -23,13 +23,28 @@ const Layout = ({ children }) => {
                 }
               }
             }
+            file(name: { eq: "connordowson" }) {
+              childImageSharp {
+                gatsbyImageData(
+                  height: 112
+                  width: 112
+                  transformOptions: { cropFocus: CENTER }
+                )
+              }
+            }
           }
         `}
-        render={(data) => <Navbar links={data.site.siteMetadata.navLinks} />}
+        render={({ site, file }) => (
+          <>
+            <Navbar links={site.siteMetadata.navLinks} />
+
+            {children}
+            <GlobalStyles />
+
+            <Footer footerImage={file.childImageSharp.gatsbyImageData} />
+          </>
+        )}
       />
-      {children}
-      <GlobalStyles />
-      <Footer />
     </ThemeProvider>
   );
 };

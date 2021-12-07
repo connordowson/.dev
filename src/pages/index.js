@@ -130,7 +130,7 @@ export const projectQuery = graphql`
             }
             image {
               childImageSharp {
-                gatsbyImageData(width: 330, quality: 90)
+                gatsbyImageData(width: 330)
               }
             }
           }
@@ -160,7 +160,6 @@ export const projectQuery = graphql`
     }
 
     file(name: { eq: "connordowson" }) {
-      name
       childImageSharp {
         gatsbyImageData(
           height: 448

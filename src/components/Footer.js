@@ -64,7 +64,11 @@ const FooterStyles = styled.footer`
 const Footer = () => {
   return (
     <FooterStyles id="contact-me">
-      <img src={"/me.webp"} alt="Connor Dowson" loading="lazy" />
+      <img
+        src={"/connordowson_footer.webp"}
+        alt="Connor Dowson"
+        loading="lazy"
+      />
       <header>
         <h2>Contact me</h2>
       </header>

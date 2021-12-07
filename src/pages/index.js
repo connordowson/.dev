@@ -38,6 +38,7 @@ const index = ({
   data: {
     projects: { edges: projects },
     blogPosts: { edges: blogPosts },
+    file: heroImage,
   },
 }) => {
   return (
@@ -46,7 +47,7 @@ const index = ({
         <title>Connor Dowson | Portfolio</title>
       </Helmet>
 
-      <Hero />
+      <Hero heroImage={heroImage.childImageSharp.gatsbyImageData} />
       <Section>
         <Row>
           <Spacer
@@ -62,7 +63,7 @@ const index = ({
               2019 with a degree in Computing.
             </p>
             <p>
-              I enjoy creating websites as a way to combine techincal and
+              I enjoy creating websites as a way to combine technical and
               creative skills; any projects shown here are either university
               work, or have been completed in my free time.
             </p>
@@ -155,6 +156,17 @@ export const projectQuery = graphql`
           excerpt
           timeToRead
         }
+      }
+    }
+
+    file(name: { eq: "connordowson" }) {
+      name
+      childImageSharp {
+        gatsbyImageData(
+          height: 448
+          width: 352
+          transformOptions: { cropFocus: CENTER }
+        )
       }
     }
   }

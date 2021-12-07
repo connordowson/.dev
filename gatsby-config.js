@@ -26,13 +26,14 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
           formats: [`auto`, `webp`],
           // placeholder: `dominantColor`,
-          quality: 80,
+          quality: 90,
         },
       },
     },
@@ -49,6 +50,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/projects`,
         name: "projects",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets`,
+        name: "assets",
       },
     },
     {

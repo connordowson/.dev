@@ -189,7 +189,7 @@ export default BlogPost;
 
 export const postQuery = graphql`
   query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug }, collection: { eq: "posts" } }) {
       id
       frontmatter {
         title

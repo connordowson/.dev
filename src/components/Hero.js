@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const HeroContainer = styled.div`
   background: ${(props) => props.theme.colors.grey[7]};
@@ -56,33 +57,32 @@ const HeroText = styled.p`
   }
 `;
 
-const HeroImage = styled.div`
+const HeroImageContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 28em;
   align-self: center;
   margin: 0 auto;
-
-  img {
-    height: 22em;
-    width: 100%;
-    max-width: 28em;
-    object-fit: cover;
-    object-position: center;
-    vertical-align: middle;
-    border-radius: 0.25em;
-    ${(props) => props.theme.shadows[3]}
-
-    @media ${(props) => props.theme.breakpoints[1]} {
-      object-position: center;
-      /* height: 28em; */
-    }
-
-    @media ${(props) => props.theme.breakpoints[2]} {
-      height: 28em;
-    }
-  }
 `;
+
+const HeroImage = styled(GatsbyImage)`   
+ height: 22em;
+width: 100%;
+max-width: 28em;
+object-fit: cover;
+object-position: center;
+vertical-align: middle;
+border-radius: 0.25em;
+${(props) => props.theme.shadows[3]}
+
+@media ${(props) => props.theme.breakpoints[1]} {
+  object-position: center;
+  /* height: 28em; */
+}
+
+@media ${(props) => props.theme.breakpoints[2]} {
+  height: 28em;
+}`;
 
 const DotGrid = styled.div`
   position: absolute;
@@ -103,8 +103,10 @@ const DotGrid = styled.div`
   }
 `;
 
-const Hero = () => {
+const Hero = ({ heroImage }) => {
   const noOfDots = Array.from({ length: 25 }, (_, i) => i + 1);
+
+  console.log(heroImage);
 
   return (
     <HeroContainer>
@@ -113,14 +115,14 @@ const Hero = () => {
           Hi! I'm <span>Connor Dowson</span>, a front end web developer based in
           Bristol.
         </HeroText>
-        <HeroImage>
-          <img src="/me.webp" alt="Connor Dowson" />
+        <HeroImageContainer>
+          <HeroImage image={heroImage} alt="Connor Dowson" />
           <DotGrid>
             {noOfDots.map(() => {
               return <div />;
             })}
           </DotGrid>
-        </HeroImage>
+        </HeroImageContainer>
       </HeroContent>
     </HeroContainer>
   );

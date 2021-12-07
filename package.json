@@ -12,7 +12,7 @@
     "chrome-aws-lambda": "^5.3.1",
     "city-lights-theme": "Yummygum/city-lights-syntax-vsc",
     "cloudinary": "^1.26.2",
-    "gatsby": "^4.3.0",
+    "gatsby": "<4",
     "gatsby-plugin-image": "^2.3.0",
     "gatsby-plugin-manifest": "^2.4.22",
     "gatsby-plugin-mdx": "^1.10.0",

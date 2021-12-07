@@ -51,6 +51,7 @@ const SongCard = styled.div`
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      padding-bottom: 0.1em;
     }
 
     &:nth-child(2) {
@@ -101,6 +102,7 @@ const TopTracks = () => {
                 <img
                   src={song.artwork}
                   alt={`Album artwork for ${song.name}.`}
+                  loading="lazy"
                 />
                 <div>
                   <span>{song.name}</span>

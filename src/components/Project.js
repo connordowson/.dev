@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Panel from "./Panel";
@@ -46,7 +46,7 @@ const ProjectImageContainer = styled.div`
   }
 `;
 
-const ProjectImage = styled(Img)`
+const ProjectImage = styled(GatsbyImage)`
   @media ${(props) => props.theme.breakpoints[2]} {
     ${(props) => props.theme.shadows[3]}
   }
@@ -78,7 +78,10 @@ const Project = ({ project }) => {
         </ButtonsContainer>
       </StyledPanel>
       <ProjectImageContainer>
-        <ProjectImage fixed={image.childImageSharp.fixed} alt={title} />
+        <ProjectImage
+          image={image.childImageSharp.gatsbyImageData}
+          alt={title}
+        />
       </ProjectImageContainer>
     </>
   );

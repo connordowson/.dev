@@ -64,7 +64,11 @@ const FooterStyles = styled.footer`
 const Footer = () => {
   return (
     <FooterStyles id="contact-me">
-      <img src={"/me.jpeg"} alt="Connor Dowson" />
+      <img
+        src={"/connordowson_footer.webp"}
+        alt="Connor Dowson"
+        loading="lazy"
+      />
       <header>
         <h2>Contact me</h2>
       </header>
@@ -90,7 +94,5 @@ const Footer = () => {
     </FooterStyles>
   );
 };
-
-Footer.propTypes = {};
 
 export default Footer;

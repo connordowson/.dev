@@ -129,9 +129,7 @@ export const projectQuery = graphql`
             }
             image {
               childImageSharp {
-                fixed(quality: 100, width: 330) {
-                  ...GatsbyImageSharpFixed
-                }
+                gatsbyImageData(width: 330, quality: 90)
               }
             }
           }

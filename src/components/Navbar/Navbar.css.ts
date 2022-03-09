@@ -162,6 +162,7 @@ export const mobileNavContents = recipe({
     listStyleType: "none",
     zIndex: "20",
     transition: "transform 0.2s ease-in-out",
+    padding: "0",
   },
   variants: {
     isOpen: {

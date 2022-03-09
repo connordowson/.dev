@@ -12,6 +12,7 @@ globalFontFace("Poppins", {
   U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
   U+FEFF, U+FFFD`,
 });
+
 globalFontFace("Inter", {
   src: `url("/fonts/inter-var-latin.woff2") format('woff2')`,
   fontWeight: `100 900`,
@@ -21,6 +22,7 @@ globalFontFace("Inter", {
   U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
   U+FEFF, U+FFFD`,
 });
+
 globalFontFace("Fira Code", {
   src: `url("/fonts/fira-code-var-latin.woff2") format('woff2')`,
   fontWeight: `300 700`,
@@ -33,6 +35,11 @@ globalFontFace("Fira Code", {
 
 globalStyle("*", {
   boxSizing: `border-box`,
+});
+
+globalStyle("*::selection, *::-moz-selection", {
+  color: colors.slate50,
+  backgroundColor: colors.emerald500,
 });
 
 globalStyle("html", {
@@ -72,7 +79,7 @@ globalStyle("code:not(pre code)", {
 });
 
 globalStyle("h1, h2, h3, h4, h5, h6", {
-  margin: "0 0 1rem 0",
+  margin: "0",
   fontFamily: fonts.headings,
 });
 
@@ -107,7 +114,7 @@ globalStyle(".gatsby-code-header h5", {
   padding: "0.5em 0.75em",
   borderRadius: "0.5em 0.5em 0 0",
   border: "none",
-  margin: "0",
+  margin: "0 0 -1em 0",
   fontFamily: "Fira Code",
   fontWeight: "400",
 });

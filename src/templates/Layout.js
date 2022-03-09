@@ -2,7 +2,6 @@ import React from "react";
 import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import theme from "../styles/theme";
 import { StaticQuery, graphql } from "gatsby";
 
 const Layout = ({ children }) => {

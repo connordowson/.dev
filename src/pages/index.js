@@ -12,7 +12,7 @@ import { mapContainer, mapSVG } from "../components/Map/Map.css";
 import Projects from "../components/Projects";
 import TopTracks from "../components/TopTracks";
 import BlogPostLinks from "../components/BlogPostLinks";
-import { accentHeading } from "../components/accentHeading/accentHeading.css";
+import { accentHeading } from "../components/AccentHeading/AccentHeading.css";
 import { topSongsInfoText } from "../components/TopTracks/TopTracks.css";
 
 const index = ({

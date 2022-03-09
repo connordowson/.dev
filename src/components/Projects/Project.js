@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
@@ -16,7 +15,7 @@ const Project = ({ project }) => {
       <Panel>
         <div className={styles.projectDetails}>
           <header>
-            <h3 className={styles.projectHeading}>{title}</h3>
+            <h4 className={styles.projectHeading}>{title}</h4>
           </header>
           <div>
             <MDXRenderer>{project.body}</MDXRenderer>

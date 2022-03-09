@@ -4,5 +4,5 @@ const { colors } = vars;
 
 export const accentHeading = style({
   color: colors.emerald500,
-  marginBottom: "1em",
+  marginBottom: "1rem",
 });

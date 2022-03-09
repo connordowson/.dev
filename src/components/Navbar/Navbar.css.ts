@@ -50,12 +50,12 @@ export const navLogo = style({
   placeContent: "center",
   fontFamily: fonts.headings,
   fontWeight: "700",
-  fontSize: "1.5em",
+  fontSize: "1.5rem",
   backgroundColor: colors.emerald200,
   color: colors.emerald800,
-  height: "2em",
-  width: "2em",
-  padding: "0.5em",
+  height: "3rem",
+  width: "3rem",
+  padding: "0.5rem",
   borderRadius: "50%",
 });
 

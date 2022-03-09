@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  
+
 :root{
   scroll-behavior: smooth;
 }
@@ -54,13 +54,12 @@ p, ul, ol{
   font-family: ${(props) => props.theme.typography.body};
 }
 
-
 h3 > a, h2 > a{
     text-decoration: none;
 }
 
 /* a:not([data-button="true"]) {
-  transition: color 100ms ease-in-out; 
+  transition: color 100ms ease-in-out;
 
   :link {
     color: ${(props) => props.theme.colors[props.theme.accent][2]};

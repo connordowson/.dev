@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/styles/*": ["styles/*"],
+      "@/utils/*": ["utils/*"]
+    },
     "target": "esnext",
     "lib": ["dom", "esnext"],
     "jsx": "react",
@@ -8,12 +14,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"]
-    }
+    "skipLibCheck": true
   },
   "include": ["./src/**/*"]
 }

@@ -11,7 +11,7 @@ import {
   headingHashAnchor,
   pre,
 } from "../../components/MDXProvider/MDXStyles.css";
-import { postTitle } from "./BlogPost.css";
+import { postTitle, postContainer } from "./BlogPost.css";
 
 const BlogPost = ({ data: { mdx: post }, location }) => {
   const { frontmatter, body, excerpt, timeToRead } = post;
@@ -41,7 +41,7 @@ const BlogPost = ({ data: { mdx: post }, location }) => {
       />
       <Section>
         <Row>
-          <article>
+          <article className={postContainer}>
             <header>
               <h1 className={postTitle}>{frontmatter.title}</h1>
               <BlogPostDate date={frontmatter.date} timeToRead={timeToRead} />

@@ -1,13 +1,16 @@
 //  https://github.com/gatsbyjs/gatsby/blob/master/examples/using-vanilla-extract/src/components/ColorModeToggle.tsx
 import { globalStyle } from "@vanilla-extract/css";
 import { vars } from "../styles/theme.css";
-const { colors } = vars;
+const { colors, fonts } = vars;
+
+globalStyle("*", {
+  boxSizing: `border-box`,
+});
 
 globalStyle("html", {
   fontFamily: "Inter",
   color: colors.slate50,
   backgroundColor: colors.slate800,
-  boxSizing: `border-box`,
   lineHeight: "1.5",
 });
 
@@ -23,6 +26,10 @@ globalStyle("p, ul, ol", {
   lineHeight: "1.7",
 });
 
+globalStyle("p", {
+  marginBottom: "1rem",
+});
+
 globalStyle("pre, code", {
   fontFamily: "Fira Code",
 });
@@ -34,6 +41,11 @@ globalStyle("code:not(pre code)", {
   fontSize: "0.9em",
   display: "inline-block",
   border: `1px solid ${colors.slate700}`,
+});
+
+globalStyle("h1, h2, h3, h4, h5, h6", {
+  margin: "0 0 1rem 0",
+  fontFamily: fonts.headings,
 });
 
 globalStyle("h1", {
@@ -70,4 +82,17 @@ globalStyle(".gatsby-code-header h5", {
   margin: "0",
   fontFamily: "Fira Code",
   fontWeight: "400",
+});
+
+globalStyle(`a:not([data-button="true"])`, {
+  textDecoration: "none",
+});
+
+globalStyle(`a:not([data-button="true"])`, {
+  transition: "color 100ms ease-in-out",
+  color: colors.emerald200,
+});
+
+globalStyle(`a:not([data-button="true"]):hover`, {
+  color: colors.emerald400,
 });

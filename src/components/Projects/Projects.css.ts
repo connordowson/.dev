@@ -19,13 +19,7 @@ export const projectDetails = style({
   padding: "1.5em",
   display: "flex",
   flexDirection: "column",
-  gap: "1.5em",
-
-  selectors: {
-    [":not(:first-child) &"]: {
-      // marginTop: "1.5em",
-    },
-  },
+  // gap: "1.5em",
 });
 
 export const buttonsWrapper = style({
@@ -52,7 +46,7 @@ export const tag = style({
   display: "inline-flex",
   textDecoration: "none",
   letterSpacing: "0.025rem",
-  marginBottom: "0.5em",
+  margin: "0.5em 0",
   // boxShadow: `${colors.slate400} 0px 1px 0px 0px inset, ${colors.slate600} 0px -1px 0px 0px inset`,
 
   selectors: {

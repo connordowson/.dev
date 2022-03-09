@@ -8,7 +8,7 @@ export const heroContainer = style({
 
   "@media": {
     "screen and (min-width: 768px)": {
-      marginTop: "-112px",
+      marginTop: "-146px",
     },
     "screen and (min-width: 1024px)": {
       padding: "6rem",

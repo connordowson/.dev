@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 
 import Layout from "../templates/Layout";
 
@@ -8,10 +7,7 @@ import SEO from "../components/SEO";
 import Section from "../components/Section";
 import Row from "../components/Row";
 import BlogPostLinks from "../components/BlogPostLinks";
-
-const AccentHeading = styled.h1`
-  color: ${(props) => props.theme.colors[props.theme.accent][4]};
-`;
+import { accentHeading } from "../components/AccentHeading/AccentHeading.css";
 
 const Blog = ({ data }) => {
   const blogDescription =
@@ -23,7 +19,7 @@ const Blog = ({ data }) => {
       <Section>
         <Row>
           <div>
-            <AccentHeading>Blog</AccentHeading>
+            <h1 className={accentHeading}>Blog</h1>
             <p>{blogDescription}</p>
             <BlogPostLinks blogPosts={data.allMdx.edges} landingPage />
           </div>

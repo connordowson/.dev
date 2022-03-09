@@ -49,6 +49,7 @@ const h6 = (props) => (
   </h6>
 );
 const p = (props) => <p className={styles.p} {...props} />;
+const a = (props) => <a className={styles.a} {...props} />;
 const pre = (props) => <pre className={styles.pre} {...props} />;
 const ul = (props) => <ul className={styles.lists} {...props} />;
 const ol = (props) => <ol className={styles.lists} {...props} />;
@@ -80,6 +81,7 @@ const components = {
   td,
   th,
   blockquote,
+  a,
 };
 
 export const CustomMDXProvider = ({ children }) => (

@@ -37,6 +37,7 @@ export const p = style({
 export const lists = style({
   listStylePosition: "inside",
   marginBottom: "1em",
+  paddingLeft: "0",
 });
 
 export const li = style({
@@ -97,4 +98,9 @@ export const blockquote = style({
   marginBottom: "1em",
   padding: "0 1em",
   borderLeft: `0.25rem solid ${colors.slate600}`,
+  marginLeft: "0",
+});
+
+export const a = style({
+  textDecoration: "underline !important",
 });

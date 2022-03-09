@@ -25,7 +25,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-vanilla-extract`,
     `gatsby-plugin-image`,
     {

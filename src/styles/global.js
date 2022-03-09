@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
 
 const GlobalStyles = createGlobalStyle`
-${normalize}
   
 :root{
   scroll-behavior: smooth;
@@ -61,7 +59,7 @@ h3 > a, h2 > a{
     text-decoration: none;
 }
 
-a:not([data-button="true"]) {
+/* a:not([data-button="true"]) {
   transition: color 100ms ease-in-out; 
 
   :link {
@@ -80,14 +78,14 @@ a:not([data-button="true"]) {
     }
   }
 
-}
+} */
 
 h1,h2,h3,h4,h5,h6{
   font-family: ${(props) => props.theme.typography.headings};
 }
 
 body{
-  background: ${(props) => props.theme.colors.grey[8]};
+  /* background: ${(props) => props.theme.colors.grey[8]}; */
   color: ${(props) => props.theme.colors.grey[0]};
   font-family: ${(props) => props.theme.typography.body};
   overflow: hidden;

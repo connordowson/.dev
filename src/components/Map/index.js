@@ -1,20 +1,12 @@
 import React from "react";
-import styled, { withTheme } from "styled-components";
-
-const MapPrimary = styled.g`
-  fill: ${(props) => props.theme.colors.grey[6]};
-`;
-
-const MapAccent = styled.g`
-  fill: ${(props) => props.theme.colors[props.theme.accent][4]};
-`;
+import * as styles from "./Map.css";
 
 const Map = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.6 173.6">
       <title>Map of Great Britain</title>
       <defs />
-      <MapPrimary>
+      <g className={styles.mapPrimary}>
         <ellipse cx="49.6" cy="171.9" rx="1.5" ry="1.6" />
         <ellipse cx="67" cy="167.6" rx="1.5" ry="1.6" />
         <ellipse cx="62.7" cy="167.6" rx="1.5" ry="1.6" />
@@ -404,12 +396,12 @@ const Map = () => {
         <ellipse cx="88.9" cy="6" rx="1.5" ry="1.6" />
         <ellipse cx="88.9" cy="1.6" rx="1.5" ry="1.6" />
         <ellipse cx="84.5" cy="1.6" rx="1.5" ry="1.6" />
-      </MapPrimary>
-      <MapAccent>
+      </g>
+      <g className={styles.mapAccent}>
         <ellipse cx="80.1" cy="154.5" rx="1.5" ry="1.6" />
-      </MapAccent>
+      </g>
     </svg>
   );
 };
 
-export default withTheme(Map);
+export default Map;

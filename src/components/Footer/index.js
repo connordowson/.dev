@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import * as styles from "./Footer.css";
 
-import { LinkButton } from "./Button";
+import { LinkButton } from "../Button";
+import { icon } from "../Button/Button.css";
 
 import {
   AiFillMail,
@@ -17,25 +19,6 @@ const FooterStyles = styled.footer`
   /* padding: 1.5em 1.5em 8em; */
   margin-top: 5em;
   position: relative;
-
-  div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1em;
-
-    @media ${(props) => props.theme.breakpoints[1]} {
-      width: 30em;
-      margin: 0 auto;
-    }
-
-    @media ${(props) => props.theme.breakpoints[2]} {
-      width: 40em;
-    }
-  }
-
-  svg {
-    margin-right: 0.4em;
-  }
 
   header {
     margin-top: 2.5em;
@@ -63,35 +46,36 @@ const FooterStyles = styled.footer`
 
 const Footer = () => {
   return (
-    <FooterStyles id="contact-me">
+    <footer className={styles.footerStyles} id="contact-me">
       <img
+        className={styles.footerImage}
         src={"/connordowson_footer.webp"}
         alt="Connor Dowson"
         loading="lazy"
       />
-      <header>
-        <h2>Contact me</h2>
+      <header className={styles.footerHeader}>
+        <h2 className={styles.footerHeading}>Contact me</h2>
       </header>
-      <div>
-        <LinkButton href="mailto:connormwdowson@gmail.com">
-          <AiFillMail />
+      <div className={styles.buttonsWrapper}>
+        <LinkButton href="mailto:connormwdowson@gmail.com" data-button>
+          <AiFillMail className={icon} />
           Email
         </LinkButton>
-        <LinkButton href="https://github.com/connordowson">
-          <AiFillGithub />
+        <LinkButton href="https://github.com/connordowson" data-button>
+          <AiFillGithub className={icon} />
           GitHub
         </LinkButton>
 
-        <LinkButton href="https://linkedin.com/in/connor-dowson">
-          <AiFillLinkedin />
+        <LinkButton href="https://linkedin.com/in/connor-dowson" data-button>
+          <AiFillLinkedin className={icon} />
           LinkedIn
         </LinkButton>
 
-        <LinkButton href="https://dribbble.com/connordowson">
-          <AiFillDribbbleSquare /> dribbble
+        <LinkButton href="https://dribbble.com/connordowson" data-button>
+          <AiFillDribbbleSquare className={icon} /> dribbble
         </LinkButton>
       </div>
-    </FooterStyles>
+    </footer>
   );
 };
 

@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Layout from "../templates/Layout";
 
 import SEO from "../components/SEO";
-import Spacer from "../components/Spacer";
 import Section from "../components/Section";
 import Row from "../components/Row";
 import BlogPostLinks from "../components/BlogPostLinks";
@@ -23,11 +22,11 @@ const Blog = ({ data }) => {
       <SEO title="Blog | Connor Dowson" description={blogDescription} />
       <Section>
         <Row>
-          <Spacer vertical="1em">
+          <div>
             <AccentHeading>Blog</AccentHeading>
             <p>{blogDescription}</p>
             <BlogPostLinks blogPosts={data.allMdx.edges} landingPage />
-          </Spacer>
+          </div>
         </Row>
       </Section>
     </Layout>

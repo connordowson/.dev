@@ -4,7 +4,7 @@ import { vars } from "../styles/theme.css";
 const { colors, fonts } = vars;
 
 globalFontFace("Poppins", {
-  src: 'local("/fonts/poppins-700-latin.woff2")',
+  src: `url("/fonts/poppins-700-latin.woff2") format('woff2')`,
   fontWeight: `700`,
   fontDisplay: "block",
   fontStyle: "normal",
@@ -13,7 +13,7 @@ globalFontFace("Poppins", {
   U+FEFF, U+FFFD`,
 });
 globalFontFace("Inter", {
-  src: 'local("/fonts/inter-var-latin.woff2")',
+  src: `url("/fonts/inter-var-latin.woff2") format('woff2')`,
   fontWeight: `100 900`,
   fontDisplay: "block",
   fontStyle: "normal",
@@ -22,7 +22,7 @@ globalFontFace("Inter", {
   U+FEFF, U+FFFD`,
 });
 globalFontFace("Fira Code", {
-  src: 'local("/fonts/fira-code-var-latin.woff2")',
+  src: `url("/fonts/fira-code-var-latin.woff2") format('woff2')`,
   fontWeight: `300 700`,
   fontDisplay: "block",
   fontStyle: "normal",

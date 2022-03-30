@@ -33,7 +33,7 @@ const objectToParams = (object) => {
 };
 
 const getImage = async (imageName) => {
-  const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/${cloudFolder}/${imageName}.png`;
+  const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${cloudFolder}/${imageName}.png`;
 
   return await fetch(url).then((res) => {
     if (res.status !== 404) {
@@ -94,6 +94,10 @@ exports.handler = async function(event) {
 
   const title = slugify(event.queryStringParameters.title);
   console.log(`processing ${title}...`);
+
+  console.log(
+    `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${cloudFolder}/${title}.png`
+  );
 
   const existingImage = await getImage(title);
 

@@ -1,17 +1,9 @@
-import React, { useEffect } from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
-import GlobalStyles from "../styles/global";
+import React from "react";
 
 import GenerateMetaImage from "../components/GenerateMetaImage";
 
 const Meta = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <GenerateMetaImage />
-      <GlobalStyles />
-    </ThemeProvider>
-  );
+  return <GenerateMetaImage />;
 };
 
 export default Meta;

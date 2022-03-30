@@ -1,18 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 
 import Layout from "../templates/Layout";
 
 import SEO from "../components/SEO";
-import Spacer from "../components/Spacer";
 import Section from "../components/Section";
 import Row from "../components/Row";
 import BlogPostLinks from "../components/BlogPostLinks";
-
-const AccentHeading = styled.h1`
-  color: ${(props) => props.theme.colors[props.theme.accent][4]};
-`;
+import { accentHeading } from "../components/AccentHeading/AccentHeading.css";
 
 const Blog = ({ data }) => {
   const blogDescription =
@@ -23,11 +18,11 @@ const Blog = ({ data }) => {
       <SEO title="Blog | Connor Dowson" description={blogDescription} />
       <Section>
         <Row>
-          <Spacer vertical="1em">
-            <AccentHeading>Blog</AccentHeading>
+          <div>
+            <h1 className={accentHeading}>Blog</h1>
             <p>{blogDescription}</p>
             <BlogPostLinks blogPosts={data.allMdx.edges} landingPage />
-          </Spacer>
+          </div>
         </Row>
       </Section>
     </Layout>

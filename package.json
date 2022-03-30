@@ -8,7 +8,10 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "babel-plugin-styled-components": "^1.11.1",
+    "@vanilla-extract/babel-plugin": "^1.1.4",
+    "@vanilla-extract/css": "^1.6.8",
+    "@vanilla-extract/recipes": "^0.2.3",
+    "@vanilla-extract/webpack-plugin": "^2.1.5",
     "chrome-aws-lambda": "^5.3.1",
     "city-lights-theme": "Yummygum/city-lights-syntax-vsc",
     "cloudinary": "^1.26.2",
@@ -21,8 +24,7 @@
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^4.10.0",
     "gatsby-plugin-sharp": "^4.3.0",
-    "gatsby-plugin-styled-components": "^4.10.0",
-    "gatsby-remark-autolink-headers": "^3.0.0",
+    "gatsby-plugin-vanilla-extract": "^2.0.1",
     "gatsby-remark-code-headers": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.10.0",
     "gatsby-remark-embedder": "^4.1.0",
@@ -32,15 +34,13 @@
     "gatsby-transformer-remark": "^4.7.0",
     "gatsby-transformer-sharp": "^3.10.0",
     "isomorphic-unfetch": "^3.0.0",
-    "prop-types": "^15.7.2",
+    "normalize.css": "^8.0.1",
     "puppeteer-core": "^10.1.0",
     "querystring": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-icons": "^3.10.0",
-    "styled-components": "^5.0.1",
-    "styled-normalize": "^8.0.7"
+    "react-icons": "^3.10.0"
   },
   "scripts": {
     "build": "gatsby build",
@@ -51,7 +51,12 @@
     "cleandev": "gatsby clean && gatsby develop"
   },
   "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.13",
+    "babel-preset-gatsby": "^2.9.0",
     "netlify-cli": "^2.58.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "typescript": "^4.6.2"
   }
 }

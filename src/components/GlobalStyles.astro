@@ -1,0 +1,131 @@
+<style is:global>
+  :root {
+    /* slate */
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+
+    /* emerald */
+    --emerald-50: #ecfdf5;
+    --emerald-100: #d1fae5;
+    --emerald-200: #a7f3d0;
+    --emerald-300: #6ee7b7;
+    --emerald-400: #34d399;
+    --emerald-500: #10b981;
+    --emerald-600: #059669;
+    --emerald-700: #047857;
+    --emerald-800: #065f46;
+    --emerald-900: #064e3b;
+  }
+
+  body {
+    background-color: var(--slate-800);
+    color: #f8fafc;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .visually-hidden {
+    /* display: none; */
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h4,
+  h5,
+  h6,
+  code {
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h4,
+  h5,
+  h6 {
+    font-family: Poppins;
+  }
+
+  section,
+  article {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  a:any-link:not(.button) {
+    color: var(--emerald-400);
+    transition: color 100ms ease-in-out;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid;
+  }
+
+  a:any-link:not(.button):hover {
+    color: var(--emerald-300);
+  }
+
+  section {
+    margin: 5em auto;
+    /* padding: 1.5em 1.5em 3em; */
+  }
+
+  code {
+    font-family: Fira Code, "monospace";
+  }
+
+  .section--heading {
+    color: var(--emerald-500);
+  }
+
+  .button {
+    appearance: none;
+    background: var(--emerald-200);
+    color: var(--emerald-800);
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: var(--emerald-100) 0 1px 0 0 inset,
+      var(--emerald-300) 0 -1px 0 0 inset;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    padding: 0.75rem 1.25rem;
+    pointer-events: auto;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  }
+
+  .button:hover {
+    background: var(--emerald-100);
+    box-shadow: var(--emerald-50) 0 1px 0 0 inset,
+      var(--emerald-200) 0 -1px 0 0 inset;
+  }
+</style>

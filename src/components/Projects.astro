@@ -1,0 +1,91 @@
+---
+const projects = await Astro.glob("../data/projects/*.md");
+projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+---
+
+<section>
+  <h2 class="section--heading">Projects</h2>
+
+  {
+    projects.map(({ Content, frontmatter }) => (
+      <div class="project">
+        <div>
+          <h3>{frontmatter.title}</h3>
+
+          <Content />
+          <ul class="project--technologies">
+            {frontmatter.technologies.map((technology) => (
+              <li>{technology}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="project--links">
+          {frontmatter.links.code && (
+            <a href={frontmatter.links.code} class="button">
+              View Code
+              <span class="visually-hidden">for {frontmatter.title}</span>
+            </a>
+          )}
+
+          {frontmatter.links.demo && (
+            <a href={frontmatter.links.demo} class="button">
+              View Demo
+              <span class="visually-hidden">for {frontmatter.title}</span>
+            </a>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .project {
+    background-color: var(--slate-700);
+    /* padding: 1.5em; */
+    border-radius: 1em;
+    margin: 0;
+    width: 600px;
+    margin: 0 auto 2em auto;
+  }
+
+  .project > div {
+    padding: 1.5em;
+  }
+
+  .project p {
+    line-height: 1.5;
+  }
+
+  .project h3 {
+    margin-top: 0;
+  }
+
+  .project--technologies {
+    display: inline-block;
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+  }
+
+  .project--technologies li {
+    display: inline-block;
+    background-color: var(--slate-600);
+
+    /* margin: 0 0 0 1em; */
+    padding: 0.5em 0.75em;
+    border-radius: 0.5em;
+    margin-right: 1em;
+  }
+
+  .project--links {
+    padding: 1.5em;
+    background-color: var(--slate-600);
+    border-radius: 0 0 1rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+  }
+</style>

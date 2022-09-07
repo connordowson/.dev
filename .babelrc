@@ -1,4 +1,0 @@
-{
-  "presets": ["babel-preset-gatsby"],
-  "plugins": ["@vanilla-extract/babel-plugin"]
-}

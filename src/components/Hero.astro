@@ -1,0 +1,50 @@
+<div class="hero--wrapper">
+  <section class="hero">
+    <div>
+      <h1>
+        Hi! I'm <span class="hero--name">Connor Dowson</span>, a front end web
+        developer based in Bristol
+      </h1>
+    </div>
+
+    <div><img src="/connordowson.webp" /></div>
+  </section>
+</div>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 352px;
+    align-items: center;
+    gap: 2em;
+    padding: 6em;
+  }
+
+  .hero--wrapper {
+    background-color: var(--slate-700);
+    width: 100%;
+    margin: 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5em;
+    line-height: 1.7;
+  }
+
+  .hero--name {
+    color: var(--emerald-500);
+  }
+
+  .hero img {
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.25em;
+  }
+
+  section {
+    margin: 0 auto;
+  }
+</style>

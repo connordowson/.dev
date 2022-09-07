@@ -1,0 +1,10 @@
+---
+title: "CALCIO! - football blog"
+technologies: ["Ghost", "Sass", "Handlebars"]
+links:
+  demo: "https://club-calcio.com/"
+image: "calcio.png"
+order: 3
+---
+
+A football blog created using Ghost CMS. All design work such as the logos and branding was completed by myself. The themes for the pages were created using the Handlebars templating engine, alongside Sass.

@@ -1,0 +1,14 @@
+---
+import BaseLayout from "./Base.astro";
+const { frontmatter } = Astro.props;
+console.log(Astro.props);
+console.log(frontmatter);
+---
+
+<BaseLayout>
+  <article>
+    <h1>{frontmatter.title}</h1>
+
+    <slot />
+  </article>
+</BaseLayout>

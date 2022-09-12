@@ -14,6 +14,15 @@
   },
   "dependencies": {
     "astro": "^1.1.5",
-    "astro-icon": "^0.7.3"
+    "astro-icon": "^0.7.3",
+    "isomorphic-unfetch": "^3.1.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "remark-code-titles": "^0.1.2"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "^0.11.1",
+    "@astrojs/preact": "^1.1.0",
+    "preact": "^10.6.5",
+    "sass": "^1.54.8"
   }
 }

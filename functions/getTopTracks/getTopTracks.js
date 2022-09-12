@@ -1,5 +1,4 @@
 const fetch = require("isomorphic-unfetch");
-const querystring = require("querystring");
 
 const {
   SPOTIFY_CLIENT_ID: client_id,
@@ -10,7 +9,6 @@ const {
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const TOP_TRACKS_ENDPOINT =
   "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=6";
-
 const spotify_secrets = Buffer.from(`${client_id}:${client_secret}`).toString(
   "base64"
 );
@@ -22,10 +20,7 @@ const getAccessToken = async () => {
       Authorization: `Basic ${spotify_secrets}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: querystring.stringify({
-      grant_type: "refresh_token",
-      refresh_token,
-    }),
+    body: new URLSearchParams({ grant_type: "refresh_token", refresh_token }),
   });
 
   return response.json();
@@ -33,6 +28,8 @@ const getAccessToken = async () => {
 
 const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
+
+  console.log(access_token);
 
   return await fetch(TOP_TRACKS_ENDPOINT, {
     headers: {
@@ -46,6 +43,8 @@ exports.handler = async () => {
     const response = await getTopTracks();
 
     const { items } = await response.json();
+
+    // console.log(response);
 
     const tracks = items.map((track) => ({
       name: track.name,

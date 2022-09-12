@@ -4,24 +4,23 @@ slug: "view-draft-posts-whilst-running-gatsby-blog-in-development"
 description: "Two ways to add support to be able to view your draft Gatsby blog posts in development, without them being published."
 keywords: "gatsby, gatsbyjs, blog, jamstack, markdown, mdx"
 date: "2021-03-02"
-layout: ../../layouts/Post.astro
 ---
 
-Whilst I've been adding an MDX blog to my Gatsby portfolio site, I've been looking for a way to view blog posts whilst I'm still working on them in development - but I don't want them to be visible in production. I found two ways to do this, which both utilise `js•process.env.NODE_ENV` in order to figure out which context Gatsby is being run in.
+Whilst I've been adding an MDX blog to my Gatsby portfolio site, I've been looking for a way to view blog posts whilst I'm still working on them in development - but I don't want them to be visible in production. I found two ways to do this, which both utilise `process.env.NODE_ENV` in order to figure out which context Gatsby is being run in.
 
-- `sh•gatsby develop` returns "develop".
-- `sh•gatsby build` and `sh•gatsby serve` return "production".
+- `gatsby develop` returns "develop".
+- `gatsby build` and `satsby serve` return "production".
 
 The two ways are as follows:
 
 1. Add a field in the frontmatter to specify draft posts, and run 2 graphql queries.
-2. Use `sh•gatsby-source-filesystem`'s ignore option to ignore draft posts during build time.
+2. Use `gatsby-source-filesystem`'s ignore option to ignore draft posts during build time.
 
 ## Using two queries to seperate drafts and published posts
 
 First add add a field to the frontmatter of your markdown (or MDX) posts.
 
-```md
+```md {5}
 ---
 title: "My post"
 slug: "first-post"
@@ -30,15 +29,14 @@ published: false
 ---
 ```
 
-Then in `fs•gatsby-node.js` create 2 queries, one for production and one for development. The 'production' query filters posts based on the frontmatter field we added earlier, whilst the 'development' query retrieves all of our posts, ignoring the `fs•published` field. From here we use `js•process.env.NODE_ENV` to see which context Gatsby is running in, and then only create pages for the desired posts. Make sure to also use this query anywhere else in you will be displaying blog posts, e.g. a blog landing page. Because of this I wasn't quite happy with this method as it could lead to discrepancies around the site.
+Then in `gatsby-node.js` create 2 queries, one for production and one for development. The 'production' query filters posts based on the frontmatter field we added earlier, whilst the 'development' query retrieves all of our posts, ignoring the `published` field. From here we use `process.env.NODE_ENV` to see which context Gatsby is running in, and then only create pages for the desired posts. Make sure to also use this query anywhere else in you will be displaying blog posts, e.g. a blog landing page. Because of this I wasn't quite happy with this method as it could lead to discrepancies around the site.
 
-```js
-// Header: gatsby-node.js
+```js:gatsby-node.js
 // query for blog posts
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
-  const blogPosts = await graphql(`
+  const blogPosts = await graphql`
     query {
       production: allMdx(
         filter: {
@@ -68,7 +66,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
     }
-  `);
+  `;
 
   const environment = process.env.NODE_ENV;
 
@@ -90,10 +88,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 ## Using gatsby-source-filesystem's ignore option
 
-The second method I found is to use the 'ignore' option of `js•gatsby-source-filesystem` to ignore certain folders, or files with a prefix in their filename. A benefit to this method, is that it will stop drafts from showing up everywhere on your site, as you are filtering the posts at the source. For example, if you have a blog landing page which lists all your blog posts, this will ensure no drafts show up there when your site is live, without you having to edit the graphql query there. These reasons are why I prefered this method and ultimately used this on my site.
+The second method I found is to use the 'ignore' option of `gatsby-source-filesystem` to ignore certain folders, or files with a prefix in their filename. A benefit to this method, is that it will stop drafts from showing up everywhere on your site, as you are filtering the posts at the source. For example, if you have a blog landing page which lists all your blog posts, this will ensure no drafts show up there when your site is live, without you having to edit the graphql query there. These reasons are why I prefered this method and ultimately used this on my site.
 
-```js
-// Header: gatsby-config.js
+```js:gatsby-config.js
 {
   resolve: `gatsby-source-filesystem`,
   options: {

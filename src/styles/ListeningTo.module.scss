@@ -1,0 +1,49 @@
+.songGrid {
+  display: grid;
+  // mobile
+  // grid-template-columns: repeat(1, (minmax(0, 1fr)));
+  grid-template-columns: repeat(3, (minmax(0, 1fr)));
+  gap: 1em;
+}
+
+.songCard {
+  background: var(--slate-700);
+  padding: 0.5em;
+  box-shadow: var(--slate-600) 0px 1px 0px inset,
+    var(--slate-800) 0px -1px 0px 0px inset;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  img {
+    border-radius: 0.25em;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+}
+
+.songInfo {
+  margin-left: 0.25em;
+  width: calc(100% - 4.5em);
+
+  span {
+    display: block;
+    margin-left: 0.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: no-wrap;
+    padding-bottom: 0.1em;
+
+    &:nth-of-type(1) {
+      font-weight: 700;
+      font-family: Poppins;
+    }
+
+    &:nth-of-type(2) {
+      color: var(--slate-300);
+      font-size: 0.9em;
+      margin-top: 0.25em;
+    }
+  }
+}

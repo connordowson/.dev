@@ -3,6 +3,7 @@ title: "View styles"
 slug: "view-styles"
 date: "2021-03-01"
 draft: true
+# layout: ../../layouts/Post.astro
 ---
 
 # Markdown 101

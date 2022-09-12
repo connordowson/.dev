@@ -1,7 +1,7 @@
 ---
 import GlobalStyles from "../components/GlobalStyles.astro";
 const { title } = Astro.props;
-console.log(title);
+const { frontmatter } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -10,7 +10,13 @@ console.log(title);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title || "test Connor Dowson | Portfolio"}</title>
+    <title>
+      {
+        title ||
+          `${frontmatter.title} | Connor Dowson | Portfolio` ||
+          "Connor Dowson | Portfolio"
+      }
+    </title>
   </head>
   <body>
     <GlobalStyles />

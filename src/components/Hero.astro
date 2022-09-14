@@ -1,3 +1,7 @@
+---
+import { Icon } from "astro-icon";
+---
+
 <div class="hero--wrapper">
   <section class="hero">
     <div>
@@ -5,6 +9,12 @@
         Hi! I'm <span class="hero--name">Connor Dowson</span>, a front end web
         developer based in Bristol
       </h1>
+      <p></p><div class="social-links">
+        <a href=""><Icon name="simple-icons:github" /></a>
+        <a href=""> <Icon name="simple-icons:linkedin" /></a>
+        <a href=""> <Icon name="simple-icons:dribbble" /></a>
+        <a href=""> <Icon name="mdi:email" /></a>
+      </div>
     </div>
 
     <div class="hero--image__wrapper"><img src="/connordowson.webp" /></div>
@@ -20,6 +30,45 @@
     align-items: center;
     gap: 2em;
     padding: 6em 0;
+
+    h1 {
+      font-size: 2.5em;
+      line-height: 1.7;
+      z-index: 20;
+      position: relative;
+    }
+
+    img {
+      margin-right: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.5em;
+      border: 3px solid var(--slate-300);
+      position: relative;
+      z-index: 99;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5em;
+
+    > a {
+      text-decoration: none;
+      border-bottom: none !important;
+    }
+
+    svg {
+      height: 28px;
+      color: var(--emerald-400);
+      transition: color 200ms ease-in-out;
+
+      &:hover {
+        color: var(--emerald-300);
+      }
+    }
   }
 
   .background-blur {
@@ -41,14 +90,7 @@
     position: relative;
   }
 
-  .hero h1 {
-    font-size: 2.5em;
-    line-height: 1.7;
-    z-index: 20;
-    position: relative;
-  }
-
-  .hero--name {
+  .hero .hero--name {
     // color: var(--emerald-500);
     background: linear-gradient(
       135deg,
@@ -59,19 +101,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .hero img {
-    margin-right: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0.5em;
-    border: 3px solid var(--slate-300);
-    position: relative;
-    z-index: 99;
-  }
-
-  .hero--image__wrapper {
+  .hero .hero--image__wrapper {
     position: relative;
   }
 

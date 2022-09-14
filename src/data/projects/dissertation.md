@@ -1,6 +1,12 @@
 ---
 title: "algorhythm - dissertation"
-technologies: ["Django", "Sass", "PostgreSQL"]
+technologies:
+  [
+    { name: "Django", icon: "simple-icons:django" },
+    { name: "Sass", icon: "simple-icons:sass" },
+    { name: "PostgreSQL", icon: "cib:postgresql" },
+  ]
+
 links:
   # demo: "https://algorhythm.connordowson.com/"
   code: "https://github.com/connordowson/algorhythm"
@@ -8,4 +14,4 @@ image: "algorhythm.png"
 order: 2
 ---
 
-For my dissertation, I created a site using Django which recommended new music to users based on their current listening habits. The Spotify API was used to discover which songs users had listened to the most over 3 different time ranges. I received a first for this project 😊.
+My dissertation project - created using Django - which recommended new music to users based on their current listening habits found using the Spotify API. I received a first for this project 🥇.

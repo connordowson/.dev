@@ -1,4 +1,4 @@
-<style is:global>
+<style is:global lang="scss">
   :root {
     /* slate */
     --slate-50: #f8fafc;
@@ -95,6 +95,7 @@
   section {
     width: 960px;
     margin: 0 auto;
+    padding: 2em 0;
   }
 
   a:any-link:not(.button) {
@@ -102,14 +103,22 @@
     transition: color 100ms ease-in-out;
     font-weight: 600;
     text-decoration: none;
-    border-bottom: 2px solid;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    border-radius: 2px;
+    transition: outline 50ms ease-in-out;
+
+    &:hover {
+      color: var(--emerald-300);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--emerald-200);
+      outline-offset: 4px;
+    }
   }
 
-  a:any-link:not(.button):hover {
-    color: var(--emerald-300);
-  }
-
-  section {
+  a:any-link:not(.button) section {
     margin: 5em auto;
     /* padding: 1.5em 1.5em 3em; */
   }

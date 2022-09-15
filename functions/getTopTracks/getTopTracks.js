@@ -29,8 +29,6 @@ const getAccessToken = async () => {
 const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
 
-  console.log(access_token);
-
   return await fetch(TOP_TRACKS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
@@ -43,8 +41,6 @@ exports.handler = async () => {
     const response = await getTopTracks();
 
     const { items } = await response.json();
-
-    // console.log(response);
 
     const tracks = items.map((track) => ({
       name: track.name,

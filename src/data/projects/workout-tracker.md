@@ -5,6 +5,7 @@ technologies:
     { name: "Remix", icon: "remix" },
     { name: "PostgreSQL", icon: "cib:postgresql" },
     { name: "Prisma", icon: "simple-icons:prisma" },
+    { name: "TypeScript", icon: "simple-icons:typescript" },
   ]
 
 links:

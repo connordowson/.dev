@@ -28,14 +28,14 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
           <div class="project--links">
             {frontmatter.links.code && (
               <a href={frontmatter.links.code}>
-                View Code →
+                View code <Icon name="ic:outline-arrow-circle-right" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
 
             {frontmatter.links.demo && (
               <a href={frontmatter.links.demo}>
-                View Demo →
+                View demo <Icon name="ic:outline-arrow-circle-right" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
@@ -52,15 +52,18 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
     .project {
       background-color: var(--slate-700);
-      /* padding: 1.5em; */
       border-radius: 1em;
       margin: 0;
-      /* width: 600px; */
-      /* margin: 0 auto 2em auto; */
+      box-shadow: var(--slate-600) 0 1px 0 0 inset;
+      overflow: hidden;
+
+      p {
+        font-size: 14pt;
+      }
     }
 
     .project > div {
-      padding: 1.5em;
+      padding: 1.25em;
     }
 
     .project p {
@@ -88,6 +91,7 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
         padding: 0.5em 0.75em;
         border-radius: 0.5em;
         margin-right: 1em;
+        font-size: 14px;
 
         svg {
           color: var(--slate-400);
@@ -98,12 +102,25 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
     }
 
     .project--links {
-      // padding: 1.5em;
       background-color: var(--slate-600);
+      box-shadow: var(--slate-700) 0 -1px 0 0 inset;
       border-radius: 0 0 1rem 1rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5em;
+      display: flex;
+      gap: 2em;
+
+      a {
+        display: inline-flex;
+        width: max-content;
+        align-items: center;
+        text-decoration: none !important;
+        position: relative;
+
+        svg {
+          margin-left: 0.25em;
+          height: 22px;
+          vertical-align: bottom;
+        }
+      }
     }
 
     .projects-grid {

@@ -20,7 +20,12 @@ const { frontmatter } = Astro.props;
     line-height: 1.7;
   }
 
-  article :global(h1, h2, h3, h4, h4, h5, h6) {
+  article :global(h1),
+  article :global(h2),
+  article :global(h3),
+  article :global(h4),
+  article :global(h5),
+  article :global(h6) {
     color: var(--emerald-500);
     border-bottom: 1px solid var(--slate-700);
     margin-bottom: 1em;

@@ -1,0 +1,32 @@
+---
+const blogPosts = await Astro.glob("../pages/posts/*.md");
+---
+
+<section>
+  <h2 class="section--heading">Blog</h2>
+
+  <ul>
+    {
+      blogPosts.map(({ frontmatter }) => {
+        return (
+          <li>
+            <a href={`/posts/${frontmatter.slug}`}>
+              <h3>{frontmatter.title}</h3>
+            </a>
+            <p>{frontmatter.description}</p>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style lang="scss">
+  ul {
+    padding: 0;
+
+    li {
+      list-style-type: none;
+    }
+  }
+</style>

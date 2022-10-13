@@ -28,14 +28,14 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
           <div class="project--links">
             {frontmatter.links.code && (
               <a href={frontmatter.links.code}>
-                View code <Icon name="ic:outline-arrow-circle-right" />
+                View code <Icon name="heroicons-outline:external-link" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
 
             {frontmatter.links.demo && (
               <a href={frontmatter.links.demo}>
-                View demo <Icon name="ic:outline-arrow-circle-right" />
+                View demo <Icon name="heroicons-outline:external-link" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
@@ -56,6 +56,8 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
       margin: 0;
       box-shadow: var(--slate-600) 0 1px 0 0 inset;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
 
       p {
         font-size: 14pt;
@@ -107,6 +109,7 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
       border-radius: 0 0 1rem 1rem;
       display: flex;
       gap: 2em;
+      margin-top: auto;
 
       a {
         display: inline-flex;

@@ -12,7 +12,7 @@ links:
   demo: "https://algorhythm.connordowson.com/"
   code: "https://github.com/connordowson/workout-tracker"
 image: "algorhythm.png"
-order: 4
+order: 2
 ---
 
-I created the workout tracker that I wanted to use at the gym using [Remix](https://remix.run).
+I created the workout tracker that I wanted to use at the gym using [Remix](https://remix.run). You can login, create routines, and then workout using those routines.

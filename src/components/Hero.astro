@@ -3,6 +3,23 @@ import { Icon } from "astro-icon";
 ---
 
 <div class="hero--wrapper">
+  <div class="hero-background">
+    <!-- {
+      Array(132).fill(
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect
+            width="100"
+            height="100"
+            rx="25"
+            stroke="currentColor"
+            stroke-width="2"
+            vector-effect="non-scaling-stroke"
+            fill="none"
+          />
+        </svg>
+      )
+    } -->
+  </div>
   <section class="hero">
     <div>
       <h1>
@@ -23,35 +40,37 @@ import { Icon } from "astro-icon";
       </div>
     </div>
 
-    <div class="hero--image__wrapper"><img src="/connordowson.webp" /></div>
+    <div class="hero--image__wrapper">
+      <img src="/connordowson.webp" class="hero--image" />
+      <div class="circle" id="circle-1"></div>
+      <div class="circle" id="circle-2"></div>
+      <div class="circle" id="circle-3"></div>
+      <div class="dots"></div>
+    </div>
   </section>
-
-  <div class="background-blur"></div>
 </div>
 
 <style lang="scss">
   .hero--wrapper {
-    background-color: var(--slate-700);
+    background-color: var(--slate-900);
+    background-color: #1b2131;
     width: 100%;
     margin: 0;
-    // background-image: url("/hero-background.png");
-    // background-size: 80%;
-    // background-position: 111% center;
-    // background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
   }
-
-  .background-blur {
+  .hero-background {
     position: absolute;
-    z-index: 10;
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("/hero-background.png");
-    background-size: 90rem auto;
-    background-position: right center;
-    background-repeat: no-repeat;
+    display: grid;
+    gap: 6px;
+    padding: 6px;
+    grid-template-columns: repeat(auto-fit, 80px);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    // grid-auto-rows: 80px;
+    color: var(--slate-800);
   }
 
   .hero {
@@ -60,6 +79,8 @@ import { Icon } from "astro-icon";
     align-items: center;
     gap: 2em;
     padding: 6em 0;
+    z-index: 99;
+    position: relative;
 
     h1 {
       font-size: 2.5em;
@@ -70,62 +91,150 @@ import { Icon } from "astro-icon";
       span {
         background: linear-gradient(
           135deg,
-          var(--emerald-400) 0%,
-          var(--emerald-600) 100%
+          var(--emerald-300) 0%,
+          var(--emerald-500) 100%
         );
         background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: transparent;
       }
     }
+  }
 
-    img {
-      margin-right: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 0.5em;
-      border: 3px solid var(--slate-300);
-      position: relative;
-      z-index: 98;
+  .hero--image {
+    width: 100%;
+    height: calc(100% - 0px);
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.5em;
+    border-radius: 50%;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    z-index: 98;
+    clip-path: inset(25px calc(100% - 2px) 2px calc(100% - 2px) round 0.5em);
+    clip-path: circle(calc(50% - 1px) at 50% 50%);
+  }
+
+  .circle {
+    position: absolute;
+    border-radius: calc(25px + calc(var(--size-diff) / 2));
+    border-radius: 50%;
+    border: 1px solid var(--emerald-300);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation-name: circle;
+    animation-duration: 3500ms;
+    animation-delay: var(--delay);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    animation-play-state: running;
+  }
+
+  #circle-1 {
+    --size-diff: 50px;
+    --size: calc(100% + var(--size-diff));
+    --delay: 0ms;
+    --opacity: 0.4;
+    height: var(--size);
+    width: var(--size);
+  }
+
+  @keyframes circle {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9) rotate(45deg);
+    }
+    40%,
+    50% {
+      opacity: var(--opacity);
+      transform: translate(-50%, -50%) scale(1) rotate(45deg);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  #circle-2 {
+    --size-diff: 100px;
+    --size: calc(100% + var(--size-diff));
+    --opacity: 0.3;
+    --delay: 250ms;
+    height: var(--size);
+    width: var(--size);
+  }
+
+  #circle-3 {
+    --size-diff: 150px;
+    --size: calc(100% + var(--size-diff));
+    --opacity: 0.1;
+    --delay: 500ms;
+    height: var(--size);
+    width: var(--size);
+  }
+
+  .hero--image__wrapper {
+    width: 100%;
+    height: 352px;
+    --color-1: var(--emerald-500);
+    --color-2: var(--emerald-800);
+    z-index: 2;
+    position: relative;
+    display: grid;
+    background: conic-gradient(
+      /* Highlight colour, top (right half)*/ var(--color-1) 0deg,
+      /* Fill colour */ var(--color-2) 20deg,
+      var(--color-2) 70deg,
+      /* Highlight colour, right */ var(--color-1) 90deg,
+      /* Fill colour */ var(--color-2) 110deg,
+      var(--color-2) 160deg,
+      /* Highlight colour, bottom */ var(--color-1) 180deg,
+      /* Fill colour */ var(--color-2) 200deg,
+      var(--color-2) 250deg,
+      /* Highlight colour, left */ var(--color-1) 270deg,
+      /* Fill colour */ var(--color-2) 290deg,
+      var(--color-2) 340deg,
+      /* Highlight colour, top (left half) */ var(--color-1) 360deg
+    );
+    border-radius: calc(50%);
+
+    & > * {
+      grid-area: 1 / 1;
     }
 
-    .hero--image__wrapper {
-      position: relative;
-    }
-
-    .hero--image__wrapper::before {
+    &::before {
       content: "";
-      width: 40%;
-      height: 3px;
-      background: linear-gradient(
-        90deg,
-        var(--slate-300) 0%,
-        var(--emerald-400) 50%,
-        var(--slate-300) 100%
-      );
-      position: absolute;
-      top: 1px;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 99;
+      position: absolute;
+      height: 150%;
+      width: 300%;
+      background: radial-gradient(
+        ellipse 50% 50% at center,
+        rgba(51, 255, 182, 0.15),
+        transparent
+      );
     }
 
-    .hero--image__wrapper::after {
-      content: "";
-      width: 40%;
-      height: 3px;
-      background: linear-gradient(
-        90deg,
-        var(--slate-300) 0%,
-        var(--emerald-400) 50%,
-        var(--slate-300) 100%
-      );
-      position: absolute;
-      bottom: 3px;
-      left: 50%;
+    .dots {
+      height: 120%;
+      width: 350%;
       transform: translate(-50%, -50%);
-      z-index: 99;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: 
+      // radial-gradient(circle at center, var(--slate-400) 4px, transparent 0),
+        radial-gradient(circle at center, var(--slate-400) 4px, transparent 0);
+      opacity: 0.1;
+      background-size: 1em 1em;
+      background-position: 0 0, 0.65rem 0.65rem;
+      mask-image: radial-gradient(black 0%, transparent 70%);
+      mix-blend-mode: overlay;
     }
   }
 

@@ -9,7 +9,7 @@ date: "2021-03-02"
 Whilst I've been adding an MDX blog to my Gatsby portfolio site, I've been looking for a way to view blog posts whilst I'm still working on them in development - but I don't want them to be visible in production. I found two ways to do this, which both utilise `process.env.NODE_ENV` in order to figure out which context Gatsby is being run in.
 
 - `gatsby develop` returns "develop".
-- `gatsby build` and `satsby serve` return "production".
+- `gatsby build` and `gatsby serve` return "production".
 
 The two ways are as follows:
 

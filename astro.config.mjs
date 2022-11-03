@@ -25,7 +25,7 @@ export default defineConfig({
         defaultFrontmatterAdvanced,
         [
           {
-            dirs: ["./src/pages/posts"],
+            dirs: ["./src/pages/blog"],
             frontmatter: {
               layout: "../../layouts/Post.astro",
             },

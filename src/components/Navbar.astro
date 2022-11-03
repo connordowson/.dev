@@ -1,0 +1,55 @@
+<nav>
+  <div class="desktop-nav">
+    <ul>
+      <li>
+        <a href="./">Home</a>
+      </li>
+      <li>
+        <a href="./blog">Blog</a>
+      </li>
+      <li>
+        <a href="./playground">Playground</a>
+      </li>
+    </ul>
+
+    <button>Toggle theme</button>
+  </div>
+</nav>
+
+<style lang="scss">
+  nav {
+    position: fixed;
+    display: inline-flex;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+  }
+
+  .desktop-nav {
+    width: 960px;
+    justify-content: space-between;
+    display: flex;
+    margin: 0 auto;
+
+    ul {
+      display: flex;
+      width: 960px;
+      gap: 2em;
+      margin: 0 auto;
+      padding: 2em 0;
+      li {
+        display: inline;
+        list-style-type: none;
+
+        a {
+        }
+      }
+    }
+
+    button {
+      display: block;
+      flex: 1;
+      flex-basis: 10px;
+    }
+  }
+</style>

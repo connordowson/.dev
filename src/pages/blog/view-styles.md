@@ -3,7 +3,7 @@ title: "View styles"
 slug: "view-styles"
 date: "2021-03-01"
 draft: true
-# layout: ../../layouts/Post.astro
+description: "View all the elements that can be used in markdown to check their styles."
 ---
 
 # Markdown 101

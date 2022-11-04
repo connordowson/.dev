@@ -14,9 +14,16 @@ import { Icon } from "astro-icon";
   </section>
 </div>
 <style lang="scss">
+  html[data-theme="dark"] {
+    --contact-bg: var(--slate-700);
+  }
+
+  html[data-theme="light"] {
+    --contact-bg: white;
+  }
   .contact-me-wrapper {
     width: 100%;
-    background-color: var(--slate-700);
+    background-color: var(--contact-bg);
   }
 
   .section--heading {

@@ -6,11 +6,28 @@
   gap: 1em;
 }
 
+html[data-theme="dark"] {
+  --song-card-bg: var(--slate-700);
+  --song-title: var(--slate-50);
+  --song-artist: var(--slate-300);
+  --song-shadow-top: var(--slate-600);
+  --song-shadow-bottom: var(--slate-800);
+}
+
+html[data-theme="light"] {
+  --song-card-bg: var(--slate-50);
+  --song-title: var(--slate-700);
+  --song-artist: var(--slate-600);
+  --song-shadow-top: white;
+  --song-shadow-bottom: var(--slate-100);
+}
+
 .songCard {
-  background: var(--slate-700);
+  background: var(--song-card-bg);
   padding: 0.5em;
-  box-shadow: var(--slate-600) 0px 1px 0px inset,
-    var(--slate-800) 0px -1px 0px 0px inset;
+  box-shadow: var(--song-shadow-top) 0px 1px 0px inset,
+    var(--song-shadow-bottom) 0px -1px 0px 0px inset,
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   border-radius: 0.5em;
   display: flex;
   align-items: center;
@@ -38,10 +55,11 @@
     &:nth-of-type(1) {
       font-weight: 700;
       font-family: Poppins;
+      color: var(--song-title);
     }
 
     &:nth-of-type(2) {
-      color: var(--slate-300);
+      color: var(--song-artist);
       font-size: 0.9em;
       margin-top: 0.25em;
     }

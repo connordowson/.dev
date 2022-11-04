@@ -3,6 +3,7 @@ title: "Workout tracker"
 technologies:
   [
     { name: "Remix", icon: "remix" },
+    { name: "React", icon: "simple-icons:react" },
     { name: "PostgreSQL", icon: "cib:postgresql" },
     { name: "Prisma", icon: "simple-icons:prisma" },
     { name: "TypeScript", icon: "simple-icons:typescript" },

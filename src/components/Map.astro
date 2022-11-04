@@ -398,6 +398,16 @@
 </svg>
 
 <style>
+  html[data-theme="dark"] {
+    --primary: var(--slate-700);
+    --accent: var(--emerald-400);
+  }
+
+  html[data-theme="light"] {
+    --primary: var(--slate-300);
+    --accent: var(--emerald-500);
+  }
+
   svg {
     position: absolute;
     right: 0;
@@ -408,9 +418,9 @@
     z-index: -1;
   }
   .map__primary {
-    fill: var(--slate-700);
+    fill: var(--primary);
   }
   .map__accent {
-    fill: var(--emerald-400);
+    fill: var(--accent);
   }
 </style>

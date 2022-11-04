@@ -51,14 +51,28 @@ import { Icon } from "astro-icon";
 </div>
 
 <style lang="scss">
+  html[data-theme="dark"] {
+    --circle: var(--emerald-400);
+    --dots: var(--slate-400);
+    --gradient-opacity: 0.15;
+  }
+
+  html[data-theme="light"] {
+    --circle: var(--emerald-500);
+    --dots: var(--slate-600);
+    --gradient-opacity: 0.2;
+  }
+
   .hero--wrapper {
     background-color: var(--slate-900);
-    background-color: #1b2131;
+    background-color: var(--hero-bg);
+    // background-color: #1b2131;
     width: 100%;
     margin: 0;
     position: relative;
     overflow: hidden;
   }
+
   .hero-background {
     position: absolute;
     top: 0;
@@ -87,12 +101,13 @@ import { Icon } from "astro-icon";
       line-height: 1.7;
       z-index: 20;
       position: relative;
+      color: var(--text);
 
       span {
         background: linear-gradient(
           135deg,
-          var(--emerald-300) 0%,
-          var(--emerald-500) 100%
+          var(--emerald-500) 0%,
+          var(--emerald-600) 100%
         );
         background-clip: text;
         color: transparent;
@@ -106,7 +121,7 @@ import { Icon } from "astro-icon";
     height: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
-    object-position: center;
+    object-position: center 80%;
     border-radius: 0.5em;
     border-radius: 50%;
     border-radius: 25px;
@@ -121,7 +136,7 @@ import { Icon } from "astro-icon";
     position: absolute;
     border-radius: calc(25px + calc(var(--size-diff) / 2));
     border-radius: 50%;
-    border: 1px solid var(--emerald-300);
+    border: 1px solid var(--circle);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
@@ -143,6 +158,24 @@ import { Icon } from "astro-icon";
     width: var(--size);
   }
 
+  #circle-2 {
+    --size-diff: 100px;
+    --size: calc(100% + var(--size-diff));
+    --opacity: 0.3;
+    --delay: 250ms;
+    height: var(--size);
+    width: var(--size);
+  }
+
+  #circle-3 {
+    --size-diff: 150px;
+    --size: calc(100% + var(--size-diff));
+    --opacity: 0.2;
+    --delay: 500ms;
+    height: var(--size);
+    width: var(--size);
+  }
+
   @keyframes circle {
     0% {
       opacity: 0;
@@ -156,24 +189,6 @@ import { Icon } from "astro-icon";
     100% {
       opacity: 0;
     }
-  }
-
-  #circle-2 {
-    --size-diff: 100px;
-    --size: calc(100% + var(--size-diff));
-    --opacity: 0.3;
-    --delay: 250ms;
-    height: var(--size);
-    width: var(--size);
-  }
-
-  #circle-3 {
-    --size-diff: 150px;
-    --size: calc(100% + var(--size-diff));
-    --opacity: 0.1;
-    --delay: 500ms;
-    height: var(--size);
-    width: var(--size);
   }
 
   .hero--image__wrapper {
@@ -215,7 +230,7 @@ import { Icon } from "astro-icon";
       width: 300%;
       background: radial-gradient(
         ellipse 50% 50% at center,
-        rgba(51, 255, 182, 0.15),
+        rgba(51, 255, 182, var(--gradient-opacity)),
         transparent
       );
     }
@@ -227,9 +242,11 @@ import { Icon } from "astro-icon";
       position: absolute;
       top: 50%;
       left: 50%;
-      background: 
-      // radial-gradient(circle at center, var(--slate-400) 4px, transparent 0),
-        radial-gradient(circle at center, var(--slate-400) 4px, transparent 0);
+      background: radial-gradient(
+        circle at center,
+        var(--dots) 4px,
+        transparent 0
+      );
       opacity: 0.1;
       background-size: 1em 1em;
       background-position: 0 0, 0.65rem 0.65rem;
@@ -249,11 +266,11 @@ import { Icon } from "astro-icon";
 
     svg {
       height: 28px;
-      color: var(--emerald-400);
+      color: var(--accent-text);
       transition: color 200ms ease-in-out;
 
       &:hover {
-        color: var(--emerald-300);
+        color: var(--accent-text-hover);
       }
     }
   }

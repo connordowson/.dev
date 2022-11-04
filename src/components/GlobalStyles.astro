@@ -25,6 +25,24 @@
     --emerald-900: #064e3b;
   }
 
+  html[data-theme="dark"] {
+    --text: var(--slate-100);
+    --hero-bg: var(--slate-900);
+    --hero-bg: #1b2131;
+    --body-bg: var(--slate-800);
+    --accent-text: var(--emerald-400);
+    --accent-text-hover: var(--emerald-300);
+  }
+
+  html[data-theme="light"] {
+    --text: var(--slate-800);
+    --hero-bg: var(--slate-200);
+    --hero-bg: #dce3ec;
+    --body-bg: var(--slate-100);
+    --accent-text: var(--emerald-500);
+    --accent-text-hover: var(--emerald-400);
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -46,8 +64,8 @@
   }
 
   body {
-    background-color: var(--slate-800);
-    color: #f8fafc;
+    background-color: var(--body-bg);
+    color: var(--text);
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
@@ -125,7 +143,7 @@
   }
 
   a:any-link:not(.button) {
-    color: var(--emerald-400);
+    color: var(--accent-text);
     transition: color 100ms ease-in-out;
     font-weight: 600;
     text-decoration: none;
@@ -135,7 +153,7 @@
     transition: outline 50ms ease-in-out;
 
     &:hover {
-      color: var(--emerald-300);
+      color: var(--accent-text-hover);
     }
 
     &:focus-visible {
@@ -154,7 +172,7 @@
   }
 
   .section--heading {
-    color: var(--emerald-500);
+    color: var(--accent-text);
   }
 
   .button {

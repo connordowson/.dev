@@ -1,0 +1,30 @@
+html[data-theme="dark"] {
+  --toggle-icon: var(--emerald-900);
+}
+
+html[data-theme="light"] {
+  --toggle-icon: var(--emerald-50);
+}
+
+.toggleTheme {
+  display: inline-flex;
+  justify-content: center;
+  flex: 0;
+  align-self: center;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: var(--emerald-400);
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover {
+    background-color: var(--emerald-300);
+  }
+
+  svg {
+    color: var(--toggle-icon);
+    height: 16px;
+    width: 16px;
+  }
+}

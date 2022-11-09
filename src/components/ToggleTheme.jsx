@@ -4,33 +4,48 @@ import { toggleTheme } from "@styles/ThemeToggle.module.scss";
 const storageKey = "theme-preference";
 
 const getThemePreference = () => {
-  if (localStorage.getItem(storageKey)) {
-    return localStorage.getItem(storageKey);
-  } else {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+  let theme;
+
+  if (import.meta.env.SSR) {
+    return undefined;
   }
+
+  if (typeof localStorage !== "undefined" && localStorage.getItem(storageKey)) {
+    theme = localStorage.getItem(storageKey);
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    theme = "dark";
+  } else {
+    theme = "dark";
+  }
+
+  return theme;
 };
-
-const [theme, setTheme] = createSignal(getThemePreference());
-
-const handleSetTheme = (theme) => {
-  localStorage.setItem(storageKey, theme);
-  setTheme(theme);
-  document.firstElementChild.setAttribute("data-theme", theme);
-};
-
-createEffect(() => {
-  handleSetTheme(getThemePreference());
-});
 
 const ToggleTheme = () => {
+  const [theme, setTheme] = createSignal(getThemePreference());
+
+  const handleSetTheme = (theme) => {
+    localStorage.setItem(storageKey, theme);
+    setTheme(theme);
+    document.firstElementChild.setAttribute("data-theme", theme);
+  };
+
+  createEffect(() => {
+    const root = document.documentElement;
+    if (theme() === "light") {
+      root.setAttribute("data-theme", "light");
+      localStorage.setItem(storageKey, "light");
+    } else {
+      root.setAttribute("data-theme", "dark");
+      localStorage.setItem(storageKey, "dark");
+    }
+  });
+
   return (
     <button
       aria-label={`Change to ${theme() === "dark" ? "light" : "dark"} theme`}
       class={toggleTheme}
-      onClick={() => handleSetTheme(theme() === "dark" ? "light" : "dark")}
+      onClick={() => setTheme((theme) => (theme === "dark" ? "light" : "dark"))}
     >
       {theme() === "dark" ? (
         <svg width="32" height="32" viewBox="0 0 24 24">

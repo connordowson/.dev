@@ -1,0 +1,44 @@
+---
+import { format } from "date-fns";
+
+import BaseLayout from "@layouts/Base.astro";
+
+const blogPosts = await Astro.glob("../pages/blog/*.md");
+blogPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+);
+---
+
+<BaseLayout title="Connor Dowson | Blog">
+  <section>
+    <h1>Blog</h1>
+
+    <ul>
+      {
+        blogPosts.map(({ frontmatter, url }) => (
+          <li>
+            <a href={url}>
+              <h2>{frontmatter.title}</h2>
+            </a>
+            <time>{format(new Date(frontmatter.date), "do MMMM, yyyy")}</time>
+            <p>{frontmatter.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  ul {
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
+  }
+</style>

@@ -3,30 +3,16 @@ import { Icon } from "astro-icon";
 ---
 
 <div class="hero--wrapper">
-  <div class="hero-background">
-    <!-- {
-      Array(132).fill(
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <rect
-            width="100"
-            height="100"
-            rx="25"
-            stroke="currentColor"
-            stroke-width="2"
-            vector-effect="non-scaling-stroke"
-            fill="none"
-          />
-        </svg>
-      )
-    } -->
-  </div>
   <section class="hero">
     <div>
       <h1>
         Hi! I'm <span class="hero--name">Connor Dowson</span>, a front end web
-        developer based in Bristol
+        developer based in Bristol.
       </h1>
       <div class="social-links">
+        <a href="https://twitter.com/ConnorDowsonDev"
+          ><Icon name="simple-icons:twitter" />
+        </a>
         <a href="https://github.com/connordowson"
           ><Icon name="simple-icons:github" />
         </a>
@@ -73,20 +59,6 @@ import { Icon } from "astro-icon";
     overflow: hidden;
   }
 
-  .hero-background {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    gap: 6px;
-    padding: 6px;
-    grid-template-columns: repeat(auto-fit, 80px);
-    grid-template-rows: repeat(auto-fit, 1fr);
-    // grid-auto-rows: 80px;
-    color: var(--slate-800);
-  }
-
   .hero {
     display: grid;
     grid-template-columns: 1fr 352px;
@@ -98,7 +70,9 @@ import { Icon } from "astro-icon";
 
     h1 {
       font-size: 2.5em;
+      font-size: 3em;
       line-height: 1.7;
+      line-height: 1.3;
       z-index: 20;
       position: relative;
       color: var(--text);
@@ -109,6 +83,7 @@ import { Icon } from "astro-icon";
           var(--emerald-500) 0%,
           var(--emerald-600) 100%
         );
+        // background-color: var(--pink);
         background-clip: text;
         color: transparent;
       }
@@ -139,7 +114,7 @@ import { Icon } from "astro-icon";
     border: 1px solid var(--circle);
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%);
     animation-name: circle;
     animation-duration: 3500ms;
     animation-delay: var(--delay);
@@ -195,7 +170,7 @@ import { Icon } from "astro-icon";
     width: 100%;
     height: 352px;
     --color-1: var(--emerald-500);
-    --color-2: var(--emerald-800);
+    --color-2: var(--emerald-700);
     z-index: 2;
     position: relative;
     display: grid;
@@ -236,6 +211,7 @@ import { Icon } from "astro-icon";
     }
 
     .dots {
+      pointer-events: none;
       height: 120%;
       width: 350%;
       transform: translate(-50%, -50%);
@@ -267,6 +243,7 @@ import { Icon } from "astro-icon";
     svg {
       height: 28px;
       color: var(--accent-text);
+      color: var(--emerald-200);
       transition: color 200ms ease-in-out;
 
       &:hover {

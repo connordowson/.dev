@@ -23,12 +23,16 @@
     --emerald-700: #047857;
     --emerald-800: #065f46;
     --emerald-900: #064e3b;
+
+    --dark-pink: #ff7b81;
+    --pink: #ffd1d9;
+    --pink: #ffb3ba;
   }
 
   html[data-theme="dark"] {
     --text: var(--slate-100);
     --hero-bg: var(--slate-900);
-    --hero-bg: #1b2131;
+    // --hero-bg: #1b2131;
     --body-bg: var(--slate-800);
     --accent-text: var(--emerald-400);
     --accent-text-hover: var(--emerald-300);
@@ -54,11 +58,27 @@
     font-style: normal;
     font-display: block;
   }
+  @font-face {
+    font-family: "Inter Display";
+    src: url("/fonts/Inter-DisplayBold.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: block;
+  }
 
   @font-face {
     font-family: "Poppins";
     src: url("/fonts/poppins-700-latin.woff2") format("woff2");
     font-weight: 700;
+    font-style: normal;
+    font-display: block;
+  }
+
+  @font-face {
+    font-family: "Genera Grotesk";
+    src: url("/fonts/GeneraGrotesk-Bold.woff2") format("woff2");
+    // src: url("/fonts/GeneraGrotesk-Medium.woff2") format("woff2");
+    // font-weight: 700;
     font-style: normal;
     font-display: block;
   }
@@ -69,6 +89,8 @@
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
+    // font-family: Switzer;
+    font-weight: 400;
     margin: 0;
     padding: 0;
   }
@@ -106,8 +128,8 @@
   h4,
   h5,
   h6 {
-    font-family: Poppins;
-    font-weight: 400;
+    font-family: "Inter Display";
+    font-weight: 700;
   }
 
   // Type scale from https://type-scale.com/

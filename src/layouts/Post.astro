@@ -1,23 +1,140 @@
 ---
 import BaseLayout from "./Base.astro";
 const { frontmatter } = Astro.props;
+import { Image, Picture } from "@astrojs/image/components";
+import { format } from "date-fns";
 ---
 
 <BaseLayout frontmatter={Astro.props.frontmatter}>
-  <article>
-    <header>
+  <header>
+    <div>
       <h1>{frontmatter.title}</h1>
-    </header>
+      <div>
+        <Image
+          src="/connordowson.webp"
+          alt="Connor Dowson"
+          height="60"
+          width="60"
+          quality="100"
+          format="webp"
+          aspectRatio="1:1"
+          fit="cover"
+        />
+        <div>
+          <p>Blog by Connor Dowson</p>
+
+          <time>{format(new Date(frontmatter.date), "do MMMM, yyyy")}</time>
+        </div>
+      </div>
+    </div>
+  </header>
+  <article>
+    <!-- <header>
+      <h1>{frontmatter.title}</h1>
+      <div>
+        <Image
+          src="/connordowson.webp"
+          alt="Connor Dowson"
+          height="60"
+          width="60"
+          quality="100"
+          format="webp"
+          aspectRatio="1:1"
+          fit="cover"
+        />
+        <div>
+          <p>Blog by Connor Dowson</p>
+
+          <time>{format(new Date(frontmatter.date), "dd MMMM, yyyy")}</time>
+        </div>
+      </div>
+    </header> -->
 
     <slot />
   </article>
 </BaseLayout>
 
 <style lang="scss">
+  html[data-theme="dark"] {
+    --circle: var(--emerald-400);
+    --dots: var(--slate-400);
+    --gradient-opacity: 0.15;
+  }
+
+  html[data-theme="light"] {
+    --circle: var(--emerald-500);
+    --dots: var(--slate-600);
+    --gradient-opacity: 0.2;
+  }
+
   article {
     width: 46rem;
-    margin: 10em auto 0;
+    margin: 3em auto 4em;
     line-height: 1.7;
+  }
+
+  header {
+    background-color: var(--slate-900);
+    background-color: var(--hero-bg);
+    background-blend-mode: darken, luminosity;
+    padding: 5em 2em 3em;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      pointer-events: none;
+
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        ellipse 80% 90% at bottom right,
+        var(--accent-text),
+        transparent
+      );
+      opacity: 0.15;
+      // opacity: 0;
+      mix-blend-mode: color-dodge;
+    }
+
+    > div {
+      width: 46rem;
+      // width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: c;
+      height: 100%;
+    }
+
+    h1 {
+      color: var(--accent-text);
+    }
+
+    img {
+      border-radius: 50%;
+      margin-right: 1em;
+      border: 1px solid var(--accent-text);
+      border: 1px solid var(--pink);
+    }
+
+    > div {
+      display: flex;
+      > div {
+        display: flex;
+        flex-direction: row;
+        p {
+          display: block;
+          margin: 0;
+        }
+        time {
+          display: block;
+        }
+      }
+    }
   }
 
   article :global(h1),

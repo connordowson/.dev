@@ -79,12 +79,16 @@ import { Icon } from "astro-icon";
 
       span {
         background: linear-gradient(
-          135deg,
-          var(--emerald-500) 0%,
-          var(--emerald-600) 100%
-        );
-        // background-color: var(--pink);
+              135deg,
+              var(--emerald-500) 0%,
+              var(--emerald-600) 100%
+            )
+            border-box,
+          linear-gradient(white, red) padding-box;
+
+        background-color: var(--pink);
         background-clip: text;
+        -webkit-background-clip: text;
         color: transparent;
       }
     }
@@ -97,9 +101,7 @@ import { Icon } from "astro-icon";
     aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center 80%;
-    border-radius: 0.5em;
     border-radius: 50%;
-    border-radius: 25px;
     overflow: hidden;
     position: relative;
     z-index: 98;
@@ -227,6 +229,7 @@ import { Icon } from "astro-icon";
       background-size: 1em 1em;
       background-position: 0 0, 0.65rem 0.65rem;
       mask-image: radial-gradient(black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(black 0%, transparent 70%);
       mix-blend-mode: overlay;
     }
   }

@@ -6,8 +6,9 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import solidJs from "@astrojs/solid-js";
-
 import image from "@astrojs/image";
+
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,46 +18,28 @@ export default defineConfig({
       theme: {
         name: "city-lights",
         type: "dark",
-        settings: tokenColors,
+        settings: tokenColors
       },
       wrap: true,
-      skipInline: false,
+      skipInline: false
     },
-    remarkPlugins: [
-      remarkCodeTitles,
-      [
-        defaultFrontmatterAdvanced,
-        [
-          {
-            dirs: ["./src/pages/blog"],
-            frontmatter: {
-              layout: "../../layouts/Post.astro",
-            },
-          },
-        ],
-      ],
-    ],
-    rehypePlugins: [
-      [
-        rehypeAutolinkHeadings,
-        [
-          {
-            behavior: "after",
-            content: {
-              type: "text",
-              value: "#",
-            },
-          },
-        ],
-      ],
-    ],
+    remarkPlugins: [remarkCodeTitles, [defaultFrontmatterAdvanced, [{
+      dirs: ["./src/pages/blog"],
+      frontmatter: {
+        layout: "../../layouts/Post.astro"
+      }
+    }]]],
+    rehypePlugins: [[rehypeAutolinkHeadings, [{
+      behavior: "after",
+      content: {
+        type: "text",
+        value: "#"
+      }
+    }]]]
   },
-  integrations: [
-    mdx(),
-    preact(),
-    solidJs(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
-  ],
+  integrations: [mdx(), preact(), solidJs(), image({
+    serviceEntryPoint: "@astrojs/image/sharp"
+  })],
+  output: "server",
+  adapter: netlify()
 });

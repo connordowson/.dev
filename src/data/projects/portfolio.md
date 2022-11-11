@@ -1,10 +1,12 @@
 ---
 title: "Portfolio - this website"
-technologies:
-  [
-    { name: "Astro", icon: "simple-icons:astro" },
-    { name: "SolidJS", icon: "simple-icons:solid" },
-    { name: "Tailwind", icon: "mdi:tailwind" },
+technologies: [
+    # { name: "Astro", icon: "simple-icons:astro" },
+    { name: "Astro", icon: "astro" },
+    # { name: "SolidJS", icon: "simple-icons:solid" },
+    { name: "SolidJS", icon: "solid" },
+    # { name: "Tailwind", icon: "mdi:tailwind" },
+    { name: "Tailwind", icon: "tailwind" },
   ]
 links:
   code: "https://github.com/connordowson/.dev"

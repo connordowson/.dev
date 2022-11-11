@@ -1,9 +1,12 @@
 ---
 import { Icon } from "astro-icon";
+// import Icon from "@components/Icon.astro";
 import Section from "@components/Section.astro";
 
-const projects = await Astro.glob("../data/projects/*.md");
+// const projects = await Astro.glob("../data/projects/*.md");
+const projects = await Astro.glob("../data/projects/portfolio.md");
 projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+const linkIcon = `<Icon class="h-6 ml-1" name="heroicons-outline:external-link" />`;
 ---
 
 <Section class="max-w-7xl">
@@ -39,8 +42,7 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
                 class="inline-flex w-max items-center relative no-underline project-link"
                 href={frontmatter.links.code}
               >
-                View code{" "}
-                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
+                View code {"link icon here"}
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
@@ -50,8 +52,7 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
                 class="inline-flex w-max items-center relative no-underline project-link"
                 href={frontmatter.links.demo}
               >
-                View demo{" "}
-                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
+                View demo // {"link icon here"}
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}

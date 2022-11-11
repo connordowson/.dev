@@ -7,7 +7,7 @@ import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import solidJs from "@astrojs/solid-js";
 import image from "@astrojs/image";
-import netlify from "@astrojs/netlify/functions";
+import netlify from "@astrojs/netlify/edge-functions";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config

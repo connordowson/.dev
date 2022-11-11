@@ -17,7 +17,7 @@ const ListeningTo = () => {
   if (!topTracks) return <p>Loading</p>;
 
   return (
-    <section class="mx-auto my-12 p-4 lg:px-4 max-w-[1200px]">
+    <section class="mx-auto my-12 p-4 lg:px-4 w-full max-w-7xl">
       <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">
         What I've been listening to
       </h2>
@@ -25,7 +25,7 @@ const ListeningTo = () => {
         My top played songs from the Spotify API (so I can't hide any
         embarrassing ones).
       </p>
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 gap-4">
         {topTracks.map(({ name, artist, artwork }) => (
           <div class="dark:bg-slate-700 bg-white p-2 rounded-lg flex items-center w-full gap-2 shadow-md dark:highlight-white/5">
             <img

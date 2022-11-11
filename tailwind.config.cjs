@@ -15,7 +15,7 @@ module.exports = {
           },
           css: {
             "h1, h2, h3, h4, h5, h6": {
-              color: theme("colors.emerald.500"),
+              color: theme("colors.emerald.700"),
             },
 
             "p, ul, ol, strong, em, li, time": {
@@ -24,7 +24,7 @@ module.exports = {
             },
 
             "a:any-link": {
-              color: `${theme("colors.emerald.500")}`,
+              color: `${theme("colors.emerald.600")}`,
             },
             "a:hover": {
               color: theme("colors.emerald.600"),

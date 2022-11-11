@@ -15,12 +15,13 @@ const { title, frontmatter, maxWidth } = Astro.props;
       name="description"
       content="Portfolio site for Connor Dowson, a Bristol based front end web developer. "
     />
-    <title></title>
-    {
-      title ||
-        `${frontmatter.title} | Connor Dowson | Portfolio` ||
-        "Connor Dowson | Portfolio"
-    }
+    <title>
+      {
+        title ||
+          `${frontmatter.title} | Connor Dowson | Portfolio` ||
+          "Connor Dowson | Portfolio"
+      }
+    </title>
   </head>
 </html>
 <Navbar maxWidth={maxWidth} />

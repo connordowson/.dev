@@ -2,7 +2,9 @@
 import BaseLayout from "./Base.astro";
 const { frontmatter } = Astro.props;
 import { format } from "date-fns";
-import { Icon } from "astro-icon";
+// TODO: Use astro icon when it works with SSr
+// import { Icon } from "astro-icon";
+import Icon from "@components/Icon.astro";
 const url = Astro.url;
 const maxWidth = "3xl";
 ---

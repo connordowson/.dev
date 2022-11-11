@@ -6,7 +6,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import solidJs from "@astrojs/solid-js";
-import image from "@astrojs/image";
 import netlify from "@astrojs/netlify/edge-functions";
 import tailwind from "@astrojs/tailwind";
 
@@ -56,9 +55,6 @@ export default defineConfig({
     mdx(),
     preact(),
     solidJs(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     tailwind({ config: { applyBaseStyles: false } }),
   ],
   output: "server",

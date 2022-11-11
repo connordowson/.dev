@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "./Base.astro";
 const { frontmatter } = Astro.props;
-import { Image, Picture } from "@astrojs/image/components";
 import { format } from "date-fns";
 import { Icon } from "astro-icon";
 const url = Astro.url;
@@ -19,7 +18,8 @@ const maxWidth = "3xl";
         {frontmatter.title}
       </h1>
       <div class="flex flex-row items-center">
-        <Image
+        <!-- Comment out until astro image is usable on netlify edge functions adapter -->
+        <!-- <Image
           class="border dark:border-emerald-400 border-emerald-500 mr-4 rounded-full"
           src="/connordowson.webp"
           alt="Connor Dowson"
@@ -29,6 +29,11 @@ const maxWidth = "3xl";
           format="webp"
           aspectRatio="1:1"
           fit="cover"
+        /> -->
+        <img
+          class="border dark:border-emerald-400 border-emerald-500 mr-4 rounded-full w-16 h-16 object-cover"
+          src="/connordowson.webp"
+          alt="Connor Dowson"
         />
         <div>
           <p class="font-medium">Blog by Connor Dowson</p>

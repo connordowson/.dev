@@ -1,10 +1,12 @@
 ---
 title: "algorhythm - dissertation"
-technologies:
-  [
-    { name: "Django", icon: "simple-icons:django" },
-    { name: "Sass", icon: "simple-icons:sass" },
-    { name: "PostgreSQL", icon: "cib:postgresql" },
+technologies: [
+    # { name: "Django", icon: "simple-icons:django" },
+    { name: "Django", icon: "django" },
+    # { name: "Sass", icon: "simple-icons:sass" },
+    { name: "Sass", icon: "sass" },
+    # { name: "PostgreSQL", icon: "cib:postgresql" },
+    { name: "PostgreSQL", icon: "postgresql" },
   ]
 
 links:

@@ -5,8 +5,11 @@ technologies: [
     # { name: "React", icon: "simple-icons:react" },
     { name: "React", icon: "react" },
     # { name: "PostgreSQL", icon: "cib:postgresql" },
+    { name: "PostgreSQL", icon: "postgresql" },
     # { name: "Prisma", icon: "simple-icons:prisma" },
+    { name: "Prisma", icon: "prisma" },
     # { name: "TypeScript", icon: "simple-icons:typescript" },
+    { name: "TypeScript", icon: "typescript" },
   ]
 
 links:

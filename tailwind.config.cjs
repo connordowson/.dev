@@ -15,7 +15,7 @@ module.exports = {
           },
           css: {
             "h1, h2, h3, h4, h5, h6": {
-              color: theme("colors.emerald.700"),
+              color: theme("colors.emerald.500"),
             },
 
             "p, ul, ol, strong, em, li, time": {

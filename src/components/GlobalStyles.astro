@@ -1,51 +1,33 @@
 <style is:global lang="scss">
   :root {
-    /* slate */
-    --slate-50: #f8fafc;
-    --slate-100: #f1f5f9;
-    --slate-200: #e2e8f0;
-    --slate-300: #cbd5e1;
-    --slate-400: #94a3b8;
-    --slate-500: #64748b;
-    --slate-600: #475569;
-    --slate-700: #334155;
-    --slate-800: #1e293b;
-    --slate-900: #0f172a;
-
-    /* emerald */
-    --emerald-50: #ecfdf5;
-    --emerald-100: #d1fae5;
-    --emerald-200: #a7f3d0;
-    --emerald-300: #6ee7b7;
-    --emerald-400: #34d399;
-    --emerald-500: #10b981;
-    --emerald-600: #059669;
-    --emerald-700: #047857;
-    --emerald-800: #065f46;
-    --emerald-900: #064e3b;
-
     --dark-pink: #ff7b81;
     --pink: #ffd1d9;
     --pink: #ffb3ba;
+
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
-  html[data-theme="dark"] {
-    --text: var(--slate-100);
-    --hero-bg: var(--slate-900);
-    --hero-bg: #151a29;
-    --body-bg: var(--slate-800);
-    --accent-text: var(--emerald-400);
-    --accent-text-hover: var(--emerald-300);
-  }
+  // html[data-theme="dark"] {
+  //   --text: var(--slate-100);
+  //   --hero-bg: var(--slate-900);
+  //   --hero-bg: #151a29;
+  //   --body-bg: var(--slate-800);
+  //   --accent-text: var(--emerald-400);
+  //   --accent-text-hover: var(--emerald-300);
+  // }
 
-  html[data-theme="light"] {
-    --text: var(--slate-800);
-    --hero-bg: var(--slate-200);
-    --hero-bg: #dce3ec;
-    --body-bg: var(--slate-100);
-    --accent-text: var(--emerald-500);
-    --accent-text-hover: var(--emerald-400);
-  }
+  // html[data-theme="light"] {
+  //   --text: var(--slate-800);
+  //   --hero-bg: var(--slate-200);
+  //   --hero-bg: #dce3ec;
+  //   --body-bg: var(--slate-100);
+  //   --accent-text: var(--emerald-500);
+  //   --accent-text-hover: var(--emerald-400);
+  // }
 
   * {
     box-sizing: border-box;
@@ -64,18 +46,6 @@
     font-weight: 100 900;
     font-style: normal;
     font-display: block;
-  }
-
-  body {
-    background-color: var(--body-bg);
-    color: var(--text);
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    // font-family: Switzer;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
   }
 
   .visually-hidden {
@@ -104,17 +74,6 @@
     line-height: 1.7;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h4,
-  h5,
-  h6 {
-    font-family: "Inter Display";
-    font-weight: 700;
-  }
-
   // Type scale from https://type-scale.com/
 
   h1 {
@@ -139,45 +98,6 @@
 
   h6 {
     font-size: 1rem;
-  }
-
-  section {
-    width: 960px;
-    margin: 0 auto;
-    padding: 2rem 0;
-  }
-
-  a:any-link:not(.button) {
-    color: var(--accent-text);
-    transition: color 100ms ease-in-out;
-    font-weight: 600;
-    text-decoration: none;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    // border-radius: 2px;
-    transition: outline 50ms ease-in-out;
-
-    &:hover {
-      color: var(--accent-text-hover);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--emerald-200);
-      outline-offset: 4px;
-    }
-  }
-
-  a:any-link:not(.button) section {
-    margin: 5em auto;
-    /* padding: 1.5em 1.5em 3em; */
-  }
-
-  code {
-    font-family: Fira Code, "monospace";
-  }
-
-  .section--heading {
-    color: var(--accent-text);
   }
 
   .button {

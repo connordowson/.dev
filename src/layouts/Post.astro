@@ -3,14 +3,24 @@ import BaseLayout from "./Base.astro";
 const { frontmatter } = Astro.props;
 import { Image, Picture } from "@astrojs/image/components";
 import { format } from "date-fns";
+import { Icon } from "astro-icon";
+const url = Astro.url;
+const maxWidth = "[700px]";
 ---
 
-<BaseLayout frontmatter={Astro.props.frontmatter}>
-  <header>
-    <div>
-      <h1>{frontmatter.title}</h1>
-      <div>
+<BaseLayout frontmatter={Astro.props.frontmatter} maxWidth={maxWidth}>
+  <header
+    class={`w-full mx-auto dark:bg-slate-900 bg-slate-200 pt-20 md:px-8 pb-12 overflow-hidden relative dark:[--gradient:#10b981] [--gradient:#047857] `}
+  >
+    <div
+      class={`w-full max-w-${maxWidth} mx-auto my-0 flex flex-col h-full px-4`}
+    >
+      <h1 class="dark:text-emerald-400 text-emerald-500 mb-4">
+        {frontmatter.title}
+      </h1>
+      <div class="flex flex-row items-center">
         <Image
+          class="border dark:border-emerald-400 border-emerald-500 mr-4 rounded-full"
           src="/connordowson.webp"
           alt="Connor Dowson"
           height="60"
@@ -21,52 +31,50 @@ import { format } from "date-fns";
           fit="cover"
         />
         <div>
-          <p>Blog by Connor Dowson</p>
+          <p class="font-medium">Blog by Connor Dowson</p>
 
-          <time>{format(new Date(frontmatter.date), "do MMMM, yyyy")}</time>
+          <time class="block dark:text-emerald-100 text-emerald-900"
+            >{format(new Date(frontmatter.date), "do MMMM, yyyy")}</time
+          >
         </div>
       </div>
     </div>
   </header>
-  <article>
-    <!-- <header>
-      <h1>{frontmatter.title}</h1>
-      <div>
-        <Image
-          src="/connordowson.webp"
-          alt="Connor Dowson"
-          height="60"
-          width="60"
-          quality="100"
-          format="webp"
-          aspectRatio="1:1"
-          fit="cover"
-        />
-        <div>
-          <p>Blog by Connor Dowson</p>
-
-          <time>{format(new Date(frontmatter.date), "dd MMMM, yyyy")}</time>
-        </div>
-      </div>
-    </header> -->
-
+  <article class={`dark:prose-dark prose w-full max-w-${maxWidth} px-4`}>
     <slot />
+
+    <div
+      class="dark:bg-slate-700 bg-slate-200 mt-8 rounded-md flex items-center overflow-hidden justify-between dark:highlight-white/5 shadow-md"
+    >
+      <p class="ml-8">Share this post</p>
+      <ul class="inline-flex m-0 p-0">
+        <li class="list-none m-0 p-0">
+          <a
+            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            href={`https://twitter.com/intent/tweet/?text=${frontmatter.title}&url=${url}`}
+            ><Icon class="h-[22px]" name="simple-icons:twitter" />
+          </a>
+          <a
+            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
+            ><Icon class="h-[22px]" name="simple-icons:linkedin" />
+          </a>
+          <a
+            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            href={`https://www.reddit.com/submit/?url=${url}&title=${frontmatter.title}`}
+            ><Icon class="h-[22px]" name="simple-icons:reddit" />
+          </a>
+          <a
+            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            ><Icon class="h-[22px]" name="mdi:link-variant" />
+          </a>
+        </li>
+      </ul>
+    </div>
   </article>
 </BaseLayout>
 
 <style lang="scss">
-  html[data-theme="dark"] {
-    --circle: var(--emerald-400);
-    --dots: var(--slate-400);
-    --gradient-opacity: 0.15;
-  }
-
-  html[data-theme="light"] {
-    --circle: var(--emerald-500);
-    --dots: var(--slate-600);
-    --gradient-opacity: 0.2;
-  }
-
   article {
     width: 46rem;
     margin: 3em auto 4em;
@@ -74,16 +82,8 @@ import { format } from "date-fns";
   }
 
   header {
-    background-color: var(--slate-900);
-    background-color: var(--hero-bg);
-    background-blend-mode: darken, luminosity;
-    padding: 5em 2em 3em;
-    position: relative;
-    overflow: hidden;
-
     &::before {
       pointer-events: none;
-
       content: "";
       position: absolute;
       top: 0;
@@ -92,133 +92,11 @@ import { format } from "date-fns";
       height: 100%;
       background: radial-gradient(
         ellipse 80% 90% at bottom right,
-        var(--accent-text),
+        var(--gradient),
         transparent
       );
-      opacity: 0.15;
-      // opacity: 0;
+      opacity: 0.85;
       mix-blend-mode: color-dodge;
     }
-
-    > div {
-      width: 46rem;
-      // width: 960px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: c;
-      height: 100%;
-    }
-
-    h1 {
-      color: var(--accent-text);
-    }
-
-    img {
-      border-radius: 50%;
-      margin-right: 1em;
-      border: 1px solid var(--accent-text);
-      border: 1px solid var(--pink);
-    }
-
-    > div {
-      display: flex;
-      > div {
-        display: flex;
-        flex-direction: row;
-        p {
-          display: block;
-          margin: 0;
-        }
-        time {
-          display: block;
-        }
-      }
-    }
-  }
-
-  article :global(h1),
-  article :global(h2),
-  article :global(h3),
-  article :global(h4),
-  article :global(h5),
-  article :global(h6) {
-    color: var(--emerald-500);
-    border-bottom: 1px solid var(--slate-700);
-    margin-bottom: 1em;
-    padding: 0.75rem 0;
-  }
-
-  article :global(pre) {
-    padding: 1em;
-    border-radius: 0.5em;
-    border: 1px solid var(--slate-700);
-    margin: 0;
-    z-index: 2;
-  }
-
-  article :global(code:not(pre code)) {
-    font-family: "Fira Code";
-    padding: 0em 0.4em;
-    border-radius: 0.5em;
-    font-size: 0.9em;
-    display: inline-block;
-    border: 1px solid var(--slate-700);
-    background-color: #1e1e1e;
-    color: #b7c5d3;
-  }
-
-  article :global(.remark-code-title + pre) {
-    border-radius: 0 0.5em 0.5em 0.5em;
-  }
-
-  article :global(.remark-code-title) {
-    background-color: var(--emerald-200);
-    color: var(--emerald-800);
-    display: inline-block;
-    font-family: Fira Code;
-    font-weight: 400;
-    padding: 0.5em 0.75em;
-    border-radius: 0.5em 0.5em 0 0;
-  }
-
-  article :global(table) {
-    display: block;
-    width: max-content;
-    max-width: 100%;
-    overflow: auto;
-    border-spacing: 0;
-    border-collapse: collapse;
-    margin-bottom: 1em;
-  }
-  article :global(tr) {
-    border-top: 1px solid var(--slate-600);
-
-    &:nth-child(2n) {
-      background-color: var(--slate-700);
-    }
-  }
-  article :global(th, td) {
-    padding: 6px 13px;
-    border: 1px solid var(--slate-600);
-  }
-
-  article :global(blockquote) {
-    margin-bottom: 1em;
-    padding: 0 1em;
-    border-left: 4px solid var(--slate-600);
-    margin-left: 0;
-  }
-
-  article :global(hr) {
-    height: 2px;
-    border: 0;
-    padding: 0;
-    background-color: var(--slate-700);
-  }
-
-  article :global(> ul, ol) {
-    list-style-position: inside;
-    padding-left: 0;
   }
 </style>

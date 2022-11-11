@@ -1,8 +1,8 @@
 ---
+import "@styles/main.scss";
 import GlobalStyles from "../components/GlobalStyles.astro";
 import Navbar from "../components/Navbar.astro";
-const { title } = Astro.props;
-const { frontmatter } = Astro.props;
+const { title, frontmatter, maxWidth } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -19,8 +19,8 @@ const { frontmatter } = Astro.props;
       }
     </title>
   </head>
-  <Navbar />
-  <body>
+  <Navbar maxWidth={maxWidth} />
+  <body class="dark:bg-slate-800 bg-slate-100">
     <GlobalStyles />
     <main><slot /></main>
   </body>

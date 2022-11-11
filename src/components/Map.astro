@@ -1,7 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.6 173.6">
+<svg
+  class="absolute right-0 top-1/2 -translate-y-1/2 w-40 -z-10"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 116.6 173.6"
+>
   <title>Map of Great Britain</title>
   <defs></defs>
-  <g class="map__primary">
+  <g class="dark:fill-slate-700 fill-slate-300">
     <ellipse cx="49.6" cy="171.9" rx="1.5" ry="1.6"></ellipse>
     <ellipse cx="67" cy="167.6" rx="1.5" ry="1.6"></ellipse>
     <ellipse cx="62.7" cy="167.6" rx="1.5" ry="1.6"></ellipse>
@@ -392,35 +396,7 @@
     <ellipse cx="88.9" cy="1.6" rx="1.5" ry="1.6"></ellipse>
     <ellipse cx="84.5" cy="1.6" rx="1.5" ry="1.6"></ellipse>
   </g>
-  <g class="map__accent">
+  <g class="dark:fill-emerald-400 fill-emerald-500">
     <ellipse cx="80.1" cy="154.5" rx="1.5" ry="1.6"></ellipse>
   </g>
 </svg>
-
-<style>
-  html[data-theme="dark"] {
-    --primary: var(--slate-700);
-    --accent: var(--emerald-400);
-  }
-
-  html[data-theme="light"] {
-    --primary: var(--slate-300);
-    --accent: var(--emerald-500);
-  }
-
-  svg {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 160px;
-    z-index: -1;
-  }
-  .map__primary {
-    fill: var(--primary);
-  }
-  .map__accent {
-    fill: var(--accent);
-  }
-</style>

@@ -1,57 +1,35 @@
 ---
-import { Icon } from "astro-icon";
 import ToggleTheme from "./ToggleTheme";
+const { maxWidth } = Astro.props;
 ---
 
-<nav>
-  <div class="desktop-nav">
-    <ul>
-      <li>
-        <a href="/">Home</a>
+<nav class="fixed inline-flex top-0 z-50 w-full">
+  <div
+    class={`w-full max-w-${
+      maxWidth || "[960px]"
+    } px-4 mx-auto my-0 flex justify-between`}
+  >
+    <ul class="flex gap-8 py-8">
+      <li class="inline list-none">
+        <a
+          href="/"
+          class="dark:text-emerald-400 text-emerald-500 font-semibold underline decoration-2 underline-offset-3"
+          >Home</a
+        >
       </li>
-      <li>
-        <a href="/blog">Blog</a>
+      <li class="inline list-none">
+        <a
+          href="/blog"
+          class="dark:text-emerald-400 text-emerald-500 font-semibold underline decoration-2 underline-offset-3"
+          >Blog</a
+        >
       </li>
-      <li>
+      <!-- TODO: Re add this when there are some things to show -->
+      <!-- <li>
         <a href="/playground">Playground</a>
-      </li>
+      </li> -->
     </ul>
 
     <ToggleTheme client:load />
-    <!-- <button onclick="console.log('Hello')">
-      <Icon name="light" />
-    </button> -->
   </div>
 </nav>
-
-<style lang="scss">
-  nav {
-    position: fixed;
-    display: inline-flex;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-  }
-
-  .desktop-nav {
-    width: 960px;
-    justify-content: space-between;
-    display: flex;
-    margin: 0 auto;
-
-    ul {
-      display: flex;
-      gap: 2em;
-      margin: 0 auto;
-      padding: 2em 0;
-      flex: 1;
-      li {
-        display: inline;
-        list-style-type: none;
-
-        a {
-        }
-      }
-    }
-  }
-</style>

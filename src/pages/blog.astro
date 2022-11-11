@@ -2,6 +2,7 @@
 import { format } from "date-fns";
 
 import BaseLayout from "@layouts/Base.astro";
+import Section from "@components/Section.astro";
 
 const blogPosts = await Astro.glob("../pages/blog/*.md");
 blogPosts.sort(
@@ -9,36 +10,32 @@ blogPosts.sort(
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()
 );
+
+const maxWidth = "[700px]";
 ---
 
-<BaseLayout title="Connor Dowson | Blog">
-  <section>
-    <h1>Blog</h1>
+<BaseLayout title="Connor Dowson | Blog" maxWidth={maxWidth}>
+  <Section class={`w-full max-w-${maxWidth} mt-24 md:px-4 mx-auto`}>
+    <h1 class="dark:text-emerald-400 text-emerald-500">Blog</h1>
+
+    <p>
+      Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I
+      find interesting.
+    </p>
 
     <ul>
       {
         blogPosts.map(({ frontmatter, url }) => (
-          <li>
+          <li class="prose dark:prose-dark max-w-none">
             <a href={url}>
               <h2>{frontmatter.title}</h2>
             </a>
+
             <time>{format(new Date(frontmatter.date), "do MMMM, yyyy")}</time>
             <p>{frontmatter.description}</p>
           </li>
         ))
       }
     </ul>
-  </section>
+  </Section>
 </BaseLayout>
-
-<style lang="scss">
-  ul {
-    padding: 0;
-
-    li {
-      display: inline-block;
-      margin: 0;
-      padding: 0;
-    }
-  }
-</style>

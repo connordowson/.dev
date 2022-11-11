@@ -1,41 +1,57 @@
 ---
 import { Icon } from "astro-icon";
+import Section from "@components/Section.astro";
 
 const projects = await Astro.glob("../data/projects/*.md");
 projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 ---
 
-<section>
-  <h2 class="section--heading">Projects</h2>
+<Section class="max-w-[1200px]">
+  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Projects</h2>
 
-  <div class="projects-grid">
+  <div class="grid grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 w-full">
     {
       projects.map(({ Content, frontmatter }) => (
-        <div class="project">
-          <div>
-            <h3>{frontmatter.title}</h3>
+        <div class="rounded-2xl dark:bg-slate-700 bg-white overflow-hidden flex flex-col w-full shadow-md dark:highlight-white/5">
+          <div class="p-5">
+            <h3 class="dark:text-slate-100 text-slate-800">
+              {frontmatter.title}
+            </h3>
 
-            <Content />
-            <ul class="project--technologies">
+            <div class="py-4 dark:text-slate-100 text-slate-800 dark:prose-dark prose">
+              <Content />
+            </div>
+            <ul class="inline-flex gap-4 flex-wrap">
               {frontmatter.technologies.map(({ name, icon }) => (
-                <li>
-                  <Icon name={icon} />
+                <li class="dark:text-slate-200 dark:bg-slate-600 text-slate-700 bg-slate-100 rounded-lg  inline-flex items-center px-2 py-1 text-sm">
+                  <Icon
+                    name={icon}
+                    class="dark:text-slate-400 text-slate-400 h-4 mr-2"
+                  />
                   {name}
                 </li>
               ))}
             </ul>
           </div>
-          <div class="project--links">
+          <div class="flex gap-8 mt-auto dark:bg-slate-600 bg-slate-100 p-5">
             {frontmatter.links.code && (
-              <a href={frontmatter.links.code}>
-                View code <Icon name="heroicons-outline:external-link" />
+              <a
+                class="inline-flex w-max items-center relative no-underline project-link"
+                href={frontmatter.links.code}
+              >
+                View code{" "}
+                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
 
             {frontmatter.links.demo && (
-              <a href={frontmatter.links.demo}>
-                View demo <Icon name="heroicons-outline:external-link" />
+              <a
+                class="inline-flex w-max items-center relative no-underline project-link"
+                href={frontmatter.links.demo}
+              >
+                View demo{" "}
+                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
@@ -44,115 +60,4 @@ projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
       ))
     }
   </div>
-</section>
-
-<style lang="scss">
-  html[data-theme="dark"] {
-    --project-bg: var(--slate-700);
-    --links-bg: var(--slate-600);
-    --tech-bg: var(--slate-600);
-    --tech-text: var(--slate-200);
-    --tech-icon: var(--slate-400);
-  }
-
-  html[data-theme="light"] {
-    --project-bg: white;
-    --links-bg: var(--slate-50);
-    --tech-bg: var(--slate-100);
-    --tech-text: var(--slate-600);
-    --tech-icon: var(--slate-400);
-  }
-
-  section {
-    width: 1200px;
-
-    .project {
-      background-color: var(--project-bg);
-      border-radius: 1em;
-      margin: 0;
-      // box-shadow: var(--slate-600) 0 1px 0 0 inset;
-      box-shadow: var(--links-bg) 0 1px 0 0 inset,
-        0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-
-      p {
-        font-size: 14pt;
-      }
-    }
-
-    .project > div {
-      padding: 1.25em;
-    }
-
-    .project p {
-      line-height: 1.5;
-    }
-
-    .project h3 {
-      margin: 0;
-      display: inline-block;
-      font-size: 1.322rem;
-    }
-
-    .project--technologies {
-      display: inline-flex;
-      list-style-type: none;
-      list-style-position: inside;
-      margin: 0;
-
-      padding: 0;
-      gap: 1em;
-      font-size: 0.9em;
-      flex-wrap: wrap;
-
-      li {
-        display: inline-flex;
-        align-items: center;
-        background-color: var(--tech-bg);
-        color: var(--tech-text);
-        padding: 0.5em 0.75em;
-        border-radius: 0.5em;
-        font-size: 13px;
-
-        svg {
-          color: var(--tech-icon);
-          height: 16px;
-          margin-right: 0.5em;
-        }
-      }
-    }
-
-    .project--links {
-      background-color: var(--slate-600);
-      background-color: var(--links-bg);
-      box-shadow: var(--slate-700) 0 -1px 0 0 inset;
-      box-shadow: var(--project-bg) 0 -1px 0 0 inset;
-      border-radius: 0 0 1rem 1rem;
-      display: flex;
-      gap: 2em;
-      margin-top: auto;
-
-      a {
-        display: inline-flex;
-        width: max-content;
-        align-items: center;
-        text-decoration: none !important;
-        position: relative;
-
-        svg {
-          margin-left: 0.25em;
-          height: 22px;
-          vertical-align: bottom;
-        }
-      }
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2em;
-    }
-  }
-</style>
+</Section>

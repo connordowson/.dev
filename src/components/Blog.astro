@@ -1,6 +1,6 @@
 ---
 import { format } from "date-fns";
-import { Icon } from "astro-icon";
+import Section from "@components/Section.astro";
 
 const blogPostsData = await Astro.glob("../pages/blog/*.md");
 let blogPosts = blogPostsData.map((post) => {
@@ -17,14 +17,14 @@ blogPosts.sort(
 blogPosts = [...blogPosts.slice(0, 3)];
 ---
 
-<section>
-  <h2 class="section--heading">Blog</h2>
-  <!-- <p>
+<section class="mx-auto my-12 p-4 lg:px-4 max-w-[700px]">
+  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Blog</h2>
+  <p>
     Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I
     find interesting. <a href="./blog">View all posts</a>.
-  </p> -->
+  </p>
 
-  <ul>
+  <ul class="my-4">
     {
       blogPosts.map(({ frontmatter, formattedDate, url }) => {
         return (

@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  section:is(h1, h2, h3, h4, h5, h6) {
+    @apply text-rose-400;
+  }
+
+  p,
+  li,
+  a,
+  time {
+    @apply font-body;
+    @apply text-slate-100;
+  }
+  a:any-link {
+    @apply font-semibold;
+    @apply text-emerald-400;
+  }
+
+  a:any-link:not(.project-link) {
+    @apply underline;
+    @apply decoration-2;
+    @apply underline-offset-2;
+  }
+
+  a:any-link:hover {
+    @apply text-emerald-500;
+    @apply transition-colors;
+  }
+
+  html[data-theme="light"] {
+    p {
+      @apply text-slate-800;
+    }
+
+    a:any-link {
+      @apply font-semibold;
+      @apply underline;
+      @apply decoration-2;
+      @apply text-emerald-500;
+    }
+    a:any-link:hover {
+      @apply text-emerald-600;
+    }
+  }
+}

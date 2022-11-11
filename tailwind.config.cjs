@@ -18,7 +18,7 @@ module.exports = {
               color: theme("colors.emerald.500"),
             },
 
-            "p, ul, ol, strong, em": {
+            "p, ul, ol, strong, em, li, time": {
               color: theme("colors.slate.800"),
               lineHeight: "1.7",
             },
@@ -70,7 +70,7 @@ module.exports = {
             "h1, h2, h3, h4, h5, h6": {
               color: theme("colors.emerald.400"),
             },
-            "p, ul, ol, strong, em": {
+            "p, ul, ol, strong, em, li, time": {
               color: theme("colors.slate.100"),
             },
 

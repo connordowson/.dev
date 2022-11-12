@@ -18,6 +18,14 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: "Fira Code";
+  src: url("/fonts/fira-code-var-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;

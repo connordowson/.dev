@@ -16,7 +16,7 @@ const linkIcon = `<Icon class="h-6 ml-1" name="heroicons-outline:external-link" 
 
   <div class="grid grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 w-full">
     {
-      projects.map(({ Content, frontmatter }) => (
+      nonDraftProjects.map(({ Content, frontmatter }) => (
         <div class="rounded-2xl dark:bg-slate-700 bg-white overflow-hidden flex flex-col w-full shadow-md dark:highlight-white/5">
           <div class="p-5">
             <h3 class="dark:text-slate-100 text-slate-800">

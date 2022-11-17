@@ -55,8 +55,6 @@ const Card = () => {
         </div>
       </div>
 
-      <p>X: {xNormalised()}</p>
-      <p>Y: {yNormalised()}</p>
       {/* 
       <p>
         X Position: {xPosition()} / {xMax()}

@@ -1,0 +1,70 @@
+---
+import { format } from "date-fns";
+import Section from "@components/Section.astro";
+
+const blogPostsData = await Astro.glob("../pages/blog/*.md");
+let blogPosts = blogPostsData.map((post) => {
+  return {
+    ...post,
+    formattedDate: format(new Date(post.frontmatter?.date), "do MMMM, yyyy"),
+  };
+});
+blogPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+);
+blogPosts = [...blogPosts.slice(0, 3)];
+---
+
+<section class="mx-auto my-12 p-4 lg:px-4 w-full max-w-3xl">
+  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Blog</h2>
+  <p>
+    Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I
+    find interesting. <a href="./blog">View all posts</a>.
+  </p>
+
+  <ul class="my-4">
+    {
+      blogPosts.map(({ frontmatter, formattedDate, url }) => {
+        return (
+          <li>
+            <a href={url}>
+              <h3>{frontmatter.title}</h3>
+            </a>
+
+            <p>{frontmatter.description}</p>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p><a href="./blog">View all posts</a></p>
+</section>
+
+<style lang="scss">
+  ul {
+    padding: 0;
+    display: grid;
+    gap: 1em;
+
+    li {
+      list-style-type: none;
+      // padding-bottom: 0.5rem;
+
+      a {
+        text-decoration: none !important;
+      }
+
+      svg {
+        margin-left: 0.25em;
+        height: 22px;
+        vertical-align: bottom;
+      }
+
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+</style>

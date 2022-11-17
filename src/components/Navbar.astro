@@ -1,0 +1,35 @@
+---
+import ToggleTheme from "./ToggleTheme.astro";
+const { maxWidth } = Astro.props;
+---
+
+<nav class="fixed inline-flex top-0 z-50 w-full">
+  <div
+    class={`w-full ${
+      maxWidth ? `max-w-${maxWidth}` : `max-w-5xl`
+    } px-4 mx-auto my-0 flex justify-between`}
+  >
+    <ul class="flex gap-8 py-8">
+      <li class="inline list-none">
+        <a
+          href="/"
+          class="dark:text-emerald-400 text-emerald-500 font-semibold underline decoration-2 underline-offset-3"
+          >Home</a
+        >
+      </li>
+      <li class="inline list-none">
+        <a
+          href="/blog"
+          class="dark:text-emerald-400 text-emerald-500 font-semibold underline decoration-2 underline-offset-3"
+          >Blog</a
+        >
+      </li>
+      <!-- TODO: Re add this when there are some things to show -->
+      <li>
+        <a href="/playground">Playground</a>
+      </li>
+    </ul>
+
+    <ToggleTheme />
+  </div>
+</nav>

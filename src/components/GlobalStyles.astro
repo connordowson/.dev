@@ -1,0 +1,110 @@
+<style is:global lang="scss">
+  :root {
+    --dark-pink: #ff7b81;
+    --pink: #ffd1d9;
+    --pink: #ffb3ba;
+
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/inter-var-latin.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: block;
+  }
+  @font-face {
+    font-family: "Inter Display";
+    src: url("/fonts/Inter-DisplayBold.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: block;
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h4,
+  h5,
+  h6,
+  code {
+    line-height: 1.7;
+  }
+
+  // Type scale from https://type-scale.com/
+
+  h1 {
+    font-size: 2.011rem;
+  }
+
+  h2 {
+    font-size: 1.749rem;
+  }
+
+  h3 {
+    font-size: 1.521rem;
+  }
+
+  h4 {
+    font-size: 1.322rem;
+  }
+
+  h5 {
+    font-size: 1.15rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  .button {
+    appearance: none;
+    background: var(--emerald-200);
+    color: var(--emerald-800);
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: var(--emerald-100) 0 1px 0 0 inset,
+      var(--emerald-300) 0 -1px 0 0 inset;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    padding: 0.75rem 1.25rem;
+    pointer-events: auto;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  }
+
+  .button:hover {
+    background: var(--emerald-100);
+    box-shadow: var(--emerald-50) 0 1px 0 0 inset,
+      var(--emerald-200) 0 -1px 0 0 inset;
+  }
+</style>

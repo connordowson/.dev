@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-var-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("/fonts/Inter-DisplayBold.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("/fonts/fira-code-var-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  section:is(h1, h2, h3, h4, h5, h6) {
+    @apply text-rose-400;
+  }
+
+  p,
+  li,
+  a,
+  time {
+    @apply font-body;
+    @apply text-slate-100;
+  }
+  a:any-link {
+    @apply font-semibold;
+    @apply text-emerald-400;
+  }
+
+  a:any-link:not(.project-link) {
+    @apply underline;
+    @apply decoration-2;
+    @apply underline-offset-2;
+  }
+
+  a:any-link:hover {
+    @apply text-emerald-500;
+    @apply transition-colors;
+  }
+
+  html[data-theme="light"] {
+    p {
+      @apply text-slate-800;
+    }
+
+    a:any-link {
+      @apply font-semibold;
+      @apply underline;
+      @apply decoration-2;
+      @apply text-emerald-500;
+    }
+    a:any-link:hover {
+      @apply text-emerald-600;
+    }
+  }
+}

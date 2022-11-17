@@ -53,28 +53,29 @@ const maxWidth = "3xl";
     <div
       class="dark:bg-slate-700 bg-slate-200 mt-8 rounded-md flex items-center overflow-hidden justify-between dark:highlight-white/5 shadow-md"
     >
-      <p class="ml-8">Share this post</p>
+      <p class="ml-4 my-0 md:ml-8 py-0">Share this post</p>
       <ul class="inline-flex m-0 p-0">
         <li class="list-none m-0 p-0">
           <a
-            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
             href={`https://twitter.com/intent/tweet/?text=${frontmatter.title}&url=${url}`}
             ><Icon class="h-[22px]" name="simple-icons:twitter" />
           </a>
           <a
-            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
             ><Icon class="h-[22px]" name="simple-icons:linkedin" />
           </a>
           <a
-            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
             href={`https://www.reddit.com/submit/?url=${url}&title=${frontmatter.title}`}
             ><Icon class="h-[22px]" name="simple-icons:reddit" />
           </a>
-          <a
-            class="px-6 py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+          <button
+            onclick={`navigator.clipboard.writeText('${url}')`}
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-emerald-400 :hover:text-emerald-500 text-emerald-500 hover:text-emerald-600 dark:hover:bg-slate-600 hover:bg-slate-300"
             ><Icon class="h-[22px]" name="mdi:link-variant" />
-          </a>
+          </button>
         </li>
       </ul>
     </div>

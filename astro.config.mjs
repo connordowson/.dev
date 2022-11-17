@@ -30,7 +30,13 @@ export default defineConfig({
           {
             dirs: ["./src/pages/blog"],
             frontmatter: {
-              layout: "../../layouts/Post.astro",
+              layout: "@layouts/Post.astro",
+            },
+          },
+          {
+            dirs: ["./src/pages/playground/"],
+            frontmatter: {
+              layout: "@layouts/Playground.astro",
             },
           },
         ],

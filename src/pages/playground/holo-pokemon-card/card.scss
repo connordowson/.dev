@@ -1,0 +1,96 @@
+.card-wrapper {
+  perspective: 1200px;
+  display: block;
+  width: fit-content;
+}
+
+.card {
+  display: grid;
+  width: 323px;
+  height: 450px;
+  border-radius: 16px;
+  z-index: 9;
+  transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  image-rendering: optimizeQuality;
+  position: relative;
+  // mix-blend-mode: darken;
+  overflow: hidden;
+  // border: 12px solid rgb(255, 144, 255);
+  -webkit-transform-style: preserve-3d;
+  &:hover {
+    transform: rotateY(var(--x-rotate)) rotateX(var(--y-rotate));
+    // perspective(var(--y-transform));
+  }
+
+  > * {
+    grid-area: 1 / 1;
+    height: 100%;
+    width: 100%;
+    // border-radius: 50%;
+  }
+
+  .gradient-1 {
+    background: radial-gradient(
+      circle at top left,
+      #2ad0ca,
+      #e1f664,
+      #feb0fe,
+      #abb3fc,
+      #5df7a4,
+      #58c4f6
+    );
+    mix-blend-mode: darken;
+    pointer-events: none;
+    opacity: 0;
+    opacity: 0.3;
+  }
+}
+
+.glare {
+  pointer-events: none;
+  background: radial-gradient(
+    farthest-corner circle at var(--x-position) var(--y-position),
+    rgba(255, 255, 255, 0.8) 10%,
+    rgba(255, 255, 255, 0.65) 20%,
+    rgba(0, 0, 0, 0.5) 90%
+  );
+  mix-blend-mode: overlay;
+}
+
+.holo {
+  pointer-events: none;
+  --space: 4%;
+  --bg: url("https://poke-holo.simey.me/img/galaxy.jpg");
+
+  clip-path: inset(10.1% 8.5% 50.3% 8.8%);
+
+  background-image: var(--bg), var(--bg), var(--bg),
+    repeating-linear-gradient(
+      82deg,
+      rgb(219, 204, 86) calc(var(--space) * 1),
+      rgb(121, 199, 58) calc(var(--space) * 2),
+      rgb(58, 192, 183) calc(var(--space) * 3),
+      rgb(71, 98, 207) calc(var(--space) * 4),
+      rgb(170, 69, 209) calc(var(--space) * 5),
+      rgb(255, 90, 180) calc(var(--space) * 6),
+      rgb(255, 90, 180) calc(var(--space) * 7),
+      rgb(170, 69, 209) calc(var(--space) * 8),
+      rgb(71, 98, 207) calc(var(--space) * 9),
+      rgb(58, 192, 183) calc(var(--space) * 10),
+      rgb(121, 199, 58) calc(var(--space) * 11),
+      rgb(219, 204, 86) calc(var(--space) * 12)
+    ),
+    radial-gradient(
+      farthest-corner circle at var(--x-position) var(--y-position),
+      rgba(255, 255, 255, 0.6) 5%,
+      rgba(150, 150, 150, 0.3) 40%,
+      rgb(0, 0, 0) 100%
+    );
+  background-size: cover, cover, cover, 400% 900%, cover;
+  background-position: center;
+  background-blend-mode: color-dodge, color-burn, saturation, screen;
+  filter: brightness(0.65) contrast(1.1) saturate(1.2);
+  mix-blend-mode: color-dodge;
+}

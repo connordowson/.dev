@@ -14,11 +14,13 @@ export function defaultFrontmatterAdvanced(options = []) {
   //     replace: true //Replaces the entire frontmatter instead of spreading new values onto old
   //   }
   // ]
+
   return function (tree, file) {
     const filepath = file.history
       .pop()
       .replace(file.cwd, ".")
       .replace(/\\/g, "/");
+
     for (const option of options) {
       for (const dir of option.dirs) {
         if (filepath.startsWith(dir)) {

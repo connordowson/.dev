@@ -7,7 +7,7 @@ const projects = await Astro.glob("../data/projects/*.md");
 const nonDraftProjects = projects.filter(
   (project) => !project.frontmatter.draft
 );
-projects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 const linkIcon = `<Icon class="h-6 ml-1" name="heroicons-outline:external-link" />`;
 ---
 

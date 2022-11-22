@@ -21,6 +21,7 @@ export default defineConfig({
       },
       wrap: true,
       skipInline: false,
+      drafts: false,
     },
     remarkPlugins: [
       remarkCodeTitles,

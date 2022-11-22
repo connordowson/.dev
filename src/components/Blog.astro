@@ -9,12 +9,13 @@ let blogPosts = blogPostsData.map((post) => {
     formattedDate: format(new Date(post.frontmatter?.date), "do MMMM, yyyy"),
   };
 });
-blogPosts.sort(
+let nonDraftPosts = blogPosts.filter((post) => !post.frontmatter.draft);
+nonDraftPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()
 );
-blogPosts = [...blogPosts.slice(0, 3)];
+nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
 ---
 
 <section class="mx-auto my-12 p-4 lg:px-4 w-full max-w-3xl">
@@ -26,7 +27,7 @@ blogPosts = [...blogPosts.slice(0, 3)];
 
   <ul class="my-4">
     {
-      blogPosts.map(({ frontmatter, formattedDate, url }) => {
+      nonDraftPosts.map(({ frontmatter, formattedDate, url }) => {
         return (
           <li>
             <a href={url}>

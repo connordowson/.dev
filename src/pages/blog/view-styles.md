@@ -2,8 +2,8 @@
 title: "View styles"
 slug: "view-styles"
 date: "2021-03-01"
-draft: true
 description: "View all the elements that can be used in markdown to check their styles."
+draft: true
 ---
 
 # Markdown 101

@@ -58,11 +58,6 @@ export default defineConfig({
       ],
     ],
   },
-  vite: {
-    ssr: {
-      external: ["svgo"],
-    },
-  },
   integrations: [
     mdx(),
     preact(),

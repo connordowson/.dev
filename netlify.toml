@@ -9,7 +9,3 @@
 
 [functions]
   directory = "/netlify/functions"
-
-[[edge_functions]]
-  path = "/*"
-  function = "theme"

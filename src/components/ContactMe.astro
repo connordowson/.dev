@@ -2,10 +2,10 @@
 import { Icon } from "astro-icon";
 ---
 
-<div class="contact-me-wrapper">
+<div class="w-full p-4 dark:bg-slate-900">
   <section>
-    <h2 class="section--heading">Contact me</h2>
-    <div class="button-grid">
+    <h2 class="">Contact me</h2>
+    <div class="">
       <a href="/" class="button"><Icon pack="mdi" name="email" />Email</a>
       <a href="/" class="button"><Icon pack="mdi" name="github" />GitHub</a>
       <a href="/" class="button"><Icon pack="mdi" name="linkedin" />LinkedIn</a>
@@ -13,39 +13,3 @@ import { Icon } from "astro-icon";
     </div>
   </section>
 </div>
-<style lang="scss">
-  html[data-theme="dark"] {
-    --contact-bg: var(--slate-700);
-  }
-
-  html[data-theme="light"] {
-    --contact-bg: white;
-  }
-  .contact-me-wrapper {
-    width: 100%;
-    background-color: var(--contact-bg);
-  }
-
-  .section--heading {
-    text-align: center;
-  }
-
-  .button-grid {
-    display: grid;
-    width: 700px;
-    margin: 0 auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr 1fr);
-    gap: 1em;
-  }
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  svg {
-    height: 20px;
-    color: var(--emerald-600);
-    margin-right: 0.25em;
-  }
-</style>

@@ -4,6 +4,7 @@ slug: "view-draft-posts-whilst-running-gatsby-blog-in-development"
 description: "Two ways to add support to be able to view your draft Gatsby blog posts in development, without them being published."
 keywords: "gatsby, gatsbyjs, blog, jamstack, markdown, mdx"
 date: "2021-03-02"
+tags: ["webdev", "gatsby"]
 ---
 
 Whilst I've been adding an MDX blog to my Gatsby portfolio site, I've been looking for a way to view blog posts whilst I'm still working on them in development - but I don't want them to be visible in production. I found two ways to do this, which both utilise `process.env.NODE_ENV` in order to figure out which context Gatsby is being run in.

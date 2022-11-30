@@ -8,6 +8,7 @@ import preact from "@astrojs/preact";
 import solidJs from "@astrojs/solid-js";
 import netlify from "@astrojs/netlify/functions";
 import tailwind from "@astrojs/tailwind";
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -62,7 +63,14 @@ export default defineConfig({
     mdx(),
     preact(),
     solidJs(),
-    tailwind({ config: { applyBaseStyles: false } }),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
   ],
   output: "server",
   adapter: netlify(),

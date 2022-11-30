@@ -3,9 +3,9 @@
   publish = "dist/"
 
 [dev]
-  command = "yarn dev"
   framework = "astro"
   targetPort = 3000
+  port = 8888
 
 [functions]
   directory = "/netlify/functions"

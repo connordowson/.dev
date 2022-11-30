@@ -28,6 +28,7 @@
     "@astrojs/solid-js": "^1.2.2",
     "@astrojs/tailwind": "^2.1.2",
     "@tailwindcss/typography": "^0.5.8",
+    "@types/node": "^18.11.9",
     "preact": "^10.6.5",
     "sass": "^1.54.8",
     "sharp": "^0.31.2",

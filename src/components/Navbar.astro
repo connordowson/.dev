@@ -1,5 +1,6 @@
 ---
-import ToggleTheme from "./ToggleTheme.astro";
+// import ToggleTheme from "./ToggleTheme.astro";
+import ToggleTheme from "./ToggleTheme.jsx";
 const { maxWidth } = Astro.props;
 ---
 
@@ -30,6 +31,6 @@ const { maxWidth } = Astro.props;
       </li>
     </ul>
 
-    <ToggleTheme />
+    <ToggleTheme client:load />
   </div>
 </nav>

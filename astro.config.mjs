@@ -6,7 +6,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import solidJs from "@astrojs/solid-js";
-import netlify from "@astrojs/netlify/edge-functions";
+import netlify from "@astrojs/netlify/functions";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config

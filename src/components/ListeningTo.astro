@@ -1,0 +1,77 @@
+---
+const client_id = import.meta.env.SPOTIFY_CLIENT_ID;
+const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
+
+const tokenEndpoint = "https://accounts.spotify.com/api/token";
+const topTracksEndpoint =
+  "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=6";
+const spotifySecrets = Buffer.from(`${client_id}:${client_secret}`).toString(
+  "base64"
+);
+
+const getAccessToken = async () => {
+  const response = await fetch(tokenEndpoint, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${spotifySecrets}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({ grant_type: "refresh_token", refresh_token }),
+  });
+
+  return response.json();
+};
+
+const getTopTracks = async () => {
+  const { access_token } = await getAccessToken();
+
+  return await fetch(topTracksEndpoint, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
+};
+
+const response = await getTopTracks();
+
+const { items } = await response.json();
+
+const topTracks = items.map((track) => ({
+  name: track.name,
+  artist: track.artists.map((artist) => artist.name).join(", "),
+  artwork: track.album.images[2].url,
+}));
+---
+
+<section class="mx-auto my-12 p-4 lg:px-4 w-full max-w-7xl">
+  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">
+    What I've been listening to
+  </h2>
+  <p class="mb-4 dark:text-slate-100 text-slate-900">
+    My top played songs from the Spotify API (so I can't hide any embarrassing
+    ones).
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {
+      topTracks.map(({ name, artist, artwork }) => (
+        <div class="dark:bg-slate-700 bg-white p-2 rounded-lg flex items-center w-full gap-2 shadow-md dark:highlight-white/5">
+          <img
+            src={artwork}
+            alt={`Album artwork for ${name}`}
+            class="rounded-md self-start shrink-0"
+          />
+
+          <div class="ml-1 min-w-0">
+            <span class="block font-bold font-display dark:text-slate-100 text-slate-800">
+              {name}
+            </span>
+            <span class="text-ellipsis w-full whitespace-nowrap overflow-hidden block dark:text-slate-200 text-slate-700">
+              {artist}
+            </span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

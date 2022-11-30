@@ -29,6 +29,19 @@ const { title, frontmatter, maxWidth } = Astro.props;
           "Connor Dowson | Portfolio"
       }
     </title>
+    <!-- This is intentionally inlined to avoid FOUC -->
+    <script is:inline>
+      const root = document.documentElement;
+      const theme = localStorage.getItem("theme");
+      if (
+        theme === "dark" ||
+        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        root.setAttribute("data-theme", "dark");
+      } else {
+        root.setAttribute("data-theme", "light");
+      }
+    </script>
   </head>
 </html>
 <body class="dark:bg-slate-800 bg-slate-100">

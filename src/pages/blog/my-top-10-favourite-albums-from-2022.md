@@ -2,7 +2,7 @@
 title: "My top 10 favourite albums of 2022"
 description: "My top 10 albums (in no order) of 2022. With a small review, I have no clue what I'm talking about though."
 date: "2022-12-25"
-# draft: true
+draft: true
 tags: ["music"]
 ---
 

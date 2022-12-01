@@ -14,7 +14,7 @@ links:
   code: "https://github.com/connordowson/workout-tracker"
 image: "algorhythm.png"
 order: 2
-draft: true
+# draft: true
 ---
 
 I created the workout tracker that I wanted to use at the gym using [Remix](https://remix.run). You can login, create routines, and then workout using those routines.

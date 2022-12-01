@@ -10,7 +10,7 @@ const maxWidth = "3xl";
 
 <BaseLayout frontmatter={Astro.props.frontmatter} maxWidth={maxWidth}>
   <header
-    class={`w-full mx-auto dark:bg-slate-900 bg-slate-200 pt-20 md:px-8 pb-12 overflow-hidden relative dark:[--gradient:#10b981] [--gradient:#047857] `}
+    class={`w-full mx-auto dark:bg-slate-900 bg-slate-200 pt-20 md:px-8 pb-12 overflow-hidden border-b border-slate-300/5 relative dark:[--gradient:#10b981] [--gradient:#047857] `}
   >
     <div
       class={`w-full max-w-${maxWidth} mx-auto my-0 flex flex-col h-full px-4`}
@@ -49,29 +49,29 @@ const maxWidth = "3xl";
     <slot />
 
     <div
-      class="dark:bg-slate-700 bg-slate-200 mt-8 rounded-md flex items-center overflow-hidden justify-between dark:highlight-white/5 shadow-md"
+      class="dark:bg-slate-800 bg-slate-200 mt-8 rounded-md flex items-center overflow-hidden justify-between dark:highlight-white/5 shadow-md"
     >
       <p class="ml-4 my-0 md:ml-8 py-0">Share this post</p>
       <ul class="inline-flex m-0 p-0">
         <li class="list-none m-0 p-0">
           <a
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-700 hover:bg-slate-300"
             href={`https://twitter.com/intent/tweet/?text=${frontmatter.title}&url=${url}`}
             ><Icon class="h-[22px]" name="simple-icons:twitter" />
           </a>
           <a
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-700 hover:bg-slate-300"
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
             ><Icon class="h-[22px]" name="simple-icons:linkedin" />
           </a>
           <a
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-700 hover:bg-slate-300"
             href={`https://www.reddit.com/submit/?url=${url}&title=${frontmatter.title}`}
             ><Icon class="h-[22px]" name="simple-icons:reddit" />
           </a>
           <button
             onclick={`navigator.clipboard.writeText('${url}')`}
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-emerald-400 :hover:text-emerald-500 text-emerald-500 hover:text-emerald-600 dark:hover:bg-slate-600 hover:bg-slate-300"
+            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-emerald-400 text-emerald-500 hover:text-emerald-600 dark:hover:bg-slate-700 hover:bg-slate-300"
             ><Icon class="h-[22px]" name="mdi:link-variant" />
           </button>
         </li>

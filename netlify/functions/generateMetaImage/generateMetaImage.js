@@ -86,7 +86,7 @@
 //   };
 // };
 
-// exports.handler = async function(event) {
+// exports.handler = async function (event) {
 //   if (!event.queryStringParameters) {
 //     console.log(`no params given`);
 //     return;

@@ -1,6 +1,5 @@
 ---
-// import { Icon } from "astro-icon";
-import Icon from "@components/Icon.astro";
+import { Icon } from "astro-icon";
 import Section from "@components/Section.astro";
 
 const projects = await Astro.glob("../data/projects/*.md");
@@ -8,16 +7,15 @@ const nonDraftProjects = projects.filter(
   (project) => !project.frontmatter.draft
 );
 nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
-const linkIcon = `<Icon class="h-6 ml-1" name="heroicons-outline:external-link" />`;
 ---
 
-<Section class="max-w-7xl">
+<Section class="max-w-7xl" relative>
   <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Projects</h2>
 
   <div class="grid grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 w-full">
     {
       nonDraftProjects.map(({ Content, frontmatter }) => (
-        <div class="rounded-2xl dark:bg-slate-700 bg-white overflow-hidden flex flex-col w-full shadow-md dark:highlight-white/5">
+        <div class="rounded-2xl dark:bg-white/5  overflow-hidden flex flex-col w-full shadow-sm border dark:border-white/5 bg-white/20 border-slate-800/10 backdrop-blur-[2px]">
           <div class="p-5">
             <h3 class="dark:text-slate-100 text-slate-800">
               {frontmatter.title}
@@ -28,33 +26,36 @@ const linkIcon = `<Icon class="h-6 ml-1" name="heroicons-outline:external-link" 
             </div>
             <ul class="inline-flex gap-4 flex-wrap">
               {frontmatter.technologies.map(({ name, icon }) => (
-                <li class="dark:text-slate-200 dark:bg-slate-600 text-slate-700 bg-slate-100 rounded-lg  inline-flex items-center px-2 py-1 text-sm">
+                <li class="dark:text-slate-200 dark:bg-slate-100/5 text-slate-700 bg-slate-100 rounded-lg  inline-flex items-center px-2 py-1 text-sm">
                   <Icon
                     name={icon}
-                    class="dark:text-slate-400 text-slate-400 h-4 mr-2"
+                    class="dark:text-slate-400 text-slate-400 h-4 mr-2 z-10"
                   />
+
                   {name}
                 </li>
               ))}
             </ul>
           </div>
-          <div class="flex gap-8 mt-auto dark:bg-slate-600 bg-slate-100 p-5">
+          <div class="flex gap-8 mt-auto border-t dark:border-white/5 border-slate-800/10 p-6">
             {frontmatter.links.code && (
               <a
-                class="inline-flex w-max items-center relative no-underline project-link text-lg dark:text-emerald-300"
+                class="inline-flex w-max items-center relative no-underline project-link text-lg"
                 href={frontmatter.links.code}
               >
-                View code <Icon class="h-6 ml-1" name="external-link" />
+                View code{" "}
+                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
 
             {frontmatter.links.demo && (
               <a
-                class="inline-flex w-max items-center relative no-underline project-link text-lg dark:text-emerald-300"
+                class="inline-flex w-max items-center relative no-underline project-link text-lg"
                 href={frontmatter.links.demo}
               >
-                View demo <Icon class="h-6 ml-1" name="external-link" />
+                View demo{" "}
+                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
                 <span class="visually-hidden">for {frontmatter.title}</span>
               </a>
             )}
@@ -64,3 +65,5 @@ const linkIcon = `<Icon class="h-6 ml-1" name="heroicons-outline:external-link" 
     }
   </div>
 </Section>
+
+<style></style>

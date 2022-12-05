@@ -6,16 +6,15 @@ import Projects from "@components/Projects.astro";
 import Blog from "@components/Blog.astro";
 import ContactMe from "@components/ContactMe.astro";
 
-import ListeningTo from "@components/ListeningTo.jsx";
+// import ListeningTo from "@components/ListeningTo.jsx";
+import ListeningTo from "@components/ListeningTo.astro";
 ---
 
 <BaseLayout title="Connor Dowson | Portfolio" maxWidth="5xl">
   <Hero />
-
   <AboutMe />
   <Projects />
   <Blog />
-  <ListeningTo client:load />
-
+  <ListeningTo />
   <!-- <ContactMe /> -->
 </BaseLayout>

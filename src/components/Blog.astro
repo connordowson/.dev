@@ -18,54 +18,60 @@ nonDraftPosts.sort(
 nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
 ---
 
-<section class="mx-auto my-12 p-4 lg:px-4 w-full max-w-3xl">
+<Section class="max-w-7xl rounded-xl" relative>
   <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Blog</h2>
-  <p>
+  <!-- <p class="pb-4 mb-6 border-b dark:border-slate-700 border-slate-300"> -->
+  <p class="pb-4">
     Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I
     find interesting. <a href="./blog">View all posts</a>.
   </p>
 
-  <ul class="my-4">
+  <ul
+    class="my-4 grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+  >
     {
       nonDraftPosts.map(({ frontmatter, formattedDate, url }) => {
         return (
-          <li>
+          <li class="flex flex-col gap-4 border dark:bg-white/5 dark:border-white/5  bg-white/20 border-slate-800/10 p-4 rounded-xl backdrop-blur-sm shadow-sm">
             <a href={url}>
-              <h3>{frontmatter.title}</h3>
+              <h3 class="text-[1.322rem]">{frontmatter.title}</h3>
             </a>
 
-            <p>{frontmatter.description}</p>
+            <div class="flex justify-between mt-auto text-sm">
+              <time class="dark:bg-slate-300/5 border dark:border-slate-300/5 dark:text-slate-300 bg-slate-200 text-slate-600 py-1 px-2 rounded-md">
+                {formattedDate}
+              </time>
+              <span class="dark:bg-slate-300/5 border dark:border-slate-300/5 dark:text-slate-300 bg-slate-200 text-slate-600 py-1 px-2 rounded-md">
+                5 mins
+              </span>
+            </div>
           </li>
         );
       })
     }
   </ul>
-  <p><a href="./blog">View all posts</a></p>
-</section>
+  <!-- <p class="pt-4"><a href="./blog">View all posts</a></p> -->
+</Section>
 
 <style lang="scss">
-  ul {
-    padding: 0;
-    display: grid;
-    gap: 1em;
+  section {
+    position: relative;
+    overflow: hidden;
 
-    li {
-      list-style-type: none;
-      // padding-bottom: 0.5rem;
-
-      a {
-        text-decoration: none !important;
-      }
-
-      svg {
-        margin-left: 0.25em;
-        height: 22px;
-        vertical-align: bottom;
-      }
-
-      h4 {
-        margin: 0;
-      }
-    }
+    // &::before {
+    //   content: "";
+    //   width: 100%;
+    //   height: 140%;
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   z-index: -1;
+    //   transform: translate(-50%, -50%);
+    //   background: radial-gradient(
+    //     ellipse at top right,
+    //     #00ff9936 0%,
+    //     transparent 70%
+    //   );
+    // }
   }
 </style>

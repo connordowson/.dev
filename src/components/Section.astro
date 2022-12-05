@@ -1,7 +1,48 @@
 ---
-const { class: styles } = Astro.props;
+const { class: styles, relative } = Astro.props;
 ---
 
-<section class={`mx-auto my-12 p-4 lg:px-4 ${styles}`}>
-  <slot />
+<section class={`w-full py-0 block overflow-hidden ${relative && "relative"}`}>
+  <div class={`mx-auto my-16 p-4 lg:px-4 ${styles}`}>
+    <slot />
+  </div>
 </section>
+
+<style lang="scss">
+  section {
+    > div {
+      // backdrop-filter: blur(2px);
+    }
+    &:not(:last-of-type)::after {
+      position: absolute;
+      pointer-events: none;
+      content: "";
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(to right, #ffffff07, #34d39950, #ffffff07);
+    }
+
+    &::before {
+      position: absolute;
+      pointer-events: none;
+      content: "";
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: repeat url("/dot.svg");
+      background-size: 10px;
+    }
+
+    &:nth-child(even)::before {
+      mask-image: linear-gradient(35deg, transparent 60%, black);
+    }
+
+    &:nth-child(odd)::before {
+      mask-image: linear-gradient(35deg, black, transparent 40%);
+    }
+  }
+</style>

@@ -57,7 +57,8 @@
   p,
   li,
   a,
-  time {
+  time,
+  span {
     @apply font-body;
     @apply text-slate-100;
   }

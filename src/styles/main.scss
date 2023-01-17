@@ -50,6 +50,10 @@
     @apply font-display;
   }
 
+  :is(h1, h2, h3, h4, h5, h6) a {
+    @apply font-display;
+  }
+
   section:is(h1, h2, h3, h4, h5, h6) {
     @apply text-rose-400;
   }

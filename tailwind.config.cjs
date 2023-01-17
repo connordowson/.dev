@@ -76,6 +76,7 @@ module.exports = {
 
             "a:any-link": {
               color: theme("colors.emerald.400"),
+              // color: "hotpink",
             },
             "a:hover": {
               color: theme("colors.emerald.500"),

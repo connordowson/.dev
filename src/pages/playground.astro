@@ -13,10 +13,10 @@ const playgroundLinks = await Astro.glob("./playground/*/*.mdx");
     <ul>
       {
         playgroundLinks.map(({ frontmatter, url }) => (
-          <li class="prose dark:prose-dark max-w-none">
-            <a href={url}>
-              <h2>{frontmatter.title}</h2>
-            </a>
+          <li class="prose dark:prose-dark max-w-none mt-12">
+            <h2>
+              <a href={url}>{frontmatter.title}</a>
+            </h2>
 
             <p>{frontmatter.description}</p>
           </li>

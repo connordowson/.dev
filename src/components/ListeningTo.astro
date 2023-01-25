@@ -35,6 +35,7 @@ const getTopTracks = async () => {
   });
 };
 
+const before = Date.now();
 const response = await getTopTracks();
 
 const { items } = await response.json();
@@ -44,6 +45,9 @@ const topTracks = items.map((track) => ({
   artist: track.artists.map((artist) => artist.name).join(", "),
   artwork: track.album.images[2].url,
 }));
+const after = Date.now();
+
+console.log(`${after - before}`);
 ---
 
 <Section class="max-w-7xl" relative>

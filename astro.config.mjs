@@ -4,7 +4,6 @@ import { tokenColors } from "./city-lights.json";
 import remarkCodeTitles from "remark-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
-import preact from "@astrojs/preact";
 import solidJs from "@astrojs/solid-js";
 import netlify from "@astrojs/netlify/functions";
 import tailwind from "@astrojs/tailwind";
@@ -61,7 +60,6 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
-    preact(),
     solidJs(),
     tailwind({
       config: {

@@ -18,17 +18,8 @@ const { maxWidth } = Astro.props;
       <li class="inline list-none">
         <a href="/blog">Blog</a>
       </li>
-      <li>
-        <a href="/playground">Playground</a>
-      </li>
     </ul>
 
     <ToggleTheme client:load />
   </div>
 </nav>
-
-<style>
-  nav {
-    mask-image: linear-gradient(to bottom, black 10%, white);
-  }
-</style>

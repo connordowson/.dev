@@ -2,7 +2,7 @@
 import "@styles/main.scss";
 import GlobalStyles from "../components/GlobalStyles.astro";
 import Navbar from "../components/Navbar.astro";
-const { title, frontmatter, maxWidth } = Astro.props;
+const { title, data, maxWidth } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ const { title, frontmatter, maxWidth } = Astro.props;
     <title>
       {
         title ||
-          `${frontmatter.title} | Connor Dowson | Portfolio` ||
+          `${data.title} | Connor Dowson | Portfolio` ||
           "Connor Dowson | Portfolio"
       }
     </title>

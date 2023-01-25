@@ -12,6 +12,7 @@ links:
   code: "https://github.com/connordowson/algorhythm"
 image: "algorhythm.png"
 order: 4
+draft: false
 ---
 
 My dissertation project - created using Django - which recommended new music to users based on their current listening habits found using the Spotify API. I received a first for this project 🥇.

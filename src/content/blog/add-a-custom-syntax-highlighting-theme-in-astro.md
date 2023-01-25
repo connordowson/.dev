@@ -4,6 +4,7 @@ slug: "add-a-custom-shiki-syntax-theme-in-astro"
 description: "Add any VS Code theme to any code blocks on your Astro site using Shiki syntax highlighter"
 date: "2022-10-13"
 tags: ["webdev", "astro"]
+draft: false
 ---
 
 Astro uses [Shiki](https://github.com/shikijs/shiki) as it's default syntax highlighter which can use any VS Code theme - most should be available on GitHub. You'll have to find the GitHub repo to use the theme, once you've found it the `.json` file should be in the `/themes` folder of the repo.

@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import { defaultFrontmatterAdvanced } from "./plugin.mjs";
 import { tokenColors } from "./city-lights.json";
 import remarkCodeTitles from "remark-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -12,7 +11,6 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   markdown: {
-    extendDefaultPlugins: true,
     shikiConfig: {
       theme: {
         name: "city-lights",
@@ -23,26 +21,7 @@ export default defineConfig({
       skipInline: false,
       drafts: false,
     },
-    remarkPlugins: [
-      remarkCodeTitles,
-      [
-        defaultFrontmatterAdvanced,
-        [
-          {
-            dirs: ["./src/pages/blog"],
-            frontmatter: {
-              layout: "@layouts/Post.astro",
-            },
-          },
-          {
-            dirs: ["./src/pages/playground/"],
-            frontmatter: {
-              layout: "@layouts/Playground.astro",
-            },
-          },
-        ],
-      ],
-    ],
+    remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
       [
         rehypeAutolinkHeadings,

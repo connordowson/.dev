@@ -1,19 +1,18 @@
 ---
+import { getCollection } from "astro:content";
 import { format } from "date-fns";
 import Section from "@components/Section.astro";
 
-const blogPostsData = await Astro.glob("../pages/blog/*.md");
+const blogPostsData = await await getCollection("blog");
 let blogPosts = blogPostsData.map((post) => {
   return {
     ...post,
-    formattedDate: format(new Date(post.frontmatter?.date), "do MMMM, yyyy"),
+    formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
   };
 });
-let nonDraftPosts = blogPosts.filter((post) => !post.frontmatter.draft);
+let nonDraftPosts = blogPosts.filter((post) => !post.data.draft);
 nonDraftPosts.sort(
-  (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 );
 nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
 ---
@@ -30,11 +29,11 @@ nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
     class="my-4 grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
   >
     {
-      nonDraftPosts.map(({ frontmatter, formattedDate, url }) => {
+      nonDraftPosts.map(({ data, formattedDate, slug }) => {
         return (
           <li class="flex flex-col gap-4 border dark:bg-white/5 dark:border-white/5  bg-white/20 border-slate-800/10 p-4 rounded-xl backdrop-blur-sm shadow-sm">
-            <a href={url}>
-              <h3 class="text-[1.322rem]">{frontmatter.title}</h3>
+            <a href={`/blog/${slug}`}>
+              <h3 class="text-[1.322rem]">{data.title}</h3>
             </a>
 
             <div class="flex justify-between mt-auto text-sm">

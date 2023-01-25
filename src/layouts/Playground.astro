@@ -1,19 +1,13 @@
 ---
 import BaseLayout from "./Base.astro";
 import Section from "@components/Section.astro";
-const { frontmatter } = Astro.props;
-const { title } = frontmatter;
-const url = Astro.url;
+const { data } = Astro.props;
 const maxWidth = "3xl";
 ---
 
-<BaseLayout
-  frontmatter={Astro.props.frontmatter}
-  maxWidth={maxWidth}
-  title={title}
->
+<BaseLayout maxWidth={maxWidth} title={data.title}>
   <Section class={`w-full max-w-${maxWidth} mt-24 md:px-4 mx-auto`}>
-    <h1 class="dark:text-emerald-400 text-emerald-500">{title}</h1>
+    <h1 class="dark:text-emerald-400 text-emerald-500">test</h1>
 
     <div class="dark:prose-dark prose"><slot /></div>
   </Section>

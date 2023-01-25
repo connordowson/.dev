@@ -1,15 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import { format } from "date-fns";
-
 import BaseLayout from "@layouts/Base.astro";
 import Section from "@components/Section.astro";
 
-const posts = await Astro.glob("../pages/blog/*.md");
-const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
+const blogPostsData = await await getCollection("blog");
+let blogPosts = blogPostsData.map((post) => {
+  return {
+    ...post,
+    formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
+  };
+});
+let nonDraftPosts = blogPosts.filter((post) => !post.data.draft);
 nonDraftPosts.sort(
-  (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 );
 
 const maxWidth = "3xl";
@@ -26,14 +30,14 @@ const maxWidth = "3xl";
 
     <ul>
       {
-        nonDraftPosts.map(({ frontmatter, url }) => (
+        nonDraftPosts.map(({ data, slug }) => (
           <li class="prose dark:prose-dark max-w-none mt-12">
             <h2>
-              <a href={url}>{frontmatter.title}</a>
+              <a href={`blog/${slug}`}>{data.title}</a>
             </h2>
 
-            <time>{format(new Date(frontmatter.date), "do MMMM, yyyy")}</time>
-            <p>{frontmatter.description}</p>
+            <time>{format(new Date(data.date), "do MMMM, yyyy")}</time>
+            <p>{data.description}</p>
           </li>
         ))
       }

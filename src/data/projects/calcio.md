@@ -8,6 +8,7 @@ links:
   demo: "https://calcio.fly.dev/"
 image: "calcio.png"
 order: 3
+draft: false
 ---
 
 A football blog created using [Sanity](https://www.sanity.io/). The official AS Roma twitter account shared [one of our posts](https://twitter.com/asromaen/status/1067432392120356871) 🤯!

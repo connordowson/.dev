@@ -40,64 +40,77 @@
   white-space: nowrap !important;
 }
 
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
+:root {
+  --gutter: var(--space-s-m);
+  --border-radius: var(--size-step-1);
+  --transition-base: 250ms ease;
+  --transition-movement: 200ms linear;
+  --transition-fade: 200ms ease;
+  --transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
+  --tracking: -0.05ch;
+  --tracking-s: -0.075ch;
+}
+
+h1 {
+  @apply text-size-4;
+}
+
+h2 {
+  @apply text-size-3;
+}
+
+h3 {
+  @apply text-size-2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-display;
+}
+
+:is(h1, h2, h3, h4, h5, h6) a {
+  @apply font-display;
+}
+
+p,
+li,
+a,
+time {
+  @apply font-body;
+  @apply text-slate-100;
+}
+a:any-link {
+  @apply font-semibold;
+  @apply text-emerald-400;
+}
+
+a:any-link:not(.project-link) {
+  @apply underline;
+  @apply decoration-2;
+  @apply underline-offset-2;
+}
+
+a:any-link:hover {
+  @apply text-emerald-500;
+  @apply transition-colors;
+}
+
+html[data-theme="light"] {
+  p {
+    @apply text-slate-800;
   }
 
-  :is(h1, h2, h3, h4, h5, h6) a {
-    @apply font-display;
-  }
-
-  section:is(h1, h2, h3, h4, h5, h6) {
-    @apply text-rose-400;
-  }
-
-  p,
-  li,
-  a,
-  time {
-    @apply font-body;
-    @apply text-slate-100;
-  }
   a:any-link {
     @apply font-semibold;
-    @apply text-emerald-400;
-  }
-
-  a:any-link:not(.project-link) {
     @apply underline;
     @apply decoration-2;
-    @apply underline-offset-2;
-  }
-
-  a:any-link:hover {
     @apply text-emerald-500;
-    @apply transition-colors;
   }
-
-  html[data-theme="light"] {
-    p {
-      @apply text-slate-800;
-    }
-
-    a:any-link {
-      @apply font-semibold;
-      @apply underline;
-      @apply decoration-2;
-      @apply text-emerald-500;
-    }
-    a:any-link:hover {
-      @apply text-emerald-600;
-    }
-  }
-
-  section {
-    // background-image: url("https://planetscale.com/images/grid-bg.svg");
+  a:any-link:hover {
+    @apply text-emerald-600;
   }
 }

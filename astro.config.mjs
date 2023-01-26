@@ -4,7 +4,6 @@ import remarkCodeTitles from "remark-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
 import solidJs from "@astrojs/solid-js";
-import netlify from "@astrojs/netlify/functions";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 
@@ -49,6 +48,4 @@ export default defineConfig({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
   ],
-  output: "server",
-  adapter: netlify(),
 });

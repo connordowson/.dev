@@ -4,8 +4,9 @@
 
 [dev]
   framework = "astro"
-  targetPort = 3000
-  port = 8888
 
-[functions]
-  directory = "/netlify/functions"
+[[redirects]]
+  from = "/api/*" # simplify all calls to serverless functions
+  to = "/.netlify/functions/:splat" # all function calls will go to this path
+  status = 200 # ok p
+  force = true # ensure to always redirect

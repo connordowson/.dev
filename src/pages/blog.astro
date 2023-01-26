@@ -33,7 +33,7 @@ const maxWidth = "3xl";
         nonDraftPosts.map(({ data, slug }) => (
           <li class="prose dark:prose-dark max-w-none mt-12">
             <h2>
-              <a href={`blog/${slug}`}>{data.title}</a>
+              <a href={slug}>{data.title}</a>
             </h2>
 
             <time>{format(new Date(data.date), "do MMMM, yyyy")}</time>

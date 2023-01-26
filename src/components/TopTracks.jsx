@@ -13,16 +13,12 @@ export default () => {
 
   onMount(() => {
     setTopTracks(getTopTracks());
-
-    getTopTracks().then((res) => {
-      console.log(res);
-    });
   });
 
-  if (topTracks.length > 0) {
+  if (topTracks()?.length) {
     return (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 dark:border-white/10 dark:backdrop-blur-[2px]">
-        {topTracks.map(({ name, artist, artwork }) => (
+        {topTracks().tracks.map(({ name, artist, artwork }) => (
           <div class="dark:bg-white/5  p-2 rounded-lg flex items-center w-full gap-2 shadow-sm border dark:border-white/5 bg-white/20 border-slate-800/10">
             <img
               src={artwork}

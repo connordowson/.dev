@@ -23,7 +23,7 @@ export default () => {
               <img
                 src={artwork}
                 alt={`Album artwork for ${name}`}
-                class="rounded-md self-start shrink-0"
+                class="rounded-md shrink-0"
               />
 
               <div class="ml-1 min-w-0">

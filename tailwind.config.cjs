@@ -30,7 +30,6 @@ module.exports = {
               color: theme("colors.emerald.600"),
             },
             pre: { border: `1px solid ${theme("colors.slate.700")}` },
-            code: {},
             ":is(p, li, a) > code": {
               padding: "0.2em 0.5em",
               color: theme("colors.slate.200"),
@@ -41,6 +40,10 @@ module.exports = {
               border: `1px solid ${theme("colors.slate.700")}`,
               display: "inline-block",
               fontWeight: "400",
+            },
+            "pre code": {
+              fontWeight: "400",
+              fontSize: "1em",
             },
             "code::before": { content: "none" },
             "code::after": { content: "none" },

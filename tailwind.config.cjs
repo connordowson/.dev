@@ -30,7 +30,7 @@ module.exports = {
               color: theme("colors.emerald.600"),
             },
             pre: { border: `1px solid ${theme("colors.slate.700")}` },
-            "code:not(pre > code)": {
+            ":is(p, li, a) > code": {
               padding: "0.2em 0.5em",
               color: theme("colors.slate.200"),
               color: "#b7c5d3",

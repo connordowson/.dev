@@ -7,7 +7,7 @@ export default () => {
   const [topTracks] = createResource(getTopTracks);
 
   return (
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 dark:border-white/10 dark:backdrop-blur-[2px]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 dark:border-white/10 dark:backdrop-blur-[1px]">
       <Switch fallback={<p>Not found</p>}>
         <Match
           when={

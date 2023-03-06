@@ -15,7 +15,7 @@ nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
   <div class="grid grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 w-full">
     {
       nonDraftProjects.map(({ Content, frontmatter }) => (
-        <div class="rounded-2xl dark:bg-white/5  overflow-hidden flex flex-col w-full shadow-sm border dark:border-white/5 bg-white/20 border-slate-800/10 backdrop-blur-[2px]">
+        <div class="rounded-2xl dark:bg-white/5  overflow-hidden flex flex-col w-full shadow-sm border dark:border-white/5 bg-white/20 border-slate-800/10 backdrop-blur-[1px]">
           <div class="p-5">
             <h3 class="dark:text-slate-100 text-slate-800">
               {frontmatter.title}
@@ -65,5 +65,3 @@ nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
     }
   </div>
 </Section>
-
-<style></style>

@@ -10,10 +10,6 @@
   --badge-color: var(--slate-700);
 }
 
-.blog-grid {
-  --grid-min-item-size: 20rem;
-}
-
 .blog-card {
   display: flex;
   flex-direction: column;

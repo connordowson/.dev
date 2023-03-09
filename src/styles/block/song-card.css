@@ -10,10 +10,10 @@ html[data-theme="light"] {
 .song-card {
   display: flex;
   place-items: center;
-  padding: 0.5rem;
+  padding: var(--space-2xs);
   width: 100%;
-  gap: 0.5rem;
-  border-radius: 0.5rem;
+  gap: var(--space-2xs);
+  border-radius: var(--space-2xs);
 }
 
 .song-card-grid {
@@ -21,8 +21,8 @@ html[data-theme="light"] {
 }
 
 .song-card img {
-  margin-right: 0.25rem;
-  border-radius: 0.25rem;
+  margin-right: var(--space-4xs);
+  border-radius: var(--space-4xs);
   flex-shrink: 0;
 }
 

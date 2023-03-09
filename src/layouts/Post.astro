@@ -8,13 +8,9 @@ const url = Astro.url;
 const maxWidth = "3xl";
 ---
 
-<BaseLayout maxWidth={maxWidth} title={data.title}>
-  <header
-    class={`w-full mx-auto dark:bg-slate-900 bg-slate-200 pt-20 md:px-8 pb-12 overflow-hidden border-b border-slate-300/5 relative dark:[--gradient:#10b981] [--gradient:#047857] `}
-  >
-    <div
-      class={`w-full max-w-${maxWidth} mx-auto my-0 flex flex-col h-full px-4`}
-    >
+<BaseLayout title={data.title}>
+  <header class="post-header">
+    <div class={`wrapper  mx-auto my-0 flex flex-col h-full px-4`}>
       <h1 class="dark:text-emerald-400 text-emerald-500 mb-4">
         {data.title}
       </h1>
@@ -38,71 +34,40 @@ const maxWidth = "3xl";
         <div>
           <p class="font-medium">Blog by Connor Dowson</p>
 
-          <time class="block dark:text-emerald-100 text-emerald-900"
-            >{format(new Date(data.date), "do MMMM, yyyy")}</time
-          >
+          <time>{format(new Date(data.date), "do MMMM, yyyy")}</time>
         </div>
       </div>
     </div>
   </header>
-  <article class={`dark:prose-dark prose w-full max-w-${maxWidth} px-4`}>
-    <slot />
-
-    <div
-      class="dark:bg-slate-800 bg-slate-200 mt-8 rounded-md flex items-center overflow-hidden justify-between dark:highlight-white/5 shadow-md"
-    >
-      <p class="ml-4 my-0 md:ml-8 py-0">Share this post</p>
-      <ul class="inline-flex m-0 p-0">
-        <li class="list-none m-0 p-0">
-          <a
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-700 hover:bg-slate-300"
-            href={`https://twitter.com/intent/tweet/?text=${data.title}&url=${url}`}
-            ><Icon class="h-[22px]" name="simple-icons:twitter" />
-          </a>
-          <a
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-700 hover:bg-slate-300"
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
-            ><Icon class="h-[22px]" name="simple-icons:linkedin" />
-          </a>
-          <a
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-slate-300 text-slate-700 dark:hover:bg-slate-700 hover:bg-slate-300"
-            href={`https://www.reddit.com/submit/?url=${url}&title=${data.title}`}
-            ><Icon class="h-[22px]" name="simple-icons:reddit" />
-          </a>
-          <button
-            onclick={`navigator.clipboard.writeText('${url}')`}
-            class="px-3 sm:px-6 py-4 md:py-8 inline-flex cursor-pointer dark:text-emerald-400 text-emerald-500 hover:text-emerald-600 dark:hover:bg-slate-700 hover:bg-slate-300"
-            ><Icon class="h-[22px]" name="mdi:link-variant" />
-          </button>
-        </li>
-      </ul>
+  <div class="flow flow-space-l region">
+    <article class="wrapper prose flow">
+      <slot />
+    </article>
+    <div class="wrapper">
+      <div class="share-post shadow-md">
+        <p>Share this post</p>
+        <ul>
+          <li>
+            <a
+              href={`https://twitter.com/intent/tweet/?text=${data.title}&url=${url}`}
+              ><Icon name="simple-icons:twitter" />
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
+              ><Icon name="simple-icons:linkedin" />
+            </a>
+            <a
+              href={`https://www.reddit.com/submit/?url=${url}&title=${data.title}`}
+              ><Icon name="simple-icons:reddit" />
+            </a>
+            <button
+              onclick={`navigator.clipboard.writeText('${url}')`}
+              aria-label="Copy this post's url to clipboard"
+              ><Icon name="mdi:link-variant" />
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-  </article>
+  </div>
 </BaseLayout>
-
-<style lang="scss">
-  article {
-    width: 46rem;
-    margin: 3em auto 4em;
-    line-height: 1.7;
-  }
-
-  header {
-    &::before {
-      pointer-events: none;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(
-        ellipse 80% 90% at bottom right,
-        var(--gradient),
-        transparent
-      );
-      opacity: 0.85;
-      mix-blend-mode: color-dodge;
-    }
-  }
-</style>

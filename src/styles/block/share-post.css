@@ -1,0 +1,70 @@
+.share-post {
+  border-radius: var(--space-2xs);
+  display: flex;
+  place-items: center;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+html[data-theme="dark"] .share-post {
+  background-color: var(--slate-800);
+}
+html[data-theme="light"] .share-post {
+  background-color: var(--slate-100);
+}
+
+.share-post p {
+  margin-left: var(--space-m);
+  padding-block: 0;
+  margin-bottom: 0;
+}
+
+.share-post ul {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+.share-post ul li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.share-post ul li :is(a, button) {
+  padding: var(--space-m);
+  display: inline-flex;
+  cursor: pointer;
+  margin: 0;
+  list-style-type: none;
+}
+
+@media screen and (max-width: 700px) {
+  .share-post ul li :is(a, button) {
+    padding: var(--space-m);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .share-post ul li :is(a, button) {
+    padding: var(--space-s);
+  }
+}
+
+.share-post ul li button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+}
+
+html[data-theme="dark"] .share-post ul li :is(a, button):hover {
+  background-color: var(--slate-700);
+}
+html[data-theme="light"] .share-post ul li :is(a, button):hover {
+  background-color: var(--slate-200);
+}
+
+.share-post ul li :is(a, button) svg {
+  height: 22px;
+  color: var(--accent);
+}

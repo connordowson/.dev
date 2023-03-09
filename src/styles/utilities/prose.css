@@ -1,0 +1,106 @@
+[data-theme="dark"] {
+  --hr-color: var(--slate-700);
+  --table-color: var(--slate-800);
+}
+
+[data-theme="light"] {
+  --hr-color: var(--slate-300);
+  --table-color: var(--slate-300);
+}
+
+.prose {
+  line-height: 1.7;
+}
+
+.prose > :is(.remark-code-title, pre, img, figure) {
+  --flow-space: var(--space-m);
+}
+
+.prose code {
+  font-family: var(--mono);
+}
+
+.prose pre {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: var(--step--1);
+}
+
+.prose code:not(pre code) {
+  padding: 0.2rem 0.5rem;
+  color: var(--slate-200);
+  font-size: var(--step--2);
+  display: inline-block;
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0.5rem;
+  font-weight: 400;
+}
+
+.prose .remark-code-title {
+  background-color: var(--emerald-200);
+  font-size: var(--step--1);
+  font-family: var(--mono);
+  color: var(--emerald-800);
+  border-radius: 0.5em 0.5em 0 0;
+  display: inline-block;
+  padding: 0.5rem;
+  border: 1px solid var(--emerald-800);
+  border-bottom: none;
+}
+
+.prose .remark-code-title + pre {
+  border-radius: 0 0.5em 0.5em 0.5em;
+  margin-top: 0;
+}
+
+.prose :is(ul, ol) {
+  list-style-position: inside;
+}
+
+.prose hr {
+  height: 2px;
+  border: 0;
+  padding: 0;
+  background-color: var(--hr-color);
+}
+
+.prose table {
+  border-collapse: collapse;
+}
+
+.prose table tr {
+  border-top: 1px solid #cccccc;
+  margin: 0;
+  padding: 0;
+}
+
+.prose table tr:nth-child(2n) {
+  background-color: var(--table-color);
+}
+
+.prose table tr th {
+  font-weight: bold;
+  border: 1px solid var(--table-color);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.prose table tr td {
+  border: 1px solid var(--table-color);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+.prose table tr th :first-child,
+table tr td :first-child {
+  margin-top: 0;
+}
+
+.prose table tr th :last-child,
+table tr td :last-child {
+  margin-bottom: 0;
+}

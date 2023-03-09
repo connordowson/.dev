@@ -1,0 +1,50 @@
+body {
+  font-family: var(--body);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: var(--space-4xs);
+}
+
+p,
+li,
+a,
+time,
+table {
+  color: var(--text-primary);
+}
+
+a:any-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+:is(a:any-link, a:any-link > *):hover {
+  color: var(--accent-hover);
+  transition: color 150ms ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--display);
+  letter-spacing: 0.01em;
+  color: var(--accent);
+}
+
+h1 {
+  font-size: var(--step-3);
+}
+h2 {
+  font-size: var(--step-2);
+}
+h3 {
+  font-size: var(--step-1);
+}

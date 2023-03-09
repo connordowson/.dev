@@ -1,0 +1,15 @@
+.card {
+  border-radius: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(0.75px);
+}
+
+html[data-theme="dark"] .card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+html[data-theme="light"] .card {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}

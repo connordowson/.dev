@@ -3,11 +3,11 @@ import Map from "./Map.astro";
 import Section from "./Section.astro";
 ---
 
-<Section class="max-w-3xl relative" relative>
-  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">About me</h2>
-  <div class="dark:prose-dark prose w-full max-w-none">
+<Section relative width="small" aboutMe>
+  <h2>About me</h2>
+  <div class="flow prose relative">
     <p>
-      I'm a front end web developer currently working at <a
+      A senior front end web developer currently working at <a
         href="https://shelter.org.uk">Shelter</a
       > and living in Bristol. I graduated from the University of Gloucestershire
       in 2019 with a degree in Computing.
@@ -15,7 +15,7 @@ import Section from "./Section.astro";
 
     <p>
       I enjoy creating websites as a way to combine technical and creative
-      skills; any projects shown here are either university work, or have been
+      skills - any projects shown here are either university work, or have been
       completed in my free time.
     </p>
 
@@ -27,20 +27,3 @@ import Section from "./Section.astro";
 
   <Map />
 </Section>
-
-<style lang="scss">
-  .wrapper {
-    display: inline-block;
-    width: 100%;
-    // background: linear-gradient(
-    //     217deg,
-    //     rgba(255, 0, 0, 0.8),
-    //     rgba(255, 0, 0, 0) 70.71%
-    //   ),
-    //   linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
-    //   linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-    // background: linear-gradient(217deg, #1e293b70, rgba(255, 0, 0, 0) 70.71%),
-    //   linear-gradient(127deg, #47556930, rgba(0, 255, 0, 0) 70.71%),
-    //   linear-gradient(336deg, #6ee7b730, rgba(0, 0, 255, 0) 60.71%);
-  }
-</style>

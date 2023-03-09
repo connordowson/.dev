@@ -1,0 +1,38 @@
+.header {
+  position: fixed;
+  display: inline-flex;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(8px);
+  z-index: 50;
+}
+
+html[data-theme="dark"] .header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  --link-shadow: rgba(0, 0, 0, 0.7);
+}
+html[data-theme="light"] .header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  --link-shadow: rgba(255, 255, 255, 0.7);
+}
+
+.navbar {
+  /* padding-inline: 1em; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 2em;
+  padding-inline: 0;
+}
+
+.navbar ul li {
+  display: inline;
+  list-style-type: none;
+}
+
+.navbar ul li a {
+  text-shadow: 0px 0px 10px var(--link-shadow);
+}

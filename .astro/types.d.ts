@@ -67,16 +67,16 @@ declare module 'astro:content' {
 
 	const entryMap: {
 		"blog": {
-"add-a-custom-syntax-highlighting-theme-in-astro.md": {
-  id: "add-a-custom-syntax-highlighting-theme-in-astro.md",
-  slug: "add-a-custom-shiki-syntax-theme-in-astro",
+"my-top-10-favourite-albums-from-2022.md": {
+  id: "my-top-10-favourite-albums-from-2022.md",
+  slug: "my-top-10-favourite-albums-from-2022",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">
 },
-"my-top-10-favourite-albums-from-2022.md": {
-  id: "my-top-10-favourite-albums-from-2022.md",
-  slug: "my-top-10-favourite-albums-from-2022",
+"use-a-vscode-syntax-highlighting-theme-in-astro.md": {
+  id: "use-a-vscode-syntax-highlighting-theme-in-astro.md",
+  slug: "use-a-vscode-syntax-highlighting-theme-in-astro",
   body: string,
   collection: "blog",
   data: InferEntrySchema<"blog">

@@ -9,35 +9,30 @@ const nonDraftProjects = projects.filter(
 nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 ---
 
-<Section class="max-w-7xl" relative>
-  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Projects</h2>
+<Section width="large" relative>
+  <h2>Projects</h2>
 
-  <div class="grid grid-cols-1 gap-4 lg:gap-8 lg:grid-cols-2 w-full">
+  <div class="grid projects-grid">
     {
       nonDraftProjects.map(({ Content, frontmatter }) => (
-        <div class="rounded-2xl dark:bg-white/5  overflow-hidden flex flex-col w-full shadow-sm border dark:border-white/5 bg-white/20 border-slate-800/10 backdrop-blur-[1px]">
-          <div class="p-5">
-            <h3 class="dark:text-slate-100 text-slate-800">
-              {frontmatter.title}
-            </h3>
+        <div class="project-card card shadow-sm">
+          <div class="project-card-top flow">
+            <h3>{frontmatter.title}</h3>
 
-            <div class="py-4 dark:text-slate-100 text-slate-800 dark:prose-dark prose">
+            <div class="prose">
               <Content />
             </div>
-            <ul class="inline-flex gap-4 flex-wrap">
+            <ul>
               {frontmatter.technologies.map(({ name, icon }) => (
-                <li class="dark:text-slate-200 dark:bg-slate-100/5 text-slate-700 bg-slate-100 rounded-lg  inline-flex items-center px-2 py-1 text-sm">
-                  <Icon
-                    name={icon}
-                    class="dark:text-slate-400 text-slate-400 h-4 mr-2 z-10"
-                  />
+                <li>
+                  <Icon name={icon} />
 
                   {name}
                 </li>
               ))}
             </ul>
           </div>
-          <div class="flex gap-8 mt-auto border-t dark:border-white/5 border-slate-800/10 p-6">
+          <div class="project-card-bottom">
             {frontmatter.links.code && (
               <a
                 class="inline-flex w-max items-center relative no-underline project-link text-lg"

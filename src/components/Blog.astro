@@ -4,10 +4,20 @@ import { format } from "date-fns";
 import Section from "@components/Section.astro";
 
 const blogPostsData = await await getCollection("blog");
+
+const getReadingTime = (content) => {
+  if (!content) return;
+  const clean = content.replace(/<\/?[^>]+(>|$)/g, "");
+  const numberOfWords = clean.split(/\s/g).length;
+  const wordsPerMinute = 200;
+  return Math.ceil(numberOfWords / wordsPerMinute);
+};
+
 let blogPosts = blogPostsData.map((post) => {
   return {
     ...post,
     formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
+    timeToRead: getReadingTime(post.body),
   };
 });
 let nonDraftPosts = blogPosts.filter((post) => !post.data.draft);
@@ -17,35 +27,31 @@ nonDraftPosts.sort(
 nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
 ---
 
-<Section class="max-w-7xl rounded-xl" relative>
-  <h2 class="dark:text-emerald-400 mb-4 text-emerald-500">Blog</h2>
-  <p class="pb-4">
-    Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I
-    find interesting. <a href="./blog">View all posts</a>.
-  </p>
+<Section width="large" relative>
+  <div class="flow">
+    <h2>Blog</h2>
+    <p>
+      Random posts, mostly about web dev 👨‍💻, music 🎶, and anything else that I
+      find interesting. <a href="./blog">View all posts</a>.
+    </p>
 
-  <ul
-    class="my-4 grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-  >
-    {
-      nonDraftPosts.map(({ data, formattedDate, slug }) => {
-        return (
-          <li class="flex flex-col gap-4 border dark:bg-white/5 dark:border-white/5  bg-white/20 border-slate-800/10 p-4 rounded-xl backdrop-blur-[1px] shadow-sm">
-            <a href={`/blog/${slug}`}>
-              <h3 class="text-[1.322rem]">{data.title}</h3>
-            </a>
+    <ul class="grid blog-grid">
+      {
+        nonDraftPosts.map(({ data, formattedDate, timeToRead, slug }) => {
+          return (
+            <li class="card blog-card shadow-sm flow">
+              <a href={`/blog/${slug}`}>
+                <h3>{data.title}</h3>
+              </a>
 
-            <div class="flex justify-between mt-auto text-sm">
-              <time class="dark:bg-slate-300/5 border dark:border-slate-300/5 dark:text-slate-300 bg-slate-200 text-slate-600 py-1 px-2 rounded-md">
-                {formattedDate}
-              </time>
-              <span class="dark:bg-slate-300/5 border dark:border-slate-300/5 dark:text-slate-300 bg-slate-200 text-slate-600 py-1 px-2 rounded-md">
-                5 mins
-              </span>
-            </div>
-          </li>
-        );
-      })
-    }
-  </ul>
+              <div class="blog-card__info">
+                <time>{formattedDate}</time>
+                <span>{timeToRead} mins</span>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
 </Section>

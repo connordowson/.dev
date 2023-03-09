@@ -1,12 +1,10 @@
 ---
-import "@styles/main.scss";
-import GlobalStyles from "../components/GlobalStyles.astro";
 import Navbar from "../components/Navbar.astro";
 const { title, data, maxWidth } = Astro.props;
 
 // TODO: Use CUBE with tailwind
 // https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
-// import "../styles/cube.css";
+import "@styles/main.css";
 ---
 
 <!DOCTYPE html>
@@ -19,6 +17,7 @@ const { title, data, maxWidth } = Astro.props;
       name="description"
       content="Portfolio site for Connor Dowson, a Bristol based front end web developer. "
     />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -50,6 +49,5 @@ const { title, data, maxWidth } = Astro.props;
 </html>
 <body class="dark:bg-slate-900 bg-slate-200">
   <Navbar maxWidth={maxWidth} />
-  <GlobalStyles />
   <main><slot /></main>
 </body>

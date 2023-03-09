@@ -1,0 +1,55 @@
+.post-header {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.post-header img {
+  border: 1px solid var(--accent);
+}
+
+.post-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  --background-size: 2000px;
+}
+
+html[data-theme="dark"] .post-header::before {
+  background: url("/noise.png") repeat,
+    no-repeat left 25% / var(--background-size) url("/post-hero-dark.svg");
+  background-blend-mode: overlay;
+  mask-image: linear-gradient(45deg, black 35%, transparent 70%);
+}
+
+html[data-theme="light"] .post-header::before {
+  background: url("/noise.png") repeat,
+    no-repeat right 0% / var(--background-size) url("/post-hero-light.svg");
+  background-blend-mode: overlay;
+  mask-image: linear-gradient(45deg, transparent 35%, black 70%);
+}
+
+@media screen and (min-width: 2000px) {
+  .post-header::before {
+    --background-size: cover;
+  }
+}
+
+.post-header time {
+  color: var(--time-color);
+}
+
+html[data-theme="dark"] .post-header {
+  background-color: var(--slate-900);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  --time-color: var(--emerald-100);
+}
+html[data-theme="light"] .post-header {
+  background-color: var(--slate-200);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  --time-color: var(--emerald-800);
+}

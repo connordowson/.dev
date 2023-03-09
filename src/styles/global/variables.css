@@ -1,0 +1,51 @@
+:root {
+  --display: "Inter Display";
+  --body: "Inter";
+  --mono: "Fira Code";
+
+  /* Typography scale */
+  --step--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
+  --step--1: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
+  --step-0: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+  --step-1: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
+  --step-2: clamp(1.62rem, calc(1.5rem + 0.58vw), 1.95rem);
+  --step-3: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
+  --step-4: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
+  --step-5: clamp(2.8rem, calc(2.45rem + 1.77vw), 3.82rem);
+
+  /* Sizing scale */
+  --space-4xs: clamp(0.25rem, calc(0.23rem + 0.11vw), 0.31rem);
+  --space-3xs: clamp(0.38rem, calc(0.33rem + 0.22vw), 0.5rem);
+  --space-2xs: clamp(0.5rem, calc(0.46rem + 0.22vw), 0.63rem);
+  --space-xs: clamp(0.75rem, calc(0.68rem + 0.33vw), 0.94rem);
+  --space-s: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
+  --space-m: clamp(1.5rem, calc(1.37rem + 0.65vw), 1.88rem);
+  --space-l: clamp(2rem, calc(1.83rem + 0.87vw), 2.5rem);
+  --space-xl: clamp(3rem, calc(2.74rem + 1.3vw), 3.75rem);
+  --space-2xl: clamp(4rem, calc(3.65rem + 1.74vw), 5rem);
+  --space-3xl: clamp(6rem, calc(5.48rem + 2.61vw), 7.5rem);
+
+  /* colors */
+
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  --emerald-50: #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-300: #6ee7b7;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+}

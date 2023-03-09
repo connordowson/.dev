@@ -1,0 +1,13 @@
+/* Dark mode vars */
+html[data-theme="dark"] {
+  --text-primary: var(--slate-100);
+  --accent: var(--emerald-400);
+  --accent-hover: var(--emerald-500);
+}
+
+/* Light mode vars */
+html[data-theme="light"] {
+  --text-primary: var(--slate-800);
+  --accent: var(--emerald-500);
+  --accent-hover: var(--emerald-600);
+}

@@ -32,7 +32,7 @@ ol[role="list"] {
   list-style: none;
 }
 
-:is(ol, ul):not(.prose :is(ol, ul)) {
+:is(ol, ul):not(.prose > :is(ol, ul)) {
   list-style: none;
 }
 

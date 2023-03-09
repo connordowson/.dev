@@ -7,15 +7,18 @@ import { Icon } from "astro-icon";
 const url = Astro.url;
 ---
 
-<BaseLayout title={data.title}>
+<BaseLayout
+  title={data.title}
+  metaKeywords={data.tags}
+  metaDescription={data.description}
+>
   <header class="post-header">
-    <div class={`wrapper  mx-auto my-0 flex flex-col h-full px-4`}>
-      <h1 class="dark:text-emerald-400 text-emerald-500 mb-4">
+    <div class="wrapper flow">
+      <h1>
         {data.title}
       </h1>
-      <div class="flex flex-row items-center">
+      <div class="post-header__info">
         <Image
-          class="border dark:border-emerald-400 border-emerald-500 mr-4 rounded-full"
           src="/connordowson.webp"
           alt="Connor Dowson"
           height={60}

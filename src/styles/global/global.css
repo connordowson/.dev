@@ -1,5 +1,6 @@
 body {
   font-family: var(--body);
+  background-color: var(--body-bg);
 }
 
 *:focus-visible {

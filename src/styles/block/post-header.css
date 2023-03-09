@@ -3,6 +3,8 @@
   padding-bottom: var(--space-xl);
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-header img {
@@ -17,6 +19,18 @@
   width: 100%;
   height: 100%;
   --background-size: 2000px;
+}
+
+.post-header__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.post-header__info img {
+  border: 1px solid var(--accent);
+  border-radius: 50%;
 }
 
 html[data-theme="dark"] .post-header::before {

@@ -1,6 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
-const { title, data, maxWidth } = Astro.props;
+const { title, data, metaKeywords, metaDescription } = Astro.props;
 
 // TODO: Use CUBE with tailwind
 // https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
@@ -15,7 +15,9 @@ import "@styles/main.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio site for Connor Dowson, a Bristol based front end web developer. "
+      content={metaDescription
+        ? metaDescription
+        : "Portfolio site for Connor Dowson, a Bristol based front end web developer."}
     />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -25,6 +27,11 @@ import "@styles/main.css";
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#34d399" />
     <meta name="msapplication-TileColor" content="#34d399" />
     <meta name="theme-color" content="#34d399" />
+    {
+      metaKeywords ? (
+        <meta name="keywords" content={metaKeywords.join(",")} />
+      ) : null
+    }
     <title>
       {
         title ||
@@ -47,7 +54,7 @@ import "@styles/main.css";
     </script>
   </head>
 </html>
-<body class="dark:bg-slate-900 bg-slate-200">
-  <Navbar maxWidth={maxWidth} />
+<body>
+  <Navbar />
   <main><slot /></main>
 </body>

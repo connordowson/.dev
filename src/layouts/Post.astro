@@ -5,7 +5,6 @@ const { data } = Astro.props;
 import { format } from "date-fns";
 import { Icon } from "astro-icon";
 const url = Astro.url;
-const maxWidth = "3xl";
 ---
 
 <BaseLayout title={data.title}>
@@ -26,11 +25,7 @@ const maxWidth = "3xl";
           aspectRatio="1:1"
           fit="cover"
         />
-        <!-- <img
-          class="border dark:border-emerald-400 border-emerald-500 mr-4 rounded-full w-16 h-16 object-cover"
-          src="/connordowson.webp"
-          alt="Connor Dowson"
-        /> -->
+
         <div>
           <p class="font-medium">Blog by Connor Dowson</p>
 

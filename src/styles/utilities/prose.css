@@ -27,7 +27,7 @@
   font-size: var(--step--1);
 }
 
-.prose code:not(pre code) {
+.prose code:not(pre > code) {
   padding: 0.2rem 0.5rem;
   color: var(--slate-200);
   font-size: var(--step--2);

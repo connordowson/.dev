@@ -7,7 +7,7 @@ export default () => {
   const [topTracks] = createResource(getTopTracks);
 
   return (
-    <div class="grid">
+    <div class="grid song-card-grid">
       <Switch fallback={<p>Not found</p>}>
         <Match
           when={

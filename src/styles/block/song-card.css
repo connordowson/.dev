@@ -16,6 +16,10 @@ html[data-theme="light"] {
   border-radius: 0.5rem;
 }
 
+.song-card-grid {
+  margin-top: var(--space-s);
+}
+
 .song-card img {
   margin-right: 0.25rem;
   border-radius: 0.25rem;

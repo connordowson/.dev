@@ -210,7 +210,7 @@ html[data-theme="light"] .hero h1 {
   height: 150%;
   width: 300%;
   background-blend-mode: overlay;
-  background: url("https://astro.build/assets/noise.png") repeat,
+  background: url("/noise.png") repeat,
     radial-gradient(ellipse 50% 55% at center, rgba(51, 255, 182), transparent);
   mask-image: radial-gradient(
     ellipse 53% 50% at center,

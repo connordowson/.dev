@@ -8,8 +8,6 @@ const captureHeight = 630;
 async function handler(event, context) {
   const isLocal = event.headers.host.includes("localhost");
 
-  let path = event.path.replace("/meta-image.jpg", "");
-
   const urlSearchParams = new URLSearchParams(event.rawQuery);
 
   const { title, description } = Object.fromEntries(urlSearchParams);
@@ -23,8 +21,8 @@ async function handler(event, context) {
   const browser = await puppeteer.launch({
     executablePath: isLocal
       ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-      : await chromium.executablePath,
-    args: [...chromium.args, "--disable-web-security"],
+      : await chromium.executablePath(),
+    args: chromium.args,
     defaultViewport: {
       width: captureWidth,
       height: captureHeight,

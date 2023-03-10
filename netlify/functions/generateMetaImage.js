@@ -19,12 +19,9 @@ async function handler(event, context) {
   }/meta-image-generator?title=${title || "No title!"}&description=${
     description || "No description!"
   }`;
-  // const url = `${isLocal ? "http" : "https"}://${
-  //   event.headers.host
-  // }\meta-image-generator`;
 
   const browser = await puppeteer.launch({
-    executablePath: process.env.URL.includes("localhost")
+    executablePath: isLocal
       ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
       : await chromium.executablePath,
     args: [...chromium.args, "--disable-web-security"],

@@ -1,16 +1,18 @@
 ---
 import BaseLayout from "./Base.astro";
 import { Image } from "@astrojs/image/components";
-const { data } = Astro.props;
+const { data, metaImageData } = Astro.props;
+const { title, tags } = data;
 import { format } from "date-fns";
 import { Icon } from "astro-icon";
 const url = Astro.url;
 ---
 
 <BaseLayout
-  title={data.title}
-  metaKeywords={data.tags}
+  title={title}
+  metaKeywords={tags}
   metaDescription={data.description}
+  metaImageURL={`${url}/meta-image.jpg?title=${metaImageData.title}&description=${metaImageData.description}`}
 >
   <header class="post-header">
     <div class="wrapper flow">

@@ -12,8 +12,11 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 
 import PostLayout from "@layouts/Post.astro";
+
+const { title, description } = post.data;
+console.log({ title, description });
 ---
 
-<PostLayout data={post.data}>
+<PostLayout data={post.data} metaImageData={{ title, description }}>
   <Content />
 </PostLayout>

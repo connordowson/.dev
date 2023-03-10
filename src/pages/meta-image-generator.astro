@@ -1,0 +1,27 @@
+---
+import MetaImageGeneratorLayout from "@layouts/MetaImageGenerator.astro";
+---
+
+<script>
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  const { title, description } = params;
+
+  document.getElementById("title").innerHTML = title;
+  document.getElementById("description").innerHTML = description;
+</script>
+
+<MetaImageGeneratorLayout title="Meta image generator">
+  <div class="meta-image-wrapper prose flow">
+    <h1 id="title"></h1>
+    <p id="description"></p>
+    <img src="/connordowson.webp" />
+
+    <footer>
+      <p>
+        Connor Dowson <span>|</span> connordowson.dev <span>|</span> @ConnorDowsonDev
+      </p>
+    </footer>
+  </div>
+</MetaImageGeneratorLayout>

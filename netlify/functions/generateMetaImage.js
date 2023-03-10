@@ -1,119 +1,88 @@
-// const chromium = require("chrome-aws-lambda");
-// const cloudinary = require("cloudinary").v2;
-// const fetch = require("isomorphic-unfetch");
+const { builder } = require("@netlify/functions");
+const chromium = require("@sparticuz/chromium");
+const puppeteer = require("puppeteer-core");
 
-// const local = process.env.URL.includes("http://localhost");
+const captureWidth = 1200;
+const captureHeight = 630;
 
-// const slugify = (string) => {
-//   return string
-//     .toString()
-//     .toLowerCase()
-//     .replace(/\s+/g, "-") // Replace spaces with -
-//     .replace(/[^\w-]+/g, "") // Remove all non-word chars
-//     .replace(/--+/g, "-") // Replace multiple - with single -
-//     .replace(/^-+/, "") // Trim - from start of text
-//     .replace(/-+$/, ""); // Trim - from end of text
-// };
+async function handler(event, context) {
+  const isLocal = event.headers.host.includes("localhost");
 
-// cloudinary.config({
-//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
+  let path = event.path.replace("/meta-image.jpg", "");
 
-// const cloudFolder = "connordowson-meta-images";
+  const urlSearchParams = new URLSearchParams(event.rawQuery);
 
-// const objectToParams = (object) => {
-//   const params = new URLSearchParams();
-//   Object.entries(object).map((entry) => {
-//     let [key, value] = entry;
-//     params.set(key, value);
-//   });
-//   return params.toString();
-// };
+  const { title, description } = Object.fromEntries(urlSearchParams);
 
-// const getImage = async (imageName) => {
-//   const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${cloudFolder}/${imageName}.png`;
+  const url = `${isLocal ? "http" : "https"}://${
+    event.headers.host
+  }/meta-image-generator?title=${title || "No title!"}&description=${
+    description || "No description!"
+  }`;
+  // const url = `${isLocal ? "http" : "https"}://${
+  //   event.headers.host
+  // }\meta-image-generator`;
 
-//   return await fetch(url).then((res) => {
-//     if (res.status !== 404) {
-//       return url;
-//     } else {
-//       return null;
-//     }
-//   });
-// };
+  const browser = await puppeteer.launch({
+    executablePath: process.env.URL.includes("localhost")
+      ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      : await chromium.executablePath,
+    args: [...chromium.args, "--disable-web-security"],
+    defaultViewport: {
+      width: captureWidth,
+      height: captureHeight,
+    },
+    headless: chromium.headless,
+  });
+  const page = await browser.newPage();
 
-// const takeScreenshot = async (url) => {
-//   const browser = await chromium.puppeteer.launch({
-//     executablePath: local
-//       ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-//       : await chromium.executablePath,
-//     args: chromium.args,
-//     defaultViewport: chromium.defaultViewport,
-//     headless: chromium.headless,
-//   });
+  await page.goto(url, { waitUntil: "domcontentloaded" });
 
-//   const page = await browser.newPage();
-//   await page.setViewport({ height: 900, width: 1600 });
-//   await page.goto(url, { waitUntil: "load" });
-//   // await page.waitForSelector("#meta-image");
-//   const buffer = await page.screenshot();
-//   await browser.close();
-//   return `data:image/png;base64,${buffer.toString("base64")}`;
-// };
+  // Wait until all images and fonts have loaded
+  await page.evaluate(async () => {
+    const selectors = Array.from(document.querySelectorAll("img"));
+    await Promise.all([
+      document.fonts.ready,
+      ...selectors.map((img) => {
+        // Image has already finished loading, let’s see if it worked
+        if (img.complete) {
+          // Image loaded and has presence
+          if (img.naturalHeight !== 0) return;
+          // Image failed, so it has no height
+          throw new Error("Image failed to load");
+        }
+        // Image hasn’t loaded yet, added an event listener to know when it does
+        return new Promise((resolve, reject) => {
+          img.addEventListener("load", resolve);
+          img.addEventListener("error", reject);
+        });
+      }),
+    ]);
+  });
 
-// const uploadImage = async (title, image) => {
-//   const cloudinaryOptions = {
-//     public_id: `${cloudFolder}/${title}`,
-//     unique_filename: false,
-//     overwrite: true,
-//     invalidate: true,
-//   };
-//   console.log(`uploading ${title} to cloudinary`);
-//   return await cloudinary.uploader
-//     .upload(image, cloudinaryOptions)
-//     .then((response) => response.url);
-// };
+  const screenshot = await page.screenshot({
+    type: "jpeg",
+    // netlify functions can only return strings, so base64 it is
+    encoding: "base64",
+    quality: 100,
+    clip: {
+      x: 0,
+      y: 0,
+      width: captureWidth,
+      height: captureHeight,
+    },
+  });
 
-// const forwardResponse = async (imageUrl) => {
-//   return {
-//     statusCode: 308, // Permanent Redirect
-//     headers: {
-//       location: cloudinary.url(imageUrl, { sign_url: true }),
-//     },
-//     body: "",
-//   };
-// };
+  await browser.close();
 
-// exports.handler = async function (event) {
-//   if (!event.queryStringParameters) {
-//     console.log(`no params given`);
-//     return;
-//   }
+  return {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "image/jpg",
+    },
+    body: screenshot,
+    isBase64Encoded: true,
+  };
+}
 
-//   const title = slugify(event.queryStringParameters.title);
-//   console.log(`processing ${title}...`);
-
-//   console.log(
-//     `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${cloudFolder}/${title}.png`
-//   );
-
-//   const existingImage = await getImage(title);
-
-//   if (existingImage) {
-//     console.log(`yay, ${title} already existed`);
-//     return forwardResponse(existingImage);
-//   }
-
-//   console.log(`generating image for ${title}`);
-//   const url = local
-//     ? `http://${event.headers.host}`
-//     : `https://${event.headers.host}`;
-//   const imageParams = objectToParams(event.queryStringParameters);
-//   console.log(imageParams);
-//   const screenshot = await takeScreenshot(`${url}/meta?${imageParams}`);
-//   const newImage = await uploadImage(title, screenshot);
-//   console.log(`done with ${title}`);
-//   return forwardResponse(newImage);
-// };
+exports.handler = builder(handler);

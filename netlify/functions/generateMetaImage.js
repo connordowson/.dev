@@ -5,7 +5,7 @@ const puppeteer = require("puppeteer-core");
 const captureWidth = 1200;
 const captureHeight = 630;
 
-async function handler(event, context) {
+async function handler(event) {
   const isLocal = event.headers.host.includes("localhost");
 
   const urlSearchParams = new URLSearchParams(event.rawQuery);
@@ -22,6 +22,7 @@ async function handler(event, context) {
     executablePath: isLocal
       ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
       : await chromium.executablePath(),
+    // executablePath: await chromium.executablePath(),
     args: chromium.args,
     defaultViewport: {
       width: captureWidth,

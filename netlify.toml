@@ -6,7 +6,6 @@
   framework = "astro"
 
 [functions]
-  node_bundler = "esbuild"
   directory = "/netlify/functions"
 
 [[redirects]]

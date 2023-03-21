@@ -5,6 +5,6 @@
 
   grid-template-columns: repeat(
     var(--grid-placement, auto-fill),
-    minmax(var(--grid-min-item-size, 16rem), 1fr)
+    minmax(var(--grid-min-item-size, 14rem), var(--grid-max-item-size, 22rem))
   );
 }

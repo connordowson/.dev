@@ -18,6 +18,8 @@ html[data-theme="light"] {
 
 .song-card-grid {
   margin-top: var(--space-s);
+  --grid-min-item-size: 15rem;
+  --grid-max-item-size: 1fr;
 }
 
 .song-card img {

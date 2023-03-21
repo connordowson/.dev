@@ -11,7 +11,7 @@
 }
 
 .blog-grid {
-  --grid-min-item-size: 20rem;
+  --grid-min-item-size: 12rem;
 }
 
 .blog-card {

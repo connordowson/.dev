@@ -12,6 +12,7 @@ specifiers:
   astro: ^2.0.4
   astro-icon: ^0.8.0
   autoprefixer: ^10.4.14
+  chromium-bidi: ^0.4.5
   cssnano: ^5.1.14
   date-fns: ^2.29.3
   isomorphic-unfetch: ^3.1.0
@@ -31,6 +32,7 @@ dependencies:
   astro: 2.1.3_ocfhdngkz6fkqcyprtkeximgem
   astro-icon: 0.8.0
   autoprefixer: 10.4.14
+  chromium-bidi: 0.4.5
   date-fns: 2.29.3
   isomorphic-unfetch: 3.1.0
   postcss-import: 15.1.0
@@ -1267,6 +1269,14 @@ packages:
 
   /chownr/1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
+
+  /chromium-bidi/0.4.5:
+    resolution: {integrity: sha512-rkav9YzRfAshSTG3wNXF7P7yNiI29QAo1xBXElPoCoSQR5n20q3cOyVhDv6S7+GlF/CJ/emUxlQiR0xOPurkGg==}
+    peerDependencies:
+      devtools-protocol: '*'
+    dependencies:
+      mitt: 3.0.0
+    dev: false
 
   /chromium-bidi/0.4.5_6o5gdkn34s2j2m26x63ssheuqa:
     resolution: {integrity: sha512-rkav9YzRfAshSTG3wNXF7P7yNiI29QAo1xBXElPoCoSQR5n20q3cOyVhDv6S7+GlF/CJ/emUxlQiR0xOPurkGg==}

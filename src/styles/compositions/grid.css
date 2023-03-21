@@ -1,6 +1,8 @@
 .grid {
   display: grid;
+  width: 100%;
   gap: var(--grid-gap, var(--space-s));
+
   grid-template-columns: repeat(
     var(--grid-placement, auto-fill),
     minmax(var(--grid-min-item-size, 16rem), 1fr)

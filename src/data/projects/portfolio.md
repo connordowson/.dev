@@ -4,7 +4,6 @@ technologies:
   [
     { name: "Astro", icon: "simple-icons:astro" },
     { name: "SolidJS", icon: "simple-icons:solid" },
-    { name: "Tailwind", icon: "mdi:tailwind" },
   ]
 links:
   code: "https://github.com/connordowson/.dev"

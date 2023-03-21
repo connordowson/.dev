@@ -19,10 +19,12 @@
     "astro-icon": "^0.8.0",
     "autoprefixer": "^10.4.14",
     "date-fns": "^2.29.3",
+    "isomorphic-unfetch": "^4.0.2",
     "postcss-import": "^15.1.0",
     "postcss-import-ext-glob": "^2.1.1",
     "postcss-lightningcss": "^0.6.0",
     "puppeteer-core": "^19.7.5",
+    "querystring": "^0.2.1",
     "rehype-autolink-headings": "^6.1.1",
     "remark-code-titles": "^0.1.2"
   },

@@ -14,10 +14,12 @@ specifiers:
   autoprefixer: ^10.4.14
   cssnano: ^5.1.14
   date-fns: ^2.29.3
+  isomorphic-unfetch: ^4.0.2
   postcss-import: ^15.1.0
   postcss-import-ext-glob: ^2.1.1
   postcss-lightningcss: ^0.6.0
   puppeteer-core: ^19.7.5
+  querystring: ^0.2.1
   rehype-autolink-headings: ^6.1.1
   remark-code-titles: ^0.1.2
   sass: ^1.58.0
@@ -32,10 +34,12 @@ dependencies:
   astro-icon: 0.8.0
   autoprefixer: 10.4.14
   date-fns: 2.29.3
+  isomorphic-unfetch: 4.0.2
   postcss-import: 15.1.0
   postcss-import-ext-glob: 2.1.1
   postcss-lightningcss: 0.6.0
   puppeteer-core: 19.7.5
+  querystring: 0.2.1
   rehype-autolink-headings: 6.1.1
   remark-code-titles: 0.1.2
 
@@ -2215,6 +2219,13 @@ packages:
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  /isomorphic-unfetch/4.0.2:
+    resolution: {integrity: sha512-1Yd+CF/7al18/N2BDbsLBcp6RO3tucSW+jcLq24dqdX5MNbCNTw1z4BsGsp4zNmjr/Izm2cs/cEqZPp4kvWSCA==}
+    dependencies:
+      node-fetch: 3.3.1
+      unfetch: 5.0.0
+    dev: false
+
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -3679,6 +3690,12 @@ packages:
       - utf-8-validate
     dev: false
 
+  /querystring/0.2.1:
+    resolution: {integrity: sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==}
+    engines: {node: '>=0.4.x'}
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+    dev: false
+
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
@@ -4288,6 +4305,10 @@ packages:
     engines: {node: '>=12.18'}
     dependencies:
       busboy: 1.6.0
+
+  /unfetch/5.0.0:
+    resolution: {integrity: sha512-3xM2c89siXg0nHvlmYsQ2zkLASvVMBisZm5lF3gFDqfF2xonNStDJyMpvaOBe0a1Edxmqrf2E0HBdmy9QyZaeg==}
+    dev: false
 
   /unherit/3.0.1:
     resolution: {integrity: sha512-akOOQ/Yln8a2sgcLj4U0Jmx0R5jpIg2IUyRrWOzmEbjBtGzBdHtSeFKgoEcoH4KYIG/Pb8GQ/BwtYm0GCq1Sqg==}

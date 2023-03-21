@@ -20,6 +20,7 @@
     "chromium-bidi": "^0.4.5",
     "date-fns": "^2.29.3",
     "isomorphic-unfetch": "^3.1.0",
+    "node-fetch": "^3.3.1",
     "postcss-import": "^15.1.0",
     "postcss-import-ext-glob": "^2.1.1",
     "postcss-lightningcss": "^0.6.0",

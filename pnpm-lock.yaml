@@ -6,7 +6,7 @@ specifiers:
   '@astrojs/solid-js': ^2.0.0
   '@astrojs/tailwind': ^3.0.1
   '@netlify/functions': ^1.4.0
-  '@sparticuz/chromium': '111'
+  '@sparticuz/chromium': ^111.0.0
   '@tailwindcss/typography': ^0.5.8
   '@types/node': ^18.11.9
   astro: ^2.0.4
@@ -21,7 +21,7 @@ specifiers:
   postcss-import: ^15.1.0
   postcss-import-ext-glob: ^2.1.1
   postcss-lightningcss: ^0.6.0
-  puppeteer-core: ^19.7.4
+  puppeteer-core: ^19.7.5
   rehype-autolink-headings: ^6.1.1
   remark-code-titles: ^0.1.2
   sass: ^1.58.0

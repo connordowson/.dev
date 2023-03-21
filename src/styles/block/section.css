@@ -68,7 +68,7 @@
   max-width: 80rem;
 }
 
-.section :is(h1, h2, h3) {
+.section > div > :is(h1, h2, h3) {
   color: var(--accent);
   margin-bottom: var(--space-s);
 }

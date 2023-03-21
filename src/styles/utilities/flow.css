@@ -4,7 +4,7 @@ Info: https://piccalil.li/quick-tip/flow-utility/
 */
 
 .flow > * + * {
-  margin-block-start: var(--flow-space, 1em);
+  margin-block-start: var(--flow-space, 1rem);
 }
 .flow-space-4xs > * + * {
   --flow-space: var(--space-4xs);

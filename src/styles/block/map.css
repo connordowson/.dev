@@ -1,0 +1,23 @@
+[data-theme="dark"] .map {
+  --dots-primary: var(--slate-700);
+}
+
+[data-theme="light"] .map {
+  --dots-primary: var(--slate-300);
+}
+
+.map {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: -10;
+  width: 11rem;
+  transform: translateY(-50%);
+}
+
+.map-dots__primary {
+  fill: var(--dots-primary);
+}
+.map-dots__accent {
+  fill: var(--accent);
+}

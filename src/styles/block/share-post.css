@@ -6,10 +6,10 @@
   justify-content: space-between;
 }
 
-html[data-theme="dark"] .share-post {
+[data-theme="dark"] .share-post {
   background-color: var(--slate-800);
 }
-html[data-theme="light"] .share-post {
+[data-theme="light"] .share-post {
   background-color: var(--slate-100);
 }
 
@@ -39,6 +39,11 @@ html[data-theme="light"] .share-post {
   list-style-type: none;
 }
 
+.share-post ul li :is(a, button) svg {
+  height: 22px;
+  color: var(--accent);
+}
+
 @media screen and (max-width: 700px) {
   .share-post ul li :is(a, button) {
     padding: var(--space-m);
@@ -48,6 +53,26 @@ html[data-theme="light"] .share-post {
 @media screen and (max-width: 500px) {
   .share-post ul li :is(a, button) {
     padding: var(--space-s);
+  }
+
+  .share-post p {
+    margin-left: var(--space-s);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .share-post ul li :is(a, button) {
+    padding: var(--space-xs);
+    padding-block: var(--space-s);
+  }
+  .share-post p {
+    margin-left: var(--space-xs);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .share-post ul li :is(a, button) svg {
+    height: 16px;
   }
 }
 
@@ -62,9 +87,4 @@ html[data-theme="dark"] .share-post ul li :is(a, button):hover {
 }
 html[data-theme="light"] .share-post ul li :is(a, button):hover {
   background-color: var(--slate-200);
-}
-
-.share-post ul li :is(a, button) svg {
-  height: 22px;
-  color: var(--accent);
 }

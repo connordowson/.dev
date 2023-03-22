@@ -3,8 +3,17 @@
   width: 100%;
   gap: var(--grid-gap, var(--space-s));
 
+  /* Magic from here */
+  /* https://css-tricks.com/responsive-layouts-fewer-media-queries/ */
   grid-template-columns: repeat(
-    var(--grid-placement, auto-fill),
-    minmax(var(--grid-min-item-size, 14rem), var(--grid-max-item-size, 22rem))
+    auto-fill,
+    minmax(
+      clamp(
+        100% / (var(--grid-no-of-columns, 3) + 1),
+        var(--grid-min-item-size, 16rem),
+        100%
+      ),
+      1fr
+    )
   );
 }

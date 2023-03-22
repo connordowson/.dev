@@ -5,8 +5,8 @@
 }
 
 .projects-grid {
-  --grid-min-item-size: 14rem;
-  --grid-max-item-size: 38rem;
+  --grid-no-of-columns: 2;
+  --grid-min-item-size: 24rem;
 }
 
 html[data-theme="dark"] .project-card h3 {

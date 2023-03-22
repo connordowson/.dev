@@ -57,8 +57,16 @@ const url = Astro.url;
       }
     </script>
   </head>
+
+  <body>
+    <!-- Preload some image assets -->
+    <link
+      rel="preload"
+      href={`${url}noise.png`}
+      as="image"
+      fetchpriority="high"
+    />
+    <Navbar />
+    <main><slot /></main>
+  </body>
 </html>
-<body>
-  <Navbar />
-  <main><slot /></main>
-</body>

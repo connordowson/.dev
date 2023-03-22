@@ -11,7 +11,7 @@
 }
 
 .blog-grid {
-  --grid-min-item-size: 12rem;
+  --grid-no-of-columns: 3;
 }
 
 .blog-card {

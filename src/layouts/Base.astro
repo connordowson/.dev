@@ -6,7 +6,7 @@ const { title, data, metaKeywords, metaDescription, metaImageURL } =
 // TODO: Use CUBE with tailwind
 // https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
 import "@styles/main.css";
-const url = Astro.url;
+const site = Astro.site;
 ---
 
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ const url = Astro.url;
     <!-- Preload some image assets -->
     <link
       rel="preload"
-      href={`${url}noise.png`}
+      href={`${site}noise.png`}
       as="image"
       fetchpriority="high"
     />

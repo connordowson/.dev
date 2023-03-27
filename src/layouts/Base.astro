@@ -60,11 +60,6 @@ const site = Astro.site;
     <!-- Cronitor RUM -->
     <script async src="https://rum.cronitor.io/script.js"></script>
     <script>
-      declare global {
-        interface Window {
-          cronitor?: any;
-        }
-      }
       window.cronitor =
         window.cronitor ||
         function () {

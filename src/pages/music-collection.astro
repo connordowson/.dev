@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@layouts/Base.astro";
+import Section from "@components/Section.astro";
+
+const discogsCollection = await fetch(
+  "https://api.discogs.com/users/dows/collection/folders/0/releases?token=CELhyIfVzWHVxcxcnTVqXErrPlJndRsFtuZOsGzi&per_page=100",
+  {
+    headers: {
+      Authorization: "",
+    },
+  }
+).then((res) => res.json());
+
+console.log(discogsCollection.releases.length);
+---
+
+<BaseLayout title="Music collection | Connor Dowson">
+  <Section>
+    <h1>Music collection</h1>
+
+    <div class="prose flow">
+      <p>My collection of vinyl.</p>
+      <div class="grid">
+        {
+          discogsCollection.releases.map((release) => {
+            return (
+              <div>
+                <h4>{release.basic_information.title}</h4>
+                <h5>{release.basic_information.artists[0].name}</h5>
+                <img src={release.basic_information.thumb} alt="" />
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

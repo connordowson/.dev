@@ -104,3 +104,7 @@ table tr td :first-child {
 table tr td :last-child {
   margin-bottom: 0;
 }
+
+.prose :is(h1, h2, h3, h4) {
+  line-height: 1.2;
+}

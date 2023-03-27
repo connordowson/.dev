@@ -56,6 +56,21 @@ const site = Astro.site;
         root.setAttribute("data-theme", "light");
       }
     </script>
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+      /* @ts-ignore */
+      window.cronitor =
+        /* @ts-ignore */
+        window.cronitor ||
+        function () {
+          /* @ts-ignore */
+          (window.cronitor.q = window.cronitor.q || []).push(arguments);
+        };
+      /* @ts-ignore */
+      cronitor("config", { clientKey: "8a9624f4d7b76c495ff9eb9036ad093f" });
+    </script>
   </head>
 
   <body>

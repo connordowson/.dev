@@ -1,12 +1,11 @@
 ---
 import Navbar from "../components/Navbar.astro";
-const { title, data, metaKeywords, metaDescription, metaImageURL } =
+const { title, data, metaKeywords, metaDescription, metaImageURL, isBlogPost } =
   Astro.props;
 
-// TODO: Use CUBE with tailwind
-// https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
 import "@styles/main.css";
 const site = Astro.site;
+const url = Astro.url;
 ---
 
 <!DOCTYPE html>
@@ -30,16 +29,31 @@ const site = Astro.site;
     <meta name="msapplication-TileColor" content="#34d399" />
     <meta name="theme-color" content="#34d399" />
 
-    <meta
-      property="og:image"
-      content={metaImageURL ? metaImageURL : `${site}meta-image.png`}
-    />
-
     {
       metaKeywords ? (
         <meta name="keywords" content={metaKeywords.join(",")} />
       ) : null
     }
+    <meta
+      property="og:image"
+      content={metaImageURL ? metaImageURL : `${site}meta-image.png`}
+    />
+    <meta
+      property="og:title"
+      content={title ||
+        `${data.title} | Connor Dowson | Portfolio` ||
+        "Connor Dowson | Portfolio"}
+    />
+    <meta property="og:type" content={isBlogPost ? "article" : "website"} />
+
+    <meta
+      name="og:description"
+      content={metaDescription
+        ? metaDescription
+        : "Portfolio site for Connor Dowson, a Bristol based front end web developer."}
+    />
+    <meta property="og:url" content={url} />
+
     <title>
       {
         title ||

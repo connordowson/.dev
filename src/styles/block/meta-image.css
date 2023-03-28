@@ -26,6 +26,7 @@
   max-width: 22ch;
   font-size: var(--space-xl);
   margin-top: 0;
+  margin-bottom: var(--space-m);
 }
 
 .meta-image-wrapper span {

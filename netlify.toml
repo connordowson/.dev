@@ -15,7 +15,7 @@
   force = true # ensure to always redirect
 
 [[redirects]]
-  from = "/blog/*/meta-image.jpg" # simplify all calls to serverless functions
-  to = "/.netlify/functions/generateMetaImage" # all function calls will go to this path
-  status = 200 # ok code
-  force = true # ensure to always redirect
+  from = "/blog/*/meta-image.jpg" # simplify all calls to meta image builder functions
+  to = "/.netlify/builders/generateMetaImage" 
+  status = 200 
+  force = true 

@@ -77,6 +77,18 @@ const site = Astro.site;
       as="image"
       fetchpriority="high"
     />
+    <link
+      rel="preload"
+      href={`${site}post-hero-dark.svg`}
+      as="image"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href={`${site}post-hero-light.svg`}
+      as="image"
+      fetchpriority="high"
+    />
     <Navbar />
     <main><slot /></main>
   </body>

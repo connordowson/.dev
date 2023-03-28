@@ -29,7 +29,11 @@ const site = Astro.site;
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#34d399" />
     <meta name="msapplication-TileColor" content="#34d399" />
     <meta name="theme-color" content="#34d399" />
-    {metaImageURL && <meta name="og:image" content={metaImageURL} />}
+
+    <meta
+      name="og:image"
+      content={metaImageURL ? metaImageURL : `${site}meta-image.png`}
+    />
 
     {
       metaKeywords ? (

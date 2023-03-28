@@ -25,6 +25,7 @@
   line-height: 1.1;
   max-width: 22ch;
   font-size: var(--space-xl);
+  margin-top: 0;
 }
 
 .meta-image-wrapper span {
@@ -45,6 +46,8 @@
   gap: var(--space-m);
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  left: var(--space-xl);
 }
 
 .meta-image-wrapper footer img {
@@ -57,15 +60,17 @@
 }
 .meta-image-wrapper img {
   border-radius: 50%;
-  height: var(--space-3xl);
   height: 12rem;
-  width: var(--space-3xl);
   width: 12rem;
   object-fit: cover;
   object-position: center 80%;
   border: 2px solid var(--accent);
-  position: absolute;
-  top: var(--space-xl);
-  right: var(--space-xl);
-  margin: 0 !important;
+  float: right;
+  /* margin-top: 0; */
+  z-index: 90;
+  display: block;
+  position: relative;
+  /* top: var(--space-xl); */
+  /* right: var(--space-xl); */
+  /* margin: 0 !important; */
 }

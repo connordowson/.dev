@@ -1,5 +1,6 @@
 body {
   font-family: var(--body);
+  font-size: var(--step--1);
   background-color: var(--body-bg);
 }
 

@@ -11,7 +11,6 @@ technologies: [
 links:
   demo: "https://algorhythm.connordowson.com/"
   code: "https://github.com/connordowson/workout-tracker"
-image: "algorhythm.png"
 order: 2
 draft: true
 ---

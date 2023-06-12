@@ -1,10 +1,11 @@
 ---
-const { relative, width, aboutMe } = Astro.props;
+const { relative, fixed, width, aboutMe } = Astro.props;
 ---
 
 <section
   class="section full-width"
   data-relative={relative === true ? "true" : "false"}
+  data-fixed={fixed === true ? "true" : "false"}
   data-width={width}
   data-about-me={aboutMe === true ? "true" : "false"}
 >

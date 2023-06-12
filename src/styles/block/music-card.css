@@ -1,0 +1,4 @@
+.music-grid {
+  --grid-no-of-columns: 5;
+  --grid-min-item-size: 8rem;
+}

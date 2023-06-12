@@ -43,6 +43,7 @@
   width: 100%;
   background: repeat var(--dot-bg);
   background-size: 10px;
+  z-index: -1;
 }
 
 .section:nth-child(even)::before {
@@ -58,6 +59,10 @@
   max-width: 64rem;
   margin-block: var(--space-xl);
   padding: var(--space-s);
+}
+
+.section[data-fixed="true"]::before {
+  position: fixed;
 }
 
 .section[data-width="small"] > div {

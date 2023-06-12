@@ -1,9 +1,8 @@
 ---
 title: "Workout tracker"
-technologies:
-  [
-    { name: "Remix", icon: "remix" },
-    { name: "React", icon: "simple-icons:react" },
+technologies: [
+    { name: "NextJS", icon: "file-icons:nextjs" },
+    # { name: "React", icon: "simple-icons:react" },
     { name: "PostgreSQL", icon: "cib:postgresql" },
     { name: "Prisma", icon: "simple-icons:prisma" },
     { name: "TypeScript", icon: "simple-icons:typescript" },
@@ -17,4 +16,4 @@ order: 2
 draft: true
 ---
 
-I created the workout tracker that I wanted to use at the gym using [Remix](https://remix.run). You can login, create routines, and then workout using those routines.
+I created the workout tracker that I wanted to use at the gym using [NextJS](https://nextjs.org/). You can login, create routines, and then workout using those routines.

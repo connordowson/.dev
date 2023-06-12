@@ -15,6 +15,7 @@ specifiers:
   cssnano: ^5.1.14
   date-fns: ^2.29.3
   isomorphic-unfetch: ^4.0.2
+  marked: ^4.3.0
   postcss-import: ^15.1.0
   postcss-import-ext-glob: ^2.1.1
   postcss-lightningcss: ^0.6.0
@@ -35,6 +36,7 @@ dependencies:
   autoprefixer: 10.4.14
   date-fns: 2.29.3
   isomorphic-unfetch: 4.0.2
+  marked: 4.3.0
   postcss-import: 15.1.0
   postcss-import-ext-glob: 2.1.1
   postcss-lightningcss: 0.6.0
@@ -2437,6 +2439,12 @@ packages:
 
   /markdown-table/3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
+
+  /marked/4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
 
   /mdast-util-definitions/5.1.2:
     resolution: {integrity: sha512-8SVPMuHqlPME/z3gqVwWY4zVXn8lqKv/pAhC57FuJ40ImXyBpmO5ukh98zB2v7Blql2FiHjHv9LVztSIqjY+MA==}

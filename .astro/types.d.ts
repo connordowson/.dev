@@ -123,6 +123,36 @@ declare module 'astro:content' {
   data: InferEntrySchema<"playground">
 } & { render(): Render[".mdx"] },
 },
+"projects": {
+"calcio.md": {
+  id: "calcio.md",
+  slug: "calcio",
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] },
+"dissertation.md": {
+  id: "dissertation.md",
+  slug: "dissertation",
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] },
+"portfolio.md": {
+  id: "portfolio.md",
+  slug: "portfolio",
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] },
+"workout-tracker.md": {
+  id: "workout-tracker.md",
+  slug: "workout-tracker",
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] },
+},
 
 	};
 

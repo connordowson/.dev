@@ -1,12 +1,14 @@
 ---
+import { getCollection } from "astro:content";
 import { Icon } from "astro-icon";
 import Section from "@components/Section.astro";
+import { marked } from "marked";
 
-const projects = await Astro.glob("../data/projects/*.md");
-const nonDraftProjects = projects.filter(
-  (project) => !project.frontmatter.draft
-);
-nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
+const unsortedProjects = await getCollection("projects", ({ data }) => {
+  return data.draft !== true;
+});
+
+const projects = unsortedProjects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Section width="large" relative>
@@ -14,48 +16,46 @@ nonDraftProjects.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
   <div class="grid projects-grid">
     {
-      nonDraftProjects.map(({ Content, frontmatter }) => (
-        <div class="project-card card shadow-sm">
-          <div class="project-card-top flow">
-            <h3>{frontmatter.title}</h3>
+      projects.map(({ data, body }) => {
+        return (
+          <div class="project-card card shadow-sm">
+            <div class="project-card__top flow">
+              <h3>{data.title}</h3>
 
-            <div class="prose">
-              <Content />
+              <div class="prose" set:html={marked.parse(body)} />
+              <ul>
+                {data.technologies.map(({ name, icon }) => (
+                  <li>
+                    <Icon name={icon} />
+                    <span>{name}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul>
-              {frontmatter.technologies.map(({ name, icon }) => (
-                <li>
-                  <Icon name={icon} />
-                  <span>{name}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="project-card-bottom">
-            {frontmatter.links.code && (
-              <a
-                class="inline-flex w-max items-center relative no-underline project-link text-lg"
-                href={frontmatter.links.code}
-              >
-                View code{" "}
-                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
-                <span class="visually-hidden">for {frontmatter.title}</span>
-              </a>
-            )}
+            <div class="project-card__bottom">
+              {data.links.code && (
+                <a
+                  class="inline-flex items-center relative"
+                  href={data.links.code}
+                >
+                  View code <Icon name="heroicons-outline:external-link" />
+                  <span class="visually-hidden">for {data.title}</span>
+                </a>
+              )}
 
-            {frontmatter.links.demo && (
-              <a
-                class="inline-flex w-max items-center relative no-underline project-link text-lg"
-                href={frontmatter.links.demo}
-              >
-                View demo{" "}
-                <Icon class="h-6 ml-1" name="heroicons-outline:external-link" />
-                <span class="visually-hidden">for {frontmatter.title}</span>
-              </a>
-            )}
+              {data.links.demo && (
+                <a
+                  class="inline-flex items-center relative"
+                  href={data.links.demo}
+                >
+                  View demo <Icon name="heroicons-outline:external-link" />
+                  <span class="visually-hidden">for {data.title}</span>
+                </a>
+              )}
+            </div>
           </div>
-        </div>
-      ))
+        );
+      })
     }
   </div>
 </Section>

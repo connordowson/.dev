@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 import { format } from "date-fns";
 import Section from "@components/Section.astro";
 
-const blogPostsData = await await getCollection("blog");
+const blogPostsData = await await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
 
 const getReadingTime = (content) => {
   if (!content) return;
@@ -20,11 +22,10 @@ let blogPosts = blogPostsData.map((post) => {
     timeToRead: getReadingTime(post.body),
   };
 });
-let nonDraftPosts = blogPosts.filter((post) => !post.data.draft);
-nonDraftPosts.sort(
+blogPosts.sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 );
-nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
+blogPosts = [...blogPosts.slice(0, 3)];
 ---
 
 <Section width="large" relative>
@@ -37,7 +38,7 @@ nonDraftPosts = [...nonDraftPosts.slice(0, 3)];
 
     <ul class="grid blog-grid">
       {
-        nonDraftPosts.map(({ data, formattedDate, timeToRead, slug }) => {
+        blogPosts.map(({ data, formattedDate, timeToRead, slug }) => {
           return (
             <li class="card blog-card shadow-sm flow">
               <a href={`/blog/${slug}`}>

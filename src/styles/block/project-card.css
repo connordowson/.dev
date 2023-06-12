@@ -17,11 +17,11 @@ html[data-theme="light"] .project-card h3 {
   color: var(--slate-800);
 }
 
-.project-card-top {
+.project-card__top {
   padding: var(--space-s);
 }
 
-.project-card-top ul {
+.project-card__top ul {
   display: inline-flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -29,7 +29,7 @@ html[data-theme="light"] .project-card h3 {
   margin-bottom: 0;
 }
 
-.project-card-top li {
+.project-card__top li {
   border-radius: var(--space-3xs);
   display: inline-flex;
   place-items: center;
@@ -48,23 +48,28 @@ html[data-theme="light"] .project-card li {
   background-color: var(--slate-200);
 }
 
-.project-card-top svg {
+.project-card__top svg {
   height: 1rem;
   margin-right: var(--space-3xs);
   color: var(--slate-400);
 }
 
-.project-card-bottom {
+.project-card__bottom {
   display: flex;
   gap: var(--space-m);
   margin-top: auto;
   padding: var(--space-s);
 }
 
-html[data-theme="dark"] .project-card-bottom {
+.project-card__bottom svg {
+  height: 1.5rem;
+  margin-left: var(--space-3xs);
+}
+
+html[data-theme="dark"] .project-card__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-html[data-theme="light"] .project-card-bottom {
+html[data-theme="light"] .project-card__bottom {
   border-top: 1px solid rgba(0, 0, 0, 0.07);
 }

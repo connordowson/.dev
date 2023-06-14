@@ -5,8 +5,20 @@
 [dev]
   framework = "astro"
 
+[context.dev.environment]
+  NODE_ENV = "development"
+
 [functions]
   directory = "/netlify/functions"
+
+[[edge_functions]]
+  path = "/*.woff2"
+  function = "hotlink-protection"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[redirects]]
   from = "/api/*" # simplify all calls to serverless functions

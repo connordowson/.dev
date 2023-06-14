@@ -19,7 +19,7 @@ module.exports = {
     fontFamily: {
       body: ["Inter"],
       display: ["Inter Display"],
-      mono: ["Fira Code"],
+      mono: ["Berkeley Mono"],
     },
   },
   plugins: [

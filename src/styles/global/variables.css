@@ -1,7 +1,7 @@
 :root {
   --display: "Inter Display";
   --body: "Inter";
-  --mono: "Fira Code";
+  --mono: "Berkeley Mono";
 
   /* Typography scale */
   --step--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);

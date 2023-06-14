@@ -108,3 +108,6 @@ dist
 
 # Fonts for testing out, that aren't used in the final site
 public/fonts/unused/
+
+# Paid fonts
+*BerkeleyMono*.woff2

@@ -4,7 +4,6 @@
     "netlify/edge-functions"
   ],
   "prettier.prettierPath": "./node_modules/prettier",
-
   "deno.unstable": true,
   "deno.importMap": ".netlify/edge-functions-import-map.json",
   "deno.path": "C:\\Users\\Connor Dowson\\AppData\\Roaming\\netlify\\Config\\deno-cli\\deno.exe"

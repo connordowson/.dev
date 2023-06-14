@@ -1,5 +1,5 @@
 .wrapper {
-  width: clamp(16rem, 100%, 48rem);
+  width: clamp(16rem, 100%, 54rem);
   margin-left: auto;
   margin-right: auto;
   padding-inline: var(--space-m);

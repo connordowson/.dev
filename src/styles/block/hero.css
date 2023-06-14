@@ -72,6 +72,12 @@ html[data-theme="light"] .hero h1 {
   justify-content: space-between;
 }
 
+@media screen and (min-width: 700px) {
+  .hero-social-links {
+    justify-content: flex-start;
+  }
+}
+
 .hero-social-links a {
   text-decoration: none;
 }

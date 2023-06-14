@@ -20,7 +20,7 @@
 
 .prose code {
   font-family: var(--mono);
-  font-weight: 100;
+  font-weight: 400;
 }
 
 .prose pre {

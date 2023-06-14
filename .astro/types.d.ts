@@ -99,6 +99,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] },
+"useful-webdev-links.md": {
+  id: "useful-webdev-links.md",
+  slug: "useful-webdev-links",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] },
 "view-draft-posts-whilst-running-gatsby-blog-in-development.md": {
   id: "view-draft-posts-whilst-running-gatsby-blog-in-development.md",
   slug: "view-draft-posts-whilst-running-gatsby-blog-in-development",

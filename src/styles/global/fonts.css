@@ -15,17 +15,16 @@
 }
 
 @font-face {
-  font-family: "Fira Code";
-  src: url("/fonts/fira-code-var-latin.woff2") format("woff2");
+  font-family: "Berkeley Mono";
+  src: url("/fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: block;
 }
-
 @font-face {
-  font-family: "Berkeley Mono";
-  src: url("/fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: block;
 }

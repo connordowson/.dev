@@ -1,7 +1,10 @@
 .header {
-  display: inline-flex;
+  position: absolute;
+  top: 0;
+  background-color: transparent;
   width: 100%;
-  background-color: var(--hero-bg);
+  z-index: 10;
+  backdrop-filter: blur(2px);
 }
 
 html[data-theme="dark"] .header {

@@ -4,6 +4,7 @@
   position: relative;
   overflow: hidden;
   padding-block: var(--space-xl);
+  padding-top: calc(var(--space-xl) + 57px);
 }
 
 html[data-theme="dark"] {
@@ -27,7 +28,6 @@ html[data-theme="light"] {
   place-items: center;
   gap: var(--space-l);
   z-index: 50;
-  /* padding-block: ; */
   padding-inline: var(--space-s);
   grid-template-columns: 1fr;
 }

@@ -25,6 +25,7 @@
   width: 100%;
   background: linear-gradient(to right, #ffffff07, #34d39950, #ffffff07);
 }
+
 [data-theme="dark"] {
   --dot-bg: url("/dot-dark.svg");
 }
@@ -42,7 +43,10 @@
   height: 100%;
   width: 100%;
   background: repeat var(--dot-bg);
+  /* background: url("waves.svg"); */
   background-size: 10px;
+  /* background-repeat: no-repeat; */
+  /* background-position: right; */
 }
 
 .section:nth-child(even)::before {

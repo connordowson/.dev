@@ -61,6 +61,9 @@ const url = Astro.url;
           "Connor Dowson | Portfolio"
       }
     </title>
+
+    <slot name="head" />
+
     <!-- This is intentionally inlined to avoid FOUC -->
     <script is:inline>
       const root = document.documentElement;
@@ -85,8 +88,6 @@ const url = Astro.url;
         };
       cronitor("config", { clientKey: "8a9624f4d7b76c495ff9eb9036ad093f" });
     </script>
-
-    <slot name="head" />
   </head>
 
   <body>

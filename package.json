@@ -27,6 +27,7 @@
     "puppeteer-core": "^19.7.5",
     "querystring": "^0.2.1",
     "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.1.0",
     "remark-code-titles": "^0.1.2"
   },
   "devDependencies": {

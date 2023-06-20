@@ -85,28 +85,11 @@ const url = Astro.url;
         };
       cronitor("config", { clientKey: "8a9624f4d7b76c495ff9eb9036ad093f" });
     </script>
+
+    <slot name="head" />
   </head>
 
   <body>
-    <!-- Preload some image assets -->
-    <link
-      rel="preload"
-      href={`${site}noise.png`}
-      as="image"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      href={`${site}post-hero-dark.svg`}
-      as="image"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      href={`${site}post-hero-light.svg`}
-      as="image"
-      fetchpriority="high"
-    />
     <Navbar />
     <main><slot /></main>
   </body>

@@ -4,11 +4,20 @@ import Hero from "@components/Hero.astro";
 import AboutMe from "@components/AboutMe.astro";
 import Projects from "@components/Projects.astro";
 import Blog from "@components/Blog.astro";
-
 import ListeningTo from "@components/ListeningTo.astro";
+const site = Astro.site;
 ---
 
 <BaseLayout title="Connor Dowson | Portfolio">
+  <!-- Assets to be preloaded -->
+  <link
+    rel="preload"
+    href={`${site}noise.png`}
+    as="image"
+    fetchpriority="high"
+    slot="head"
+  />
+
   <Hero />
   <AboutMe />
   <Projects />

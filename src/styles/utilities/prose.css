@@ -58,6 +58,27 @@
   margin-top: 0;
 }
 
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+  line-height: 1.3;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6):hover .heading-anchor {
+  /* visibility: visible; */
+}
+
+.prose .heading-anchor {
+  visibility: hidden;
+  position: absolute;
+  left: calc(0px - var(--space-m));
+  top: 1px;
+  fill: var(--accent);
+  box-sizing: border-box;
+}
+.prose .heading-anchor:hover {
+  visibility: visible;
+}
+
 .prose :is(ul, ol) {
   list-style-position: inside;
 }

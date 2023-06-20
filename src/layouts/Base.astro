@@ -62,6 +62,8 @@ const url = Astro.url;
       }
     </title>
 
+    <slot name="head" />
+
     <link
       rel="preload"
       href="/fonts/InterVariable.woff2"
@@ -70,8 +72,6 @@ const url = Astro.url;
       crossorigin
       fetchpriority="high"
     />
-
-    <slot name="head" />
 
     <!-- This is intentionally inlined to avoid FOUC -->
     <script is:inline>

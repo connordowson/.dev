@@ -1,7 +1,7 @@
 ---
-// import BaseLayout from "@layouts/Base.astro";
-import BaseLayout from "../../layouts/Base.astro";
-import Section from "../../components/Section.astro";
+import BaseLayout from "@layouts/Base.astro";
+import Section from "@components/Section.astro";
+import { Picture } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
 
 // Lazy way to remove extra details returned by Discogs API
@@ -87,7 +87,16 @@ const { data: albums } = page;
           albums.map((album) => {
             return (
               <div class="flow">
-                <img src={album.cover_image} alt={album.title} />
+                <Picture
+                  src={album.cover_image}
+                  alt={album.title}
+                  widths={[190]}
+                  sizes=""
+                  aspectRatio="1:1"
+                  background="red"
+                  formats={["webp", "avif"]}
+                />
+
                 <h3>{album.title}</h3>
 
                 <p>{album.artist}</p>

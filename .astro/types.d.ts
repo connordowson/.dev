@@ -121,6 +121,8 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] },
 },
+"music-collection": {
+},
 "playground": {
 "holo-pokemon-card.mdx": {
   id: "holo-pokemon-card.mdx",

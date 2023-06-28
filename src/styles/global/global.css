@@ -30,6 +30,11 @@ a:any-link {
   transition: color 150ms ease-in-out;
 }
 
+a:link svg {
+  height: var(--space-s);
+  vertical-align: middle;
+}
+
 h1,
 h2,
 h3,

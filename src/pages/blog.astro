@@ -4,15 +4,17 @@ import { format } from "date-fns";
 import BaseLayout from "@layouts/Base.astro";
 import Section from "@components/Section.astro";
 
-const blogPostsData = await await getCollection("blog");
+const blogPostsData = await await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
 let blogPosts = blogPostsData.map((post) => {
   return {
     ...post,
     formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
   };
 });
-let nonDraftPosts = blogPosts.filter((post) => !post.data.draft);
-nonDraftPosts.sort(
+blogPosts.sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 );
 ---
@@ -29,7 +31,7 @@ nonDraftPosts.sort(
 
       <ul class="flow flow-space-l">
         {
-          nonDraftPosts.map(({ data, slug }) => (
+          blogPosts.map(({ data, slug }) => (
             <li class="flow flow-space-xs">
               <h2>
                 <a href={`/blog/${slug}`}>{data.title}</a>

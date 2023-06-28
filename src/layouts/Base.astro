@@ -1,12 +1,11 @@
 ---
 import Navbar from "../components/Navbar.astro";
-const { title, data, metaKeywords, metaDescription, metaImageURL } =
+const { title, data, metaKeywords, metaDescription, metaImageURL, isBlogPost } =
   Astro.props;
 
-// TODO: Use CUBE with tailwind
-// https://piccalil.li/blog/i-used-tailwind-for-the-u-in-cube-css-and-i-liked-it/
 import "@styles/main.css";
 const site = Astro.site;
+const url = Astro.url;
 ---
 
 <!DOCTYPE html>
@@ -29,13 +28,32 @@ const site = Astro.site;
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#34d399" />
     <meta name="msapplication-TileColor" content="#34d399" />
     <meta name="theme-color" content="#34d399" />
-    {metaImageURL && <meta name="og:image" content={metaImageURL} />}
 
     {
       metaKeywords ? (
         <meta name="keywords" content={metaKeywords.join(",")} />
       ) : null
     }
+    <meta
+      property="og:image"
+      content={metaImageURL ? metaImageURL : `${site}meta-image.png`}
+    />
+    <meta
+      property="og:title"
+      content={title ||
+        `${data.title} | Connor Dowson | Portfolio` ||
+        "Connor Dowson | Portfolio"}
+    />
+    <meta property="og:type" content={isBlogPost ? "article" : "website"} />
+
+    <meta
+      name="og:description"
+      content={metaDescription
+        ? metaDescription
+        : "Portfolio site for Connor Dowson, a Bristol based front end web developer."}
+    />
+    <meta property="og:url" content={url} />
+
     <title>
       {
         title ||
@@ -43,6 +61,18 @@ const site = Astro.site;
           "Connor Dowson | Portfolio"
       }
     </title>
+
+    <slot name="head" />
+
+    <link
+      rel="preload"
+      href="/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      fetchpriority="high"
+    />
+
     <!-- This is intentionally inlined to avoid FOUC -->
     <script is:inline>
       const root = document.documentElement;
@@ -56,16 +86,20 @@ const site = Astro.site;
         root.setAttribute("data-theme", "light");
       }
     </script>
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script type="text/javascript">
+      window.cronitor =
+        window.cronitor ||
+        function () {
+          (window.cronitor.q = window.cronitor.q || []).push(arguments);
+        };
+      cronitor("config", { clientKey: "8a9624f4d7b76c495ff9eb9036ad093f" });
+    </script>
   </head>
 
   <body>
-    <!-- Preload some image assets -->
-    <link
-      rel="preload"
-      href={`${site}noise.png`}
-      as="image"
-      fetchpriority="high"
-    />
     <Navbar />
     <main><slot /></main>
   </body>

@@ -6,6 +6,7 @@ const { title, tags } = data;
 import { format } from "date-fns";
 import { Icon } from "astro-icon";
 const url = Astro.url;
+const site = Astro.site;
 ---
 
 <BaseLayout
@@ -13,7 +14,40 @@ const url = Astro.url;
   metaKeywords={tags}
   metaDescription={data.description}
   metaImageURL={`${url}/meta-image.jpg?title=${metaImageData.title}&description=${metaImageData.description}`}
+  isBlogPost={true}
 >
+  <!-- Assets to be preloaded -->
+  <link
+    rel="preload"
+    href={`${site}noise.png`}
+    as="image"
+    fetchpriority="high"
+    slot="head"
+  />
+  <link
+    rel="preload"
+    href={`${site}post-hero-dark.svg`}
+    as="image"
+    fetchpriority="high"
+    slot="head"
+  />
+  <link
+    rel="preload"
+    href={`${site}post-hero-light.svg`}
+    as="image"
+    fetchpriority="high"
+    slot="head"
+  />
+
+  <link
+    rel="preload"
+    href="/fonts/JetBrainsMono-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+    slot="head"
+  />
+
   <header class="post-header">
     <div class="wrapper flow">
       <h1>

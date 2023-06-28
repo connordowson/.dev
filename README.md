@@ -8,5 +8,5 @@ My personal portfolio site showcasing some projects I have worked on, and some o
 
 - [Astro](https://astro.build/)
 - [SolidJS](https://www.solidjs.com/)
-- [Tailwind](https://tailwindcss.com/)
+- [CUBE CSS methodology](https://cube.fyi/)
 - [Netlify](https://www.netlify.com/)

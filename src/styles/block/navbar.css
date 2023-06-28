@@ -1,10 +1,10 @@
 .header {
-  position: fixed;
-  display: inline-flex;
+  position: absolute;
   top: 0;
+  background-color: transparent;
   width: 100%;
-  backdrop-filter: blur(8px);
-  z-index: 50;
+  z-index: 10;
+  backdrop-filter: blur(2px);
 }
 
 html[data-theme="dark"] .header {

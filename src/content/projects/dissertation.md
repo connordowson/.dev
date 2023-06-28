@@ -10,7 +10,6 @@ technologies:
 links:
   # demo: "https://algorhythm.connordowson.com/"
   code: "https://github.com/connordowson/algorhythm"
-image: "algorhythm.png"
 order: 4
 draft: false
 ---

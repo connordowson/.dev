@@ -12,4 +12,4 @@ order: 3
 draft: false
 ---
 
-A small blog to post any pints I drink with a nice bit of scenery when I'm travelling. On each post you can see the local paid, and the UK price converted using an exchange rate API. Also uses [Mapbox](https://www.mapbox.com/) to show the location on a map.
+A small blog to post any pints I drink with a nice bit of scenery when I'm travelling. On each post you can see the local price paid, and the UK price converted using an exchange rate API. Also uses [Mapbox](https://www.mapbox.com/) to show the location on a map.

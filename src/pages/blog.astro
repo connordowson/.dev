@@ -21,7 +21,7 @@ blogPosts.sort(
 
 <BaseLayout title="Blog | Connor Dowson">
   <Section width="small">
-    <div class="region flow">
+    <div class="region flow prose">
       <h1>Blog</h1>
 
       <p>
@@ -29,7 +29,7 @@ blogPosts.sort(
         I find interesting.
       </p>
 
-      <ul class="flow flow-space-l">
+      <ul class="flow flow-space-l" role="list">
         {
           blogPosts.map(({ data, slug }) => (
             <li class="flow flow-space-xs">

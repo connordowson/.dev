@@ -79,8 +79,8 @@
   visibility: visible;
 }
 
-.prose :is(ul, ol) {
-  list-style-position: inside;
+.prose :is(ol, ul):not(:is(ol, ul) :is(ol, ul)):not([role="list"]) {
+  padding-left: 1em;
 }
 
 .prose hr {

@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@layouts/Base.astro";
+import Section from "@components/Section.astro";
+---
+
+<BaseLayout title="Playground | Connor Dowson">
+  <Section width="small">
+    <div class="region flow prose">
+      <h1>Playground</h1>
+      <p>Collection of random things and experiments.</p>
+      <!-- <ul>
+        <li>
+          <a href="/music-collection">Music collection</a>. A page showing all
+          of my current vinyl collection, sourced from Discogs.
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/uses">/uses</a>. My <code>/uses</code> page detailing my developer
+          setup, tools and configs (Honestly just made to get on Wes Bos' <a
+            href="https://uses.tech/">uses.tech</a
+          > page).
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/now">/now</a>. A kind of creepy real-time list of what I'm
+          listening to, reading, watching, and playing.
+        </li>
+      </ul> -->
+
+      <h2><a href="/music-collection">Music collection</a></h2>
+      <p>My record collection, sourced from Discogs.</p>
+      <h2><a href="/uses">/uses</a></h2>
+      <p>
+        My <code>/uses</code> page detailing my developer setup, tools and configs
+        (honestly I just made to get on Wes Bos' <a href="https://uses.tech/"
+          >uses.tech</a
+        > page).
+      </p>
+      <!-- TODO: Add now page -->
+      <!-- <h2><a href="/now">/now</a></h2>
+      <p>
+        A kind of creepy real-time list of what I'm listening to, reading,
+        watching, and playing.
+      </p> -->
+    </div>
+  </Section>
+</BaseLayout>

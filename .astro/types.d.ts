@@ -189,43 +189,48 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"adding-a-dark-theme-to-my-astro-site.md": {
+	id: "adding-a-dark-theme-to-my-astro-site.md";
+  slug: "useful-webdev-links";
+  body: string;
+  collection: "blog";
+  data: any
+} & { render(): Render[".md"] };
 "my-top-10-favourite-albums-from-2022.md": {
 	id: "my-top-10-favourite-albums-from-2022.md";
   slug: "my-top-10-favourite-albums-from-2022";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 "use-a-vscode-syntax-highlighting-theme-in-astro.md": {
 	id: "use-a-vscode-syntax-highlighting-theme-in-astro.md";
   slug: "use-a-vscode-syntax-highlighting-theme-in-astro";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 "useful-webdev-links.md": {
 	id: "useful-webdev-links.md";
   slug: "useful-webdev-links";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 "view-draft-posts-whilst-running-gatsby-blog-in-development.md": {
 	id: "view-draft-posts-whilst-running-gatsby-blog-in-development.md";
   slug: "view-draft-posts-whilst-running-gatsby-blog-in-development";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
 "view-styles.md": {
 	id: "view-styles.md";
   slug: "view-styles";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
+  data: any
 } & { render(): Render[".md"] };
-};
-"playground": {
 };
 "projects": {
 "calcio.md": {
@@ -233,52 +238,54 @@ declare module 'astro:content' {
   slug: "calcio";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".md"] };
 "dissertation.md": {
 	id: "dissertation.md";
   slug: "dissertation";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".md"] };
 "picturesquepints.md": {
 	id: "picturesquepints.md";
   slug: "picturesquepints";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".md"] };
 "portfolio.md": {
 	id: "portfolio.md";
   slug: "portfolio";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".md"] };
 "workout-tracker.md": {
 	id: "workout-tracker.md";
   slug: "workout-tracker";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".md"] };
 };
 
 	};
 
 	type DataEntryMap = {
-		"music-collection": {
+		"music_collection": {
 "discogs": {
 	id: "discogs";
-  collection: "music-collection";
+  collection: "music_collection";
   data: any
 };
+};
+"playground": {
 };
 
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = typeof import("../src/content/config");
+	type ContentConfig = never;
 }

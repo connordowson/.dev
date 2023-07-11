@@ -10,16 +10,18 @@ import { Icon } from "astro-icon";
 
 export async function getStaticPaths({ paginate }) {
   const sanitize_artist_name = (artist) => {
-    return artist.replace(" (2)", "");
+    return artist.replace(" (2)", "").replace(" (3)", "");
   };
 
   const sanitize_album_title = (album) => {
     return album
       .replace(" (The Platinum Pleasure Edition)", "")
+      .replace("レッド・ツェッペリン ", "")
+      .replace(" = Untitled ", "")
       .replace(" = Etazhi", "");
   };
   const discogsCollectionUnformatted = await Astro.glob(
-    "../../content/music-collection/*.json"
+    "../../content/music_collection/*.json"
   );
 
   const discogsCollection = discogsCollectionUnformatted[0].releases.map(
@@ -37,7 +39,7 @@ export async function getStaticPaths({ paginate }) {
   );
 
   // Generate pages from our array of albums, with 20 to a page
-  return paginate(discogsCollection, { pageSize: 20 });
+  return paginate(discogsCollection, { pageSize: 30 });
 }
 // All paginated data is passed on the "page" prop
 const { page } = Astro.props;
@@ -89,16 +91,14 @@ const { data: albums } = page;
               <div class="flow">
                 <Picture
                   src={album.cover_image}
-                  alt={album.title}
+                  alt={`Album artwork for ${album.title} by ${album.artist}`}
                   widths={[190]}
                   sizes=""
                   aspectRatio="1:1"
                   background="red"
                   formats={["webp", "avif"]}
                 />
-
                 <h3>{album.title}</h3>
-
                 <p>{album.artist}</p>
               </div>
             );

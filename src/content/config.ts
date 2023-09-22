@@ -38,6 +38,7 @@ const projectsCollection = defineCollection({
 });
 
 const musicCollectionCollection = defineCollection({
+  type: 'data',
   schema: z.object({}),
 });
 

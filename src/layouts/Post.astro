@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./Base.astro";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 const { data, metaImageData } = Astro.props;
 const { title, tags } = data;
 import { format } from "date-fns";
@@ -61,8 +61,6 @@ const site = Astro.site;
           width={60}
           quality={100}
           format="webp"
-          aspectRatio="1:1"
-          fit="cover"
         />
 
         <div>

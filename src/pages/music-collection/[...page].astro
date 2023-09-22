@@ -1,49 +1,48 @@
 ---
+export const prerender = false;
 import BaseLayout from "@layouts/Base.astro";
 import Section from "@components/Section.astro";
-import { Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
 // Lazy way to remove extra details returned by Discogs API
 // Like for artists with the same name as another artist, it returns "Artist (2)"
 // And for albums with a deluxe edition, it returns "Album (Deluxe Edition)"
+const sanitize_artist_name = (artist) => {
+  return artist.replace(" (2)", "").replace(" (3)", "");
+};
 
-export async function getStaticPaths({ paginate }) {
-  const sanitize_artist_name = (artist) => {
-    return artist.replace(" (2)", "").replace(" (3)", "");
+const sanitize_album_title = (album) => {
+  return album
+    .replace(" (The Platinum Pleasure Edition)", "")
+    .replace("レッド・ツェッペリン ", "")
+    .replace(" = Untitled ", "")
+    .replace(" = Etazhi", "");
+};
+
+const discogs_collection_endpoint = `https://api.discogs.com/users/dows/collection/folders/0/releases?token=${
+  import.meta.env.DISCOGS_API_TOKEN
+}&per_page=20&page=`;
+
+const { page } = Astro.params;
+
+const unformatted_collection = await fetch(
+  `${discogs_collection_endpoint}${page || 1}`
+).then((res) => res.json());
+
+const collection = unformatted_collection.releases.map((release) => {
+  return {
+    id: release.id,
+    title: sanitize_album_title(release.basic_information.title),
+    artist: sanitize_artist_name(release.basic_information.artists[0].name),
+    year: release.basic_information.year,
+    cover_image: release.basic_information.cover_image,
+    thumb: release.basic_information.thumb,
+    genres: release.basic_information.genres,
   };
+});
 
-  const sanitize_album_title = (album) => {
-    return album
-      .replace(" (The Platinum Pleasure Edition)", "")
-      .replace("レッド・ツェッペリン ", "")
-      .replace(" = Untitled ", "")
-      .replace(" = Etazhi", "");
-  };
-  const discogsCollectionUnformatted = await Astro.glob(
-    "../../content/music_collection/*.json"
-  );
-
-  const discogsCollection = discogsCollectionUnformatted[0].releases.map(
-    (release) => {
-      return {
-        id: release.id,
-        title: sanitize_album_title(release.basic_information.title),
-        artist: sanitize_artist_name(release.basic_information.artists[0].name),
-        year: release.basic_information.year,
-        cover_image: release.basic_information.cover_image,
-        thumb: release.basic_information.thumb,
-        genres: release.basic_information.genres,
-      };
-    }
-  );
-
-  // Generate pages from our array of albums, with 20 to a page
-  return paginate(discogsCollection, { pageSize: 30 });
-}
-// All paginated data is passed on the "page" prop
-const { page } = Astro.props;
-const { data: albums } = page;
+const { pagination } = unformatted_collection;
 ---
 
 <BaseLayout title="Music collection | Connor Dowson">
@@ -59,12 +58,18 @@ const { data: albums } = page;
       </p>
 
       <p class="pagination">
-        <span>Page {page.currentPage} of {page.lastPage}</span>
+        <span>Page {pagination.page} of {pagination.pages}</span>
 
         {
-          page.url.prev && (
+          pagination.urls?.prev && (
             <span>
-              <a href={page.url.prev}>
+              <a
+                href={`${
+                  pagination?.page !== 2
+                    ? `/music-collection/${pagination.page - 1}`
+                    : "music-collection"
+                }`}
+              >
                 <Icon name="heroicons-solid:arrow-sm-left" />
                 Previous
               </a>
@@ -72,9 +77,9 @@ const { data: albums } = page;
           )
         }
         {
-          page.url.next && (
+          pagination.urls?.next && (
             <span>
-              <a href={page.url.next}>
+              <a href={`/music-collection/${pagination.page + 1}`}>
                 Next
                 <Icon name="heroicons-solid:arrow-sm-right" />
               </a>
@@ -86,18 +91,17 @@ const { data: albums } = page;
 
       <div class="grid music-grid">
         {
-          albums.map((album) => {
+          collection.map((album) => {
             return (
               <div class="flow">
-                <Picture
+                <Image
                   src={album.cover_image}
-                  alt={`Album artwork for ${album.title} by ${album.artist}`}
-                  widths={[190]}
-                  sizes=""
-                  aspectRatio="1:1"
-                  background="red"
-                  formats={["webp", "avif"]}
+                  alt=""
+                  width={190}
+                  height={190}
+                  quality={90}
                 />
+
                 <h3>{album.title}</h3>
                 <p>{album.artist}</p>
               </div>
@@ -108,12 +112,18 @@ const { data: albums } = page;
 
       <hr />
       <p class="pagination">
-        <span>Page {page.currentPage} of {page.lastPage}</span>
+        <span>Page {pagination.page} of {pagination.pages}</span>
 
         {
-          page.url.prev && (
+          pagination.urls?.prev && (
             <span>
-              <a href={page.url.prev}>
+              <a
+                href={`${
+                  pagination?.page !== 2
+                    ? `/music-collection/${pagination.page - 1}`
+                    : "music-collection"
+                }`}
+              >
                 <Icon name="heroicons-solid:arrow-sm-left" />
                 Previous
               </a>
@@ -121,9 +131,9 @@ const { data: albums } = page;
           )
         }
         {
-          page.url.next && (
+          pagination.urls?.next && (
             <span>
-              <a href={page.url.next}>
+              <a href={`/music-collection/${pagination.page + 1}`}>
                 Next
                 <Icon name="heroicons-solid:arrow-sm-right" />
               </a>

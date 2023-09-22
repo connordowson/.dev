@@ -7,12 +7,17 @@ import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
-import image from "@astrojs/image";
 import { s } from "hastscript";
+
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://connordowson.dev",
+  output: "hybrid",
+  image: {
+    domains: ["i.discogs.com"],
+  },
   markdown: {
     shikiConfig: {
       theme: {
@@ -29,7 +34,6 @@ export default defineConfig({
       rehypeSlug,
       [
         rehypeAutolinkHeadings,
-
         {
           behavior: "append",
           properties: {
@@ -61,12 +65,8 @@ export default defineConfig({
     mdx(),
     solidJs(),
     tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
+      applyBaseStyles: false,
     }),
   ],
+  adapter: netlify(),
 });

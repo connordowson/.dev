@@ -22,7 +22,7 @@ const sanitize_album_title = (album) => {
 
 const discogs_collection_endpoint = `https://api.discogs.com/users/dows/collection/folders/0/releases?token=${
   import.meta.env.DISCOGS_API_TOKEN
-}&per_page=20&page=`;
+}&sort=added&sort_order=desc&per_page=20&page=`;
 
 const { page } = Astro.params;
 

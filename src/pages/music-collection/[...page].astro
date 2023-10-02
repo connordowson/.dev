@@ -20,6 +20,11 @@ const sanitize_album_title = (album) => {
     .replace(" = Etazhi", "");
 };
 
+const artist_list_formatter = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
+});
+
 const discogs_collection_endpoint = `https://api.discogs.com/users/dows/collection/folders/0/releases?token=${
   import.meta.env.DISCOGS_API_TOKEN
 }&sort=added&sort_order=desc&per_page=20&page=`;
@@ -34,7 +39,11 @@ const collection = unformatted_collection.releases.map((release) => {
   return {
     id: release.id,
     title: sanitize_album_title(release.basic_information.title),
-    artist: sanitize_artist_name(release.basic_information.artists[0].name),
+    artists: new Set(
+      release.basic_information.artists.map((artist) =>
+        sanitize_artist_name(artist.name)
+      )
+    ),
     year: release.basic_information.year,
     cover_image: release.basic_information.cover_image,
     thumb: release.basic_information.thumb,
@@ -103,7 +112,7 @@ const { pagination } = unformatted_collection;
                 />
 
                 <h3>{album.title}</h3>
-                <p>{album.artist}</p>
+                <p>{artist_list_formatter.format(album.artists)}</p>
               </div>
             );
           })

@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "./Base.astro";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
+import SharePost from "@components/SharePost";
 const { data, metaImageData } = Astro.props;
 const { title, tags } = data;
 import { format } from "date-fns";
-import { Icon } from "astro-icon";
+// import { Icon } from "astro-icon";
 const url = Astro.url;
 const site = Astro.site;
 ---
@@ -61,8 +62,6 @@ const site = Astro.site;
           width={60}
           quality={100}
           format="webp"
-          aspectRatio="1:1"
-          fit="cover"
         />
 
         <div>
@@ -74,34 +73,11 @@ const site = Astro.site;
     </div>
   </header>
   <div class="flow flow-space-l region">
-    <article class="wrapper prose flow">
+    <article class="wrapper prose flow flow-space-s">
       <slot />
     </article>
-    <div class="wrapper">
-      <div class="share-post shadow-md">
-        <p>Share this post</p>
-        <ul>
-          <li>
-            <a
-              href={`https://twitter.com/intent/tweet/?text=${data.title}&url=${url}`}
-              ><Icon name="simple-icons:twitter" />
-            </a>
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
-              ><Icon name="simple-icons:linkedin" />
-            </a>
-            <a
-              href={`https://www.reddit.com/submit/?url=${url}&title=${data.title}`}
-              ><Icon name="simple-icons:reddit" />
-            </a>
-            <button
-              onclick={`navigator.clipboard.writeText('${url}')`}
-              aria-label="Copy this post's url to clipboard"
-              ><Icon name="mdi:link-variant" />
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
+
+    <!-- <SharePost url={url} title={title} client:visible /> -->
+    <SharePost url={url} title={title} client:load />
   </div>
 </BaseLayout>

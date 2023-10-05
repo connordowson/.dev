@@ -79,8 +79,8 @@
   visibility: visible;
 }
 
-.prose :is(ul, ol) {
-  list-style-position: inside;
+.prose :is(ol, ul):not(:is(ol, ul) :is(ol, ul)):not([role="list"]) {
+  padding-left: 1em;
 }
 
 .prose hr {
@@ -127,4 +127,8 @@ table tr td :first-child {
 .prose table tr th :last-child,
 table tr td :last-child {
   margin-bottom: 0;
+}
+
+.prose :is(h1, h2, h3, h4) {
+  line-height: 1.2;
 }

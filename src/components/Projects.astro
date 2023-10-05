@@ -26,7 +26,7 @@ const projects = unsortedProjects.sort((a, b) => a.data.order - b.data.order);
               <ul>
                 {data.technologies.map(({ name, icon }) => (
                   <li>
-                    <Icon name={icon} />
+                    <Icon name={icon} aria-hidden="true" />
                     <span>{name}</span>
                   </li>
                 ))}
@@ -38,7 +38,11 @@ const projects = unsortedProjects.sort((a, b) => a.data.order - b.data.order);
                   class="inline-flex items-center relative"
                   href={data.links.code}
                 >
-                  View code <Icon name="heroicons-outline:external-link" />
+                  View code{" "}
+                  <Icon
+                    name="heroicons-outline:external-link"
+                    aria-hidden="true"
+                  />
                   <span class="visually-hidden">for {data.title}</span>
                 </a>
               )}
@@ -48,7 +52,8 @@ const projects = unsortedProjects.sort((a, b) => a.data.order - b.data.order);
                   class="inline-flex items-center relative"
                   href={data.links.demo}
                 >
-                  View demo <Icon name="heroicons-outline:external-link" />
+                  View demo{" "}
+                  <Icon name="heroicons-outline:external-link" aria-hidden />
                   <span class="visually-hidden">for {data.title}</span>
                 </a>
               )}

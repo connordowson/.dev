@@ -1,7 +1,7 @@
 ---
 title: "How to use any VS Code theme in Astro with Shiki syntax highlighter"
 slug: "use-a-vscode-syntax-highlighting-theme-in-astro"
-description: "Add any VS Code theme to any code blocks on your Astro site using Shiki syntax highlighter"
+description: "Add any VS Code theme to any code blocks on your Astro site using Shiki syntax highlighter."
 date: "2022-10-13"
 tags: ["webdev", "astro"]
 draft: false

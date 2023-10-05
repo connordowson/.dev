@@ -21,8 +21,7 @@ dd {
   margin: 0;
 }
 
-ul,
-ol {
+:is(ul, ol) {
   padding-left: 0;
 }
 
@@ -30,9 +29,10 @@ ol {
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
+  padding-left: 0;
 }
 
-:is(ol, ul):not(.prose > :is(ol, ul)) {
+:is(ol, ul):not(.prose :is(ol, ul)) {
   list-style: none;
 }
 

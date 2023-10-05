@@ -37,8 +37,14 @@ const projectsCollection = defineCollection({
   }),
 });
 
+const musicCollectionCollection = defineCollection({
+  type: 'data',
+  schema: z.object({}),
+});
+
 export const collections = {
   blog: blogCollection,
   playground: playgroundCollection,
   projects: projectsCollection,
+  music_collection: musicCollectionCollection,
 };

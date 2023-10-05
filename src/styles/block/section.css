@@ -64,6 +64,10 @@
   padding: var(--space-s);
 }
 
+.section[data-fixed="true"]::before {
+  position: fixed;
+}
+
 .section[data-width="small"] > div {
   max-width: 48rem;
 }

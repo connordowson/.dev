@@ -1,90 +1,68 @@
 .share-post {
-  border-radius: var(--space-2xs);
   display: flex;
   place-items: center;
-  overflow: hidden;
   justify-content: space-between;
+  margin-block: var(--space-l);
 }
 
-[data-theme="dark"] .share-post {
-  background-color: var(--slate-800);
-}
-[data-theme="light"] .share-post {
-  background-color: var(--slate-100);
-}
-
-.share-post p {
-  margin-left: var(--space-m);
+.share-post h3 {
+  /* margin-left: var(--space-xs); */
   padding-block: 0;
   margin-bottom: 0;
 }
 
-.share-post ul {
+.share-post > div {
   display: inline-flex;
+  align-items: center;
   margin: 0;
   padding: 0;
+  gap: var(--space-xs);
 }
 
-.share-post ul li {
+.share-post div span {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-.share-post ul li :is(a, button) {
-  padding: var(--space-m);
-  display: inline-flex;
-  cursor: pointer;
-  margin: 0;
-  list-style-type: none;
-}
+@media screen and (max-width: 600px) {
+  .share-post {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.share-post ul li :is(a, button) svg {
-  height: 22px;
-  color: var(--accent);
-}
+  .share-post > div {
+    margin-top: var(--space-xs);
+  }
 
-@media screen and (max-width: 700px) {
-  .share-post ul li :is(a, button) {
-    padding: var(--space-m);
+  .share-post h3 {
+    margin-left: 0;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .share-post ul li :is(a, button) {
-    padding: var(--space-s);
-  }
-
-  .share-post p {
-    margin-left: var(--space-s);
-  }
+.context-alert[data-state="empty"] {
+  opacity: 0;
+  transform: translateY(0.25em);
+  transition: none;
 }
 
-@media screen and (max-width: 450px) {
-  .share-post ul li :is(a, button) {
-    padding: var(--space-xs);
-    padding-block: var(--space-s);
-  }
-  .share-post p {
-    margin-left: var(--space-xs);
-  }
+.context-alert {
+  position: absolute;
+  inset: auto calc(-1 * var(--space-2xs)) calc(100% + var(--space-2xs))
+    calc(-1 * var(--space-2xs));
+  border-radius: var(--space-2xs);
+  display: block;
+  padding: var(--space-xs);
+  background: var(--accent);
+  background: var(--emerald-200);
+  color: var(--emerald-800);
+  text-align: center;
+  transition: opacity 300ms ease-in-out 200ms,
+    transform 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5) 200ms;
 }
 
-@media screen and (max-width: 450px) {
-  .share-post ul li :is(a, button) svg {
-    height: 16px;
-  }
-}
-
-.share-post ul li button {
-  appearance: none;
-  border: none;
-  background-color: transparent;
-}
-
-html[data-theme="dark"] .share-post ul li :is(a, button):hover {
-  background-color: var(--slate-700);
-}
-html[data-theme="light"] .share-post ul li :is(a, button):hover {
-  background-color: var(--slate-200);
+.context-alert[data-state="hidden"] {
+  opacity: 0;
+  transform: translateY(var(--space-2xs));
+  transition: none;
 }

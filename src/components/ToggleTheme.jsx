@@ -41,10 +41,12 @@ const ToggleTheme = () => {
   return (
     <button
       aria-label={`Change to ${theme() === "dark" ? "light" : "dark"} theme`}
-      class="theme-button shadow  "
+      class="button shadow"
+      data-size="small"
       onClick={() => setTheme((theme) => (theme === "dark" ? "light" : "dark"))}
     >
       <svg width="32" height="32" viewBox="0 0 24 24">
+        <title>Change theme</title>
         {theme() === "light" ? (
           <path
             fill="currentColor"

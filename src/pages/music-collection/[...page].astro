@@ -1,0 +1,155 @@
+---
+export const prerender = false;
+import BaseLayout from "@layouts/Base.astro";
+import Section from "@components/Section.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon";
+
+// Lazy way to remove extra details returned by Discogs API
+// Like for artists with the same name as another artist, it returns "Artist (2)"
+// And for albums with a deluxe edition, it returns "Album (Deluxe Edition)"
+const sanitize_artist_name = (artist) => {
+  return artist.replace(" (2)", "").replace(" (3)", "");
+};
+
+const sanitize_album_title = (album) => {
+  return album
+    .replace(" (The Platinum Pleasure Edition)", "")
+    .replace("レッド・ツェッペリン ", "")
+    .replace(" = Untitled ", "")
+    .replace(" = Etazhi", "");
+};
+
+const artist_list_formatter = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
+});
+
+const discogs_collection_endpoint = `https://api.discogs.com/users/dows/collection/folders/0/releases?token=${
+  import.meta.env.DISCOGS_API_TOKEN
+}&sort=added&sort_order=desc&per_page=20&page=`;
+
+const { page } = Astro.params;
+
+const unformatted_collection = await fetch(
+  `${discogs_collection_endpoint}${page || 1}`
+).then((res) => res.json());
+
+const collection = unformatted_collection.releases.map((release) => {
+  return {
+    id: release.id,
+    title: sanitize_album_title(release.basic_information.title),
+    artists: new Set(
+      release.basic_information.artists.map((artist) =>
+        sanitize_artist_name(artist.name)
+      )
+    ),
+    year: release.basic_information.year,
+    cover_image: release.basic_information.cover_image,
+    thumb: release.basic_information.thumb,
+    genres: release.basic_information.genres,
+  };
+});
+
+const { pagination } = unformatted_collection;
+---
+
+<BaseLayout title="Music collection | Connor Dowson">
+  <Section fixed>
+    <h1>Music collection</h1>
+
+    <div class="prose flow">
+      <p>
+        My collection of music owned on vinyl. Sourced from my <a
+          href="https://www.discogs.com/user/dows/collection?header=1"
+          >Discogs account</a
+        >, and in order of purchase (most recent first).
+      </p>
+
+      <p class="pagination">
+        <span>Page {pagination.page} of {pagination.pages}</span>
+
+        {
+          pagination.urls?.prev && (
+            <span>
+              <a
+                href={`${
+                  pagination?.page !== 2
+                    ? `/music-collection/${pagination.page - 1}`
+                    : "music-collection"
+                }`}
+              >
+                <Icon name="heroicons-solid:arrow-sm-left" />
+                Previous
+              </a>
+            </span>
+          )
+        }
+        {
+          pagination.urls?.next && (
+            <span>
+              <a href={`/music-collection/${pagination.page + 1}`}>
+                Next
+                <Icon name="heroicons-solid:arrow-sm-right" />
+              </a>
+            </span>
+          )
+        }
+      </p>
+      <hr />
+
+      <div class="grid music-grid">
+        {
+          collection.map((album) => {
+            return (
+              <div class="flow">
+                <Image
+                  src={album.cover_image}
+                  alt=""
+                  width={190}
+                  height={190}
+                  quality={90}
+                />
+
+                <h3>{album.title}</h3>
+                <p>{artist_list_formatter.format(album.artists)}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <hr />
+      <p class="pagination">
+        <span>Page {pagination.page} of {pagination.pages}</span>
+
+        {
+          pagination.urls?.prev && (
+            <span>
+              <a
+                href={`${
+                  pagination?.page !== 2
+                    ? `/music-collection/${pagination.page - 1}`
+                    : "music-collection"
+                }`}
+              >
+                <Icon name="heroicons-solid:arrow-sm-left" />
+                Previous
+              </a>
+            </span>
+          )
+        }
+        {
+          pagination.urls?.next && (
+            <span>
+              <a href={`/music-collection/${pagination.page + 1}`}>
+                Next
+                <Icon name="heroicons-solid:arrow-sm-right" />
+              </a>
+            </span>
+          )
+        }
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

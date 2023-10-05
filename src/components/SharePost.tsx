@@ -12,6 +12,17 @@ const ToggleTheme = ({ title, url }: Props) => {
     noOptions: false,
   });
 
+  const [alertState, setAlertState] = createSignal({
+    share: {
+      state: "hidden",
+      message: "",
+    },
+    copy: {
+      state: "hidden",
+      message: "",
+    },
+  });
+
   onMount(() => {
     setSupportedTechnologies(() => {
       return {
@@ -20,25 +31,80 @@ const ToggleTheme = ({ title, url }: Props) => {
         noOptions: !window?.navigator?.clipboard && !window?.navigator?.share,
       };
     });
-
-    console.log(supportedTechnologies());
   });
+
+  const handleShare = () => {
+    window.navigator.share({
+      title,
+      url,
+      text: title,
+    });
+
+    setAlertState(() => {
+      return {
+        ...alertState(),
+        share: {
+          state: "visible",
+          message: "Thanks!",
+        },
+      };
+    });
+
+    setTimeout(() => {
+      setAlertState(() => {
+        return {
+          ...alertState(),
+          share: {
+            state: "hidden",
+            message: "",
+          },
+        };
+      });
+    }, 2000);
+  };
+
+  const handleCopy = () => {
+    window.navigator.clipboard.writeText(url.toString());
+
+    setAlertState(() => {
+      return {
+        ...alertState(),
+        copy: {
+          state: "visible",
+          message: "Copied URL!",
+        },
+      };
+    });
+
+    setTimeout(() => {
+      setAlertState(() => {
+        return {
+          ...alertState(),
+          copy: {
+            state: "hidden",
+            message: "",
+          },
+        };
+      });
+    }, 2000);
+  };
 
   return (
     <Show when={!supportedTechnologies().noOptions}>
-      <div class="wrapper">
-        <div class="share-post shadow-md">
-          <h3>Share this post</h3>
+      <div class="wrapper region">
+        <hr />
+        <div class="share-post">
+          <h2>Share this post</h2>
 
-          <ul role="toolbar">
+          <div>
             {supportedTechnologies()?.webShareSupported && (
-              <li>
+              <span class="relative">
                 <button
                   class="button"
+                  type="button"
                   data-icon
-                  onclick={`navigator.clipboard.writeText('${url}')`}
+                  onclick={handleShare}
                 >
-                  {/* <Icon name="mdi:link-variant" /> */}
                   Share
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -52,17 +118,25 @@ const ToggleTheme = ({ title, url }: Props) => {
                     ></path>
                   </svg>
                 </button>
-              </li>
+                <div
+                  role="alert"
+                  aria-live="polite"
+                  class="context-alert"
+                  data-state={alertState().share.state}
+                >
+                  {alertState().share.message}
+                </div>
+              </span>
             )}
 
             {supportedTechnologies()?.clipboardSupported && (
-              <li>
+              <span class="relative">
                 <button
                   class="button"
+                  type="button"
                   data-icon
-                  onclick={`navigator.clipboard.writeText('${url}')`}
+                  onclick={handleCopy}
                 >
-                  {/* <Icon name="mdi:link-variant" /> */}
                   Copy URL
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -76,9 +150,16 @@ const ToggleTheme = ({ title, url }: Props) => {
                     ></path>
                   </svg>
                 </button>
-              </li>
+                <div
+                  role="alert"
+                  class="context-alert"
+                  data-state={alertState().copy.state}
+                >
+                  {alertState().copy.message}
+                </div>
+              </span>
             )}
-          </ul>
+          </div>
         </div>
       </div>
     </Show>

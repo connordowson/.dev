@@ -59,3 +59,10 @@ h3 {
 button {
   color: inherit;
 }
+
+hr {
+  height: 2px;
+  border: 0;
+  padding: 0;
+  background-color: var(--hr-color);
+}

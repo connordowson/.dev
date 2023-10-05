@@ -184,13 +184,6 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"adding-a-dark-theme-to-my-astro-site.md": {
-	id: "adding-a-dark-theme-to-my-astro-site.md";
-  slug: "useful-webdev-links";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 "my-top-10-favourite-albums-from-2022.md": {
 	id: "my-top-10-favourite-albums-from-2022.md";
   slug: "my-top-10-favourite-albums-from-2022";
@@ -207,7 +200,7 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 "useful-webdev-links.md": {
 	id: "useful-webdev-links.md";
-  slug: "dark-mode";
+  slug: "useful-web-dev-links";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -222,6 +215,13 @@ declare module 'astro:content' {
 "view-styles.md": {
 	id: "view-styles.md";
   slug: "view-styles";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"website-tour/index.md": {
+	id: "website-tour/index.md";
+  slug: "a-tour-of-my-portfolio-website";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

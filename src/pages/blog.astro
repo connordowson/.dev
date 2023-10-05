@@ -4,23 +4,24 @@ import { format } from "date-fns";
 import BaseLayout from "@layouts/Base.astro";
 import Section from "@components/Section.astro";
 
+const { DEV } = import.meta.env;
+
 const blogPostsData = await await getCollection("blog", ({ data }) => {
+  // Show draft posts in dev
+  if (DEV) {
+    return true;
+  }
+
   return data.draft !== true;
 });
 
-let blogPosts = blogPostsData.map((post) => {
-  return {
-    ...post,
-    formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
-  };
-});
-blogPosts.sort(
+const blogPosts = blogPostsData.sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 );
 ---
 
 <BaseLayout title="Blog | Connor Dowson">
-  <Section width="small">
+  <Section width="small" fixed>
     <div class="region flow prose">
       <h1>Blog</h1>
 

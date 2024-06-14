@@ -9,6 +9,11 @@ body {
   outline-offset: var(--space-4xs);
 }
 
+*::selection {
+  background-color: var(--accent);
+  color: var(--body-bg);
+}
+
 p,
 li,
 a,

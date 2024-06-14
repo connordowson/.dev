@@ -184,6 +184,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"2023-top-10-albums.mdx": {
+	id: "2023-top-10-albums.mdx";
+  slug: "2023-top-10-albums";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "my-top-10-favourite-albums-from-2022.md": {
 	id: "my-top-10-favourite-albums-from-2022.md";
   slug: "my-top-10-favourite-albums-from-2022";

@@ -1,0 +1,29 @@
+[
+  {
+    "organisation": "Shelter",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDDkek4XD1cV0DiaepA12o1NuaBdBwOi6Ro9NC-Oz-ULc98GKe4F-d_apbPZwkemK2_ZE&usqp=CAU",
+    "roles": [
+      {
+        "role": "Senior Front-end Web Developer",
+        "startDate": "2023",
+        "endDate": "Present"
+      },
+      {
+        "role": "Front-end Web Developer",
+        "startDate": "2019",
+        "endDate": "2023"
+      }
+    ]
+  },
+  {
+    "organisation": "University of Gloucestershire",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKwJO_r_RaJ2ajhI09nKpMEVe3WYQNyguesg&s",
+    "roles": [
+      {
+        "role": "BSc (Hons) Computing: 2:1",
+        "startDate": "2016",
+        "endDate": "2019"
+      }
+    ]
+  }
+]

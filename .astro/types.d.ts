@@ -291,6 +291,13 @@ declare module 'astro:content' {
   data: InferEntrySchema<"music_collection">
 };
 };
+"work_and_education": {
+"work_and_education": {
+	id: "work_and_education";
+  collection: "work_and_education";
+  data: InferEntrySchema<"work_and_education">
+};
+};
 
 	};
 

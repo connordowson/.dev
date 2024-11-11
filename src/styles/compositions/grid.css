@@ -18,6 +18,27 @@
   );
 }
 
-.grid[data-columns="2"] {
+.grid[data-columns="1:1"] {
   --grid-no-of-columns: 2;
+}
+
+.grid[data-columns="2:1"] {
+  --grid-no-of-columns: 2;
+  grid-template-columns:
+    minmax(
+      clamp(
+        100% / (var(--grid-no-of-columns, 3) + 1),
+        var(--grid-min-item-size, 16rem),
+        100%
+      ),
+      2fr
+    )
+    minmax(
+      clamp(
+        100% / (var(--grid-no-of-columns, 3) + 1),
+        var(--grid-min-item-size, 16rem),
+        100%
+      ),
+      1fr
+    );
 }

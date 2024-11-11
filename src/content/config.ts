@@ -1,4 +1,5 @@
 import { z, defineCollection } from "astro:content";
+import { start } from "repl";
 
 const blogCollection = defineCollection({
   schema: z.object({
@@ -38,8 +39,25 @@ const projectsCollection = defineCollection({
 });
 
 const musicCollectionCollection = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({}),
+});
+
+const workAndEducationCollection = defineCollection({
+  type: "data",
+  schema: z.array(
+    z.object({
+      organisation: z.string(),
+      logo: z.string(),
+      roles: z.array(
+        z.object({
+          role: z.string(),
+          startDate: z.string(),
+          endDate: z.string(),
+        })
+      ),
+    })
+  ),
 });
 
 export const collections = {
@@ -47,4 +65,5 @@ export const collections = {
   playground: playgroundCollection,
   projects: projectsCollection,
   music_collection: musicCollectionCollection,
+  work_and_education: workAndEducationCollection,
 };

@@ -11,8 +11,8 @@ html[data-theme="dark"] .w_and_e {
 
 html[data-theme="light"] .w_and_e {
   --line-colour: var(--slate-300);
-  --logo-bg: var(--slate-800);
-  --logo-border: var(--slate-700);
+  --logo-bg: var(--slate-100);
+  --logo-border: var(--slate-300);
 }
 
 .w_and_e__org {
@@ -38,9 +38,8 @@ html[data-theme="light"] .w_and_e {
 .w_and_e__heading {
   font-size: var(--step--1);
   color: var(--text-primary);
-  display: grid;
   grid-template-columns: subgrid;
-  grid-column: 2 / span 2;
+  grid-column: 2 / -1;
 }
 
 .info {

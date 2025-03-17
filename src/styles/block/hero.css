@@ -81,7 +81,7 @@ html[data-theme="light"] .hero h1 {
   text-decoration: none;
 }
 .hero-social-links a svg {
-  height: var(--space-m);
+  font-size: var(--space-m);
   color: var(--social-icon);
   transition: color 150ms ease-in-out;
 }

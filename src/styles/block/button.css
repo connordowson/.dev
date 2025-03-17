@@ -17,7 +17,7 @@
 }
 
 .button svg {
-  height: var(--space-s);
+  font-size: var(--space-s);
   width: var(--space-s);
 }
 

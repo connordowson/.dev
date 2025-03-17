@@ -62,7 +62,7 @@ html[data-theme="light"] .project-card li {
 }
 
 .project-card__bottom svg {
-  height: 1.5rem;
+  font-size: var(--space-s);
   margin-left: var(--space-3xs);
 }
 

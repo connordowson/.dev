@@ -6,15 +6,16 @@ import rehypeSlug from "rehype-slug";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import solidJs from "@astrojs/solid-js";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import { s } from "hastscript";
+import icon from "astro-icon";
 
-import netlify from "@astrojs/netlify/functions";
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://connordowson.dev",
-  output: "hybrid",
+  output: "static",
   image: {
     domains: ["i.discogs.com"],
   },
@@ -39,7 +40,7 @@ export default defineConfig({
           properties: {
             className: ["heading-anchor"],
           },
-          content: (node) => [
+          content: () => [
             s(
               "svg",
               {
@@ -64,8 +65,17 @@ export default defineConfig({
   integrations: [
     mdx(),
     solidJs(),
-    tailwind({
+    tailwindcss({
       applyBaseStyles: false,
+    }),
+    icon({
+      include: {
+        mdi: ["email", "github", "linkedin"],
+        "simple-icons": ["github", "linkedin", "django", "sass", "typescript"],
+        "heroicons-outline": ["external-link"],
+        "heroicons-solid": ["arrow-sm-left", "arrow-sm-right"],
+        cib: ["postgresql"],
+      },
     }),
   ],
   adapter: netlify(),

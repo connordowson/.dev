@@ -2,5 +2,3 @@
 @import-glob "compositions/*.css";
 @import-glob "utilities/*.css";
 @import-glob "block/*.css";
-
-@tailwind utilities;

@@ -6,7 +6,7 @@ import Section from "@components/Section.astro";
 
 const { DEV } = import.meta.env;
 
-const blogPostsData = await await getCollection("blog", ({ data }) => {
+const blogPostsData = await getCollection("blog", ({ data }) => {
   // Show draft posts in dev
   if (DEV) {
     return true;

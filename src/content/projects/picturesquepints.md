@@ -2,7 +2,7 @@
 title: "Picturesque pints"
 technologies:
   [
-    { name: "Astro", icon: "simple-icons:astro" },
+    { name: "Astro", icon: "astro" },
     { name: "Sanity", icon: "sanity" },
   ]
 links:

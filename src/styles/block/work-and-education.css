@@ -72,6 +72,6 @@ html[data-theme="light"] .w_and_e {
       transparent var(--circle-size),
       transparent 100%
     ),
-    linear-gradient(var(--line-colour) 0 0) 50% / 4px
+    linear-gradient(var(--line-colour) 0 0) 50% / 3px
       calc(100% - calc(2 * var(--circle-size))) no-repeat;
 }

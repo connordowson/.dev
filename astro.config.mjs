@@ -9,7 +9,6 @@ import solidJs from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
 import { s } from "hastscript";
 import icon from "astro-icon";
-
 import netlify from "@astrojs/netlify";
 
 // https://astro.build/config

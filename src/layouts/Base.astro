@@ -7,7 +7,7 @@ const site = Astro.site;
 const url = Astro.url;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
@@ -86,16 +86,11 @@ const url = Astro.url;
       }
     </script>
 
-    <!-- Cronitor RUM -->
-    <script async src="https://rum.cronitor.io/script.js"></script>
-    <script type="text/javascript">
-      window.cronitor =
-        window.cronitor ||
-        function () {
-          (window.cronitor.q = window.cronitor.q || []).push(arguments);
-        };
-      cronitor("config", { clientKey: "8a9624f4d7b76c495ff9eb9036ad093f" });
-    </script>
+    <!-- Umami -->
+    <script
+      defer
+      src="https://umami.connordowson.dev/script.js"
+      data-website-id="c70a3e94-9ab7-4190-8432-0a3270bbc615"></script>
   </head>
 
   <body>

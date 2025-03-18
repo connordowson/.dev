@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import node from "@astrojs/node";
 import { tokenColors } from "./city-lights.json";
 import remarkCodeTitles from "remark-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -9,7 +10,6 @@ import solidJs from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
 import { s } from "hastscript";
 import icon from "astro-icon";
-import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
@@ -77,5 +77,7 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: netlify(),
+  adapter: node({
+    mode: "standalone",
+  }),
 });

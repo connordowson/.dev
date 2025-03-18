@@ -1,6 +1,9 @@
 ---
 import Section from "@components/Section.astro";
-import TopTracks from "@components/TopTracks.jsx";
+import { GET } from "../pages/api/getTopTracks";
+
+let response = await GET(Astro);
+const topTracks = await response.json();
 ---
 
 <Section relative>
@@ -11,7 +14,24 @@ import TopTracks from "@components/TopTracks.jsx";
       ones).
     </p>
 
-    <TopTracks client:visible />
+    <div class="grid song-card-grid">
+      {
+        topTracks?.length > 0 ? (
+          topTracks?.map(({ name, artist, artwork }) => (
+            <div class="card song-card shadow-sm">
+              <img src={artwork} alt={`Album artwork for ${name}`} />
+
+              <div class="song-card-info">
+                <span class="song-card-title">{name}</span>
+                <span class="song-card-artist">{artist}</span>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )
+      }
+    </div>
     <!-- <svg
       version="1.1"
       id="Layer_1"

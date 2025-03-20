@@ -64,9 +64,6 @@ export default defineConfig({
   integrations: [
     mdx(),
     solidJs(),
-    tailwindcss({
-      applyBaseStyles: false,
-    }),
     icon({
       include: {
         mdi: ["email", "github", "linkedin"],
@@ -77,6 +74,13 @@ export default defineConfig({
       },
     }),
   ],
+  vite: {
+    plugins: [
+      tailwindcss({
+        applyBaseStyles: false,
+      }),
+    ],
+  },
   adapter: node({
     mode: "standalone",
   }),

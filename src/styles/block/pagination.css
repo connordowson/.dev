@@ -2,4 +2,14 @@
   display: inline-flex;
   width: auto;
   gap: var(--space-2xs);
+  align-items: center;
+}
+
+.pagination span a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+}
+.pagination span a svg {
+  align-self: center;
 }

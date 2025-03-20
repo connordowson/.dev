@@ -33,5 +33,7 @@ module.exports = {
       );
     },
   ],
-  darkMode: ["class", 'html[data-theme="dark"]'],
+  darkMode: {
+    dark: 'html[data-theme="dark"]',
+  },
 };

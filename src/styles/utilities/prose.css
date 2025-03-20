@@ -83,11 +83,11 @@
   padding-left: 1em;
 }
 
-.prose ul {
+.prose ul:not([class]) {
   list-style-type: disc;
 }
 
-.prose ol {
+.prose ol:not([class]) {
   list-style-type: decimal;
 }
 

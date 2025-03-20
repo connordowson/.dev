@@ -1,7 +1,5 @@
 # [connordowson.dev](https://connordowson.dev)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/34926d05-7689-4f07-8d6a-780a47673264/deploy-status)](https://app.netlify.com/sites/connordowsonportfolio/deploys)
-
 My personal portfolio site showcasing some projects I have worked on, and some other stuff I think is interesting.
 
 ## Built with
@@ -9,4 +7,4 @@ My personal portfolio site showcasing some projects I have worked on, and some o
 - [Astro](https://astro.build/)
 - [SolidJS](https://www.solidjs.com/)
 - [CUBE CSS methodology](https://cube.fyi/)
-- [Netlify](https://www.netlify.com/)
+- [Coolify](https://www.coolify.io/)

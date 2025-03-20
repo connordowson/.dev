@@ -1,7 +1,7 @@
 .card {
   border-radius: 1rem;
   overflow: hidden;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(1px);
 }
 
 html[data-theme="dark"] .card {

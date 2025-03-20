@@ -7,10 +7,6 @@
   flex-direction: column;
 }
 
-.post-header img {
-  border: 1px solid var(--accent);
-}
-
 .post-header::before {
   content: "";
   position: absolute;
@@ -33,6 +29,8 @@
 .post-header__info img {
   border: 1px solid var(--accent);
   border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
 html[data-theme="dark"] .post-header::before {

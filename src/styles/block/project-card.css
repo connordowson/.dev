@@ -61,6 +61,12 @@ html[data-theme="light"] .project-card li {
   padding: var(--space-s);
 }
 
+.project-card__bottom a {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+}
+
 .project-card__bottom svg {
   font-size: var(--space-s);
   margin-left: var(--space-3xs);

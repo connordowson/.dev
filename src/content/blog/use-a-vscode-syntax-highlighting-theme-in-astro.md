@@ -7,7 +7,7 @@ tags: ["webdev", "astro"]
 draft: false
 ---
 
-Astro uses [Shiki](https://github.com/shikijs/shiki) as it's default syntax highlighter which can use any VS Code theme - most should be available on GitHub. You'll have to find the GitHub repo to use the theme, once you've found the repo, the themes `.json` file should be in the `/themes` folder of the repo.
+Astro uses [Shiki](https://shiki.style/) as it's default syntax highlighter which can use any VS Code theme - most should be available on GitHub. You'll have to find the GitHub repo to use the theme, once you've found the repo, the themes `.json` file should be in the `/themes` folder of the repo.
 
 First download the VS Code theme's json file. I'll be using the [City Lights theme](https://github.com/Yummygum/city-lights-syntax-vsc/blob/master/themes/City%20Lights-color-theme.json). Download this json file into your project, I've put mine in the root and named it `city-lights.json`.
 

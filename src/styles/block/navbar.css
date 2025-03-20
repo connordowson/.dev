@@ -26,6 +26,7 @@ html[data-theme="light"] .header {
   display: flex;
   gap: 2em;
   padding-inline: 0;
+  margin-block: var(--space-xs);
 }
 
 .navbar ul li {

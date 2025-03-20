@@ -1,8 +1,11 @@
 ---
-import "@styles/main.css";
+import.meta.glob("/src/styles/global/*.css", { eager: true });
+import.meta.glob("/src/styles/compositions/*.css", { eager: true });
+import.meta.glob("/src/styles/utilities/*.css", { eager: true });
+import.meta.glob("/src/styles/block/*.css", { eager: true });
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />

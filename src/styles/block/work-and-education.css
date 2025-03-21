@@ -1,6 +1,6 @@
 .w_and_e {
   display: grid;
-  grid-template-columns: 46px 1fr auto;
+  grid-template-columns: 46px 3fr 2fr;
 }
 
 html[data-theme="dark"] .w_and_e {
@@ -46,6 +46,10 @@ html[data-theme="light"] .w_and_e {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 2 / span 2;
+}
+
+.info__date {
+  white-space: nowrap;
 }
 
 .w_and_e .line {

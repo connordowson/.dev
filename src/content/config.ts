@@ -1,5 +1,4 @@
 import { z, defineCollection } from "astro:content";
-import { start } from "repl";
 
 const blogCollection = defineCollection({
   schema: z.object({

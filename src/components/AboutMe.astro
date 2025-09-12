@@ -10,14 +10,14 @@ const workAndEducation = await getEntry(
 ---
 
 <Section relative width="large" aboutMe class={["about-me"]}>
-  <div class="grid" data-columns="2:1">
-    <div class="flow prose">
+  <div class="grid test" data-columns="3:2">
+    <div class="flow flow-space-l prose">
       <h2>About me</h2>
       <div>
         <div class="flow prose relative">
           <p>
-            A senior front end web developer currently working at <a
-              href="https://shelter.org.uk">Shelter</a
+            A front end web developer currently working at <a
+              href="https://www.natwest.com/">NatWest</a
             > and living in Bristol. I graduated from the University of Gloucestershire
             in 2019 with a degree in Computing.
           </p>
@@ -40,9 +40,9 @@ const workAndEducation = await getEntry(
       </div>
     </div>
 
-    <div class="flow prose">
+    <div class="flow flow-space-l prose w_and_e">
       <h2>Work and education</h2>
-      <div class="flow prose relative w_and_e">
+      <div class="flow prose relative w_and_e__content">
         {
           workAndEducation?.data.map((entry) => (
             <div class="w_and_e__org">

@@ -1,6 +1,39 @@
 .w_and_e {
+  contain: size;
+}
+
+@media screen and (max-width: 830px) {
+  .w_and_e {
+    contain: content;
+  }
+}
+
+.test {
+  --grid-gap: var(--space-xl);
+}
+
+.w_and_e__content {
   display: grid;
   grid-template-columns: 46px 3fr 2fr;
+  height: calc(100% - 2 * var(--space-l));
+  overflow: auto;
+  mask: linear-gradient(
+      to bottom,
+      transparent 0px,
+      black 0px,
+      black calc(100% - var(--space-l)),
+      transparent 100%
+    ),
+    linear-gradient(to left, black 5px, transparent 6px); /* not masked area for scrollbar */
+  padding-bottom: var(--space-l);
+}
+
+@media screen and (max-width: 830px) {
+  .w_and_e__content {
+    padding-bottom: 0;
+    mask: none;
+    height: auto;
+  }
 }
 
 html[data-theme="dark"] .w_and_e {

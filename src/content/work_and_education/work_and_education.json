@@ -1,12 +1,23 @@
 [
   {
+    "organisation": "NatWest",
+    "logo": "https://www.natwest.com/content/dam/natwest_com/Logos/og-logo-nw.png",
+    "roles": [
+      {
+        "role": "Design System Web Software Engineer",
+        "startDate": "2025",
+        "endDate": "Present"
+      }
+    ]
+  },
+  {
     "organisation": "Shelter",
     "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDDkek4XD1cV0DiaepA12o1NuaBdBwOi6Ro9NC-Oz-ULc98GKe4F-d_apbPZwkemK2_ZE&usqp=CAU",
     "roles": [
       {
         "role": "Senior Front-end Web Developer",
         "startDate": "2023",
-        "endDate": "Present"
+        "endDate": "2025"
       },
       {
         "role": "Front-end Web Developer",

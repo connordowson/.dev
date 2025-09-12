@@ -25,9 +25,13 @@
 .grid[data-columns="2:1"] {
   grid-template-columns: 2fr 1fr;
 }
+.grid[data-columns="3:2"] {
+  grid-template-columns: 3fr 2fr;
+}
 
 @media screen and (max-width: 830px) {
-  .grid[data-columns="2:1"] {
+  .grid[data-columns="2:1"],
+  .grid[data-columns="3:2"] {
     grid-template-columns: 1fr;
   }
 }

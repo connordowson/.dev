@@ -1,6 +1,6 @@
 export default {
-  plugins: {
-    "postcss-lightningcss": {},
-    autoprefixer: {},
-  },
+	plugins: {
+		"postcss-lightningcss": {},
+		autoprefixer: {},
+	},
 };

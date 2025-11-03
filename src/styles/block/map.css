@@ -1,25 +1,25 @@
 [data-theme="dark"] .map {
-  --dots-primary: var(--slate-700);
-  --dots-primary: oklch(from var(--slate-700) l c h / 0.45);
+	--dots-primary: var(--slate-700);
+	--dots-primary: oklch(from var(--slate-700) l c h / 0.45);
 }
 
 [data-theme="light"] .map {
-  --dots-primary: var(--slate-300);
-  --dots-primary: oklch(from var(--slate-300) l c h / 0.75);
+	--dots-primary: var(--slate-300);
+	--dots-primary: oklch(from var(--slate-300) l c h / 0.75);
 }
 
 .map {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  z-index: -10;
-  width: 11rem;
-  transform: translateY(-50%);
+	position: absolute;
+	right: 0;
+	top: 50%;
+	z-index: -10;
+	width: 11rem;
+	transform: translateY(-50%);
 }
 
 .map-dots__primary {
-  fill: var(--dots-primary);
+	fill: var(--dots-primary);
 }
 .map-dots__accent {
-  fill: var(--accent);
+	fill: var(--accent);
 }

@@ -1,68 +1,70 @@
 .post-header {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-xl);
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+	padding-top: var(--space-3xl);
+	padding-bottom: var(--space-xl);
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 .post-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  --background-size: 2000px;
-  isolation: isolate;
-  background-blend-mode: overlay;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	--background-size: 2000px;
+	isolation: isolate;
+	background-blend-mode: overlay;
 }
 
 .post-header__info {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-xs);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--space-xs);
 }
 
 .post-header__info img {
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
+	border: 1px solid var(--accent);
+	border-radius: 50%;
+	object-fit: cover;
+	aspect-ratio: 1 / 1;
 }
 
 html[data-theme="dark"] .post-header::before {
-  background: url("../noise.png") repeat,
-    no-repeat left 25% / var(--background-size) url("../post-hero-dark.svg");
+	background:
+		url("../noise.png") repeat,
+		no-repeat left 25% / var(--background-size) url("../post-hero-dark.svg");
 
-  mask-image: linear-gradient(45deg, black 35%, transparent 70%);
+	mask-image: linear-gradient(45deg, black 35%, transparent 70%);
 }
 
 html[data-theme="light"] .post-header::before {
-  background: url("../noise.png") repeat,
-    no-repeat right 0% / var(--background-size) url("../post-hero-light.svg");
-  mask-image: linear-gradient(45deg, transparent 35%, black 70%);
+	background:
+		url("../noise.png") repeat,
+		no-repeat right 0% / var(--background-size) url("../post-hero-light.svg");
+	mask-image: linear-gradient(45deg, transparent 35%, black 70%);
 }
 
 @media screen and (min-width: 2000px) {
-  .post-header::before {
-    --background-size: cover;
-  }
+	.post-header::before {
+		--background-size: cover;
+	}
 }
 
 .post-header time {
-  color: var(--time-color);
+	color: var(--time-color);
 }
 
 html[data-theme="dark"] .post-header {
-  background-color: var(--slate-900);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  --time-color: var(--emerald-100);
+	background-color: var(--slate-900);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+	--time-color: var(--emerald-100);
 }
 html[data-theme="light"] .post-header {
-  background-color: var(--slate-200);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  --time-color: var(--emerald-800);
+	background-color: var(--slate-200);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	--time-color: var(--emerald-800);
 }

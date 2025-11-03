@@ -1,10 +1,13 @@
 ---
-import BaseLayout from "./Base.astro";
 import { Image } from "astro:assets";
 import SharePost from "@components/SharePost";
+import BaseLayout from "./Base.astro";
+
 const { data, metaImageData } = Astro.props;
 const { title, tags } = data;
+
 import { format } from "date-fns";
+
 // import { Icon } from "astro-icon";
 const url = Astro.url;
 const site = Astro.site;

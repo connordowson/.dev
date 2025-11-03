@@ -1,10 +1,7 @@
 ---
 title: "Picturesque pints"
 technologies:
-  [
-    { name: "Astro", icon: "astro" },
-    { name: "Sanity", icon: "sanity" },
-  ]
+  [{ name: "Astro", icon: "astro" }, { name: "Sanity", icon: "sanity" }]
 links:
   code: "https://github.com/connordowson/picturesquepints.com"
   demo: "https://picturesquepints.com"

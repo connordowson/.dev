@@ -1,45 +1,45 @@
 html[data-theme="dark"] {
-  --song-title: var(--slate-100);
-  --song-artist: var(--slate-200);
+	--song-title: var(--slate-100);
+	--song-artist: var(--slate-200);
 }
 html[data-theme="light"] {
-  --song-title: var(--slate-800);
-  --song-artist: var(--slate-700);
+	--song-title: var(--slate-800);
+	--song-artist: var(--slate-700);
 }
 
 .song-card {
-  display: flex;
-  place-items: center;
-  padding: var(--space-2xs);
-  width: 100%;
-  gap: var(--space-2xs);
-  border-radius: var(--space-2xs);
+	display: flex;
+	place-items: center;
+	padding: var(--space-2xs);
+	width: 100%;
+	gap: var(--space-2xs);
+	border-radius: var(--space-2xs);
 }
 
 .song-card-grid {
-  margin-top: var(--space-s);
+	margin-top: var(--space-s);
 }
 
 .song-card img {
-  margin-right: var(--space-4xs);
-  border-radius: var(--space-4xs);
-  flex-shrink: 0;
+	margin-right: var(--space-4xs);
+	border-radius: var(--space-4xs);
+	flex-shrink: 0;
 }
 
 .song-card-info {
-  min-width: 0;
+	min-width: 0;
 }
 
 .song-card-title {
-  min-width: 0;
-  display: block;
-  font-family: var(--display);
-  color: var(--song-title);
+	min-width: 0;
+	display: block;
+	font-family: var(--display);
+	color: var(--song-title);
 }
 .song-card-artist {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  display: block;
-  color: var(--song-artist);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+	color: var(--song-artist);
 }

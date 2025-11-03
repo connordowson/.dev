@@ -4,36 +4,36 @@ Info: https://piccalil.li/quick-tip/flow-utility/
 */
 
 .flow > * + * {
-  margin-block-start: var(--flow-space, 1rem);
+	margin-block-start: var(--flow-space, 1rem);
 }
 .flow-space-4xs > * + * {
-  --flow-space: var(--space-4xs);
+	--flow-space: var(--space-4xs);
 }
 .flow-space-3xs > * + * {
-  --flow-space: var(--space-3xs);
+	--flow-space: var(--space-3xs);
 }
 .flow-space-2xs > * + * {
-  --flow-space: var(--space-2xs);
+	--flow-space: var(--space-2xs);
 }
 .flow-space-xs > * + * {
-  --flow-space: var(--space-xs);
+	--flow-space: var(--space-xs);
 }
 
 .flow-space-s > * + * {
-  --flow-space: var(--space-s);
+	--flow-space: var(--space-s);
 }
 .flow-space-m > * + * {
-  --flow-space: var(--space-m);
+	--flow-space: var(--space-m);
 }
 .flow-space-l > * + * {
-  --flow-space: var(--space-l);
+	--flow-space: var(--space-l);
 }
 .flow-space-xl > * + * {
-  --flow-space: var(--space-xl);
+	--flow-space: var(--space-xl);
 }
 .flow-space-2xl > * + * {
-  --flow-space: var(--space-2xl);
+	--flow-space: var(--space-2xl);
 }
 .flow-space-3xl > * + * {
-  --flow-space: var(--space-3xl);
+	--flow-space: var(--space-3xl);
 }

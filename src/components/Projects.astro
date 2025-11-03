@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { Icon } from "astro-icon/components";
 import Section from "@components/Section.astro";
+import { Icon } from "astro-icon/components";
 import { marked } from "marked";
 
 const unsortedProjects = await getCollection("projects", ({ data }) => {
-  return data.draft !== true;
+	return data.draft !== true;
 });
 
 const projects = unsortedProjects.sort((a, b) => a.data.order - b.data.order);

@@ -1,17 +1,17 @@
 /* Dark mode vars */
 html[data-theme="dark"] {
-  --body-bg: var(--slate-900);
-  --text-primary: var(--slate-100);
-  --accent: var(--emerald-400);
-  --accent-hover: var(--emerald-500);
-  --hr-color: var(--slate-700);
+	--body-bg: var(--slate-900);
+	--text-primary: var(--slate-100);
+	--accent: var(--emerald-400);
+	--accent-hover: var(--emerald-500);
+	--hr-color: var(--slate-700);
 }
 
 /* Light mode vars */
 html[data-theme="light"] {
-  --body-bg: var(--slate-200);
-  --text-primary: var(--slate-800);
-  --accent: var(--emerald-500);
-  --accent-hover: var(--emerald-600);
-  --hr-color: var(--slate-300);
+	--body-bg: var(--slate-200);
+	--text-primary: var(--slate-800);
+	--accent: var(--emerald-500);
+	--accent-hover: var(--emerald-600);
+	--hr-color: var(--slate-300);
 }

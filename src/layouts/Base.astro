@@ -1,7 +1,8 @@
 ---
 import Navbar from "../components/Navbar.astro";
+
 const { title, data, metaKeywords, metaDescription, metaImageURL, isBlogPost } =
-  Astro.props;
+	Astro.props;
 import.meta.glob("/src/styles/global/*.css", { eager: true });
 import.meta.glob("/src/styles/compositions/*.css", { eager: true });
 import.meta.glob("/src/styles/utilities/*.css", { eager: true });

@@ -1,29 +1,29 @@
 ---
 import { getCollection } from "astro:content";
-import { format } from "date-fns";
 import Section from "@components/Section.astro";
+import { format } from "date-fns";
 
 const blogPostsData = await await getCollection("blog", ({ data }) => {
-  return data.draft !== true;
+	return data.draft !== true;
 });
 
 const getReadingTime = (content) => {
-  if (!content) return;
-  const clean = content.replace(/<\/?[^>]+(>|$)/g, "");
-  const numberOfWords = clean.split(/\s/g).length;
-  const wordsPerMinute = 200;
-  return Math.ceil(numberOfWords / wordsPerMinute);
+	if (!content) return;
+	const clean = content.replace(/<\/?[^>]+(>|$)/g, "");
+	const numberOfWords = clean.split(/\s/g).length;
+	const wordsPerMinute = 200;
+	return Math.ceil(numberOfWords / wordsPerMinute);
 };
 
 let blogPosts = blogPostsData.map((post) => {
-  return {
-    ...post,
-    formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
-    timeToRead: getReadingTime(post.body),
-  };
+	return {
+		...post,
+		formattedDate: format(new Date(post.data.date), "do MMMM, yyyy"),
+		timeToRead: getReadingTime(post.body),
+	};
 });
 blogPosts.sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+	(a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 );
 blogPosts = [...blogPosts.slice(0, 3)];
 ---

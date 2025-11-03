@@ -1,10 +1,7 @@
 ---
 title: "Portfolio - this website"
 technologies:
-  [
-    { name: "Astro", icon: "astro" },
-    { name: "SolidJS", icon: "solid" },
-  ]
+  [{ name: "Astro", icon: "astro" }, { name: "SolidJS", icon: "solid" }]
 links:
   code: "https://github.com/connordowson/.dev"
 image: "portfolio.png"

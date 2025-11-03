@@ -66,7 +66,8 @@
 
   clip-path: inset(10.1% 8.5% 50.3% 8.8%);
 
-  background-image: var(--bg), var(--bg), var(--bg),
+  background-image:
+    var(--bg), var(--bg), var(--bg),
     repeating-linear-gradient(
       82deg,
       rgb(219, 204, 86) calc(var(--space) * 1),
@@ -88,7 +89,12 @@
       rgba(150, 150, 150, 0.3) 40%,
       rgb(0, 0, 0) 100%
     );
-  background-size: cover, cover, cover, 400% 900%, cover;
+  background-size:
+    cover,
+    cover,
+    cover,
+    400% 900%,
+    cover;
   background-position: center;
   background-blend-mode: color-dodge, color-burn, saturation, screen;
   filter: brightness(0.65) contrast(1.1) saturate(1.2);

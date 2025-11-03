@@ -1,14 +1,16 @@
 ---
-import BaseLayout from "./Base.astro";
 import Section from "@components/Section.astro";
+import BaseLayout from "./Base.astro";
+
 const { data } = Astro.props;
 const maxWidth = "3xl";
 ---
 
 <BaseLayout maxWidth={maxWidth} title={data.title}>
-  <Section class={`w-full max-w-${maxWidth} mt-24 md:px-4 mx-auto`}>
-    <h1 class="dark:text-emerald-400 text-emerald-500">test</h1>
-
-    <div class="dark:prose-dark prose"><slot /></div>
-  </Section>
+    <Section class={`w-full max-w-${maxWidth} mt-24 md:px-4 mx-auto`}>
+        <h1 class="dark:text-emerald-400 text-emerald-500">test</h1>
+        <div class="dark:prose-dark prose">
+            <slot />
+        </div>
+    </Section>
 </BaseLayout>

@@ -1,5 +1,5 @@
 .full-width {
-  width: clamp(16rem, 100%, 64rem);
-  margin: 0 auto;
-  padding-inline: var(--space-s);
+	width: clamp(16rem, 100%, 64rem);
+	margin: 0 auto;
+	padding-inline: var(--space-s);
 }

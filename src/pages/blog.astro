@@ -1,22 +1,22 @@
 ---
 import { getCollection } from "astro:content";
-import { format } from "date-fns";
-import BaseLayout from "@layouts/Base.astro";
 import Section from "@components/Section.astro";
+import BaseLayout from "@layouts/Base.astro";
+import { format } from "date-fns";
 
 const { DEV } = import.meta.env;
 
 const blogPostsData = await getCollection("blog", ({ data }) => {
-  // Show draft posts in dev
-  if (DEV) {
-    return true;
-  }
+	// Show draft posts in dev
+	if (DEV) {
+		return true;
+	}
 
-  return data.draft !== true;
+	return data.draft !== true;
 });
 
 const blogPosts = blogPostsData.sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+	(a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 );
 ---
 

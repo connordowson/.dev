@@ -1,7 +1,7 @@
 ---
-import Map from "./Map.astro";
-import Section from "./Section.astro";
 import { getEntry } from "astro:content";
+import MapComponent from "./Map.astro";
+import Section from "./Section.astro";
 
 const workAndEducation = await getEntry(
   "work_and_education",
@@ -36,7 +36,7 @@ const workAndEducation = await getEntry(
           </p>
         </div>
 
-        <Map />
+        <MapComponent />
       </div>
     </div>
 

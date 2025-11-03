@@ -1,82 +1,82 @@
 .section {
-  display: block;
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
 }
 
 .section[data-relative="true"] {
-  position: relative;
+	position: relative;
 }
 
 .section[data-about-me="true"] > div {
-  position: relative;
+	position: relative;
 }
 
 .section:not(:last-of-type)::after {
-  position: absolute;
-  pointer-events: none;
-  content: "";
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(to right, #ffffff07, #34d39950, #ffffff07);
+	position: absolute;
+	pointer-events: none;
+	content: "";
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 1px;
+	width: 100%;
+	background: linear-gradient(to right, #ffffff07, #34d39950, #ffffff07);
 }
 
 [data-theme="dark"] {
-  --dot-bg: url("/dot-dark.svg");
+	--dot-bg: url("/dot-dark.svg");
 }
 
 [data-theme="light"] {
-  --dot-bg: url("/dot-light.svg");
+	--dot-bg: url("/dot-light.svg");
 }
 
 .section::before {
-  position: absolute;
-  pointer-events: none;
-  content: "";
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: repeat var(--dot-bg);
-  /* background: url("waves.svg"); */
-  background-size: 10px;
-  /* background-repeat: no-repeat; */
-  /* background-position: right; */
+	position: absolute;
+	pointer-events: none;
+	content: "";
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: repeat var(--dot-bg);
+	/* background: url("waves.svg"); */
+	background-size: 10px;
+	/* background-repeat: no-repeat; */
+	/* background-position: right; */
 }
 
 .section:nth-child(even)::before {
-  mask-image: linear-gradient(35deg, transparent 60%, #00000070);
+	mask-image: linear-gradient(35deg, transparent 60%, #00000070);
 }
 
 .section:nth-child(odd)::before {
-  mask-image: linear-gradient(35deg, #00000070, transparent 40%);
+	mask-image: linear-gradient(35deg, #00000070, transparent 40%);
 }
 
 .section > div {
-  margin-inline: auto;
-  max-width: 64rem;
-  margin-block: var(--space-xl);
-  padding: var(--space-s);
+	margin-inline: auto;
+	max-width: 64rem;
+	margin-block: var(--space-xl);
+	padding: var(--space-s);
 }
 
 .section[data-fixed="true"]::before {
-  position: fixed;
+	position: fixed;
 }
 
 .section[data-width="small"] > div {
-  max-width: 48rem;
+	max-width: 48rem;
 }
 
 .section[data-width="large"] > div {
-  max-width: 80rem;
+	max-width: 80rem;
 }
 
 .section > div > :is(h1, h2, h3) {
-  color: var(--accent);
-  margin-bottom: var(--space-s);
+	color: var(--accent);
+	margin-bottom: var(--space-s);
 }

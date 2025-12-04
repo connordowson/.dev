@@ -44,6 +44,7 @@ const ToggleTheme = () => {
 			class="button shadow"
 			data-size="small"
 			onClick={() => setTheme((theme) => (theme === "dark" ? "light" : "dark"))}
+			type="button"
 		>
 			<svg width="32" height="32" viewBox="0 0 24 24">
 				<title>Change theme</title>

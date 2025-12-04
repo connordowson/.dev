@@ -48,14 +48,18 @@ const Card = () => {
 				}}
 			>
 				<div class="card not-prose shadow-2xl">
-					<img id="img" src="/playground/baby-aaron-pokemon-card-2.png" />
+					<img
+						id="img"
+						src="/playground/baby-aaron-pokemon-card-2.png"
+						alt=""
+					/>
 					<div className="gradient-1" />
 					<div className="glare" />
 					<div className="holo" />
 				</div>
 			</div>
 
-			{/* 
+			{/*
       <p>
         X Position: {xPosition()} / {xMax()}
       </p>

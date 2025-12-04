@@ -1,24 +1,28 @@
-/* @import "tailwindcss"; */
+/*@import "tailwindcss";*/
 
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+@view-transition {
+  navigation: auto;
+}
+
 body {
-    font-family: var(--body);
-    font-size: var(--step--1);
-    background-color: var(--body-bg);
+  font-family: var(--body);
+  font-size: var(--step--1);
+  background-color: var(--body-bg);
 }
 
 *:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: var(--space-4xs);
+  outline: 2px solid var(--accent);
+  outline-offset: var(--space-4xs);
 }
 
 *::selection {
-    background-color: var(--accent);
-    color: var(--body-bg);
+  background-color: var(--accent);
+  color: var(--body-bg);
 }
 
 p,
@@ -26,24 +30,24 @@ li,
 a,
 time,
 table {
-    color: var(--text-primary);
+  color: var(--text-primary);
 }
 
 a:any-link {
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }
 
 :is(a:any-link, a:any-link > *):hover {
-    color: var(--accent-hover);
-    transition: color 150ms ease-in-out;
+  color: var(--accent-hover);
+  transition: color 150ms ease-in-out;
 }
 
 a:link svg {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 h1,
@@ -52,29 +56,29 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--display);
-    letter-spacing: 0.01em;
-    color: var(--accent);
-    text-wrap: balance;
-    font-weight: 700;
+  font-family: var(--display);
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  text-wrap: balance;
+  font-weight: 700;
 }
 
 h1 {
-    font-size: var(--step-3);
+  font-size: var(--step-3);
 }
 h2 {
-    font-size: var(--step-2);
+  font-size: var(--step-2);
 }
 h3 {
-    font-size: var(--step-1);
+  font-size: var(--step-1);
 }
 button {
-    color: inherit;
+  color: inherit;
 }
 
 hr {
-    height: 2px;
-    border: 0;
-    padding: 0;
-    background-color: var(--hr-color);
+  height: 2px;
+  border: 0;
+  padding: 0;
+  background-color: var(--hr-color);
 }

@@ -1,36 +1,36 @@
 .grid {
-    display: grid;
-    width: 100%;
-    gap: var(--grid-gap, var(--space-m));
+  display: grid;
+  width: 100%;
+  gap: var(--grid-gap, var(--space-m));
 
-    /* Magic from here */
-    /* https://css-tricks.com/responsive-layouts-fewer-media-queries/ */
-    grid-template-columns: repeat(
-        auto-fill,
-        minmax(
-            clamp(
-                100% / (var(--grid-no-of-columns, 3) + 1),
-                var(--grid-min-item-size, 16rem),
-                100%
-            ),
-            1fr
-        )
-    );
+  /* Magic from here */
+  /* https://css-tricks.com/responsive-layouts-fewer-media-queries/ */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      clamp(
+        100% / (var(--grid-no-of-columns, 3) + 1),
+        var(--grid-min-item-size, 16rem),
+        100%
+      ),
+      1fr
+    )
+  );
 }
 
 .grid[data-columns="1:1"] {
-    --grid-no-of-columns: 2;
+  --grid-no-of-columns: 2;
 }
 
 .grid[data-columns="2:1"] {
-    grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 .grid[data-columns="3:2"] {
-    grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 2fr;
 }
 
 @media screen and (max-width: 830px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

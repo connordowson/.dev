@@ -1,34 +1,40 @@
 {
-	"$ref": "#/definitions/blog",
-	"definitions": {
-		"blog": {
-			"type": "object",
-			"properties": {
-				"title": {
-					"type": "string"
-				},
-				"draft": {
-					"type": "boolean"
-				},
-				"description": {
-					"type": "string"
-				},
-				"tags": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"date": {
-					"type": "string"
-				},
-				"$schema": {
-					"type": "string"
-				}
-			},
-			"required": ["title", "draft", "description", "tags", "date"],
-			"additionalProperties": false
-		}
-	},
-	"$schema": "http://json-schema.org/draft-07/schema#"
+  "$ref": "#/definitions/blog",
+  "definitions": {
+    "blog": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "draft": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "draft",
+        "description",
+        "tags",
+        "date"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

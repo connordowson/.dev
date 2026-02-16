@@ -4,6 +4,7 @@ import { GET } from "../pages/api/getTopTracks";
 
 let response = await GET(Astro);
 const topTracks = await response.json();
+export const prerender = false;
 ---
 
 <Section relative>

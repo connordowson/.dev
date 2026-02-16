@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 830px) {
-  .grid {
+  .grid[data-columns] {
     grid-template-columns: 1fr;
   }
 }

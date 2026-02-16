@@ -1,41 +1,49 @@
 {
-	"$ref": "#/definitions/work_and_education",
-	"definitions": {
-		"work_and_education": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"organisation": {
-						"type": "string"
-					},
-					"logo": {
-						"type": "string"
-					},
-					"roles": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"role": {
-									"type": "string"
-								},
-								"startDate": {
-									"type": "string"
-								},
-								"endDate": {
-									"type": "string"
-								}
-							},
-							"required": ["role", "startDate", "endDate"],
-							"additionalProperties": false
-						}
-					}
-				},
-				"required": ["organisation", "logo", "roles"],
-				"additionalProperties": false
-			}
-		}
-	},
-	"$schema": "http://json-schema.org/draft-07/schema#"
+  "$ref": "#/definitions/work_and_education",
+  "definitions": {
+    "work_and_education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "organisation": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "endDate": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "role",
+                "startDate",
+                "endDate"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "organisation",
+          "logo",
+          "roles"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }
